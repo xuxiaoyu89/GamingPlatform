@@ -2,22 +2,37 @@
 
 angular.module('myApp', [])
 .controller('PlatformCtrl',
-function ($sce, $scope, $rootScope, $log, $window, 
-$location, //????????
-platformMessageService, stateService) {
+function ($sce, $scope, $rootScope, $log, $window, platformMessageService, stateService, serverApiService) {
 
   var platformUrl = $window.location.search;
+  $log.info("Platform URL: ", platformUrl);
+  
   var gameUrl = platformUrl.length > 1 ? platformUrl.substring(1) : null;
+  $log.info("Game URL: ", gameUrl);
   if (gameUrl === null) {
-    $log.error("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., http://yoav-zibin.github.io/emulator/platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
-    $window.alert("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., ...platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
+    $log.error("You must pass a url like this: ...platform.html?userid=123&matchid=123");
+    $window.alert("You must pass a url like this: ...platform.html?userid=123&matchid=123");
     return;
   }
+  
+  var parsedurl = gameUrl.split('&');
+  $log.info("Parsed URL: ", parsedurl);
+  var userid;
+  var matchid;
+  if (parsedurl !== null || parsedurl.length === 2) {
+      userid = parsedurl[0];
+      matchid = parsedurl[1];
+      $log.info("User ID: ", userid);
+      $log.info("Match ID: ", matchid);
+  }
+  
+  
   $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
   var gotGameReady = false;
   $scope.startNewMatch = function () {
     stateService.startNewMatch();
   };
+  
   $scope.getStatus = function () {
     if (!gotGameReady) {
       return "Waiting for 'gameReady' message from the game...";
@@ -42,7 +57,7 @@ platformMessageService, stateService) {
         matchState.endMatchScores = [0, 1];
         // Set match to end game???
         $location.path('platform_menu.html');
-    }
+    };
     //============END GAME
     //DELETE GAME
     $scope.isEndGame = function () {

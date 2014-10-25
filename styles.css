@@ -6,3 +6,9 @@ html, body {
   overflow: hidden;
   position: fixed!important;
 }
+
+.menu {
+    //height:10%;
+    overflow: hidden;
+    height: 100px;
+}
