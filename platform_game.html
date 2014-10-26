@@ -21,6 +21,18 @@
 
 <body style="height:100%; width:100%; overflow: hidden;"
     ng-cloak ng-controller="PlatformCtrl">
+    
+    <div class="menu">
+        <!--// List of Selectable Games  -->
+        <select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
+        	  <option value="">-- choose game --</option>      	
+        </select>
+        <br>
+        <!--// AUTO MATCH Button  -->
+  	  	    <button ng-click="autoMatchHandler()">AUTO MATCH</button>
+	      <br>
+    </div>
+    
   <div class="menu">
     
       
