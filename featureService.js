@@ -4,27 +4,16 @@ angular.module('myApp', [])
 .controller('PlatformCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, platformMessageService, stateService) {
 
-  /*var platformUrl = $window.location.search;
-  var gameUrl = platformUrl.length > 1 ? platformUrl.substring(1) : null;
-  if (gameUrl === null) {
-    $log.error("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., http://yoav-zibin.github.io/emulator/platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
-    $window.alert("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., ...platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
-    return;
-  }
-  $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);*/
-
-  var gameID = 5137355874762752;
+  //var gameID = 5137355874762752;
   serverApiService.sendMessage(
       [{getGames: {}}],
       function (response) {
         $scope.games = angular.toJson(response, true);
       });
 
-  /*while ($scope.games === undefined) {
+  $log.info($scope.games);//This doesn't work
 
-  }
-
-  console.log($scope.games);*/
+  waitforserver();//This works, see below
 
 
   function waitforserver() {
@@ -35,11 +24,21 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, p
     }
   }
 
-  waitforserver();
-
   function done() {
-    console.log($scope.games);
+    $log.info($scope.games);
   }
+
+
+
+
+
+//==========================================================================
+
+
+
+
+
+
 
 
   var gotGameReady = false;
