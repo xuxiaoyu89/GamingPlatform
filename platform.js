@@ -100,10 +100,40 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   	$location.search(searchObject).replace();
   }
   
+  
+  var matchID;
   //AUTO MATCH button handler
   $scope.autoMatchHandler = function(){
-  	AUTO_MATCH = !AUTO_MATCH;
+  	AUTO_MATCH = true;
   	resetUrl(AUTO_MATCH, EMAIL_JS_ERRORS, gameId);
+  	if(gameId === undefined){
+  		alert("Choose a game first please!");
+  		return;
+  	}else{
+  		//try to reserve an AutoMatch first
+  		serverApiService.sendMessage(
+  			[{reserveAutoMatch: {tokens:0, numberOfPlayers:2, 
+			  		     gameId: gameId, 
+					     myPlayerId: myPlayerId,
+      					     accessSignature: accessSignature}}],
+      	    function(responses){
+      	    	if(responses[0].matches.length === 0){
+      	    		//do sth to create a new match, still need a move
+      	    		//In this case, a game should show up within iframe
+      	    		//waiting for the player's move
+      	    		createNewMatch();
+      	    	}else{
+      	    		//do sth to make a move in that we can really create this match
+      	    		//In this case, a game with specific matchID should show up 
+      	    		//within the iframe, still, waiting for the user's move
+      	    		matchID = responses[0].matches.matchId;  //[0] repersents the first elem in Queue
+      	    	}
+      	    });
+  	}
+  }
+  
+  function createNewMatch(){
+  	//need a move from game	
   }
 	   
 	   
