@@ -89,11 +89,11 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   	var searchObject ={};
   	var gameIdValue = gameId===undefined ? null : gameId;
   	if(AUTO_MATCH && EMAIL_JS_ERRORS){
-  		searchObject = {on: 'AUTO_MATCH', on:'EMAIL_JS_ERRORS', gameId: gameIdValue};
+  		searchObject = {on: 'AUTO_MATCH, EMAIL_JS_ERRORS', gameId: gameIdValue};
   	}else if(!AUTO_MATCH && EMAIL_JS_ERRORS){
   		searchObject = {off: 'AUTO_MATCH', on:'EMAIL_JS_ERRORS', gameId: gameIdValue};
   	}else if(!AUTO_MATCH && !EMAIL_JS_ERRORS){
-  		searchObject = {off: 'AUTO_MATCH', off:'EMAIL_JS_ERRORS', gameId: gameIdValue};
+  		searchObject = {off: 'AUTO_MATCH, EMAIL_JS_ERRORS', gameId: gameIdValue};
   	}else if(AUTO_MATCH && !EMAIL_JS_ERRORS){
   		searchObject = {on: 'AUTO_MATCH', off:'EMAIL_JS_ERRORS', gameId: gameIdValue};
   	}
