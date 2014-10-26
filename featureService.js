@@ -4,16 +4,16 @@ angular.module('myApp', [])
 .controller('PlatformCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, platformMessageService, stateService) {
 
-  var gameID = 5682617542246400;//game id, this is just an example
+  var gameID = "5682617542246400";//game id, this is just an example
   var matchID;//match id to be used to get a certain match
   var userID;//user id
-  
+
   var gameUrl;
 
   serverApiService.sendMessage(
-      [{getGames: {}}],
+      [{getGames: {gameId: gameID}}],
       function (response) {
-        $scope.games = response;
+        $scope.game = response;
       });
 
   $log.info($scope.games);//This doesn't work
@@ -22,7 +22,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, p
 
 
   function wait() {
-    if ($scope.games === undefined) {
+    if ($scope.game === undefined) {
       $timeout(function() {wait();}, 200);
     }else{
       done();
@@ -30,14 +30,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, p
   }
 
   function done() {
-    $log.info($scope.games[0]["games"]);
-    var i;
-    for (i = 0; i < $scope.games[0]["games"].length; i++) {
-      if ($scope.games[0]["games"][i].gameId == gameID) {
-        gameUrl = $scope.games[0]["games"][i].gameUrl;
-        break;
-      }
-    }
+    $log.info($scope.game);
+    gameUrl = $scope.game[0]["games"][0].gameUrl;
     $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
   }
 
