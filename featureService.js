@@ -4,28 +4,41 @@ angular.module('myApp', [])
 .controller('PlatformCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, platformMessageService, stateService) {
 
-  //var gameID = 5137355874762752;
+  var gameID = 5682617542246400;//game id, this is just an example
+  var matchID;//match id to be used to get a certain match
+  var userID;//user id
+  
+  var gameUrl;
+
   serverApiService.sendMessage(
       [{getGames: {}}],
       function (response) {
-        $scope.games = angular.toJson(response, true);
+        $scope.games = response;
       });
 
   $log.info($scope.games);//This doesn't work
 
-  waitforserver();//This works, see below
+  wait();//This works, see below
 
 
-  function waitforserver() {
+  function wait() {
     if ($scope.games === undefined) {
-      $timeout(function() {waitforserver();}, 200);
+      $timeout(function() {wait();}, 200);
     }else{
       done();
     }
   }
 
   function done() {
-    $log.info($scope.games);
+    $log.info($scope.games[0]["games"]);
+    var i;
+    for (i = 0; i < $scope.games[0]["games"].length; i++) {
+      if ($scope.games[0]["games"][i].gameId == gameID) {
+        gameUrl = $scope.games[0]["games"][i].gameUrl;
+        break;
+      }
+    }
+    $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
   }
 
 
