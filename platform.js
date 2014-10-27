@@ -10,8 +10,8 @@ function ($sce, $scope, $rootScope, $log, $window, platformMessageService, state
   var gameUrl = platformUrl.length > 1 ? platformUrl.substring(1) : null;
   $log.info("Game URL: ", gameUrl);
   if (gameUrl === null) {
-    $log.error("You must pass a url like this: ...platform.html?userid=123&matchid=123");
-    $window.alert("You must pass a url like this: ...platform.html?userid=123&matchid=123");
+    $log.error("You must pass a url like this: http://rshen1993.github.io/GamingPlatform/platform_game.html?userid=123&matchid=123");
+    $window.alert("You must pass a url like this: http://rshen1993.github.io/GamingPlatform/platform_game.html?userid=123&matchid=123");
     return;
   }
   
@@ -19,11 +19,14 @@ function ($sce, $scope, $rootScope, $log, $window, platformMessageService, state
   $log.info("Parsed URL: ", parsedurl);
   var userid;
   var matchid;
-  if (parsedurl !== null || parsedurl.length === 2) {
+  if (parsedurl.length === 2) {
       userid = parsedurl[0];
       matchid = parsedurl[1];
       $log.info("User ID: ", userid);
       $log.info("Match ID: ", matchid);
+  } else {
+      $window.alert("You must pass a url like this: http://rshen1993.github.io/GamingPlatform/platform_game.html?userid=123&matchid=123");
+      return;
   }
   
   
