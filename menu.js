@@ -4,48 +4,43 @@ angular.module('myApp', [])
 .controller('PlatformCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, platformMessageService, stateService) {
 
-  var gameID = "5682617542246400";//game id, this is just an example
-  var matchID;//match id to be used to get a certain match
-  var userID;//user id
+  /*var platformUrl = $window.location.search;
+  var gameUrl = platformUrl.length > 1 ? platformUrl.substring(1) : null;
+  if (gameUrl === null) {
+    $log.error("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., http://yoav-zibin.github.io/emulator/platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
+    $window.alert("You must pass the game url like this: ...platform.html?<GAME_URL> , e.g., ...platform.html?http://yoav-zibin.github.io/TicTacToe/game.html");
+    return;
+  }
+  $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);*/
 
-  var gameUrl;
-
+  //var gameID = 5137355874762752;
+  var 
   serverApiService.sendMessage(
-      [{getGames: {gameId: gameID}}],
+      [{getGames: {}}],
       function (response) {
-        $scope.game = response;
+        $scope.games = angular.toJson(response, true);
       });
 
-  $log.info($scope.games);//This doesn't work
+  /*while ($scope.games === undefined) {
 
-  wait();//This works, see below
+  }
+
+  console.log($scope.games);*/
 
 
-  function wait() {
-    if ($scope.game === undefined) {
-      $timeout(function() {wait();}, 200);
+  function waitforserver() {
+    if ($scope.games === undefined) {
+      $timeout(function() {waitforserver();}, 200);
     }else{
       done();
     }
   }
 
+  waitforserver();
+
   function done() {
-    $log.info($scope.game);
-    gameUrl = $scope.game[0]["games"][0].gameUrl;
-    $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
+    console.log($scope.games);
   }
-
-
-
-
-
-//==========================================================================
-
-
-
-
-
-
 
 
   var gotGameReady = false;
