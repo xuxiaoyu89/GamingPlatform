@@ -14,16 +14,30 @@
   <script src="platform.js"></script>
   <script src="http://yoav-zibin.github.io/emulator/platformMessageService.js"></script>
   <script src="http://yoav-zibin.github.io/emulator/stateService.js"></script>
+  
+  <script src="http://yoav-zibin.github.io/emulator/serverApiService.js"></script>
 
 </head>
 
 <body style="height:100%; width:100%; overflow: hidden;"
     ng-cloak ng-controller="PlatformCtrl">
-  <div style="height:10%; overflow: hidden;">
+    
+    <div class="menu">
+        <!--// List of Selectable Games  -->
+        <select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
+        	  <option value="">-- choose game --</option>      	
+        </select>
+        <br>
+        <!--// AUTO MATCH Button  -->
+  	  	    <button ng-click="autoMatchHandler()">AUTO MATCH</button>
+	      <br>
+    </div>
+    
+  <div class="menu">
     
       
     <!--// Back Button //-->
-    <button ng-click="platform_menu.html">Back to Main Menu</button>
+    <a href="platform_menu.html">Back to Main Menu</a>
     
     <!--// Opponents Avatars //-->
     <!--// Status Message //-->
@@ -33,14 +47,6 @@
     <button ng-click="endGame()">End Game</button>
     <button ng-click="deleteGame()"
             ng-show="isEndGame()">Delete Game</button>
-    
-    <select ng-model="playMode">
-      <option value="passAndPlay">Single-window Pass-and-play</option>
-      <option value="playAgainstTheComputer">Single-window Play-against-the-computer</option>
-      <option value="playWhite">Multi-window play White</option>
-      <option value="playBlack">Multi-window play Black</option>
-      <option value="playViewer">Multi-window be a Viewer</option>
-    </select>
     
     
     

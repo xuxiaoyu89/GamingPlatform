@@ -11,7 +11,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
   
   <script src="http://yoav-zibin.github.io/emulator/intercom.js"></script>
-  <script src="platform.js"></script>
+  <script src="platform_game_vs.js"></script>
   <script src="http://yoav-zibin.github.io/emulator/platformMessageService.js"></script>
   <script src="http://yoav-zibin.github.io/emulator/stateService.js"></script>
   
@@ -21,21 +21,7 @@
 
 <body style="height:100%; width:100%; overflow: hidden;"
     ng-cloak ng-controller="PlatformCtrl">
-    
-    <div class="menu">
-        <!--// List of Selectable Games  -->
-        <select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
-        	  <option value="">-- choose game --</option>      	
-        </select>
-        <br>
-        <!--// AUTO MATCH Button  -->
-  	  	    <button ng-click="autoMatchHandler()">AUTO MATCH</button>
-	      <br>
-    </div>
-    
-  <div class="menu">
-    
-      
+
     <!--// Back Button //-->
     <a href="platform_menu.html">Back to Main Menu</a>
     
@@ -50,7 +36,6 @@
     
     
     
-  </div>
     
   <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
       style="height:90%; width:100%; overflow: hidden;"
