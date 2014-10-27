@@ -22,6 +22,10 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
    * Store/Check any player information in local storage
    * Initialize closure value: *myPlayerId*, *accessSignature*
    * Initialize $scope value: displayName, avatarImageUrl   */
+  
+  /* also Initialize $scope value: myPlayerId, accessSignature
+   */
+  
   var playerInfo = window.localStorage.getItem("playerInfo");
   if (playerInfo === undefined){
   	var myName = "guest" + Math.floor(Math.random() *  100000 );
@@ -33,6 +37,9 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
         	window.localStorage.setItem("playerInfo", angular.toJson(playerInfo));
         	myPlayerId = playerInfo.myPlayerId;
         	accessSignature = playerInfo.accessSignature;
+        	//added by XXY
+        	$scope.myPlayerId = myPlayerId;
+        	$scope.accessSignature = accessSignature;
         	$scope.displayName = playerInfo.displayName;
         	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
         });
@@ -42,6 +49,60 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     $scope.displayName = playerInfo.displayName;
     $scope.avatarImageUrl = playerInfo.avatarImageUrl;
   }
+  
+  
+  /* get all matches of the user,
+   * [{getPlayerMatches: {gameId: "...", getCommunityMatches: false, myPlayerId:"...",accessSignature:"..."}}]
+   * display the matches according to the game user selected */
+  $scope.myMatchesPool = [];
+  $scope.myTurnMatches = [];
+  $scope.oppoTurnMatches = [];
+  $scope.endMatches = [];
+  serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature:accessSignature}}], function(matches){
+    $scope.myMatchesPool = matches[0].matches;
+  });
+  
+  
+  
+  /* display the matches of the game user selected($scope.selectdGames = "";)
+   * There are 3 kinds of matches:
+   *   1. matches which are your turn
+   *   2. matches which are not your turn
+   *   3. matches which are completed
+   */
+  function setCurrentMatches(selectedGame){
+	  for (var i=0; i<$scope.myMatchesPool.length(); i++){
+		  var currMatch = $scope.myMatchesPoos[i];
+		  //check if currMatch is a match of selectedGame
+		  if(selectedGame !== "" && currMatch.gameId !== selectedGame){
+			  continue;
+		  }
+		  // check the last move in history
+		  var history = currMatch.history;
+		  var moves = history.moves;
+		  var lastMove = moves[moves.length-1];
+		  var firstOperation = lastMove[0];
+		  
+		  //this match has not complete, we should get the turn
+		  if(firstOperation.endMatch === undefined){
+			  var turnIndex = firstOperation.setTurn.turnIndex;
+			  if (turnIndex === 0){
+				  // it is my turn
+				  $scope.myTurnMatches.push(currMatch);
+			  }
+			  else{
+				  // it is opponent's turn 
+				  $scope.oppoTurnMatches.push(currMatch);
+			  }
+		  }
+		  //this match has completed
+		  else{
+			  $scope.endMatches.push(currMatch);
+		  }
+	  }  
+  }
+  
+  
   
   //for global setting
   var AUTO_MATCH = true;
@@ -79,7 +140,13 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     		gameUrl = entry.gameUrl;
     		gameName = entry.GameName;
     		gameDmail = entry.gameDeveloperEmail;
-    	}	
+    	}
+    	//set current Matches after select
+    	/* gameId: "" if selectedGames = ""
+    	 *         gameId if selectedGames = entry.gameId
+    	 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!         
+    	 */ 
+    	setCurrentMatches(gameId);
     })
     
   });
