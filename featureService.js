@@ -2,53 +2,51 @@
 
 angular.module('myApp', [])
 .controller('PlatformCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, platformMessageService, stateService) {
+function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMessageService, stateService) {
 
   var gameID = "5682617542246400";//game id, this is just an example
-  var matchID;//match id to be used to get a certain match
-  var userID;//user id
+  var matchID = "4878221707313152";//match id to be used to get a certain match
+  var playerID = "5648554290839552";//player id
+  var accessSignature = "665eef5138f85e13aa0309aaa0fd8883";
 
   var gameUrl;
+  var gameStatus;
 
+//Get game URL
   serverApiService.sendMessage(
-      [{getGames: {gameId: gameID}}],
-      function (response) {
-        $scope.game = response;
-      });
+    [{getGames: {gameId: gameID}}],
+    function (response) {
+      $scope.game = response;
+      gameUrl = $scope.game[0]["games"][0].gameUrl;
+      $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
+    });
+//====================================================Game URL got
 
-  $log.info($scope.games);//This doesn't work
-
-  wait();//This works, see below
-
-
-  function wait() {
-    if ($scope.game === undefined) {
-      $timeout(function() {wait();}, 200);
-    }else{
-      done();
-    }
-  }
-
-  function done() {
-    $log.info($scope.game);
-    gameUrl = $scope.game[0]["games"][0].gameUrl;
-    $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);
-  }
-
-
+//Get match status  
+  serverApiService.sendMessage(
+    [{getPlayerMatches: {gameId: gameID, getCommunityMatches: false, myPlayerId: playerID,accessSignature: accessSignature}}],
+    function (response) {
+      var matches = response[0]["matches"];
+      for (var i = 0; i < matches.length; i ++) {
+        if (matches[i].matchId === matchID) {
+          gameStatus = matches[i].history.moves[length-1][0];
+          if (matches[i].history.moves[length-1][0].setTurn) {
+            $log.info()
+          }
+        }
+      }
+    });
+//====================================================
 
 
-
-//==========================================================================
+  
 
 
 
 
 
 
-
-
-  var gotGameReady = false;
+  /*var gotGameReady = false;
   $scope.startNewMatch = function () {
     stateService.startNewMatch();
   };
@@ -87,5 +85,5 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, serverApiService, p
     } else if (message.makeMove !== undefined) {
       stateService.makeMove(message.makeMove);
     }
-  });
+  });*/
 });
