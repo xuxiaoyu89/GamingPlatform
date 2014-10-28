@@ -57,6 +57,10 @@ var interval = setInterval(checkChanges, 1000);
         for (i = 0; i < matches.length; i ++) {
           if (matches[i].matchId === matchID) {
             playersInfo = matches[i].playersInfo;//info of two players
+            $scope.image0 = playersInfo[0].avatarImageUrl;
+            $scope.image1 = playersInfo[1].avatarImageUrl;
+            $scope.player0 = playersInfo[0].displayName;
+            $scope.player1 = playersInfo[1].displayName;
 
             var states = matches[i].history.stateAfterMoves;//all the states
             state = states[states.length-1];//current game state
@@ -143,7 +147,7 @@ var interval = setInterval(checkChanges, 1000);
         serverApiService.sendMessage(
           [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
           function (response) {
-            //$log.info("message sent back from madeMove: ",response);
+            
           });
       }
       //illegal move

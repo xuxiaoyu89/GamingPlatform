@@ -15,7 +15,12 @@
 <body style="height:100%; width:100%; overflow: hidden;"
     ng-cloak ng-controller="PlatformCtrl">
   <div style="height:10%; overflow: hidden;">
+    <div ng-show="player0 && player1">
+    {{player0}} <img src={{image0}}> vs <img src={{image1}}> {{player1}}
+    </div>
+    <div>
     {{gameStatus}}
+    </div>
   </div>
   <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
       style="height:90%; width:100%; overflow: hidden;"
