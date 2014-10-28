@@ -101,7 +101,7 @@ var interval = setInterval(checkChanges, 1000);
 
 //function for checking if there is any change in match state
 
-var numberOfMoves;//number of moves, used to determine if there's any change
+  var numberOfMoves;//number of moves, used to determine if there's any change
   function checkChanges() {
     serverApiService.sendMessage(
       //get all the matches that is being played or has been played by this player
@@ -132,9 +132,7 @@ var numberOfMoves;//number of moves, used to determine if there's any change
   platformMessageService.addMessageListener(function (message) {
     //iframe send a move to platform
     if (message.makeMove !== undefined) {
-      $log.info("move received");
       move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
-      $log.info(move);
       var params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
       platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
     }
@@ -142,7 +140,6 @@ var numberOfMoves;//number of moves, used to determine if there's any change
     else if (message.isMoveOkResult !== undefined) {
       //move is ok, send it to server
       if (message.isMoveOkResult === true) {
-        $log.info("move sent");
         serverApiService.sendMessage(
           [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
           function (response) {
