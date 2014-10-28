@@ -22,20 +22,21 @@
 <body style="height:100%; width:100%; overflow: hidden;"
     ng-cloak ng-controller="PlatformCtrl">
 
-    <!--// Back Button //-->
-    <a href="platform_menu.html">Back to Main Menu</a>
     
     <!--// Opponents Avatars //-->
-    <!--// Status Message //-->
+    
+    <!--// MATCH_MENU: STATUS/INFO //-->
     <div>{{getStatus()}}</div>
     
-    <!--// Options //-->
-    <button ng-click="endGame()">End Game</button>
+    <!--// MATCH_MENU: OPTIONS //-->
+    <button ng-click="leaveGame()">Leave</button>
+    <button ng-click="endGame()"
+            ng-show="!isEndGame()">Forfeit</button>
     <button ng-click="deleteGame()"
-            ng-show="isEndGame()">Delete Game</button>
+            ng-show="isEndGame()">Delete</button>
     
     
-    
+    <!--// EMAIL JS ERRORS?! //-->
     
   <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
       style="height:90%; width:100%; overflow: hidden;"
