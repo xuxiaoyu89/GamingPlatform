@@ -18,9 +18,9 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
 
 
   //----------------THESE WILL BE DELETED----------------------//
-  $window.localStorage.setItem("playerID", "5648554290839552");
-  $window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");
-  $window.localStorage.setItem("5757715179634688", 0);
+  //$window.localStorage.setItem("playerID", "5648554290839552");
+  //$window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");
+  //$window.localStorage.setItem("5757715179634688", 0);
   //-----------------------------------------------------------//
 
 
