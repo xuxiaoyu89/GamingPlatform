@@ -44,10 +44,11 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
         	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
         });
   }else{
+  	playerInfo = JSON.parse(angular.fromJson(playerInfo));
   	myPlayerId = playerInfo.myPlayerId;
-    accessSignature = playerInfo.accessSignature;
-    $scope.displayName = playerInfo.displayName;
-    $scope.avatarImageUrl = playerInfo.avatarImageUrl;
+    	accessSignature = playerInfo.accessSignature;
+    	$scope.displayName = playerInfo.displayName;
+    	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
   }
   
   
