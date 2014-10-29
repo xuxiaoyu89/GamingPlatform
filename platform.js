@@ -50,7 +50,6 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     	accessSignature = playerInfo.accessSignature;
     	$scope.displayName = playerInfo.displayName;
     	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
-    	$window.location.replace(MENU_URL);
   }
   
   
