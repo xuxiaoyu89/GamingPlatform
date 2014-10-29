@@ -138,7 +138,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   $scope.selectdGames = "";
   $scope.$watch('selectdGames', function() {
     $scope.gamesPool.forEach(function(entry){
-    	if(entry.GameName === $scope.selectdGames){
+    	if(entry.GameName === $scope.selectdGames.GameName){
     		gameId = entry.gameId;
     		gameUrl = entry.gameUrl;
     		gameName = entry.GameName;
