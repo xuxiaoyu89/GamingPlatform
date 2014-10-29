@@ -80,27 +80,29 @@ function getLocalVars() {
 getLocalVars();
 
 //===================== CHECK THE VARIABLES ====================//
-if ($scope.gameID!==undefined) {
-    gameID = $scope.gameID;
-    $log.info("GAMEID: ", $scope.gameID);
-} else { alert_log_error("GAMEID required in URL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2&turnindex=0"); }
-if ($scope.matchID!==undefined) {
-    matchID = $scope.matchID;
-    $log.info("MATCHID: ", $scope.matchID);
+function checkVars() {
+    if ($scope.gameID!==undefined) {
+        gameID = $scope.gameID;
+        $log.info("GAMEID: ", $scope.gameID);
+    } else { alert_log_error("GAMEID required in URL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2&turnindex=0"); }
+    if ($scope.matchID!==undefined) {
+        matchID = $scope.matchID;
+        $log.info("MATCHID: ", $scope.matchID);
+    }
+    if ($scope.turnIndex!==undefined) {
+        myPlayerIndex = $scope.turnIndex;
+        $log.info("TURN_INDEX: ", $scope.turnIndex);
+    }
+    if ($scope.playerID!==undefined) {
+        playerID = $scope.playerID;
+        $log.info("USERID: ", $scope.playerID);
+    } else { alert_log_error("Cannot find PLAYERID.", "PLAYERID not in LOCALSTORAGE."); }
+    if ($scope.accessSignature!==undefined) {
+        accessSignature = $scope.accessSignature;
+        $log.info("ACCESS_SIGNATURE: ", $scope.accessSignature);
+    } else { alert_log_error("Cannot find ACCESSSIGNATURE.", "ACCESSSIGNATURE not in LOCALSTORAGE."); }
 }
-if ($scope.turnIndex!==undefined) {
-    myPlayerIndex = $scope.turnIndex;
-    $log.info("TURN_INDEX: ", $scope.turnIndex);
-}
-if ($scope.playerID!==undefined) {
-    playerID = $scope.playerID;
-    $log.info("USERID: ", $scope.playerID);
-} else { alert_log_error("Cannot find PLAYERID.", "PLAYERID not in LOCALSTORAGE."); }
-if ($scope.accessSignature!==undefined) {
-    accessSignature = $scope.accessSignature;
-    $log.info("ACCESS_SIGNATURE: ", $scope.accessSignature);
-} else { alert_log_error("Cannot find ACCESSSIGNATURE.", "ACCESSSIGNATURE not in LOCALSTORAGE."); }
-
+checkVars();
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
         $log.info("Leaving game, redirecting to Main Menu: ", MENU_URL);
