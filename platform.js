@@ -5,7 +5,7 @@ angular.module('myApp', [])
 function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
 	 platformMessageService, stateService, serverApiService) {
 	   
-	// initialize icon pool  
+  // initialize icon pool  
   var avatarPool = [];
   avatarPool.push("http://upload.wikimedia.org/wikipedia/commons/f/f6/Choice_toxicity_icon.png");
   avatarPool.push("http://icons.iconarchive.com/icons/iconshock/free-folder/256/folder-customer-icon.png");
@@ -17,7 +17,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     
   var myPlayerId, accessSignature;
   $scope.displayName, $scope.avatarImageUrl;  
-  
+  var MENU_URL = 'platform.html';
   /* Create a user, if necessary, by sending registerPlayer message
    * Store/Check any player information in local storage
    * Initialize closure value: *myPlayerId*, *accessSignature*
@@ -42,6 +42,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
         	$scope.accessSignature = accessSignature;
         	$scope.displayName = playerInfo.displayName;
         	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
+        	$window.location.replace(MENU_URL);
         });
   }else{
   	playerInfo = JSON.parse(angular.fromJson(playerInfo));
@@ -49,6 +50,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     	accessSignature = playerInfo.accessSignature;
     	$scope.displayName = playerInfo.displayName;
     	$scope.avatarImageUrl = playerInfo.avatarImageUrl;
+    	$window.location.replace(MENU_URL);
   }
   
   
