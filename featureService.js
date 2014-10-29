@@ -137,7 +137,14 @@ var interval = setInterval(checkChanges, 1000);
     //iframe send a move to platform
     if (message.makeMove !== undefined) {
       move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
-      var params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
+      var params;
+      $log.info(move);
+      if (move[0].endMatch) {
+        params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: 1-turnIndex, stateBeforeMove: state, stateAfterMove: {}};
+      }
+      else {
+        params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
+      }
       platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
     }
     //iframe finish checking isMoveOk and send the result to platform
@@ -147,7 +154,7 @@ var interval = setInterval(checkChanges, 1000);
         serverApiService.sendMessage(
           [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
           function (response) {
-            
+
           });
       }
       //illegal move
