@@ -65,17 +65,20 @@ function parseURL() {
                 $scope.matchID = subparse[1];
             } else if (subparse[0].toLowerCase() === 'gameid') {
                 $scope.gameID = subparse[1];
-            }/* else if (subparse[0].toLowerCase() === 'turnindex') {
-                $scope.turnIndex = subparse[1];
-            }*/
+            } else if (subparse[0].toLowerCase() === 'turnindex') {
+                //$scope.turnIndex = subparse[1];
+                $window.localStorage.setItem("$scope.matchID", subparse[1]);
+            }
         }
     }
 }
 parseURL();
 //===================== GET VARIABLES FROM LOCAL STORAGE ====================//
 function getLocalVars() {
-    $scope.playerID=$window.localStorage.getItem("playerID");
-    $scope.accessSignature=$window.localStorage.getItem("accessSignature");
+    var playerInfo = window.localStorage.getItem("playerInfo");
+    playerInfo = JSON.parse(angular.fromJson(playerInfo));
+    $scope.playerID = playerInfo.myPlayerId;
+    $scope.accessSignature = playerInfo.accessSignature;
     myPlayerIndex=$window.localStorage.getItem($scope.matchID);//get myplayerindex from localstorage
 }
 getLocalVars();
