@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gaming Platform</title>
+  <meta name="description" content="Gaming Platform for games using GameApi">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+  <script src="http://yoav-zibin.github.io/emulator/intercom.js"></script>
+  <script src="platform.js"></script>
+  <script src="http://yoav-zibin.github.io/emulator/serverApiService.js"></script>
+  <script src="http://yoav-zibin.github.io/emulator/platformMessageService.js"></script>
+  <script src="http://yoav-zibin.github.io/emulator/stateService.js"></script>
+
+</head>
+
+<body style="height:100%; width:100%; overflow: hidden;"
+    ng-cloak ng-controller="PlatformCtrl">
+    <center><img ng-src = "{{avatarImageUrl}}"></img> 
+    <div>Hello {{displayName}} !!</div></center>
+    <br>
+   <center> 
+   		<select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
+      		<option value="">-- choose game --</option>      	
+    	</select>
+   </center>
+   <center> 
+  		<button ng-click="autoMatchHandler()">AUTO MATCH</button>
+	<br>
+    </center> 
+  <div style="height:10%; overflow: hidden;">
+  </div>
+    
+ 
+  
+</body>
+</html>
