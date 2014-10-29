@@ -8,7 +8,17 @@ html, body {
 }
 
 .menu {
-    //height:10%;
+    overflow: scroll;
+    height: 15%;
+}
+
+iframe {
     overflow: hidden;
-    height: 100px;
+    height: 75%;
+    width: 100%;
+}
+
+.bottommenu {
+    overflow: hidden;
+    height: 10%;
 }
