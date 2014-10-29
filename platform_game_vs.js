@@ -11,17 +11,17 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
   var playersInfo;
   var playerID, matchID, gameID, accessSignature, myPlayerIndex;
 
-   /**
-   *the below variables which are marked as * will be got dynamically from platform or local storage
-   *currently hard coded for testing purpose
-   **/
-  //URL: ?matchid=5757715179634688&gameid=5682617542246400&turnIndex=0
-  $window.localStorage.setItem("playerID", "5648554290839552");//*
-  $window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");//*
-  gameID = "5682617542246400";//*
-  matchID = "5757715179634688";//*
-  myPlayerIndex = 0;//*
+  var newmatch = false;//whether to create a new match or not, default set to false
 
+
+  //URL: ?matchid=5757715179634688&gameid=5682617542246400
+
+
+  //----------------THESE WILL BE DELETED----------------------//
+  $window.localStorage.setItem("playerID", "5648554290839552");
+  $window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");
+  $window.localStorage.setItem("5757715179634688", 0);
+  //-----------------------------------------------------------//
 
 
 
@@ -65,9 +65,9 @@ function parseURL() {
                 $scope.matchID = subparse[1];
             } else if (subparse[0].toLowerCase() === 'gameid') {
                 $scope.gameID = subparse[1];
-            } else if (subparse[0].toLowerCase() === 'turnindex') {
+            }/* else if (subparse[0].toLowerCase() === 'turnindex') {
                 $scope.turnIndex = subparse[1];
-            }
+            }*/
         }
     }
 }
@@ -76,6 +76,7 @@ parseURL();
 function getLocalVars() {
     $scope.playerID=$window.localStorage.getItem("playerID");
     $scope.accessSignature=$window.localStorage.getItem("accessSignature");
+    myPlayerIndex=$window.localStorage.getItem($scope.matchID);//get myplayerindex from localstorage
 }
 getLocalVars();
 
@@ -89,10 +90,16 @@ function checkVars() {
         matchID = $scope.matchID;
         $log.info("MATCHID: ", $scope.matchID);
     }
-    if ($scope.turnIndex!==undefined) {
+    else {
+      newmatch = true;//matchID not found in URL, so create new match
+      myPlayerIndex = 0;
+      turnIndex = 0;
+      state = {};
+    }
+    /*if ($scope.turnIndex!==undefined) {
         myPlayerIndex = $scope.turnIndex;
         $log.info("TURN_INDEX: ", $scope.turnIndex);
-    }
+    }*/
     if ($scope.playerID!==undefined) {
         playerID = $scope.playerID;
         $log.info("USERID: ", $scope.playerID);
@@ -162,9 +169,11 @@ var interval = setInterval(checkChanges, 1000);
           if (matches[i].matchId === matchID) {
             playersInfo = matches[i].playersInfo;//info of two players
             $scope.image0 = playersInfo[0].avatarImageUrl;
-            $scope.image1 = playersInfo[1].avatarImageUrl;
             $scope.player0 = playersInfo[0].displayName;
-            $scope.player1 = playersInfo[1].displayName;
+            if (playersInfo[1]) {
+              $scope.image1 = playersInfo[1].avatarImageUrl;
+              $scope.player1 = playersInfo[1].displayName;
+            }
 
             var states = matches[i].history.stateAfterMoves;//all the states
             state = states[states.length-1];//current game state
@@ -176,7 +185,12 @@ var interval = setInterval(checkChanges, 1000);
             //game is ongoing
             if (moves[moves.length-1][0].setTurn) {
               turnIndex = moves[moves.length-1][0].setTurn.turnIndex;
-              $scope.gameStatus = "Game ongoing, turn of " + playersInfo[turnIndex].displayName;
+              if (playersInfo[turnIndex]) {
+                $scope.gameStatus = "Game ongoing, turn of " + playersInfo[turnIndex].displayName;
+              }
+              else {
+                $scope.gameStatus = "Waiting for opponent to join";
+              }
             }
             //game ended
             else if (moves[moves.length-1][0].endMatch) {
@@ -209,26 +223,34 @@ var interval = setInterval(checkChanges, 1000);
 
 //function for checking if there is any change in match state
 
-  var numberOfMoves;//number of moves, used to determine if there's any change
+  var numberOfMoves = 0;//number of moves, used to determine if there's any change
   function checkChanges() {
-    serverApiService.sendMessage(
-      //get all the matches that is being played or has been played by this player
-      [{getPlayerMatches: {gameId: gameID, getCommunityMatches: false, myPlayerId: playerID, accessSignature: accessSignature}}],
-      function (response) {
-        var matches = response[0]["matches"];
-        //search through all matches to find tha match that has matchID
-        var i;
-        for (i = 0; i < matches.length; i ++) {
-          if (matches[i].matchId === matchID) {
-            //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
-            if (matches[i].history.moves.length !== numberOfMoves) {
-              numberOfMoves = matches[i].history.moves.length;
-              updateStatus();
+    //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
+    if (newmatch) {
+      var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
+      platformMessageService.sendMessage({updateUI: params});
+    }
+    //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
+    else {
+      serverApiService.sendMessage(
+        //get all the matches that is being played or has been played by this player
+        [{getPlayerMatches: {gameId: gameID, getCommunityMatches: false, myPlayerId: playerID, accessSignature: accessSignature}}],
+        function (response) {
+          var matches = response[0]["matches"];
+          //search through all matches to find tha match that has matchID
+          var i;
+          for (i = 0; i < matches.length; i ++) {
+            if (matches[i].matchId === matchID) {
+              //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
+              if (matches[i].history.moves.length !== numberOfMoves) {
+                numberOfMoves = matches[i].history.moves.length;
+                updateStatus();
+              }
+              break;
             }
-            break;
           }
-        }
-      });
+        });
+    }
   }
 //====================================================
 
@@ -242,7 +264,6 @@ var interval = setInterval(checkChanges, 1000);
     if (message.makeMove !== undefined) {
       move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
       var params;
-      $log.info(move);
       if (move[0].endMatch) {
         params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: 1-turnIndex, stateBeforeMove: state, stateAfterMove: {}};
       }
@@ -255,11 +276,24 @@ var interval = setInterval(checkChanges, 1000);
     else if (message.isMoveOkResult !== undefined) {
       //move is ok, send it to server
       if (message.isMoveOkResult === true) {
-        serverApiService.sendMessage(
-          [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
-          function (response) {
+        //normal move
+        if (!newmatch){
+          serverApiService.sendMessage(
+            [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
+            function (response) {
 
-          });
+            });
+        }
+        //crate new match
+        else {
+          serverApiService.sendMessage(
+            [{newMatch: {gameId: gameID, tokens: 0, move: move, startAutoMatch: { numberOfPlayers : 2 }, myPlayerId: playerID,accessSignature: accessSignature}}],
+            function (response) {
+              newmatch = false;//finish crating new match
+              matchID = response[0]["matches"][0].matchId;
+              $window.localStorage.setItem(matchID, 0);//store myplayerindex for this match in local storage
+            });
+        }
       }
       //illegal move
       else {
