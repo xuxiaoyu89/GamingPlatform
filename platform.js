@@ -63,19 +63,23 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     $scope.myMatchesPool = matches[0].matches;
   });
   
-  
-  
   /* display the matches of the game user selected($scope.selectdGames = "";)
    * There are 3 kinds of matches:
    *   1. matches which are your turn
    *   2. matches which are not your turn
    *   3. matches which are completed
-   
-  function setCurrentMatches(selectedGame){
-	  for (var i=0; i<$scope.myMatchesPool.length(); i++){
-		  var currMatch = $scope.myMatchesPoos[i];
+   */
+  function setCurrentMatches(){
+	  var selectedGame = $scope.selectdGames;
+	  $scope.myTurnMatches = [];
+	  $scope.oppoTurnMatches = [];
+	  $scope.endMatches = [];
+	  $log.info("length:", $scope.myMatchesPool.length);
+	  $log.info("currentGame: ", $scope.selectdGames);
+	  for (var i=0; i<$scope.myMatchesPool.length; i++){
+		  var currMatch = $scope.myMatchesPool[i];
 		  //check if currMatch is a match of selectedGame
-		  if(selectedGame !== "" && currMatch.gameId !== selectedGame){
+		  if(selectedGame === null || currMatch.gameId !== selectedGame.gameId){
 			  continue;
 		  }
 		  // check the last move in history
@@ -83,26 +87,61 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
 		  var moves = history.moves;
 		  var lastMove = moves[moves.length-1];
 		  var firstOperation = lastMove[0];
+		  //set opponent, myPlayerId, TurnIndex for currMatch
+		  currMatch.myPlayerId = myPlayerId;
+		  if(firstOperation.endMatch === undefined){
+			  currMatch.turnIndex = firstOperation.setTurn.turnIndex;
+		  }
+		  else{
+			  currMatch.turnIndex = -1;
+		  }
 		  
+		  if(currMatch.playersInfo[0].playerId === myPlayerId){
+			  if(currMatch.playersInfo[1] === null ){
+				  currMatch.opponent = "no opponent";
+			  }
+			  else currMatch.opponent = currMatch.playersInfo[1].displayName;
+		  }
+		  else currMatch.opponent = currMatch.playersInfo[0].displayName;
 		  //this match has not complete, we should get the turn
 		  if(firstOperation.endMatch === undefined){
 			  var turnIndex = firstOperation.setTurn.turnIndex;
 			  if (turnIndex === 0){
 				  // it is my turn
 				  $scope.myTurnMatches.push(currMatch);
+				  $log.info(currMatch);
 			  }
 			  else{
 				  // it is opponent's turn 
 				  $scope.oppoTurnMatches.push(currMatch);
+				  $log.info(currMatch);
 			  }
 		  }
 		  //this match has completed
 		  else{
 			  $scope.endMatches.push(currMatch);
+			  $log.info(currMatch);
 		  }
 	  }  
   }
-  */
+  
+  
+  $scope.goToGame = function(myPlayerId, matchId, turnIndex){
+	  //$log.info("in goToGame");
+	  //$log.info(myPlayerId, matchId);
+	  //$window.location.href="platform_game.html";
+	  //$log.info($location.absUrl());
+	  
+	  createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, turnIndex)
+	  $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+	  var tempUrl = $location.absUrl();
+	  $log.info(tempUrl);
+      var res = tempUrl.split("#");
+	  var tempUrl2 = res[1].substring(1);
+	  window.open(tempUrl2,"_self");
+  }
+  
+ 
   
   
   //for global setting
@@ -158,8 +197,8 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     	 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!         
     	 */ 
     	//setCurrentMatches(gameId);
-    })
-    
+    });
+    setCurrentMatches();
   });
   
   //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
