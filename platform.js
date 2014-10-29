@@ -157,7 +157,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
     	 *         gameId if selectedGames = entry.gameId
     	 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!         
     	 */ 
-    	setCurrentMatches(gameId);
+    	//setCurrentMatches(gameId);
     })
     
   });
