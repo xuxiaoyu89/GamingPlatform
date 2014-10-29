@@ -113,7 +113,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   var gameUrl;
   var gameName;
   var gameDmail;
-  var macthId;
+  var matchId;
   var turnIndex;
   
   
@@ -165,17 +165,17 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
 var searchObject ={};
   //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId
-  function createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, turnIndex){
+  function createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, turnIndex){
   	var gameIdValue = gameId===undefined ? null : gameId;
-  	var macthIdValue = macthId===undefined ? null : macthId;
+  	var matchIdValue = matchId===undefined ? null : matchId;
   	if(AUTO_MATCH && EMAIL_JS_ERRORS){
-  		searchObject = {on: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, macthId: macthIdValue, turnIndex: turnIndex};
+  		searchObject = {on: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
   	}else if(!AUTO_MATCH && EMAIL_JS_ERRORS){
-  		searchObject = {off: 'AUTO_MATCH', on:'EMAIL_JS_ERRORS', gameId: gameIdValue, macthId: macthIdValue, turnIndex: turnIndex};
+  		searchObject = {off: 'AUTO_MATCH', on:'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
   	}else if(!AUTO_MATCH && !EMAIL_JS_ERRORS){
-  		searchObject = {off: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, macthId: macthIdValue, turnIndex: turnIndex};
+  		searchObject = {off: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
   	}else if(AUTO_MATCH && !EMAIL_JS_ERRORS){
-  		searchObject = {on: 'AUTO_MATCH', off:'EMAIL_JS_ERRORS', gameId: gameIdValue, macthId: macthIdValue, turnIndex: turnIndex};
+  		searchObject = {on: 'AUTO_MATCH', off:'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
   	}
   }
   
@@ -183,32 +183,38 @@ var searchObject ={};
   //AUTO MATCH button handler
   $scope.autoMatchHandler = function(){
   	AUTO_MATCH = true;
-  	if(gameId === undefined){
+  	if(gameId === undefined || gameId === null){
   		alert("Choose a game first please!");
   		return;
   	}else{
   		//try to reserve an AutoMatch first
   		serverApiService.sendMessage(
   			[{reserveAutoMatch: {tokens:0, numberOfPlayers:2, 
-			  		    gameId: gameId, 
-			     		    myPlayerId: myPlayerId,
-      					    accessSignature: accessSignature}}],
+			  		     gameId: gameId, 
+					     myPlayerId: myPlayerId,
+      					     accessSignature: accessSignature}}],
       	    function(responses){
       	    	if(responses[0].matches.length === 0){
       	    		//do sth to create a new match, still need a move
       	    		//In this case, a game should show up within iframe
       	    		//waiting for the player's move
-      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, 0);
-      	    		//$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
-      	    		$location.absUrl('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
-      	    	}else{
+      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 0);
+			$location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+      	    		var tempUrl = $location.absUrl();
+      	    		var res = tempUrl.split("#");
+      	    		var tempUrl2 = res[1].substring(1);
+      	    		window.open(tempUrl2,"_self");      	    	
+      	    		}else{
       	    		//do sth to make a move in that we can really create this match
-      	    		//In this case, a game with specific macthId should show up 
+      	    		//In this case, a game with specific matchId should show up 
       	    		//within the iframe, still, waiting for the user's move
-      	    		macthId = responses[0].matches.macthId;  //[0] repersents the first elem in Queue
-      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, 1);
-      	    		//$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
-      	    		$location.absUrl('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
+      	    		matchId = responses[0].matches.matchId;  //[0] repersents the first elem in Queue
+      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 1);
+      	    		$location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+      	    		var tempUrl = $location.absUrl();
+      	    		var res = tempUrl.split("#");
+      	    		var tempUrl2 = res[1].substring(1);
+      	    		window.open(tempUrl2,"_self");
       	    	}
       	    });
   	}
