@@ -70,7 +70,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
    *   1. matches which are your turn
    *   2. matches which are not your turn
    *   3. matches which are completed
-   */
+   
   function setCurrentMatches(selectedGame){
 	  for (var i=0; i<$scope.myMatchesPool.length(); i++){
 		  var currMatch = $scope.myMatchesPoos[i];
@@ -102,7 +102,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
 		  }
 	  }  
   }
-  
+  */
   
   
   //for global setting
@@ -199,14 +199,16 @@ var searchObject ={};
       	    		//In this case, a game should show up within iframe
       	    		//waiting for the player's move
       	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, 0);
-      	    		$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
+      	    		//$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
+      	    		$location.absUrl('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
       	    	}else{
       	    		//do sth to make a move in that we can really create this match
       	    		//In this case, a game with specific macthId should show up 
       	    		//within the iframe, still, waiting for the user's move
       	    		macthId = responses[0].matches.macthId;  //[0] repersents the first elem in Queue
       	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, 1);
-      	    		$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
+      	    		//$location.path('/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
+      	    		$location.absUrl('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject).replace();
       	    	}
       	    });
   	}
