@@ -256,7 +256,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //In this case, a game with specific matchId should show up 
                             //within the iframe, still, waiting for the user's move
                             matchId = responses[0].matches[0].matchId;  //[0] repersents the first elem in Queue
-
+                            $window.localStorage.setItem(matchId, "1");
+                            
                             var matchObj = responses[0].matches[0];
                             var stringMatchObj = JSON.stringify(matchObj);
                             $window.localStorage.setItem("matchInfo", stringMatchObj);
