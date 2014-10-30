@@ -193,7 +193,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 gameDmail = null;
                 return;
             }
-            if (entry.GameName === $scope.selectdGames.GameName) {
+            if (entry.gameId === $scope.selectdGames.gameId) {
                 gameId = entry.gameId;
                 gameUrl = entry.gameUrl;
                 gameName = entry.GameName;
