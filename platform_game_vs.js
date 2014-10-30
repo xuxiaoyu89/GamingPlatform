@@ -5,26 +5,22 @@ angular.module('myApp', [])
 function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMessageService) {
 
   //SOME important VARIABLES
-  var gameUrl;
   var state;//current game state
   var turnIndex;//current turn index
   var playersInfo;
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
+  //Scope Variables:
+  //gameUrl
 
   var newmatch = false;//whether to create a new match or not, default set to false
-  var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
-
-
-  //URL: ?matchid=5757715179634688&gameid=5682617542246400
+  //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
   //CONSTANT VARIABLES
   var MENU_URL = 'platform.html';
 
-  //BASIC URL PARSING
-  var platformUrl = $window.location.search;
-  $log.info("Platform URL: ", platformUrl);
-  var gameUrl = platformUrl.length > 1 ? platformUrl.substring(1) : null;
-  $log.info("Game URL: ", gameUrl);
+  //SOME NOT SO IMPORTANT VARS
+  var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
+  var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
 //===================== JS_ERROR_CATCHING ====================//
 // Quick function to both alert and log requested message as error
@@ -35,7 +31,6 @@ function alert_log_error(alert, log) {
 }
 function getJSError(message) {
     $log.error("Game JS Error: ", message);
-    
     var emailObj = [{emailJavaScriptError: 
                     {gameDeveloperEmail: message.email, 
                 emailSubject: message.subject, 
@@ -51,11 +46,18 @@ function getJSError(message) {
 
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
-    if (gameUrl === null) {
+  //BASIC URL PARSING
+    platformUrl = $window.location.search;
+    $log.info("Platform URL: ", platformUrl);
+    platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
+    $log.info("Platform URL2: ", platformUrl2);
+  
+    if (platformUrl2 === null) {
         alert_log_error("URL is NULL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2");
     }
 
-    var parsedurl = gameUrl.split('&');
+    //Split URL and pull params
+    var parsedurl = platformUrl2.split('&');
     $log.info("Parsed URL: ", parsedurl);
     var subparse;
     var i;
@@ -116,37 +118,51 @@ checkVars();
 
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
-        $log.info("Leaving game, redirecting to Main Menu: ", MENU_URL);
+    var confirmation = $window.confirm("Return to Main Menu?");
+    if(confirmation) {
+        $log.info("leaveGame: About to redirect to Main Menu.");
         $window.location.replace(MENU_URL);
+    } else {
+        $log.info("leaveGame: Canceled return to game.");
+    }
 };
 
 //===================== MATCH_MENU: DELETE GAME ===============//
 $scope.deleteGame = function () {
     if($scope.matchID===undefined || $scope.playerID===undefined || $scope.accessSignature===undefined) {
         alert_log_error("Invalid credentials to dismissMatch.", "Cannot dismissMatch because matchID, playerID, or accessSignature is undefined.");
+    } else {
+        var messageObj = [{dismissMatch:
+                        {matchId: $scope.matchID, myPlayerId: $scope.playerID, accessSignature: $scope.accessSignature}
+            }];
+
+        var confirmation = $window.confirm("Are you sure you want to delete this game?");
+        if (confirmation) {
+            $log.info("deleteGame: Deleting.", messageObj);
+            $window.localStorage.removeItem($scope.matchID);
+            serverApiService.sendMessage(messageObj,
+                    function (response) {
+                        $scope.response = response;
+                        $log.info("DismissMatch response: ", JSON.stringify(response));
+                        if(response[0]['error']!==undefined) {
+                            alert_log_error(response[0]['error'], ["serverAPI failed to dismissMatch.", response[0]['error']]);
+                        } else {
+                            $log.info("Game successfully deleted, redirecting to Main Menu: ", MENU_URL);
+                        }
+                        $window.location.replace(MENU_URL);
+                    });
+        } else {
+            $log.info("deleteGame: Canceled.");
+        }
     }
-    var messageObj = [{dismissMatch: 
-        {matchId: $scope.matchID, myPlayerId: $scope.playerID, accessSignature: $scope.accessSignature}
-    }];
-    $window.localStorage.removeItem($scope.matchID);
-    serverApiService.sendMessage(messageObj,
-            function (response) {
-                $scope.response = response;
-                $log.info("DismissMatch response: ", response);
-                $log.info("Deleting game, redirecting to Main Menu: ", MENU_URL);
-                $window.location.replace(MENU_URL);
-            });
-    return;
 };
 
-
-
-//Get game URL every time the webpage is loaded
+//===================== GET GAME'S URL ===============//
 serverApiService.sendMessage(
         [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
         function (response) {
             $scope.game = response;
-            gameUrl = $scope.game[0]["games"][0].gameUrl;
+            var gameUrl = $scope.game[0]["games"][0].gameUrl;
             $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
         });
 //====================================================
@@ -155,10 +171,7 @@ serverApiService.sendMessage(
 //Check changes periodically(every 2sec)
 var interval = setInterval(checkChanges, 2000);
 
-
-
 //function for updating match status and game UI
-
 function updateStatus() {
     playersInfo = $scope.matchInfo.playersInfo;//info of two players
     if (playersInfo[0]){
