@@ -16,13 +16,6 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
 
 
   //URL: ?matchid=5757715179634688&gameid=5682617542246400
-  //----------------THESE WILL BE DELETED----------------------//
-  //$window.localStorage.setItem("playerID", "5648554290839552");
-  //$window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");
-  //$window.localStorage.setItem("5757715179634688", 0);
-  //-----------------------------------------------------------//
-
-
 
   //CONSTANT VARIABLES
   var MENU_URL = 'platform.html';
@@ -86,7 +79,7 @@ function checkVars() {
     if ($scope.gameID!==undefined) {
         gameID = $scope.gameID;
         $log.info("GAMEID: ", $scope.gameID);
-    } else { alert_log_error("GAMEID required in URL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2&turnindex=0"); }
+    } else { alert_log_error("GAMEID required in URL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2"); }
     if ($scope.matchID!==undefined) {
         matchID = $scope.matchID;
         $log.info("MATCHID: ", $scope.matchID);
@@ -159,8 +152,10 @@ var interval = setInterval(checkChanges, 2000);
 
 function updateStatus() {
     playersInfo = $scope.matchInfo.playersInfo;//info of two players
-    $scope.image0 = playersInfo[0].avatarImageUrl;
-    $scope.player0 = playersInfo[0].displayName;
+    if (playersInfo[0]){
+        $scope.image0 = playersInfo[0].avatarImageUrl;
+        $scope.player0 = playersInfo[0].displayName;
+    }
     if (playersInfo[1]) {
         $scope.image1 = playersInfo[1].avatarImageUrl;
         $scope.player1 = playersInfo[1].displayName;
@@ -299,7 +294,8 @@ function checkChanges() {
                                 matchID = response[0]["matches"][0].matchId;
                                 var newURL = platformUrl.concat("&matchid=").concat(matchID);
                                 $window.location.replace(newURL);
-                                $window.localStorage.setItem(matchID, 0);//store myplayerindex for this match in local storage
+                                $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
+                                chekChanges();
                             });
                 }
             }
