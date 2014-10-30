@@ -169,10 +169,7 @@ serverApiService.sendMessage(
 
 
 //Check changes periodically(every 2sec)
-var loop = true;//loop to check changes
-while (loop) {
-    var interval = setInterval(checkChanges, 2000);
-}
+var interval = setInterval(checkChanges, 2000);
 
 //function for updating match status and game UI
 function updateStatus() {
@@ -205,7 +202,6 @@ function updateStatus() {
     }
     //game ended
     else if (moves[moves.length - 1][0].endMatch) {
-        loop = false;//stop checking changes if the game ends
         var score = moves[moves.length - 1][0].endMatch.endMatchScores;
         //same score, game ends in tie
         if (score[0] === score[1]) {
