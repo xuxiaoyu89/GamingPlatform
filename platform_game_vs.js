@@ -258,6 +258,7 @@ function checkChanges() {
 
 
 
+
 //platform listen to iframe for player's moves
 
     var move;//move made by player
@@ -296,6 +297,8 @@ function checkChanges() {
                                 $log.info("PlatformMessageService: newmatch: ", response);
                                 newmatch = false;//finish crating new match
                                 matchID = response[0]["matches"][0].matchId;
+                                var newURL = platformUrl.concat("&matchid=").concat(matchID);
+                                $window.location.replace(newURL);
                                 $window.localStorage.setItem(matchID, 0);//store myplayerindex for this match in local storage
                             });
                 }
