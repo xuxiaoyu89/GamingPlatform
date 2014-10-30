@@ -7,13 +7,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	   
     // initialize icon pool  
     var avatarPool = [];
-    avatarPool.push("http://upload.wikimedia.org/wikipedia/commons/f/f6/Choice_toxicity_icon.png");
-    avatarPool.push("http://icons.iconarchive.com/icons/iconshock/free-folder/256/folder-customer-icon.png");
-    avatarPool.push("https://cdn4.iconfinder.com/data/icons/artcore/512/firefox.png");
-    avatarPool.push("http://upload.wikimedia.org/wikipedia/commons/d/d5/Apple_icon_1.png");
-    avatarPool.push("http://img0.pconline.com.cn/pconline/1312/27/4072897_49_thumb.gif");
-    avatarPool.push("http://icons.iconarchive.com/icons/martz90/circle/512/android-icon.png");
-    avatarPool.push("http://p1.qq181.com/cms/120507/2012050705565179943.jpg");
+    avatarPool.push("/img/avatar0.gif");
+    avatarPool.push("/img/a1.jgp");
+    avatarPool.push("/img/a2.png");
+    avatarPool.push("/img/a3.png");
+    avatarPool.push("/img/a4.png");
+    avatarPool.push("/img/a5.png");
+    avatarPool.push("/img/a6.png");
 
     var myPlayerId, accessSignature;
     $scope.displayName, $scope.avatarImageUrl;
