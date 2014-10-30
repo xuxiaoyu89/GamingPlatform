@@ -99,13 +99,13 @@ function checkVars() {
       turnIndex = 0;
       state = {};
     }
-    /*if ($scope.turnIndex!==undefined) {
+    if ($scope.turnIndex!==undefined) {
         myPlayerIndex = $scope.turnIndex;
-        $log.info("TURN_INDEX: ", $scope.turnIndex);
-    }*/
+        $log.info("MYPLAYERINDEX: ", $scope.turnIndex);
+    }
     if ($scope.playerID!==undefined) {
         playerID = $scope.playerID;
-        $log.info("USERID: ", $scope.playerID);
+        $log.info("PLAYERID: ", $scope.playerID);
     } else { alert_log_error("Cannot find PLAYERID.", "PLAYERID not in LOCALSTORAGE."); }
     if ($scope.accessSignature!==undefined) {
         accessSignature = $scope.accessSignature;
@@ -113,6 +113,7 @@ function checkVars() {
     } else { alert_log_error("Cannot find ACCESSSIGNATURE.", "ACCESSSIGNATURE not in LOCALSTORAGE."); }
 }
 checkVars();
+
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
         $log.info("Leaving game, redirecting to Main Menu: ", MENU_URL);
