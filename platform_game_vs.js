@@ -56,7 +56,7 @@ function parseURL() {
 
     var parsedurl = gameUrl.split('&');
     $log.info("Parsed URL: ", parsedurl);
-    var subparse, userid, matchid, gameid, signature;
+    var subparse;
     var i;
     for (i = 0; i < parsedurl.length; i++) {
         subparse = parsedurl[i].split('=');
@@ -66,8 +66,8 @@ function parseURL() {
             } else if (subparse[0].toLowerCase() === 'gameid') {
                 $scope.gameID = subparse[1];
             } else if (subparse[0].toLowerCase() === 'turnindex') {
-                //$scope.turnIndex = subparse[1];
-                $window.localStorage.setItem("$scope.matchID", subparse[1]);
+                $scope.turnIndex = subparse[1];
+                $window.localStorage.setItem($scope.matchID, subparse[1]);
             }
         }
     }
@@ -75,7 +75,7 @@ function parseURL() {
 parseURL();
 //===================== GET VARIABLES FROM LOCAL STORAGE ====================//
 function getLocalVars() {
-    var playerInfo = window.localStorage.getItem("playerInfo");
+    var playerInfo = $window.localStorage.getItem("playerInfo");
     playerInfo = JSON.parse(angular.fromJson(playerInfo));
     $scope.playerID = playerInfo.myPlayerId;
     $scope.accessSignature = playerInfo.accessSignature;
