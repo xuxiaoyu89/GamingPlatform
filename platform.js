@@ -249,6 +249,11 @@ var searchObject ={};
       	    		//In this case, a game with specific matchId should show up 
       	    		//within the iframe, still, waiting for the user's move
       	    		matchId = responses[0].matches[0].matchId;  //[0] repersents the first elem in Queue
+      	    		
+      	    		var matchObj = responses[0].matches[0];
+      	    		
+      	    		window.localStorage.setItem("matchInfo", matchObj);
+      	    		
       	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 1);
       	    		$location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
       	    		var tempUrl = $location.absUrl();
