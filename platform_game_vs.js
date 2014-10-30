@@ -207,6 +207,7 @@ function updateStatus() {
 var numberOfMoves = 0;//number of moves, used to determine if there's any change
 var playsound = true;
 function checkChanges() {
+    $log.info("playsound:",playsound);
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
         var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
