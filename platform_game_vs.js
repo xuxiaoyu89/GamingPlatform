@@ -25,7 +25,7 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
 
 
   //CONSTANT VARIABLES
-  var MENU_URL = 'platform_menu.html';
+  var MENU_URL = 'platform.html';
 
   //BASIC URL PARSING
   var platformUrl = $window.location.search;
