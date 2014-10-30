@@ -30,13 +30,22 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
 // Quick function to both alert and log requested message as error
 function alert_log_error(alert, log) {
     $window.alert(alert);
-    $log.error(["Alert & Log Error: ", log]);
+    $log.error("Alert & Log Error: ", log);
     return;
 }
 function getJSError(message) {
-    $window.alert("Game JS Error.")
     $log.error("Game JS Error: ", message);
     
+    var emailObj = [{emailJavaScriptError: 
+                    {gameDeveloperEmail: message.email, 
+                emailSubject: message.subject, 
+                emailBody: message.body}}]
+    serverApiService.sendMessage(emailObj,
+            function (response) {
+                $scope.response = response;
+                $log.info("Sent a JS Error Email: ", response);
+                $window.location.replace(MENU_URL);
+            });
     return;
 }
 
