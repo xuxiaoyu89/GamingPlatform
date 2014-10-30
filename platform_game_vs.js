@@ -50,7 +50,7 @@ function getJSError(message) {
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
     if (gameUrl === null) {
-        alert_log_error("URL is NULL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2&turnindex=0");
+        alert_log_error("URL is NULL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2");
     }
 
     var parsedurl = gameUrl.split('&');
@@ -64,9 +64,6 @@ function parseURL() {
                 $scope.matchID = subparse[1];
             } else if (subparse[0].toLowerCase() === 'gameid') {
                 $scope.gameID = subparse[1];
-            } else if (subparse[0].toLowerCase() === 'turnindex') {
-                $scope.turnIndex = parseInt(subparse[1]);
-                $window.localStorage.setItem($scope.matchID, subparse[1]);
             }
         }
     }
@@ -78,7 +75,7 @@ function getLocalVars() {
     playerInfo = JSON.parse(angular.fromJson(playerInfo));
     $scope.playerID = playerInfo.myPlayerId;
     $scope.accessSignature = playerInfo.accessSignature;
-    myPlayerIndex=parseInt($window.localStorage.getItem($scope.matchID));//get myplayerindex from localstorage
+    myPlayerIndex = parseInt($window.localStorage.getItem($scope.matchID));//get myplayerindex from localstorage
     var stringMatchObj = $window.localStorage.getItem("matchInfo");
     $scope.matchInfo = JSON.parse(stringMatchObj);
 }
@@ -99,10 +96,6 @@ function checkVars() {
       myPlayerIndex = 0;
       turnIndex = 0;
       state = {};
-    }
-    if ($scope.turnIndex!==undefined) {
-        myPlayerIndex = $scope.turnIndex;
-        $log.info("MYPLAYERINDEX: ", $scope.turnIndex);
     }
     if ($scope.playerID!==undefined) {
         playerID = $scope.playerID;
@@ -133,6 +126,7 @@ $scope.deleteGame = function () {
     var messageObj = [{dismissMatch: 
         {matchId: $scope.matchID, myPlayerId: $scope.playerID, accessSignature: $scope.accessSignature}
     }];
+    $window.localStorage.removeItem($scope.matchID);
     serverApiService.sendMessage(messageObj,
             function (response) {
                 $scope.response = response;
