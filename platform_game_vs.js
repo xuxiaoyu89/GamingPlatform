@@ -162,7 +162,7 @@ var interval = setInterval(checkChanges, 1000);
   function updateStatus() {
     serverApiService.sendMessage(
       //get all the matches that is being played or has been played by this player
-      [{getPlayerMatches: {gameId: gameID, getCommunityMatches: false, myPlayerId: playerID, accessSignature: accessSignature}}],
+      [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature}}],
       function (response) {
         var matches = response[0]["matches"];
 
@@ -237,7 +237,7 @@ var interval = setInterval(checkChanges, 1000);
     else {
       serverApiService.sendMessage(
         //get all the matches that is being played or has been played by this player
-        [{getPlayerMatches: {gameId: gameID, getCommunityMatches: false, myPlayerId: playerID, accessSignature: accessSignature}}],
+        [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature}}],
         function (response) {
           var matches = response[0]["matches"];
           //search through all matches to find tha match that has matchID
