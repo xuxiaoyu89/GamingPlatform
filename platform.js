@@ -61,10 +61,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     $scope.myTurnMatches = [];
     $scope.oppoTurnMatches = [];
     $scope.endMatches = [];
-    serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: true, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
-        $scope.myMatchesPool = matches[0].matches;
-        $log.info($scope.myMatchesPool);
-    });
+    function retriveCurrentGames(){
+	    serverApiService.sendMessage([{getPlayerMatches: {gameId: gameId ,getCommunityMatches: true, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
+	        $scope.myMatchesPool = matches[0].matches;
+	        $log.info($scope.myMatchesPool);
+	        setCurrentMatches();
+	    });
+    }
 
     /* display the matches of the game user selected($scope.selectdGames = "";)
      * There are 3 kinds of matches:
@@ -203,7 +206,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
              */
             //setCurrentMatches(gameId);
         });
-        setCurrentMatches();
+        retriveCurrentGames();
     });
 
     //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
