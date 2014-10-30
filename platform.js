@@ -140,7 +140,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         //$window.location.href="platform_game.html";
         //$log.info($location.absUrl());
 
-        createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId, turnIndex)
+        createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, turnIndex)
         $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
         var tempUrl = $location.absUrl();
         $log.info(tempUrl);
