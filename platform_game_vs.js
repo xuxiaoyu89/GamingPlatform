@@ -205,6 +205,7 @@ function updateStatus() {
 
 //function for checking if there is any change in match state
 var numberOfMoves = 0;//number of moves, used to determine if there's any change
+var playsound = true;
 function checkChanges() {
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
@@ -235,7 +236,10 @@ function checkChanges() {
                 if(i===matches.length && matchInfo!==undefined){   //first time to this match, not reserve sucessfully yet
                 	$scope.matchInfo = matchInfo;
                 	numberOfMoves = $scope.matchInfo.history.moves.length;
-                	updateStatus();
+                    if (playsound){
+                	   updateStatus();
+                       playsound = false;
+                    }
                 }
                 else if (matches[i].matchId === matchID) {
                     $scope.matchInfo = matches[i];
