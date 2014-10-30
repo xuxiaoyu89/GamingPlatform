@@ -29,17 +29,16 @@ function alert_log_error(alert, log) {
     $log.error("Alert & Log Error: ", log);
     return;
 }
-function getJSError(message) {
+function emailJSError(message) {
     $log.error("Game JS Error: ", message);
     var emailObj = [{emailJavaScriptError: 
-                    {gameDeveloperEmail: message.email, 
+                    {gameDeveloperEmail: $scope.gameEmail, 
                 emailSubject: message.subject, 
                 emailBody: message.body}}]
     serverApiService.sendMessage(emailObj,
             function (response) {
                 $scope.response = response;
-                $log.info("Sent a JS Error Email: ", response);
-                $window.location.replace(MENU_URL);
+                $log.info("GAME_JS_ERROR Response: ", response);
             });
     return;
 }
@@ -162,8 +161,10 @@ serverApiService.sendMessage(
         [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
         function (response) {
             $scope.game = response;
-            var gameUrl = $scope.game[0]["games"][0].gameUrl;
+            $scope.gameInfo = response[0].games[0];
+            var gameUrl = $scope.gameInfo.gameUrl;
             $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
+            $scope.gameEmail = $scope.gameInfo.gameDeveloperEmail;
         });
 //====================================================
 
