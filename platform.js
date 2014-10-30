@@ -7,13 +7,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	   
     // initialize icon pool  
     var avatarPool = [];
-    avatarPool.push("/img/avatar0.gif");
-    avatarPool.push("/img/a1.jgp");
-    avatarPool.push("/img/a2.png");
-    avatarPool.push("/img/a3.png");
-    avatarPool.push("/img/a4.png");
-    avatarPool.push("/img/a5.png");
-    avatarPool.push("/img/a6.png");
+    avatarPool.push("/GamingPlatform/img/avatar0.gif");
+    avatarPool.push("/GamingPlatform/img/a1.jgp");
+    avatarPool.push("/GamingPlatform/img/a2.png");
+    avatarPool.push("/GamingPlatform/img/a3.png");
+    avatarPool.push("/GamingPlatform/img/a4.png");
+    avatarPool.push("/GamingPlatform/img/a5.png");
+    avatarPool.push("/GamingPlatform/img/a6.png");
 
     var myPlayerId, accessSignature;
     $scope.displayName, $scope.avatarImageUrl;
