@@ -12,7 +12,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     avatarPool.push("https://cdn4.iconfinder.com/data/icons/artcore/512/firefox.png");
     avatarPool.push("http://upload.wikimedia.org/wikipedia/commons/d/d5/Apple_icon_1.png");
     avatarPool.push("http://img0.pconline.com.cn/pconline/1312/27/4072897_49_thumb.gif");
-    avatarPool.push("http://www.qqw21.com/article/UploadPic/2012-7/2012710173349335.jpg");
+    avatarPool.push("http://icons.iconarchive.com/icons/martz90/circle/512/android-icon.png");
     avatarPool.push("http://p1.qq181.com/cms/120507/2012050705565179943.jpg");
 
     var myPlayerId, accessSignature;
