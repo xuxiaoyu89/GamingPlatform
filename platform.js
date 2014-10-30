@@ -2,7 +2,7 @@
 
 angular.module('myApp', [])
 .controller('PlatformCtrl',
-function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
+function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	 platformMessageService, stateService, serverApiService) {
 	   
   // initialize icon pool  
@@ -18,6 +18,7 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   var myPlayerId, accessSignature;
   $scope.displayName, $scope.avatarImageUrl;  
   var MENU_URL = 'platform.html';
+  var GAME_URL = 'platform_game_vs.html'
   /* Create a user, if necessary, by sending registerPlayer message
    * Store/Check any player information in local storage
    * Initialize closure value: *myPlayerId*, *accessSignature*
@@ -203,66 +204,82 @@ function ($sce, $scope, $rootScope, $log, $window,$timeout, $location,
   });
   
   //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
-var searchObject ={};
+  var searchObject ={};
+  var searchString;
   //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId
   function createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, turnIndex){
   	var gameIdValue = gameId===undefined ? null : gameId;
   	var matchIdValue = matchId===undefined ? null : matchId;
   	if(AUTO_MATCH && EMAIL_JS_ERRORS){
   		searchObject = {on: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
+                searchString = "?on=".concat("AUTO_MATCH,EMAIL_JS_ERRORS","&gameId=",gameIdValue,"&matchId=",matchIdValue,"&turnIndex=",turnIndex);
   	}else if(!AUTO_MATCH && EMAIL_JS_ERRORS){
   		searchObject = {off: 'AUTO_MATCH', on:'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
+                searchString = "?off=".concat("AUTO_MATCH","&on=EMAIL_JS_ERRORS","&gameId=",gameIdValue,"&matchId=",matchIdValue,"&turnIndex=",turnIndex);
   	}else if(!AUTO_MATCH && !EMAIL_JS_ERRORS){
   		searchObject = {off: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
+                searchString = "?off=".concat("AUTO_MATCH,EMAIL_JS_ERRORS","&gameId=",gameIdValue,"&matchId=",matchIdValue,"&turnIndex=",turnIndex);
   	}else if(AUTO_MATCH && !EMAIL_JS_ERRORS){
   		searchObject = {on: 'AUTO_MATCH', off:'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
+                searchString = "?on=".concat("AUTO_MATCH","&off=EMAIL_JS_ERRORS","&gameId=",gameIdValue,"&matchId=",matchIdValue,"&turnIndex=",turnIndex);
   	}
   }
   
   
   //AUTO MATCH button handler
-  $scope.autoMatchHandler = function(){
-  	AUTO_MATCH = true;
-  	if(gameId === undefined || gameId === null){
-  		alert("Choose a game first please!");
-  		return;
-  	}else{
-  		//try to reserve an AutoMatch first
-  		serverApiService.sendMessage(
-  			[{reserveAutoMatch: {tokens:0, numberOfPlayers:2, 
-			  		     gameId: gameId, 
-					     myPlayerId: myPlayerId,
-      					     accessSignature: accessSignature}}],
-      	    function(responses){
-      	    	if(responses[0].matches.length === 0){
-      	    		//do sth to create a new match, still need a move
-      	    		//In this case, a game should show up within iframe
-      	    		//waiting for the player's move
-      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 0);
-			$location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
-      	    		var tempUrl = $location.absUrl();
-      	    		var res = tempUrl.split("#");
-      	    		var tempUrl2 = res[1].substring(1);
-      	    		window.open(tempUrl2,"_self");      	    	
-      	    		}else{
-      	    		//do sth to make a move in that we can really create this match
-      	    		//In this case, a game with specific matchId should show up 
-      	    		//within the iframe, still, waiting for the user's move
-      	    		matchId = responses[0].matches[0].matchId;  //[0] repersents the first elem in Queue
-      	    		
-      	    		var matchObj = responses[0].matches[0];
-      	    		
-      	    		window.localStorage.setItem("matchInfo", matchObj);
-      	    		
-      	    		createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 1);
-      	    		$location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
-      	    		var tempUrl = $location.absUrl();
-      	    		var res = tempUrl.split("#");
-      	    		var tempUrl2 = res[1].substring(1);
-      	    		window.open(tempUrl2,"_self");
-      	    	}
-      	    });
-  	}
-  }
+    $scope.autoMatchHandler = function () {
+        AUTO_MATCH = true;
+        if (gameId===undefined || gameId===null) {
+            alert("Choose a game first please!");
+            return;
+        } else {
+            //try to reserve an AutoMatch first
+            serverApiService.sendMessage(
+                    [{reserveAutoMatch: {tokens: 0, numberOfPlayers: 2,
+                                gameId: gameId,
+                                myPlayerId: myPlayerId,
+                                accessSignature: accessSignature}}],
+                    function (responses) {
+                        if (responses[0].matches.length === 0) {
+                            //do sth to create a new match, still need a move
+                            //In this case, a game should show up within iframe
+                            //waiting for the player's move
+                            createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 0);
+                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+                            var tempUrl = $location.absUrl();
+                            var res = tempUrl.split("#");
+                            var tempUrl2 = res[1].substring(1);
+                            window.open(tempUrl2, "_self");
+                        } else {
+                            //do sth to make a move in that we can really create this match
+                            //In this case, a game with specific matchId should show up 
+                            //within the iframe, still, waiting for the user's move
+                            matchId = responses[0].matches[0].matchId;  //[0] repersents the first elem in Queue
+
+                            var matchObj = responses[0].matches[0];
+                            var stringMatchObj = JSON.stringify(matchObj);
+                            $window.localStorage.setItem("matchInfo", stringMatchObj);
+                            //$log.info("JSON.stringify matchInfo: ", stringMatchObj);
+                            //stringMatchObj = $window.localStorage.getItem("matchInfo");
+                            //matchObj = JSON.parse(stringMatchObj);
+                            //$log.info("JSON.parse matchInfo: ", matchObj);
+                            
+                            
+                            
+                            createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 1);
+                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+                            var tempUrl = $location.absUrl();
+                            var res = tempUrl.split("#");
+                            var tempUrl2 = res[1].substring(1);
+                            //window.open(tempUrl2, "_self");
+                            
+                            $log.info("searchObject: ", searchString);
+                            var AMurl = GAME_URL.concat(searchString);
+                            $log.info("AutoMatch URL: ", AMurl);
+                            $window.location.replace(AMurl);
+                        }
+                    });
+        }
+    }
 	   
 });

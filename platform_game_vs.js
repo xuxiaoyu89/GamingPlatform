@@ -9,14 +9,12 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
   var state;//current game state
   var turnIndex;//current turn index
   var playersInfo;
-  var playerID, matchID, gameID, accessSignature, myPlayerIndex;
+  var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
 
   var newmatch = false;//whether to create a new match or not, default set to false
 
 
   //URL: ?matchid=5757715179634688&gameid=5682617542246400
-
-
   //----------------THESE WILL BE DELETED----------------------//
   //$window.localStorage.setItem("playerID", "5648554290839552");
   //$window.localStorage.setItem("accessSignature", "665eef5138f85e13aa0309aaa0fd8883");
@@ -80,6 +78,8 @@ function getLocalVars() {
     $scope.playerID = playerInfo.myPlayerId;
     $scope.accessSignature = playerInfo.accessSignature;
     myPlayerIndex=$window.localStorage.getItem($scope.matchID);//get myplayerindex from localstorage
+    var stringMatchObj = $window.localStorage.getItem("matchInfo");
+    $scope.matchInfo = JSON.parse(stringMatchObj);
 }
 getLocalVars();
 
@@ -111,6 +111,10 @@ function checkVars() {
         accessSignature = $scope.accessSignature;
         $log.info("ACCESS_SIGNATURE: ", $scope.accessSignature);
     } else { alert_log_error("Cannot find ACCESSSIGNATURE.", "ACCESSSIGNATURE not in LOCALSTORAGE."); }
+    if ($scope.matchInfo!==undefined) {
+        matchInfo = $scope.matchInfo;
+        $log.info("MATCH_INFO: ", $scope.matchInfo);
+    } else { $log.info("MATCHINFO not in LOCALSTORAGE."); }
 }
 checkVars();
 
