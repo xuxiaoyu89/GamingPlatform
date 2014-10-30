@@ -243,17 +243,19 @@ function checkChanges() {
                 while(i<matches.length && matches[i].matchId!==matchID) {
                     i++;
                 }
-                if (matches[i].matchId === matchID) {
+                if(i===matches.length && matchInfo!==undefined){   //first time to this match, not reserve sucessfully yet
+                	$scope.matchInfo = matchInfo;
+                	numberOfMoves = $scope.matchInfo.history.moves.length;
+                	updateStatus();
+                }
+                else if (matches[i].matchId === matchID) {
                     $scope.matchInfo = matches[i];
                     //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
                     if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
                         numberOfMoves = $scope.matchInfo.history.moves.length;
                         updateStatus();
                     }
-                } else if($scope.matchInfo!==undefined) {
-                    numberOfMoves = $scope.matchInfo.history.moves.length;
-                    updateStatus();
-                }
+                } 
             }
         );
     }
