@@ -220,16 +220,22 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         var matchIdValue = matchId === undefined ? null : matchId;
         if (AUTO_MATCH && EMAIL_JS_ERRORS) {
             searchObject = {on: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?on=".concat("AUTO_MATCH,EMAIL_JS_ERRORS", "&gameId=", gameIdValue, "&matchId=", matchIdValue, "&turnIndex=", turnIndex);
+            searchString = "?on=".concat("AUTO_MATCH,EMAIL_JS_ERRORS");
         } else if (!AUTO_MATCH && EMAIL_JS_ERRORS) {
             searchObject = {off: 'AUTO_MATCH', on: 'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?off=".concat("AUTO_MATCH", "&on=EMAIL_JS_ERRORS", "&gameId=", gameIdValue, "&matchId=", matchIdValue, "&turnIndex=", turnIndex);
+            searchString = "?off=".concat("AUTO_MATCH", "&on=EMAIL_JS_ERRORS");
         } else if (!AUTO_MATCH && !EMAIL_JS_ERRORS) {
             searchObject = {off: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?off=".concat("AUTO_MATCH,EMAIL_JS_ERRORS", "&gameId=", gameIdValue, "&matchId=", matchIdValue, "&turnIndex=", turnIndex);
+            searchString = "?off=".concat("AUTO_MATCH,EMAIL_JS_ERRORS");
         } else if (AUTO_MATCH && !EMAIL_JS_ERRORS) {
             searchObject = {on: 'AUTO_MATCH', off: 'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?on=".concat("AUTO_MATCH", "&off=EMAIL_JS_ERRORS", "&gameId=", gameIdValue, "&matchId=", matchIdValue, "&turnIndex=", turnIndex);
+            searchString = "?on=".concat("AUTO_MATCH", "&off=EMAIL_JS_ERRORS");
+        }
+        
+        if(matchIdValue === null) {
+            searchString = searchString.concat("&gameId=", gameIdValue);
+        } else {
+            searchString = searchString.concat("&gameId=", gameIdValue, "&matchId=", matchIdValue);
         }
     }
 
