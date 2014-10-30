@@ -33,41 +33,63 @@
     </center> 
   <div style="height:10%; overflow: hidden;">
   </div>
+  <div>
+      <table class = "Matches">
+          <tr>
+              <td>
+                  <p>Your Turn Matches</p>
+              </td>
+              <td>
+                  <table>
+                      <tr ng-repeat="match in myTurnMatches track by $index">
+                          <td>
+                              <!-- Here we should display a link to the game.html with url parameters(playerId and matchId) -->
+                              <!-- The below the link there should some match info such as -->
+                              <!-- the name of the game, opponent(if any) -->
+                              opponent: {{match.opponent}}
+                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          
+          <tr>
+              <td>
+                  <p>Opponent's Turn Matches</p>
+              </td>
+              <td>
+                  <table>
+                      <tr ng-repeat="match in oppoTurnMatches track by $index">
+                          <td>
+                              opponent: {{match.opponent}}
+                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          
+          <tr>
+              <td>
+                  <p>End Matches</p>
+              </td>
+              <td>
+                  <table>
+                      <tr ng-repeat="match in endMatches track by $index">
+                          <td>
+                              opponent: {{match.opponent}}
+                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          
+      </table>
+  </div>
+  
     
-    <div class="Matches">
-        <p> Your Turn Matches: </p>
-        <table>
-            <tr ng-repeat="match in myTurnMatches track by $index">
-                <td>
-                    <!-- Here we should display a link to the game.html with url parameters(playerId and matchId) -->
-                    <!-- The below the link there should some match info such as -->
-                    <!-- the name of the game, opponent(if any) -->
-                    <p>opponent: {{match.opponent}}</p>
-                    <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
-                </td>
-            </tr>
-        </table>
-        <p> Opponent's Turn Matches: </p>
-        <table>
-            <tr ng-repeat="match in oppoTurnMatches track by $index">
-                <td>
-                    <p>opponent: {{match.opponent}}</p>
-                    <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
-                </td>
-            </tr>
-        </table>
-        
-        <p> Ended Matches: </p>
-        <table>
-            <tr ng-repeat="match in endMatches track by $index">
-                <td>
-                    <p>opponent: {{match.opponent}}</p>
-                    <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
-                </td>
-            </tr>
-        </table>
-        
-    </div>
   
 </body>
 </html>
