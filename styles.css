@@ -29,6 +29,6 @@ iframe {
 }
 
 .Matches {
-  align: center
-  boarder: 1
+  text-align:center;
+  border: 1px solid black;
 }
