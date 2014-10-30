@@ -206,7 +206,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
              */
             //setCurrentMatches(gameId);
         });
-        retriveCurrentGames();
+        if(gameId !== undefined){
+        	retriveCurrentGames();
+        }
     });
 
     //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
