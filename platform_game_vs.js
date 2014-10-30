@@ -248,7 +248,7 @@ function checkChanges() {
                 $log.info("checkChanges getPlayerMatches response: ", response);
                 var matches = response[0]["matches"];
                 if(matches===undefined) {
-                    alert_log_error("Cannot getPlayerMatches.", "getPlayerMatches returned undefined matches.");
+                    $log.info("Cannot getPlayerMatches.", response);
                     return;
                 }
                 //search through all matches to find tha match that has matchID
