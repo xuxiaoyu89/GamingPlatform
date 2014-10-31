@@ -178,6 +178,7 @@ serverApiService.sendMessage(
         });
 //====================================================
 
+$scope.gameStatus = "Loading game, please wait";
 
 //Check changes periodically(every 10sec)
 $rootScope.interval = setInterval(checkChanges, 10000);
@@ -240,7 +241,6 @@ function updateStatus() {
 var numberOfMoves = 0;//number of moves, used to determine if there's any change
 var playsound = true;
 function checkChanges() {
-    $log.info("playsound:",playsound);
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
         var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
@@ -297,6 +297,12 @@ function checkChanges() {
     var move;//move made by player
     platformMessageService.addMessageListener(function (message) {
         $log.info("PlatformMessageService: got a message.");
+        if (message.gameReady !== undefined) {
+            checkChanges();
+            if (newmatch) {
+                $scope.gameStatus = "Game loaded, please make a move";
+            }
+        }
         //iframe send a move to platform
         if (message.makeMove !== undefined) {
             $log.info("PlatformMessageService: makeMove.")
