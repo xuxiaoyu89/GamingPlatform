@@ -261,6 +261,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
                             $window.location.href = aurl ;
+                            $window.location.replace(aurl);
                             //var tempUrl = $location.absUrl();
                             //var res = tempUrl.split("#");
                             //var tempUrl2 = res[1].substring(1);
@@ -299,6 +300,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
                             $window.location.href = aurl ;
+                            $window.location.replace(aurl);
                         }
                     });
         }
