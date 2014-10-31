@@ -16,6 +16,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
   //CONSTANT VARIABLES
+  $log.info("GET ENTIRE URL");
   var entireUrl = $window.location.absUrl();
   var MENU_URL = '#/menu';
 
