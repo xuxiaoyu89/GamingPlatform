@@ -2,7 +2,7 @@
 
 myAppControllers.controller('MenuCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
-	 platformMessageService, stateService, serverApiService) {
+	 platformMessageService, serverApiService) {
 	   
     // initialize icon pool  
     var avatarPool = [];
