@@ -70,9 +70,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     }
     
     function updateMatchesPool(){
-    	$log.info("in updateMatchesPool");
+    	//$log.info("in updateMatchesPool");
     	if($scope.myMatchesPool.length === 0){
-    	    $log.info("myMatchesPool is empty");
+    	    //$log.info("myMatchesPool is empty");
             return;
     	}
     	else{
@@ -85,7 +85,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     	    }
     	    serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature, updatedTimestampMillisAtLeast: maxTime}}], function (matches) {
 	        var updatedMatches = matches[0].matches;
-	        $log.info(updatedMatches);
+	        //$log.info(updatedMatches);
 	        //update the myMatchesPool
 	        for(var i = 0; i<$scope.myMatchesPool.length; i++){
 	            var match = $scope.myMatchesPool[i];
@@ -121,8 +121,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         $scope.myTurnMatches = [];
         $scope.oppoTurnMatches = [];
         $scope.endMatches = [];
-        $log.info("length:", $scope.myMatchesPool.length);
-        $log.info("currentGame: ", $scope.selectdGames);
+        //$log.info("length:", $scope.myMatchesPool.length);
+        //$log.info("currentGame: ", $scope.selectdGames);
         for (var i = 0; i < $scope.myMatchesPool.length; i++) {
             var currMatch = $scope.myMatchesPool[i];
             //check if currMatch is a match of selectedGame
@@ -142,7 +142,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             else {
                 currMatch.turnIndex = -1;
             }
-
+            //set opponent;
             if (currMatch.playersInfo[0].playerId === myPlayerId) {
                 if (currMatch.playersInfo[1] === null) {
                     currMatch.opponent = "no opponent";
