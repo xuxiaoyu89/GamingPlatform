@@ -21,7 +21,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //SOME NOT SO IMPORTANT VARS
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-  var platformUrl; //URL: /game/gameId/5682617542246400/matchId/5757715179634688&
+  var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
 //===================== JS_ERROR_CATCHING ====================//
@@ -48,12 +48,13 @@ function emailJSError(message) {
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
   //BASIC URL PARSING
-    var beforeHashUrl = entireUrl.split('#')[0];
+    var hashedUrl = entireUrl.split('#')
+    var beforeHashUrl = hashedUrl[0];
     $log.info("beforeHash URL: ", beforeHashUrl);
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
     
-    platformUrl = $window.location.search;
+    platformUrl = hashUrl[1];
     $log.info("Platform URL: ", platformUrl);
     platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
     $log.info("Platform URL2: ", platformUrl2);
