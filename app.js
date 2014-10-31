@@ -1,20 +1,19 @@
 var myApp = angular.module('myApp', [
-'ngRoute',
-'myAppControllers'
+'ngRoute'
 ]);
 
 myApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/phones', {
-        templateUrl: 'partials/phone-list.html',
-        controller: 'PhoneListCtrl'
+      when('/menu', {
+        templateUrl: 'menu.html',
+        controller: 'MenuCtrl'
       }).
-      when('/phones/:phoneId', {
+      /*when('/phones/:phoneId', {
         templateUrl: 'partials/phone-detail.html',
         controller: 'PhoneDetailCtrl'
-      }).
+      }).*/
       otherwise({
-        redirectTo: '/phones'
+        redirectTo: '/menu'
       });
   }]);
