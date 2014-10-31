@@ -98,6 +98,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	    });
     	}
     }
+    
+    var interval = setInterval(updateMatchesPool, 10000);
 
     /* display the matches of the game user selected($scope.selectdGames = "";)
      * There are 3 kinds of matches:
