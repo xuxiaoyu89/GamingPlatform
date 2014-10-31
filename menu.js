@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ngRoute'])
-.controller('MenuCtrl',
+myAppControllers.controller('MenuCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	 platformMessageService, stateService, serverApiService) {
 	   
