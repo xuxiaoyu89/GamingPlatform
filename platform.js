@@ -114,7 +114,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             //this match has not complete, we should get the turn
             if (firstOperation.endMatch === undefined) {
                 var turnIndex = firstOperation.setTurn.turnIndex;
-                if (turnIndex === 0) {
+                if (turnIndex === 1) {
                     // it is my turn
                     $scope.myTurnMatches.push(currMatch);
                     $log.info(currMatch);
