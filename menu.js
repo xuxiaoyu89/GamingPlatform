@@ -258,6 +258,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //waiting for the player's move
                             createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
                             $location.path('game.html').search(searchObject).replace();
+                            $log.info(%location.absUrl());
+                            $window.location.href = %location.absUrl();
                             //var tempUrl = $location.absUrl();
                             //var res = tempUrl.split("#");
                             //var tempUrl2 = res[1].substring(1);
@@ -293,6 +295,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             $log.info("AutoMatch URL: ", AMurl);
                             //$window.location.replace(AMurl);
                             $location.path('game.html').search(searchObject).replace();
+                            $log.info(%location.absUrl());
+                            $window.location.href = %location.absUrl();
                         }
                     });
         }
