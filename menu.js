@@ -4,9 +4,9 @@ myAppControllers.controller('MenuCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	 platformMessageService, serverApiService) {
     
-    $log.info($scope.interval);
-    if($scope.interval !== undefined){
-    	clearInterval($scope.interval);
+    $log.info($rootScope.interval);
+    if($rootScope.interval !== undefined){
+    	clearInterval($rootScope.interval);
     }
     
        
