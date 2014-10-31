@@ -54,7 +54,7 @@ function parseURL() {
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
     
-    platformUrl = hashUrl[1];
+    platformUrl = hashedUrl[1];
     $log.info("Platform URL: ", platformUrl);
     platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
     $log.info("Platform URL2: ", platformUrl2);
