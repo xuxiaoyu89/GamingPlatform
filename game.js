@@ -21,7 +21,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 
   //SOME NOT SO IMPORTANT VARS
   var entireUrl = $window.location.absUrl();
-  var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
+  var platformUrl; //URL: /game/gameId/5682617542246400/matchId/5757715179634688&
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
 //===================== JS_ERROR_CATCHING ====================//
@@ -53,7 +53,7 @@ function parseURL() {
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
     
-    
+    /*
     platformUrl = $window.location.search;
     $log.info("Platform URL: ", platformUrl);
     platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
@@ -78,6 +78,9 @@ function parseURL() {
             }
         }
     }
+    */
+    $scope.gameID = $routeParams.gameId;
+    $scope.matchID = $routeParams.matchId;
 }
 parseURL();
 //===================== GET VARIABLES FROM LOCAL STORAGE ====================//
