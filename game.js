@@ -130,7 +130,7 @@ $scope.leaveGame = function () {
     var confirmation = $window.confirm("Return to Main Menu?");
     if(confirmation) {
         $log.info("leaveGame: About to redirect to Main Menu.");
-        $location('menu');
+        $window.location.replace(MENU_URL);
     } else {
         $log.info("leaveGame: Canceled return to game.");
     }
