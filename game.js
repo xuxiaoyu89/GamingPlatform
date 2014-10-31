@@ -53,7 +53,6 @@ function parseURL() {
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
     
-    /*
     platformUrl = $window.location.search;
     $log.info("Platform URL: ", platformUrl);
     platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
@@ -78,9 +77,6 @@ function parseURL() {
             }
         }
     }
-    */
-    $scope.gameID = $routeParams.gameId;
-    $scope.matchID = $routeParams.matchId;
 }
 parseURL();
 //===================== GET VARIABLES FROM LOCAL STORAGE ====================//
