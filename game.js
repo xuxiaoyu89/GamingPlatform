@@ -180,7 +180,7 @@ serverApiService.sendMessage(
 
 
 //Check changes periodically(every 10sec)
-var interval = setInterval(checkChanges, 10000);
+$scope.interval = setInterval(checkChanges, 10000);
 
 //function for updating match status and game UI
 function updateStatus() {
