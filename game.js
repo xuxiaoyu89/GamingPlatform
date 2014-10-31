@@ -21,6 +21,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //SOME NOT SO IMPORTANT VARS
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
+  var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
@@ -49,7 +50,7 @@ function emailJSError(message) {
 function parseURL() {
   //BASIC URL PARSING
     var hashedUrl = entireUrl.split('#')
-    var beforeHashUrl = hashedUrl[0];
+    beforeHashUrl = hashedUrl[0];
     $log.info("beforeHash URL: ", beforeHashUrl);
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
@@ -329,7 +330,7 @@ function checkChanges() {
                                 $log.info("PlatformMessageService: newmatch: ", response);
                                 newmatch = false;//finish crating new match
                                 matchID = response[0]["matches"][0].matchId;
-                                var newURL = platformUrl.concat("&matchid=").concat(matchID);
+                                var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
                                 $window.location.replace(newURL);
                                 $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
                                 chekChanges();
