@@ -3,7 +3,13 @@
 myAppControllers.controller('MenuCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	 platformMessageService, serverApiService) {
-	   
+    
+    $log.info($scope.interval);
+    if($scope.interval !== undefined){
+    	clearInterval($scope.interval);
+    }
+    
+       
     // initialize icon pool  
     var avatarPool = [];
     avatarPool.push("/GamingPlatform/img/avatar0.gif");
