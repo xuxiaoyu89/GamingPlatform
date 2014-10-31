@@ -6,19 +6,19 @@ var myApp = angular.module('myApp', [
 myApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/menu', {
+      when('menu', {
         templateUrl: 'menu.html',
         controller: 'MenuCtrl'
       }).
-      when('/game/gameId/:gameId', { //index.html#/game/gameId/xxx
+      when('game/gameId/:gameId', { //index.html#/game/gameId/xxx
         templateUrl: 'game.html',
         controller: 'GameCtrl'
       }).
-      when('/game/gameId/:gameId/matchId/:matchId', { //index.html#/game/gameId/xxx/matchId/xxx
+      when('game/gameId/:gameId/matchId/:matchId', { //index.html#/game/gameId/xxx/matchId/xxx
         templateUrl: 'game.html',
         controller: 'GameCtrl'
       }).
       otherwise({
-        redirectTo: '/menu'
+        redirectTo: 'menu'
       });
   }]);
