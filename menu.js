@@ -257,11 +257,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //In this case, a game should show up within iframe
                             //waiting for the player's move
                             createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
-                            $location.path('game').search(searchObject).replace();
+                            $location.path('game').search(searchObject);
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
-                            $window.location.href = aurl ;
-                            window.open(aurl, "_self");
+                           // $window.location.href = aurl ;
+                           // window.open(aurl, "_self");
                             //$window.location.replace(aurl);
                             //var tempUrl = $location.absUrl();
                             //var res = tempUrl.split("#");
@@ -297,12 +297,12 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             var AMurl = GAME_URL.concat(searchString);
                             $log.info("AutoMatch URL: ", AMurl);
                             //$window.location.replace(AMurl);
-                            $location.path('game').search(searchObject).replace();
+                            $location.path('game').search(searchObject);
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
-                            $window.location.href = aurl ;
+                            //$window.location.href = aurl ;
                             //$window.location.replace(aurl);
-                            window.open(aurl, "_self");
+                            // window.open(aurl, "_self");
                         }
                     });
         }
