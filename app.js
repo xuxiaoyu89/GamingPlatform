@@ -10,10 +10,14 @@ myApp.config(['$routeProvider',
         templateUrl: 'menu.html',
         controller: 'MenuCtrl'
       }).
-      /*when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: 'PhoneDetailCtrl'
-      }).*/
+      when('/game/gameId/:gameId', { //index.html#/game/gameId/xxx
+        templateUrl: 'game.html',
+        controller: 'GameCtrl'
+      }).
+      when('/game/gameId/:gameId/matchId/:matchId', { //index.html#/game/gameId/xxx/matchId/xxx
+        templateUrl: 'game.html',
+        controller: 'GameCtrl'
+      }).
       otherwise({
         redirectTo: '/menu'
       });
