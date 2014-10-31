@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', [])
+myAppControllers
 .controller('GameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
 
