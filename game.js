@@ -54,13 +54,14 @@ function parseURL() {
     MENU_URL=beforeHashUrl.concat(MENU_URL);
     $log.info("Menu URL: ", MENU_URL);
     
-    platformUrl = hashedUrl[1];
+    platformUrl = hashedUrl[1].split('?');
     $log.info("Platform URL: ", platformUrl);
-    platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
-    $log.info("Platform URL2: ", platformUrl2);
   
-    if (platformUrl2 === null) {
-        alert_log_error("URL is NULL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2");
+    if (platformUrl.length <2) {
+        alert_log_error("URL Invalid.", "Required URL Format: ...#/game?matchid=1&gameid=2");
+    } else {
+      platformUrl2 = platformUrl[1];
+      $log.info("Platform URL2: ", platformUrl2);
     }
 
     //Split URL and pull params
