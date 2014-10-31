@@ -130,7 +130,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 continue;
             }
             //get myTurnIndex use the matchId;
-            var matchId = parseInt($window.localStorage.getItem(currMatch.matchID));
+            var myTurnIndex = parseInt($window.localStorage.getItem(currMatch.matchID));
             
             // check the last move in history
             var history = currMatch.history;
@@ -158,7 +158,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             //this match has not complete, we should get the turn
             if (firstOperation.endMatch === undefined) {
                 var turnIndex = firstOperation.setTurn.turnIndex;
-                if (turnIndex === 0) {
+                if (turnIndex === myTurnIndex) {
                     // it is my turn
                     $scope.myTurnMatches.push(currMatch);
                     $log.info(currMatch);
