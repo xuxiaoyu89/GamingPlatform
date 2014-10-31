@@ -70,7 +70,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     }
     
     function updateMatchesPool(){
+    	$log.info("in updateMatchesPool");
     	if($scope.myMatchesPool.length === 0){
+    	    $log.info("myMatchesPool is empty");
             return;
     	}
     	else{
@@ -91,6 +93,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	            	var updatedMatch = updatedMatches[j];
 	            	if(updatedMatch.matchId === match.matchId){
 	            	    $scope.myMatchesPool[i] = updatedMatch;
+	            	    $log.info("match changed: ", updatedMatch);
 	            	}
 	            }
 	        }
