@@ -130,7 +130,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 continue;
             }
             //get myTurnIndex use the matchId;
-            var matchId = window.localStorage.getItem("playerInfo");
+            var matchId = parseInt($window.localStorage.getItem(currMatch.matchID));
             
             // check the last move in history
             var history = currMatch.history;
