@@ -2,7 +2,7 @@
 
 angular.module('myApp', [])
 .controller('GameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMessageService) {
+function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
 
   //SOME important VARIABLES
   var state;//current game state
@@ -16,9 +16,11 @@ function ($sce, $scope, $rootScope, $log, $window, serverApiService, platformMes
   //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
   //CONSTANT VARIABLES
-  var MENU_URL = 'platform.html';
+  var entireUrl = $window.location.absUrl();
+  var MENU_URL = '#/menu';
 
   //SOME NOT SO IMPORTANT VARS
+  var entireUrl = $window.location.absUrl();
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
@@ -46,6 +48,12 @@ function emailJSError(message) {
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
   //BASIC URL PARSING
+    var beforeHashUrl = entireUrl.split('#')[0];
+    $log.info("beforeHash URL: ", beforeHashUrl);
+    MENU_URL=beforeHashUrl.concat(MENU_URL);
+    $log.info("Menu URL: ", MENU_URL);
+    
+    
     platformUrl = $window.location.search;
     $log.info("Platform URL: ", platformUrl);
     platformUrl2 = platformUrl.length > 1 ? platformUrl.substring(1) : null;
