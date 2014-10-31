@@ -260,7 +260,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             $location.path('game.html').search(searchObject).replace();
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
-                            $window.location.href ;
+                            $window.location.href = aurl ;
                             //var tempUrl = $location.absUrl();
                             //var res = tempUrl.split("#");
                             //var tempUrl2 = res[1].substring(1);
@@ -298,7 +298,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             $location.path('game.html').search(searchObject).replace();
                             var aurl =$location.absUrl(); 
                             $log.info(aurl);
-                            $window.location.href ;
+                            $window.location.href = aurl ;
                         }
                     });
         }
