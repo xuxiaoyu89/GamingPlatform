@@ -129,6 +129,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             if (selectedGame === null || currMatch.gameId !== selectedGame.gameId) {
                 continue;
             }
+            //get myTurnIndex use the matchId;
+            var matchId = window.localStorage.getItem("playerInfo");
+            
             // check the last move in history
             var history = currMatch.history;
             var moves = history.moves;
