@@ -238,6 +238,12 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         }
     }
 
+var myLoooop = function(){
+	console.log("--->I'm Looping<---");
+}
+
+var interval = setInterval(myLoooop, 2000);
+
     //AUTO MATCH button handler
     $scope.autoMatchHandler = function () {
         AUTO_MATCH = true;
