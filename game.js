@@ -12,6 +12,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //Scope Variables:
   //gameUrl
 
+  $scope.gameStatus = "Loading game, please wait";
+
   var newmatch = false;//whether to create a new match or not, default set to false
   //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
@@ -178,7 +180,6 @@ serverApiService.sendMessage(
         });
 //====================================================
 
-$scope.gameStatus = "Loading game, please wait";
 
 //Check changes periodically(every 10sec)
 $rootScope.interval = setInterval(checkChanges, 10000);
