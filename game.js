@@ -17,7 +17,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 
   //CONSTANT VARIABLES
   $log.info("GET ENTIRE URL");
-  var entireUrl = $window.location.absUrl();
+  var entireUrl = $window.location;
+  $log.info("entireUrl: ", entireUrl);
   var MENU_URL = '#/menu';
 
   //SOME NOT SO IMPORTANT VARS
