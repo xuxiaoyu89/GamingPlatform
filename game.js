@@ -16,13 +16,11 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
   //CONSTANT VARIABLES
-  $log.info("GET ENTIRE URL");
-  var entireUrl = $window.location;
-  $log.info("entireUrl: ", entireUrl);
   var MENU_URL = '#/menu';
 
   //SOME NOT SO IMPORTANT VARS
-  var entireUrl = $window.location.absUrl();
+  var entireUrl = $window.location.href;
+  $log.info("entireUrl: ", entireUrl);
   var platformUrl; //URL: /game/gameId/5682617542246400/matchId/5757715179634688&
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
