@@ -68,6 +68,36 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	        setCurrentMatches();
 	    });
     }
+    
+    function updateMatchesPool(){
+    	if($scope.myMatchesPool.length === 0){
+            return;
+    	}
+    	else{
+    	    var maxTime = 0;
+    	    for(var i = 0; i<$scope.myMatchesPool.length; i++){
+    	    	var currMatch = $scope.myMatchesPool[i];
+    	    	if(currMatch.updatedTimestampMillis > maxTime){
+    	    	    maxTime = currMatch.updatedTimestampMillis;
+    	    	}
+    	    }
+    	    serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature, updatedTimestampMillisAtLeast: maxTime}}], function (matches) {
+	        var updatedMatches = matches[0].matches;
+	        $log.info(updatedMatches);
+	        //update the myMatchesPool
+	        for(var i = 0; i<$scope.myMatchesPool.length; i++){
+	            var match = $scope.myMatchesPool[i];
+	            for(var j = 0; j<updatedMatches.length; j++){
+	            	var updatedMatch = updatedMatches[j];
+	            	if(updatedMatch.matchId === match.matchId){
+	            	    $scope.myMatchesPool[i] = updatedMatch;
+	            	}
+	            }
+	        }
+	        setCurrentMatches();
+	    });
+    	}
+    }
 
     /* display the matches of the game user selected($scope.selectdGames = "";)
      * There are 3 kinds of matches:
@@ -76,6 +106,12 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
      *   3. matches which are completed
      */
     function setCurrentMatches() {
+    	if($scope.selectdGames === "" || $scope.selectdGames === null){
+            $scope.myTurnMatches = [];
+            $scope.oppoTurnMatches = [];
+            $scope.endMatches = [];
+    	    return;
+    	}
         var selectedGame = $scope.selectdGames;
         $scope.myTurnMatches = [];
         $scope.oppoTurnMatches = [];
