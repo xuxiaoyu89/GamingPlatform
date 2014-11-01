@@ -23,29 +23,29 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 		}
 		
 	 	serverApiService.sendMessage([{getPlayerGameStats: {gameId: $scope.gameId, myPlayerId:$scope.playerID,
-									accessSignature:$scope.accessSignature}}], function(response){
-										var myStatsObj = response[0];
-										var playerGameStats = myStatsObj.playerGameStats;
-										$scope.rank = playerGameStats.rank;
-										$scope.outcomesCount = playerGameStats.outcomesCount;  //Obj{'L':1, 'T':2, 'W':3}
-										if($scope.outcomesCount===undefined || $scope.outcomesCount===null){
-											$scope.outcomesCount = undefined;
-											$scope.statsIndex = undefined; 
-											return;
-										}
-										//Obj{playerId_1:{W:1, L:1 , T:2}, playerId_2:{L:1, W:2}, playerId_3{T:1}}
-										var outcomePer = playerGameStats.outcomesAgainstPlayerIdCount;
-										//Array [{playerId:"123", displayName: "haha", avatarImageUrl:"img"},{},{}]
-										var opponentsInfo = playerGameStats.opponentsInfo;
-										$scope.statsIndex = [];
-										for(var i=0; i<opponentsInfo.length; i++){
-											var tempId = opponentsInfo[i].playerId;
-											var tempIndex = {playerId:tempId, displayName: opponentsInfo[i].displayName, 
-															 avatarImageUrl: opponentsInfo[i].avatarImageUrl, 
-															 outcomes: outcomePer[tempId]};   //the outcomes here is an Obj like {W:1, L:1 , T:2}
-											$scope.statsIndex.push(tempIndex);
-										}
-									});
+			accessSignature:$scope.accessSignature}}], function(response){
+				var myStatsObj = response[0];
+				var playerGameStats = myStatsObj.playerGameStats;
+				$scope.rank = playerGameStats.rank;
+				$scope.outcomesCount = playerGameStats.outcomesCount;  //Obj{'L':1, 'T':2, 'W':3}
+				if($scope.outcomesCount===undefined || $scope.outcomesCount===null){
+					$scope.outcomesCount = undefined;
+					$scope.statsIndex = undefined; 
+					return;
+				}
+				//Obj{playerId_1:{W:1, L:1 , T:2}, playerId_2:{L:1, W:2}, playerId_3{T:1}}
+				var outcomePer = playerGameStats.outcomesAgainstPlayerIdCount;
+				//Array [{playerId:"123", displayName: "haha", avatarImageUrl:"img"},{},{}]
+				var opponentsInfo = playerGameStats.opponentsInfo;
+				$scope.statsIndex = [];
+				for(var i=0; i<opponentsInfo.length; i++){
+					var tempId = opponentsInfo[i].playerId;
+					var tempIndex = {playerId:tempId, displayName: opponentsInfo[i].displayName, 
+									 avatarImageUrl: opponentsInfo[i].avatarImageUrl, 
+									 outcomes: outcomePer[tempId]};   //the outcomes here is an Obj like {W:1, L:1 , T:2}
+					$scope.statsIndex.push(tempIndex);
+				}
+			});
 	 	
 
 });
