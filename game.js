@@ -12,7 +12,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   //Scope Variables:
   //gameUrl
 
-  $scope.gameStatus = "Loading game, please wait";
+  //$scope.gameStatus = "Loading game, please wait";
 
   var newmatch = false;//whether to create a new match or not, default set to false
   //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
@@ -298,12 +298,12 @@ function checkChanges() {
     var move;//move made by player
     platformMessageService.addMessageListener(function (message) {
         $log.info("PlatformMessageService: got a message.");
-        if (message.gameReady !== undefined) {
+        /*if (message.gameReady !== undefined) {
             checkChanges();
             if (newmatch) {
                 $scope.gameStatus = "Game loaded, please make a move";
             }
-        }
+        }*/
         //iframe send a move to platform
         if (message.makeMove !== undefined) {
             $log.info("PlatformMessageService: makeMove.")
