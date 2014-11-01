@@ -160,6 +160,24 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     //for global setting
     var AUTO_MATCH = true;
     var EMAIL_JS_ERRORS = true;
+    
+    var setOnandOff = function(AUTO_MATCH, EMAIL_JS_ERRORS){
+    	if(AUTO_MATCH && EMAIL_JS_ERRORS){
+    		$location.search("on","AUTO_MATCH,EMAIL_JS_ERRORS");
+    	}else if(!AUTO_MATCH && !EMAIL_JS_ERRORS){
+    		$location.search("off","AUTO_MATCH,EMAIL_JS_ERRORS");
+    	}else if(!AUTO_MATCH && EMAIL_JS_ERRORS){
+    		$location.search("off","AUTO_MATCH");
+    		$location.search("on","EMAIL_JS_ERRORS");
+    	}else if(AUTO_MATCH && !EMAIL_JS_ERRORS){
+    		$location.search("on","AUTO_MATCH");
+    		$location.search("off","EMAIL_JS_ERRORS");
+    	}
+    }
+    
+    
+    
+    
     //for selected game
     var gameId;
     var gameUrl;
@@ -262,19 +280,12 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //do sth to create a new match, still need a move
                             //In this case, a game should show up within iframe
                             //waiting for the player's move
-                            createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
-                            $location.path('game').search(searchObject);
-                            var aurl =$location.absUrl(); 
-                            $log.info(aurl);
-                           // $window.location.href = aurl ;
-                           // window.open(aurl, "_self");
-                            //$window.location.replace(aurl);
-                            //var tempUrl = $location.absUrl();
-                            //var res = tempUrl.split("#");
-                            //var tempUrl2 = res[1].substring(1);
-                            //window.open(tempUrl2, "_self");
+                            //createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
+                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                            $location.search("gameId",gameId);
+                            $location.path('game');
                             
-                            //window.location.href();
+                           
                         } else {
                             //do sth to make a move in that we can really create this match
                             //In this case, a game with specific matchId should show up 
@@ -285,30 +296,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             var matchObj = responses[0].matches[0];
                             var stringMatchObj = JSON.stringify(matchObj);
                             $window.localStorage.setItem("matchInfo", stringMatchObj);
-                            //$log.info("JSON.stringify matchInfo: ", stringMatchObj);
-                            //stringMatchObj = $window.localStorage.getItem("matchInfo");
-                            //matchObj = JSON.parse(stringMatchObj);
-                            //$log.info("JSON.parse matchInfo: ", matchObj);
 
-
-
-                            createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, null);
-                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
-                            var tempUrl = $location.absUrl();
-                            var res = tempUrl.split("#");
-                            var tempUrl2 = res[1].substring(1);
-                            //window.open(tempUrl2, "_self");
-
-                            $log.info("searchObject: ", searchString);
-                            var AMurl = GAME_URL.concat(searchString);
-                            $log.info("AutoMatch URL: ", AMurl);
-                            //$window.location.replace(AMurl);
-                            $location.path('game').search(searchObject);
-                            var aurl =$location.absUrl(); 
-                            $log.info(aurl);
-                            //$window.location.href = aurl ;
-                            //$window.location.replace(aurl);
-                            // window.open(aurl, "_self");
+                            
+                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                            $location.search("gameId",gameId);
+                            $location.search("matchId",matchId);
+                            $location.path('game');
+                            
                         }
                     });
         }
