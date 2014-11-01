@@ -160,6 +160,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     //for global setting
     var AUTO_MATCH = true;
     var EMAIL_JS_ERRORS = true;
+    $scope.AUTO_MATCH = true;
+    $scope.EMAIL_JS_ERRORS = true;
     
     var setOnandOff = function(AUTO_MATCH, EMAIL_JS_ERRORS){
     	if(AUTO_MATCH && EMAIL_JS_ERRORS){
@@ -261,6 +263,46 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             searchString = searchString.concat("&gameId=", gameIdValue, "&matchId=", matchIdValue);
         }
     }
+    
+    //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
+    setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
+    
+    $scope.location = $location;
+    $scope.$watch( 'location.search()', function( search ) {
+    	    var parsedurl = search.split('&');
+	    $log.info("Parsed search: ", parsedurl);
+	    var subparse;
+	    var i;
+	    for (i = 0; i < parsedurl.length; i++) {
+	        subparse = parsedurl[i].split('=');
+	        if (subparse.length === 2) {
+	            if (subparse[0].toLowerCase() === 'on') {
+	                if(subparse[1]==="AUTO_MATCH,EMAIL_JS_ERRORS"){
+	                	$scope.AUTO_MATCH = true;
+	                	$scope.EMAIL_JS_ERRORS = true;
+	                }
+	                if(subparse[1]==="AUTO_MATCH"){
+	                	$scope.AUTO_MATCH = true;
+	                }
+	                if(subparse[1]==="EMAIL_JS_ERRORS"){
+	                	$scope.EMAIL_JS_ERRORS = true;
+	                }
+	            } else if (subparse[0].toLowerCase() === 'off') {
+	                if(subparse[1]==="AUTO_MATCH,EMAIL_JS_ERRORS"){
+	                	$scope.AUTO_MATCH = false;
+	                	$scope.EMAIL_JS_ERRORS = false;
+	                }
+	                if(subparse[1]==="AUTO_MATCH"){
+	                	$scope.AUTO_MATCH = false;
+	                }
+	                if(subparse[1]==="EMAIL_JS_ERRORS"){
+	                	$scope.EMAIL_JS_ERRORS = false;
+	                }
+	            }
+	        }
+	    }
+    });
+    
 
     //AUTO MATCH button handler
     $scope.autoMatchHandler = function () {
@@ -281,7 +323,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //In this case, a game should show up within iframe
                             //waiting for the player's move
                             //createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
-                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                            //setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
                             $location.search("gameId",gameId);
                             $location.path('game');
                             
@@ -298,7 +340,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             $window.localStorage.setItem("matchInfo", stringMatchObj);
 
                             
-                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                           // setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
                             $location.search("gameId",gameId);
                             $location.search("matchId",matchId);
                             $location.path('game');
