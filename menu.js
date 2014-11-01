@@ -259,7 +259,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 
     //AUTO MATCH button handler
     $scope.autoMatchHandler = function () {
-        AUTO_MATCH = true;
+        //AUTO_MATCH = true;
         if (gameId === undefined || gameId === null) {
             alert("Choose a game first please!");
             return;
