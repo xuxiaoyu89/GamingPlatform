@@ -172,6 +172,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     var gameDmail;
     var matchId;
     var turnIndex;
+    $scope.gameId;
 
 
     /* $scope.gamesPool stores a list of games retrived from server
@@ -201,6 +202,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 gameUrl = null;
                 gameName = null;
                 gameDmail = null;
+                $scope.gameId = null;
                 return;
             }
             if (entry.gameId === $scope.selectdGames.gameId) {
@@ -208,6 +210,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 gameUrl = entry.gameUrl;
                 gameName = entry.GameName;
                 gameDmail = entry.gameDeveloperEmail;
+                $scope.gameId = entry.gameId;
                 $location.search("gameId",gameId);
             }
         });
