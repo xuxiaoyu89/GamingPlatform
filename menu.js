@@ -268,7 +268,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
     
     $scope.location = $location;
-    $scope.$watch( 'location.url()', function( url ) {
+    $scope.$watch( 'location.search()', function( url ) {
     	    var search = location.search;
     	    var parsedurl = search.split('&');
 	    $log.info("Parsed search: ", parsedurl);
