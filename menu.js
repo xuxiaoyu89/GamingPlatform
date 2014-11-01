@@ -144,6 +144,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         $location.search("matchId",matchId);
         $location.path('game');
     }
+    
+    $scope.goToStats = function(gameId){
+    	 //$location.search("gameId",gameId);
+    	 $location.path('stats');
+    }
 
 
     //for scope setting
