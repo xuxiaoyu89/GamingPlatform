@@ -8,7 +8,8 @@ myApp.config(['$routeProvider',
     $routeProvider.
       when('/menu', {
         templateUrl: 'menu.html',
-        controller: 'MenuCtrl'
+        controller: 'MenuCtrl',
+        reloadOnSearch: false
       }).
       when('/game', {
         templateUrl: 'game.html',
