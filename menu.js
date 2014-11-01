@@ -163,15 +163,15 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     $scope.AUTO_MATCH = true;
     $scope.EMAIL_JS_ERRORS = true;
     
-    var setOnandOff = function(AUTO_MATCH, EMAIL_JS_ERRORS){
-    	if(AUTO_MATCH && EMAIL_JS_ERRORS){
+    var setOnandOff = function(AUTO_MATCH_, EMAIL_JS_ERRORS_){
+    	if(AUTO_MATCH_ && EMAIL_JS_ERRORS_){
     		$location.search("on","AUTO_MATCH,EMAIL_JS_ERRORS");
-    	}else if(!AUTO_MATCH && !EMAIL_JS_ERRORS){
+    	}else if(!AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
     		$location.search("off","AUTO_MATCH,EMAIL_JS_ERRORS");
-    	}else if(!AUTO_MATCH && EMAIL_JS_ERRORS){
+    	}else if(!AUTO_MATCH_ && EMAIL_JS_ERRORS_){
     		$location.search("off","AUTO_MATCH");
     		$location.search("on","EMAIL_JS_ERRORS");
-    	}else if(AUTO_MATCH && !EMAIL_JS_ERRORS){
+    	}else if(AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
     		$location.search("on","AUTO_MATCH");
     		$location.search("off","EMAIL_JS_ERRORS");
     	}
