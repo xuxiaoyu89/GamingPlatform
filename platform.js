@@ -199,6 +199,24 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     //for global setting
     var AUTO_MATCH = true;
     var EMAIL_JS_ERRORS = true;
+    
+    
+    var setOnandOff = function(AUTO_MATCH, EMAIL_JS_ERRORS){
+    	if(AUTO_MATCH){
+    		$location.search("on","AUTO_MATCH");
+    	}else{
+    		$location.search("off","AUTO_MATCH");
+    	}
+    	if(EMAIL_JS_ERRORS){
+    		$location.search("on","EMAIL_JS_ERRORS");
+    	}else{
+    		$location.search("off","EMAIL_JS_ERRORS");
+    	}
+    }
+    
+    
+    
+    
     //for selected game
     var gameId;
     var gameUrl;
@@ -301,8 +319,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //do sth to create a new match, still need a move
                             //In this case, a game should show up within iframe
                             //waiting for the player's move
-                            createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 0);
-                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+                            //createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 0);
+                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html');
+                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                            $location.search("gameId",gameId);
+                            
                             var tempUrl = $location.absUrl();
                             var res = tempUrl.split("#");
                             var tempUrl2 = res[1].substring(1);
@@ -325,16 +346,20 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 
 
                             createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, 1);
-                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
+                            $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html');
+                            setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
+                            $location.search("gameId",gameId);
+                            $location.search("matchId",matchId);
+                            
                             var tempUrl = $location.absUrl();
                             var res = tempUrl.split("#");
                             var tempUrl2 = res[1].substring(1);
-                            //window.open(tempUrl2, "_self");
+                            window.open(tempUrl2, "_self");
 
                             $log.info("searchObject: ", searchString);
                             var AMurl = GAME_URL.concat(searchString);
                             $log.info("AutoMatch URL: ", AMurl);
-                            $window.location.replace(AMurl);
+                            //$window.location.replace(AMurl);
                         }
                     });
         }
