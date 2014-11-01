@@ -37,6 +37,7 @@ iframe {
   width: 50px;
 }
 
+@import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
 .statsBody{
 	background: #ECECEC;
 	margin:0px ;
