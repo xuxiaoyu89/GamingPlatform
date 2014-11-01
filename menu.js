@@ -140,26 +140,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 
 
     $scope.goToGame = function (myPlayerId, matchId, turnIndex) {
-        //$log.info("in goToGame");
-        //$log.info(myPlayerId, matchId);
-        //$window.location.href="platform_game.html";
-        //$log.info($location.absUrl());
-
-        createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, turnIndex)
-        $location.url('http://rshen1993.github.io/GamingPlatform/platform_game_vs.html').search(searchObject);
-        var tempUrl = $location.absUrl();
-        $log.info(tempUrl);
-        var res = tempUrl.split("#");
-        var tempUrl2 = res[1].substring(1);
-        window.open(tempUrl2, "_self");
+        // fixed by bbccyy, the previous dircetion is wrong: platform_game_vs.html
+        $location.search("matchId",matchId);
+        $location.path('game');
     }
 
 
-
-
-    //for global setting
-    var AUTO_MATCH = true;
-    var EMAIL_JS_ERRORS = true;
+    //for scope setting
     $scope.AUTO_MATCH = true;
     $scope.EMAIL_JS_ERRORS = true;
     
@@ -176,8 +163,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		$location.search("off","EMAIL_JS_ERRORS");
     	}
     }
-    
-    
     
     
     //for selected game
@@ -223,47 +208,14 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                 gameUrl = entry.gameUrl;
                 gameName = entry.GameName;
                 gameDmail = entry.gameDeveloperEmail;
+                $location.search("gameId",gameId);
             }
-            //set current Matches after select
-            /* gameId: "" if selectedGames = ""
-             *         gameId if selectedGames = entry.gameId
-             * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!         
-             */
-            //setCurrentMatches(gameId);
         });
         if(gameId !== undefined){
         	retriveCurrentGames();
         }
     });
 
-    //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId
-    var searchObject = {};
-    var searchString;
-    //change & replace URL based on input values: AUTO_MATCH, EMAIL_JS_ERRORS, gameId, macthId
-    function createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, matchId, turnIndex) {
-        var gameIdValue = gameId === undefined ? null : gameId;
-        var matchIdValue = matchId === undefined ? null : matchId;
-        if (AUTO_MATCH && EMAIL_JS_ERRORS) {
-            searchObject = {on: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?on=".concat("AUTO_MATCH,EMAIL_JS_ERRORS");
-        } else if (!AUTO_MATCH && EMAIL_JS_ERRORS) {
-            searchObject = {off: 'AUTO_MATCH', on: 'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?off=".concat("AUTO_MATCH", "&on=EMAIL_JS_ERRORS");
-        } else if (!AUTO_MATCH && !EMAIL_JS_ERRORS) {
-            searchObject = {off: 'AUTO_MATCH,EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?off=".concat("AUTO_MATCH,EMAIL_JS_ERRORS");
-        } else if (AUTO_MATCH && !EMAIL_JS_ERRORS) {
-            searchObject = {on: 'AUTO_MATCH', off: 'EMAIL_JS_ERRORS', gameId: gameIdValue, matchId: matchIdValue, turnIndex: turnIndex};
-            searchString = "?on=".concat("AUTO_MATCH", "&off=EMAIL_JS_ERRORS");
-        }
-        
-        if(matchIdValue === null) {
-            searchString = searchString.concat("&gameId=", gameIdValue);
-        } else {
-            searchString = searchString.concat("&gameId=", gameIdValue, "&matchId=", matchIdValue);
-        }
-    }
-    
     
     $scope.location = $location;
     $scope.$watch( 'location.search()', function( searchObj ) {
@@ -297,6 +249,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 	    
     });
     
+    $scope.$watch('EMAIL_JS_ERRORS', function () {
+    	if($scope.EMAIL_JS_ERRORS){
+    		// do something if EMAIL_JS_ERRORS is on
+    	}else{
+    		// do something if EMAIL_JS_ERRORS is off
+    	}
+    });
 
     //AUTO MATCH button handler
     $scope.autoMatchHandler = function () {
@@ -316,12 +275,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             //do sth to create a new match, still need a move
                             //In this case, a game should show up within iframe
                             //waiting for the player's move
-                            //createSearchObj(AUTO_MATCH, EMAIL_JS_ERRORS, gameId, null, null);
-                            //setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
-                            $location.search("gameId",gameId);
                             $location.path('game');
                             
-                           
                         } else {
                             //do sth to make a move in that we can really create this match
                             //In this case, a game with specific matchId should show up 
@@ -333,9 +288,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                             var stringMatchObj = JSON.stringify(matchObj);
                             $window.localStorage.setItem("matchInfo", stringMatchObj);
 
-                            
-                           // setOnandOff(AUTO_MATCH, EMAIL_JS_ERRORS);
-                            $location.search("gameId",gameId);
                             $location.search("matchId",matchId);
                             $location.path('game');
                             
