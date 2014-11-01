@@ -268,40 +268,31 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
     
     $scope.location = $location;
-    $scope.$watch( 'location.search()', function( url ) {
-    	    var search = location.search;
-    	    var parsedurl = search.split('&');
-	    $log.info("Parsed search: ", parsedurl);
-	    var subparse;
-	    var i;
-	    for (i = 0; i < parsedurl.length; i++) {
-	        subparse = parsedurl[i].split('=');
-	        if (subparse.length === 2) {
-	            if (subparse[0].toLowerCase() === 'on') {
-	                if(subparse[1]==="AUTO_MATCH,EMAIL_JS_ERRORS"){
-	                	$scope.AUTO_MATCH = true;
-	                	$scope.EMAIL_JS_ERRORS = true;
-	                }
-	                if(subparse[1]==="AUTO_MATCH"){
-	                	$scope.AUTO_MATCH = true;
-	                }
-	                if(subparse[1]==="EMAIL_JS_ERRORS"){
-	                	$scope.EMAIL_JS_ERRORS = true;
-	                }
-	            } else if (subparse[0].toLowerCase() === 'off') {
-	                if(subparse[1]==="AUTO_MATCH,EMAIL_JS_ERRORS"){
-	                	$scope.AUTO_MATCH = false;
-	                	$scope.EMAIL_JS_ERRORS = false;
-	                }
-	                if(subparse[1]==="AUTO_MATCH"){
-	                	$scope.AUTO_MATCH = false;
-	                }
-	                if(subparse[1]==="EMAIL_JS_ERRORS"){
-	                	$scope.EMAIL_JS_ERRORS = false;
-	                }
-	            }
-	        }
-	    }
+    $scope.$watch( 'location.search()', function( searchObj ) {
+    	    if(searchObj.on){
+    	    	if(searchObj.on === "AUTO_MATCH,EMAIL_JS_ERRORS"){
+    	    		$scope.AUTO_MATCH = true;
+	                $scope.EMAIL_JS_ERRORS = true;
+    	    	}
+    	    	if(searchObj.on === "AUTO_MATCH"){
+    	    		$scope.AUTO_MATCH = true;
+    	    	}
+    	    	if(searchObj.on === "EMAIL_JS_ERRORS"){
+    	    		$scope.EMAIL_JS_ERRORS = true;
+    	    	}
+    	    }
+    	    if(searchObj.off){
+    	    	if(searchObj.off === "AUTO_MATCH,EMAIL_JS_ERRORS"){
+    	    		$scope.AUTO_MATCH = false;
+	                $scope.EMAIL_JS_ERRORS = false;
+    	    	}
+    	    	if(searchObj.off === "AUTO_MATCH"){
+    	    		$scope.AUTO_MATCH = false;
+    	    	}
+    	    	if(searchObj.off === "EMAIL_JS_ERRORS"){
+    	    		$scope.EMAIL_JS_ERRORS = false;
+    	    	}
+    	    }
     });
     
 
