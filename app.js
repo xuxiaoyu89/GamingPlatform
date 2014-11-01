@@ -9,12 +9,14 @@ myApp.config(['$routeProvider',
       when('/menu', {
         templateUrl: 'menu.html',
         controller: 'MenuCtrl'
-        //reloadOnSearch: false
       }).
       when('/game', {
         templateUrl: 'game.html',
         controller: 'GameCtrl'
-        //reloadOnSearch: false
+      }).
+      when('/stats', {
+        templateUrl: 'stats.html',
+        controller: 'StatsCtrl'
       }).
       otherwise({
         redirectTo: '/menu'
