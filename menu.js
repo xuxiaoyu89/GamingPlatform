@@ -291,11 +291,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     	    		$scope.EMAIL_JS_ERRORS = false;
     	    	}
     	    }
+    	    
+    	    //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
+	    setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
+	    
     });
-    
-    
-    //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
-    setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
     
 
     //AUTO MATCH button handler
