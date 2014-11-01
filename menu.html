@@ -6,9 +6,10 @@
     <br>
    <center> 
    		<select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
-      		<option value="">-- choose game --</option>      	
-    	</select>
-   </center>
+      			<option value="">-- choose game --</option>      	
+    		</select>
+   </center> 
+   <a href="#/stats" ng-show="gameId"> GO TO STATS </a>
    <center> 
   		<button ng-show="AUTO_MATCH" ng-click="autoMatchHandler()">AUTO MATCH</button>
 	<br>
