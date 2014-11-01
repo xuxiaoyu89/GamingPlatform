@@ -11,7 +11,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 		    $scope.playerID = playerInfo.myPlayerId;
 		    $scope.accessSignature = playerInfo.accessSignature;
 		    $scope.playerName = playerInfo.displayName;
-		    $scope.avatarImageUrl = playerInof.avatarImageUrl;
+		    $scope.avatarImageUrl = playerInfo.avatarImageUrl;
 		}
 		getLocalVars();
 		
