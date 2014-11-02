@@ -406,6 +406,17 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                         }
                     });
         }
+    };
+    
+    //playAgainstComputerHandler;
+    $scope.playAgainstComputerHandler = function() {
+    	alert("play against computer");
     }
+    
+    //passAndPlayHandler;
+    $scope.passAndPlayHandler = function() {
+    	alert("pass and play");
+    }
+    
 	   
 });
