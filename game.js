@@ -380,7 +380,7 @@ function checkChanges() {
             serverApiService.sendMessage(
                 message,
                 function (response) {
-                    $log.info("email js error," response);
+                    $log.info("email js error", response);
                 });
         }
     });
