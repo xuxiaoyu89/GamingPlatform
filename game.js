@@ -30,19 +30,6 @@ function alert_log_error(alert, log) {
     $log.error("Alert & Log Error: ", log);
     return;
 }
-/*function emailJSError(message) {
-    $log.error("Game JS Error: ", message);
-    var emailObj = [{emailJavaScriptError: 
-                    {gameDeveloperEmail: $scope.gameEmail, 
-                emailSubject: message.subject, 
-                emailBody: message.body}}]
-    serverApiService.sendMessage(emailObj,
-            function (response) {
-                $scope.response = response;
-                $log.info("GAME_JS_ERROR Response: ", response);
-            });
-    return;
-}*/
 
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
@@ -148,16 +135,16 @@ $scope.deleteGame = function () {
             $log.info("deleteGame: Deleting.", messageObj);
             $window.localStorage.removeItem($scope.matchID);
             serverApiService.sendMessage(messageObj,
-                    function (response) {
-                        $scope.response = response;
-                        $log.info("DismissMatch response: ", JSON.stringify(response));
-                        if(response[0]['error']!==undefined) {
-                            alert_log_error(response[0]['error'], ["serverAPI failed to dismissMatch.", response[0]['error']]);
-                        } else {
-                            $log.info("Game successfully deleted, redirecting to Main Menu: ", MENU_URL);
-                        }
-                        $window.location.replace(MENU_URL);
-                    });
+                function (response) {
+                    $scope.response = response;
+                    $log.info("DismissMatch response: ", JSON.stringify(response));
+                    if(response[0]['error']!==undefined) {
+                        alert_log_error(response[0]['error'], ["serverAPI failed to dismissMatch.", response[0]['error']]);
+                    } else {
+                        $log.info("Game successfully deleted, redirecting to Main Menu: ", MENU_URL);
+                    }
+                    $window.location.replace(MENU_URL);
+                });
         } else {
             $log.info("deleteGame: Canceled.");
         }
@@ -166,14 +153,14 @@ $scope.deleteGame = function () {
 
 //===================== GET GAME'S URL ===============//
 serverApiService.sendMessage(
-        [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
-        function (response) {
-            $scope.game = response;
-            $scope.gameInfo = response[0].games[0];
-            var gameUrl = $scope.gameInfo.gameUrl;
-            $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
-            $window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
-        });
+    [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
+    function (response) {
+        $scope.game = response;
+        $scope.gameInfo = response[0].games[0];
+        var gameUrl = $scope.gameInfo.gameUrl;
+        $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
+        $window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
+    });
 //====================================================
 
 
@@ -342,7 +329,7 @@ function checkChanges() {
             }
         }
         //iframe send a move to platform
-        if (message.makeMove !== undefined) {
+        else if (message.makeMove !== undefined) {
             $log.info("PlatformMessageService: makeMove.")
             move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
             var params;
@@ -353,38 +340,48 @@ function checkChanges() {
                 params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
             }
             platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
-        } else if (message.isMoveOkResult !== undefined) {
+        }
+        else if (message.isMoveOkResult !== undefined) {
             $log.info("PlatformMessageService: isMoveOkResult.")
             //iframe finish checking isMoveOk and send the result to platform
             //move is ok, send it to server
             if (message.isMoveOkResult === true) {
-                //normal move
                 if (!newmatch) {
+                    //normal move
                     serverApiService.sendMessage(
-                            [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
-                            function (response) {
-                                $log.info("PlatformMessageService: isMoveOkResult: ", response);
-                                checkChanges();
-                            });
-                } else {
+                        [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
+                        function (response) {
+                            $log.info("PlatformMessageService: isMoveOkResult: ", response);
+                            checkChanges();
+                        });
+                }
+                else {
                     //create new match
                     serverApiService.sendMessage(
-                            [{newMatch: {gameId: gameID, tokens: 0, move: move, startAutoMatch: {numberOfPlayers: 2}, myPlayerId: playerID, accessSignature: accessSignature}}],
-                            function (response) {
-                                $log.info("PlatformMessageService: newmatch: ", response);
-                                newmatch = false;//finish crating new match
-                                matchID = response[0]["matches"][0].matchId;
-                                var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
-                                $window.location.replace(newURL);
-                                $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
-                                checkChanges();
-                            });
+                        [{newMatch: {gameId: gameID, tokens: 0, move: move, startAutoMatch: {numberOfPlayers: 2}, myPlayerId: playerID, accessSignature: accessSignature}}],
+                        function (response) {
+                            $log.info("PlatformMessageService: newmatch: ", response);
+                            newmatch = false;//finish crating new match
+                            matchID = response[0]["matches"][0].matchId;
+                            var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
+                            $window.location.replace(newURL);
+                            $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
+                            checkChanges();
+                        });
                 }
             }
             //illegal move
             else {
                 throwError("You declared a hacker for a legal move! move=" + move);
             }
+        }
+        //got a error from iframe and send it to server
+        else if (message.emailJavaScriptError !== undefined) {
+            serverApiService.sendMessage(
+                message,
+                function (response) {
+                    $log.info("email js error," response);
+                });
         }
     });
 //====================================================
