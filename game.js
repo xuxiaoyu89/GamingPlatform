@@ -306,7 +306,7 @@ function checkChanges() {
                         }
                         i++;
                     }
-                    else if (matches[i].matchId === matchID) {
+                    if (matches[i].matchId === matchID) {
                         if (matches[i].updatedTimestampMillis > latestUpdateTime) {
                             latestUpdateTime = matches[i].updatedTimestampMillis;
                         }
