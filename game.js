@@ -226,6 +226,7 @@ var numberOfMoves = 0;//number of moves, used to determine if there's any change
 var playsound = true;
 var latestUpdateTime = 0;//update time millis
 function checkChanges() {
+    $log.info("checking changes for:", matchID);
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
         var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
