@@ -376,7 +376,7 @@ function checkChanges() {
             }
         }
         //got a error from iframe and send it to server
-        else if (message.emailJavaScriptError !== undefined) {
+        else if (message.emailJavaScriptError !== undefined && $rootScope.EMAIL_JS_ERRORS) {
             serverApiService.sendMessage(
                 message,
                 function (response) {

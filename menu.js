@@ -260,8 +260,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     $scope.$watch('EMAIL_JS_ERRORS', function () {
     	if($scope.EMAIL_JS_ERRORS){
     		// do something if EMAIL_JS_ERRORS is on
+            $rootScope.EMAIL_JS_ERRORS = true;
     	}else{
     		// do something if EMAIL_JS_ERRORS is off
+            $rootScope.EMAIL_JS_ERRORS = false;
     	}
     });
 
