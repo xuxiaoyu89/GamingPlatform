@@ -1,7 +1,7 @@
-<div class="statsBody" align="center">
+<div class="statsBody" style="overflow: scroll;" align="center">
 	<div style="font-family:verdana; font-size: 250%;">STATISTICAL ANALYSIS</div>
 	<a href="#/menu" class="button"> Go Back? <i class="icon-chevron-up"> </i></a>
-	<div ng-show="outcomesCount" class="stats_div" style="font-family:verdana">
+	<div ng-show="outcomesCount"  style="font-family:verdana; font-size: 150%; text-align: left;">
     Your Current Rank:  {{rank}}
     <br>
     Your Total Wins:  {{outcomesCount.W}}
@@ -10,7 +10,7 @@
     <br>
     Your Total Losses:  {{outcomesCount.L}}
   </div>
-  <div ng-show="!outcomesCount"  style="font-family:verdana">
+  <div ng-show="outcomesCount===undefined"  style="font-family:verdana; font-size: 200%;">
     NO DATA
   </div>      
 	<br>
