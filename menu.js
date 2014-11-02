@@ -80,7 +80,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
      *   2. matches which are not your turn
      *   3. matches which are completed
      */
-    function setCurrentMatches() {
+    /*function setCurrentMatches() {
         var selectedGame = $scope.selectdGames;
         $scope.myTurnMatches = [];
         $scope.oppoTurnMatches = [];
@@ -120,6 +120,108 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             if (firstOperation.endMatch === undefined) {
                 var turnIndex = firstOperation.setTurn.turnIndex;
                 if (turnIndex === 0) {
+                    // it is my turn
+                    $scope.myTurnMatches.push(currMatch);
+                    $log.info(currMatch);
+                }
+                else {
+                    // it is opponent's turn 
+                    $scope.oppoTurnMatches.push(currMatch);
+                    $log.info(currMatch);
+                }
+            }
+            //this match has completed
+            else {
+                $scope.endMatches.push(currMatch);
+                $log.info(currMatch);
+            }
+        }
+    }*/
+
+    function updateMatchesPool(){
+        //$log.info("in updateMatchesPool");
+        if($scope.myMatchesPool.length === 0){
+            //$log.info("myMatchesPool is empty");
+            return;
+        }
+        else{
+            var maxTime = 0;
+            for(var i = 0; i<$scope.myMatchesPool.length; i++){
+                var currMatch = $scope.myMatchesPool[i];
+                if(currMatch.updatedTimestampMillis > maxTime){
+                    maxTime = currMatch.updatedTimestampMillis;
+                }
+            }
+            serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature, updatedTimestampMillisAtLeast: maxTime}}], function (matches) {
+            var updatedMatches = matches[0].matches;
+            //$log.info(updatedMatches);
+            //update the myMatchesPool
+            for(var i = 0; i<$scope.myMatchesPool.length; i++){
+                var match = $scope.myMatchesPool[i];
+                for(var j = 0; j<updatedMatches.length; j++){
+                    var updatedMatch = updatedMatches[j];
+                    if(updatedMatch.matchId === match.matchId){
+                        $scope.myMatchesPool[i] = updatedMatch;
+                        $log.info("match changed: ", updatedMatch);
+                    }
+                }
+            }
+            setCurrentMatches();
+        });
+        }
+    }
+    
+    var interval = setInterval(updateMatchesPool, 10000);
+
+    function setCurrentMatches() {
+        if($scope.selectdGames === "" || $scope.selectdGames === null){
+            $scope.myTurnMatches = [];
+            $scope.oppoTurnMatches = [];
+            $scope.endMatches = [];
+            return;
+        }
+        var selectedGame = $scope.selectdGames;
+        $scope.myTurnMatches = [];
+        $scope.oppoTurnMatches = [];
+        $scope.endMatches = [];
+        //$log.info("length:", $scope.myMatchesPool.length);
+        //$log.info("currentGame: ", $scope.selectdGames);
+        for (var i = 0; i < $scope.myMatchesPool.length; i++) {
+            var currMatch = $scope.myMatchesPool[i];
+            //check if currMatch is a match of selectedGame
+            if (selectedGame === null || currMatch.gameId !== selectedGame.gameId) {
+                continue;
+            }
+            //get myTurnIndex use the matchId;
+            var myTurnIndex = parseInt($window.localStorage.getItem(currMatch.matchID));
+            
+            // check the last move in history
+            var history = currMatch.history;
+            var moves = history.moves;
+            var lastMove = moves[moves.length - 1];
+            var firstOperation = lastMove[0];
+            //set opponent, myPlayerId, TurnIndex for currMatch
+            currMatch.myPlayerId = myPlayerId;
+            if (firstOperation.endMatch === undefined) {
+                currMatch.turnIndex = firstOperation.setTurn.turnIndex;
+            }
+            else {
+                currMatch.turnIndex = -1;
+            }
+            //set opponent;
+            if (currMatch.playersInfo[0].playerId === myPlayerId) {
+                if (currMatch.playersInfo[1] === null) {
+                    currMatch.opponent = "no opponent";
+                }
+                else
+                    currMatch.opponent = currMatch.playersInfo[1].displayName;
+            }
+            else
+                currMatch.opponent = currMatch.playersInfo[0].displayName;
+            //this match has not complete, we should get the turn
+            if (firstOperation.endMatch === undefined) {
+                var turnIndex = firstOperation.setTurn.turnIndex;
+                if (turnIndex === myTurnIndex) {
                     // it is my turn
                     $scope.myTurnMatches.push(currMatch);
                     $log.info(currMatch);
