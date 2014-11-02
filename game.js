@@ -374,7 +374,7 @@ function checkChanges() {
                                 var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
                                 $window.location.replace(newURL);
                                 $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
-                                chekChanges();
+                                checkChanges();
                             });
                 }
             }
