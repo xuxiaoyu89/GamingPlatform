@@ -306,7 +306,10 @@ function checkChanges() {
                         }
                         i++;
                     }
-                    if (matches[i].matchId === matchID) {
+                    if (i === matches.length) {
+                        $log.info("Your match didn't change");
+                    }
+                    else if (matches[i].matchId === matchID) {
                         if (matches[i].updatedTimestampMillis > latestUpdateTime) {
                             latestUpdateTime = matches[i].updatedTimestampMillis;
                         }
