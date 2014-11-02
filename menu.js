@@ -171,7 +171,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         }
     }
     
-    var interval = setInterval(updateMatchesPool, 10000);
+    $rootScope.menu_interval = setInterval(updateMatchesPool, 10000);
 
     function setCurrentMatches() {
         if($scope.selectdGames === "" || $scope.selectdGames === null){
