@@ -9,18 +9,14 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   var turnIndex;//current turn index
   var playersInfo;
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
-  //Scope Variables:
-  //gameUrl
-
-  //$scope.gameStatus = "Loading game, please wait";
 
   var newmatch = false;//whether to create a new match or not, default set to false
-  //var firstmove = true;//while FIRSTMOVE is true, use MATCHINFO from LOCALSTORAGE
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
 
   //SOME NOT SO IMPORTANT VARS
+  $scope.gameStatus = "Loading game, please wait";
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
   var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
@@ -34,7 +30,7 @@ function alert_log_error(alert, log) {
     $log.error("Alert & Log Error: ", log);
     return;
 }
-function emailJSError(message) {
+/*function emailJSError(message) {
     $log.error("Game JS Error: ", message);
     var emailObj = [{emailJavaScriptError: 
                     {gameDeveloperEmail: $scope.gameEmail, 
@@ -46,7 +42,7 @@ function emailJSError(message) {
                 $log.info("GAME_JS_ERROR Response: ", response);
             });
     return;
-}
+}*/
 
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
@@ -176,7 +172,7 @@ serverApiService.sendMessage(
             $scope.gameInfo = response[0].games[0];
             var gameUrl = $scope.gameInfo.gameUrl;
             $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
-            $scope.gameEmail = $scope.gameInfo.gameDeveloperEmail;
+            $window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
         });
 //====================================================
 
@@ -241,51 +237,89 @@ function updateStatus() {
 //function for checking if there is any change in match state
 var numberOfMoves = 0;//number of moves, used to determine if there's any change
 var playsound = true;
+var latestUpdateTime = 0;//update time millis
 function checkChanges() {
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
         var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
         platformMessageService.sendMessage({updateUI: params});
-    //} else if (firstmove) {
-    //firstmove = false;
-    //if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
-    //  numberOfMoves = $scope.matchInfo.history.moves.length;
-    // updateStatus();
-    //}
     } else {
-        serverApiService.sendMessage(
-            //get all the matches that is being played or has been played by this player
-            [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature}}],
-            function (response) {
-                $log.info("checkChanges getPlayerMatches response: ", response);
-                var matches = response[0]["matches"];
-                if(matches===undefined) {
-                    $log.info("Cannot getPlayerMatches.", response);
-                    return;
-                }
-                //search through all matches to find tha match that has matchID
-                var i = 0;
-                while(i<matches.length && matches[i].matchId!==matchID) {
-                    i++;
-                }
-                if(i===matches.length && matchInfo!==undefined){   //first time to this match, not reserve sucessfully yet
-                	$scope.matchInfo = matchInfo;
-                	numberOfMoves = $scope.matchInfo.history.moves.length;
-                    if (playsound){
-                	   updateStatus();
-                       playsound = false;
+        //if user just jumped to this page from menu, then pull all matches
+        if (latestUpdateTime === 0) {
+            serverApiService.sendMessage(
+                //get all the matches that is being played or has been played by this player
+                [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature}}],
+                function (response) {
+                    $log.info("checkChanges getPlayerMatches response: ", response);
+                    var matches = response[0]["matches"];
+                    if(matches === undefined) {
+                        $log.info("Cannot getPlayerMatches.", response);
+                        return;
+                    }
+                    //search through all matches to find tha match that has matchID
+                    var i = 0;
+                    while(i<matches.length && matches[i].matchId!==matchID) {
+                        if (matches[i].updatedTimestampMillis > latestUpdateTime) {
+                            latestUpdateTime = matches[i].updatedTimestampMillis;
+                        }
+                        i++;
+                    }
+                    if(i===matches.length && matchInfo!==undefined){   //first time to this match, not reserve sucessfully yet
+                    	$scope.matchInfo = matchInfo;
+                    	numberOfMoves = $scope.matchInfo.history.moves.length;
+                        if (playsound){
+                    	   updateStatus();
+                           playsound = false;
+                        }
+                    }
+                    else if (matches[i].matchId === matchID) {
+                        if (matches[i].updatedTimestampMillis > latestUpdateTime) {
+                            latestUpdateTime = matches[i].updatedTimestampMillis;
+                        }
+                        $scope.matchInfo = matches[i];
+                        //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
+                        if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
+                            numberOfMoves = $scope.matchInfo.history.moves.length;
+                            updateStatus();
+                        }
                     }
                 }
-                else if (matches[i].matchId === matchID) {
-                    $scope.matchInfo = matches[i];
-                    //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
-                    if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
-                        numberOfMoves = $scope.matchInfo.history.moves.length;
-                        updateStatus();
+            );
+        }
+        //pull matches changed since latestUpdateTime
+        else {
+            serverApiService.sendMessage(
+                //get all the matches that is being played or has been played by this player
+                [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature, updatedTimestampMillisAtLeast: latestUpdateTime}}],
+                function (response) {
+                    $log.info("checkChanges getPlayerMatches after latestUpdateTime response: ", response);
+                    var matches = response[0]["matches"];
+                    if(matches === undefined) {
+                        $log.info("No match updated since time:", latestUpdateTime, response);
+                        return;
                     }
-                } 
-            }
-        );
+                    //search through all matches to find tha match that has matchID
+                    var i = 0;
+                    while(i<matches.length && matches[i].matchId!==matchID) {
+                        if (matches[i].updatedTimestampMillis > latestUpdateTime) {
+                            latestUpdateTime = matches[i].updatedTimestampMillis;
+                        }
+                        i++;
+                    }
+                    else if (matches[i].matchId === matchID) {
+                        if (matches[i].updatedTimestampMillis > latestUpdateTime) {
+                            latestUpdateTime = matches[i].updatedTimestampMillis;
+                        }
+                        $scope.matchInfo = matches[i];
+                        //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
+                        if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
+                            numberOfMoves = $scope.matchInfo.history.moves.length;
+                            updateStatus();
+                        }
+                    }
+                }
+            );
+        }
     }
 }
 //================= END CHECKCHANGES FUNCTION
@@ -298,12 +332,12 @@ function checkChanges() {
     var move;//move made by player
     platformMessageService.addMessageListener(function (message) {
         $log.info("PlatformMessageService: got a message.");
-        /*if (message.gameReady !== undefined) {
+        if (message.gameReady !== undefined) {
             checkChanges();
             if (newmatch) {
                 $scope.gameStatus = "Game loaded, please make a move";
             }
-        }*/
+        }
         //iframe send a move to platform
         if (message.makeMove !== undefined) {
             $log.info("PlatformMessageService: makeMove.")
