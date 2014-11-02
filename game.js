@@ -3,6 +3,10 @@
 myAppControllers
 .controller('GameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
+  
+  if($rootScope.menu_interval !== undefined){
+    	clearInterval($rootScope.menu_interval);
+    }
 
   //SOME important VARIABLES
   var state;//current game state
