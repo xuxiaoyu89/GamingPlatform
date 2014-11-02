@@ -1,6 +1,5 @@
 <div class="statsBody" align="center">
-	
-	<h1 style="font-family:verdana">STATISTICAL ANALYSIS</h1>
+	<div style="font-family:verdana; font-size: 250%;">STATISTICAL ANALYSIS</div>
 	<a href="#/menu" class="button"> Go Back? <i class="icon-chevron-up"> </i></a>
 	<div ng-show="outcomesCount" class="stats_div" style="font-family:verdana">
     Your Current Rank:  {{rank}}
@@ -17,10 +16,12 @@
 	<br>
 	
 
-	<div >
-	
-	
-
-	
+	<div ng-repeat="stats in statsIndex track by $index">
+		<div class="stats_div" style="font-family:verdana">
+			vs. {{stats.displayName}} <img ng-src="stats.avatarImageUrl" style="heigh:50px; width:50px"></img>
+			<br>
+			You Win: {{stats.outcomes.W}};	You Tie: {{stats.outcomes.T}};	You Loss: {{stats.outcomes.L}}
+		</div>
+		<br>
 	</div>
 </div>
