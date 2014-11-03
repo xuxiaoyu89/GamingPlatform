@@ -40,6 +40,11 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    }
     }
 	parseURL();
+	$scope.playMode = "playAgainstTheComputer";
+	stateService.setPlayMode($scope.playMode);
+	
+	
+	
 	//===================== GET GAME'S URL ===============//
 	serverApiService.sendMessage(
 	    [{getGames: {gameId: $scope.gameID}}], //get the game that has id equals to gameID
@@ -52,6 +57,29 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    });
 	//====================================================
 	
+	
+	platformMessageService.addMessageListener(function (message) {
+	    if (message.gameReady !== undefined) {
+	      gotGameReady = true;
+	      var game = message.gameReady;
+	      game.isMoveOk = function (params) {
+	        platformMessageService.sendMessage({isMoveOk: params});
+	        return true;
+	      };
+	      game.updateUI = function (params) {
+	        platformMessageService.sendMessage({updateUI: params});
+	      };
+	      stateService.setGame(game);
+	    } else if (message.isMoveOkResult !== undefined) {
+	      if (message.isMoveOkResult !== true) {
+	        $window.alert("isMoveOk returned " + message.isMoveOkResult);
+	      }
+	    } else if (message.makeMove !== undefined) {
+	      stateService.makeMove(message.makeMove);
+	    } else {
+	      $window.alert("Platform got: " + angular.toJson(message, true));
+	    }
+	  });
 	
 	$scope.leaveGame = function () {
 	   
