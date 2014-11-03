@@ -153,6 +153,16 @@ serverApiService.sendMessage(
             if (newmatch) {
                 $scope.gameStatus = "Game loaded, please make a move";
             }
+            
+            var game = message.gameReady;
+            game.isMoveOk = function (params) {
+                platformMessageService.sendMessage({isMoveOk: params});
+            return true;
+            };
+            game.updateUI = function (params) {
+                platformMessageService.sendMessage({updateUI: params});
+            };
+            stateService.setGame(game);
         }
         //iframe send a move to platform
         else if (message.makeMove !== undefined) {
