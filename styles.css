@@ -13,7 +13,7 @@ html, body {
   height: 100%;
   /*overflow: hidden;*/
   position: fixed!important;
-  color: #58863d;
+  color: rgba(56, 97, 31, 1);
 }
 iframe {
     overflow: hidden;
@@ -106,7 +106,7 @@ h1, h2, h3, h4 {
 	margin-right: 5px;
 }
 .SMPG_menu_button {
-	background-color: rgba(177, 237, 141, 1);
+	//background-color: rgba(177, 237, 141, 1);
 	width: 98%;
 	margin: 1%;
 	padding: 0px;
