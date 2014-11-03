@@ -3,16 +3,28 @@
     ng-cloak ng-controller="MenuCtrl">
     <div class="SMPG_menu_top">
     <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
-    <h4>Hello, <b>{{displayName}}</b> !</h4>
+    <h4 class="title">Hello, <b>{{displayName}}</b> !</h4>
+    <button ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
    </div>
+   
    <div class="SMPG_menu_select">
-   <center> 
-   		<select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
-      			<option value="">-- choose game --</option>      	
-    		</select>
-    		<button  ng-show="gameId" ng-click="goToStats()"> GO TO STATS </button>
-   </center>
+   <div class="list">
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Choose Game: 
+    </div>
+    <select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
+      <option value="">--</option>
+    </select>
+  </label>
+
+</div>
+   		<!--select class="" ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
+      			<option class=""
+      			value="">-- choose game --</option>      	
+    		</select-->
    </div>
+   
    <div class="SMPG_menu_options">
    <center> 
   		<button ng-show="AUTO_MATCH" ng-click="autoMatchHandler()">AUTO MATCH</button>
