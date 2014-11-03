@@ -1,3 +1,10 @@
+//Color palette:
+//Text: #333333
+//Dark: #003333
+//Medium: #336666
+//Light: #669999
+//BG: #CCCCCC
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,20 +12,15 @@ html, body {
   height: 100%;
   overflow: hidden;
   position: fixed!important;
+  color: #003333;
+}
+iframe {
+    overflow: hidden;
+    height: 75%;
+    width: 100%;
 }
 
-.SMPG_menu {
-	height:100%;
-	width:100%;
-	overflow: hidden;
-}
-
-.SMPG_menu_top {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	text-align: center;
-}
-
+// This is for index.html so that loaded HTML content fits in screen
 .index {
   margin: 0;
   padding: 0;
@@ -26,26 +28,33 @@ html, body {
   height: 100%;
 }
 
-.SMPG_game_top {
-    overflow: scroll;
-    height: 15%;
-}
-
-iframe {
-    overflow: hidden;
-    height: 75%;
-    width: 100%;
-}
-
-.SMPG_game_bottom {
-    overflow: hidden;
-    height: 10%;
-}
-
+//These are used by all SMPG pages
 .SMPG_avatar {
   height: 60px;
   width: 60px;
   margin: 5px;
+}
+
+// These are menu.html items
+.SMPG_menu {
+	height:100%;
+	width:100%;
+	overflow: hidden;
+}
+.SMPG_menu_top {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+// These are game.html items
+.SMPG_game_top {
+    overflow: scroll;
+    height: 15%;
+}
+.SMPG_game_bottom {
+    overflow: hidden;
+    height: 10%;
 }
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
