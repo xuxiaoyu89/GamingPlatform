@@ -11,9 +11,9 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: fixed!important;
-  color: #333333;
+  color: #58863d;
 }
 iframe {
     overflow: hidden;
@@ -59,7 +59,15 @@ div {
 }
 .SMPG_menu_options {
 	padding-top: 5px;
-	padding-bottom: 5px;
+}
+.SMPG_menu_list {
+	
+}
+.SMPG_menu_yourturn {
+	
+}
+.SMPG_menu_sublist {
+	
 }
 
 /* These are game.html items */
