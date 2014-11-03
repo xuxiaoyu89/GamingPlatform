@@ -48,7 +48,7 @@
             <table class="SMPG_menu_table">
                 <tr ng-repeat="match in myTurnMatches track by $index">
                     <td class="SMPG_menu_td1">
-                         <a class="ion-android-contact"></a> {{match.opponent}}
+                         <a class="ion-android-contact"></a> <b>{{match.opponent}}</b>
                     </td>
                     <td class="SMPG_menu_td2">
                          <button class="button SMPG_menu_button"
@@ -66,7 +66,7 @@
             <table class="SMPG_menu_table">
                 <tr ng-repeat="match in oppoTurnMatches track by $index">
                     <td class="SMPG_menu_td1">
-                         <a class="ion-android-contact"></a> {{match.opponent}}
+                         <a class="ion-android-contact"></a> <b>{{match.opponent}}</b>
                     </td>
                     <td class="SMPG_menu_td2">
                          <button class="button SMPG_menu_button"
@@ -84,7 +84,7 @@
             <table class="SMPG_menu_table">
                 <tr class="SMPG_menu_tr" ng-repeat="match in endMatches track by $index">
                     <td class="SMPG_menu_td1">
-                         <a class="ion-android-contact"></a> {{match.opponent}}
+                         <a class="ion-android-contact"></a> <b>{{match.opponent}}</b>
                     </td>
                     <td class="SMPG_menu_td2">
                          <button class="button SMPG_menu_button"
