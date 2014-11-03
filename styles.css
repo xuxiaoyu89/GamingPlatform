@@ -70,9 +70,10 @@ div {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	color: white;
+	font-size: 18px;
 }
 .SMPG_menu_yourturn {
-	background-color: #38611F;
+	background-color: rgba(56, 97, 31, 1);
 }
 .SMPG_menu_waiting {
 	background-color: #58863d;
