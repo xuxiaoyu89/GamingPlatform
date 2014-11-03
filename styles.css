@@ -21,7 +21,9 @@ iframe {
     width: 100%;
 }
 h1, h2, h3, h4 {
-	color: #58863d;
+	color: white;
+	padding: 2%;
+	margin: 0px;
 }
 div {
 	text-align: center;
@@ -50,12 +52,15 @@ div {
 	height:100%;
 	width:100%;
 	overflow: scroll;
+	background-color: rgba(173, 215, 160, 1);
 }
 .SMPG_menu_top {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 1%;
+	//padding-bottom: 1%;
+	background-color: rgba(56, 97, 31, 1);
 }
 .SMPG_menu_select {
+	margin: 2%;
 	margin-left: 25%;
 	width: 50%;
 	/*padding-left: 20%;*/
