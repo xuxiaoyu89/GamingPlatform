@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
 +	padding-top: 0px;
  }
  div {
+ 	text-align: -webkit-center;
  	text-align: center;
  }
  /* This is for index.html so that loaded HTML content fits in screen */
@@ -192,10 +193,10 @@ a.button:active{
 
 .stats_div {
     background-color: #EAEAAF;
-    width: 300px;
-    padding: 25px;
+    width: 400px;
+    padding: 15px;
     border: 10px solid #F7F7E7;
-    margin: 20px;
+    margin: 10px;
     border-radius: 7px;   
     box-shadow: 0 10px 6px -6px #777;
 }
