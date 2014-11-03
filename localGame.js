@@ -172,7 +172,7 @@ serverApiService.sendMessage(
       game.updateUI = function (params) {
         platformMessageService.sendMessage({updateUI: params});
       };
-      //stateService.setGame(game);
+      stateService.setGame(game);
     } else if (message.isMoveOkResult !== undefined) {
       if (message.isMoveOkResult !== true) {
         //$window.alert("isMoveOk returned " + message.isMoveOkResult);
