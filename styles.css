@@ -111,6 +111,21 @@ div {
     overflow: scroll;
     height: 15%;
 }
+.SMPG_game_player {
+	width: 45%;
+	float: left;
+	text-align: right;
+	vertical-align: middle;
+}
+.SMPG_game_vs {
+	width: 10%;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+}
+.SMPG_game_p2 {
+	text-align: left;
+}
 .SMPG_game_bottom {
     overflow: hidden;
     height: 10%;
