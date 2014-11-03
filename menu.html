@@ -48,14 +48,14 @@
             <table class="SMPG_menu_table">
                 <tr ng-repeat="match in myTurnMatches track by $index">
                     <td class="SMPG_menu_td1">
-                        <button class="button icon ion-log-in"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
                     </td>
                     <td class="SMPG_menu_td2">
+                         <button class="button button-full"
+                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
+                                {{match.opponent}}</button>
                         <!-- Here we should display a link to the game.html with url parameters(playerId and matchId) -->
                         <!-- The below the link there should some match info such as -->
                         <!-- the name of the game, opponent(if any) -->
-                        {{match.opponent}}
                     </td>
                 </tr>
             </table>
