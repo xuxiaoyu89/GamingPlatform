@@ -22,9 +22,9 @@ iframe {
 }
 h1, h2, h3, h4 {
  	color: white;
- 	padding: 2%;
+ 	padding: 1%;
  	margin: 0px;
-+	padding-top: 0px;
+	padding-top: 0px;
  }
  div {
  	//text-align: -webkit-center;
