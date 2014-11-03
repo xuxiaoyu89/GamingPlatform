@@ -323,6 +323,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         });
         if(gameId !== undefined){
         	retriveCurrentGames();
+        	//save gameurl to local storage
+        	window.localStorage.setItem("gameURL", angular.toJson(gameUrl));
         }
     });
 
@@ -414,7 +416,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		alert("please select a game!");
     		return;
     	}
-    	$location.search("GameURL", gameUrl);
+    	//$location.search("GameURL", gameUrl);
     	$location.path('localGame');
     	//alert("play against computer");
     }

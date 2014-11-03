@@ -4,7 +4,7 @@ myAppControllers
 .controller('localGameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, stateService, platformMessageService) {
 	
-	
+	$scope.gameUrl = window.localStorage.getItem("gameURL");
 	var entireUrl = $window.location.href;
     $log.info("entireUrl: ", entireUrl);
     var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
@@ -36,12 +36,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    var i;
 	    for (i = 0; i < parsedurl.length; i++) {
 	        subparse = parsedurl[i].split('=');
-	        if (subparse.length === 2) {
-	        	if (subparse[0].toLowerCase() === 'gameurl') {
-	                $scope.gameurl = subparse[1];
-	            } else if (subparse[0].toLowerCase() === 'gameid') {
-	                $scope.gameID = subparse[1];
-	            }
+	        if (subparse.length === 2) {	
+	        	$scope.gameID = subparse[1];
 	        }
 	    }
     }
@@ -63,11 +59,6 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    }
 	    return "Match is ongoing! Turn of player index " + matchState.turnIndex;
 	};
-    $scope.playMode = "passAndPlay";
-    stateService.setPlayMode($scope.playMode);
-    $scope.$watch('playMode', function() {
-	    stateService.setPlayMode($scope.playMode);
-    });
 
 	
 	platformMessageService.addMessageListener(function (message) {
