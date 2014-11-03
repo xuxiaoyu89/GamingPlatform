@@ -51,11 +51,8 @@
                          <a class="ion-android-contact"></a> {{match.opponent}}
                     </td>
                     <td class="SMPG_menu_td2">
-                         <button class="button button-full"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
-                        <!-- Here we should display a link to the game.html with url parameters(playerId and matchId) -->
-                        <!-- The below the link there should some match info such as -->
-                        <!-- the name of the game, opponent(if any) -->
+                         <button class="button button-block SMPG_menu_button"
+                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"><a class="ion-ios7-redo"></a></button>
                     </td>
                 </tr>
             </table>
@@ -87,11 +84,11 @@
             <table class="SMPG_menu_table">
                 <tr class="SMPG_menu_tr" ng-repeat="match in endMatches track by $index">
                     <td class="SMPG_menu_td1">
-                        <button class="button button-small icon ion-eye"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
+                         <a class="ion-android-contact"></a> {{match.opponent}}
                     </td>
                     <td class="SMPG_menu_td2">
-                        {{match.opponent}}
+                         <button class="button button-block SMPG_menu_button"
+                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"><a class="ion-ios7-redo-outline"></a></button>
                     </td>
                 </tr>
             </table>
