@@ -2,23 +2,25 @@
 <div class="SMPG_menu"
     ng-cloak ng-controller="MenuCtrl">
     <div class="SMPG_menu_top">
-   <!--center-->
     <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
-    <h4>Hello, <b>{{displayName}}</b> !</h1>
-   <!--/center-->
+    <h4>Hello, <b>{{displayName}}</b> !</h4>
    </div>
+   <div class="SMPG_menu_select">
    <center> 
    		<select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
       			<option value="">-- choose game --</option>      	
     		</select>
     		<button  ng-show="gameId" ng-click="goToStats()"> GO TO STATS </button>
-   </center> 
+   </center>
+   </div>
+   <div class="SMPG_menu_options">
    <center> 
   		<button ng-show="AUTO_MATCH" ng-click="autoMatchHandler()">AUTO MATCH</button>
         <button ng-click="playAgainstComputerHandler()">Play Against Computer</button>
         <button ng-click="passAndPlayHandler()">Pass and Play</button>
 	<br>
-    </center> 
+    </center>
+    </div>
   <div style="height:10%; overflow: hidden;">
   </div>
   <div align = "center">
