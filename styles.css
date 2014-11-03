@@ -27,8 +27,8 @@ h1, h2, h3, h4 {
 +	padding-top: 0px;
  }
  div {
- 	text-align: -webkit-center;
- 	//text-align: center;
+ 	//text-align: -webkit-center;
+ 	text-align: center;
  }
  /* This is for index.html so that loaded HTML content fits in screen */
  .index {
