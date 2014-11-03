@@ -61,7 +61,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	};
 
 	
-	platformMessageService.addMessageListener(function (message) {
+	/*platformMessageService.addMessageListener(function (message) {
 	    if (message.gameReady !== undefined) {
 	      gotGameReady = true;
 	      var game = message.gameReady;
@@ -82,7 +82,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    } else {
 	      $window.alert("Platform got: " + angular.toJson(message, true));
 	    }
-	  });
+	  });*/
 	
 	$scope.leaveGame = function () {
 	   
