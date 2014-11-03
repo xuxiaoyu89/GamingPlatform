@@ -20,7 +20,9 @@ iframe {
     height: 75%;
     width: 100%;
 }
-
+h1, h2, h3, h4 {
+	color: #003333;
+}
 /* This is for index.html so that loaded HTML content fits in screen */
 .index {
   margin: 0;
