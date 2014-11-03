@@ -110,6 +110,13 @@ h1, h2, h3, h4 {
 	width: 98%;
 	margin: 1%;
 	padding: 0px;
+	min-height: 0px;
+	line-height: 0px;
+	height: 30px;
+}
+.SMPG_icon {
+	font-size: 25px;
+	vertical-align: middle;
 }
 
 /* These are game.html items */
