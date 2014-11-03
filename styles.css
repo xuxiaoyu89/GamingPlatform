@@ -117,6 +117,7 @@ div {
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
+	float: left;
 }
 .SMPG_game_vs {
 	width: 10%;
@@ -127,7 +128,6 @@ div {
 	vertical-align: middle;
 }
 .SMPG_game_p2 {
-	float: left;
 	text-align: left;
 }
 .SMPG_game_bottom {
