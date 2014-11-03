@@ -19,6 +19,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    MENU_URL=beforeHashUrl.concat(MENU_URL);
 		$log.info("Menu URL: ", MENU_URL);
 	    
+		
+		
 	    platformUrl = hashedUrl[1].split('?');
 	    $log.info("Platform URL: ", platformUrl);	  
 		if (platformUrl.length <2) {
