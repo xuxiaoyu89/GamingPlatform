@@ -64,7 +64,7 @@ div {
 	padding-top: 5px;
 }
 .SMPG_menu_list {
-	
+	overflow: scroll;
 }
 .SMPG_menu_listbar {
 	padding-top: 5px;
@@ -83,6 +83,9 @@ div {
 }
 .SMPG_menu_table {
 	width: 100%;
+}
+.SMPG_menu_tr {
+	padding-top: 2px;
 }
 .SMPG_menu_td1 {
 	width: 30%;
