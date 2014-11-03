@@ -2,7 +2,7 @@
 
 myAppControllers
 .controller('GameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $routeParams, $exceptionHandler, serverApiService, platformMessageService) {
+function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
   
   if($rootScope.menu_interval !== undefined){
     	clearInterval($rootScope.menu_interval);
@@ -398,14 +398,14 @@ function checkChanges() {
 })
 .factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
-    $log.info("Game had an exception:", exception, cause);
+    $log.info("Platform had an exception:", exception, cause);
     var exceptionString = angular.toJson({exception: exception, cause: cause, lastMessage: $window.lastMessage}, true);
     var message = 
         {
           emailJavaScriptError: 
             {
-              gameDeveloperEmail: "$window.gameDeveloperEmail", 
-              emailSubject: "Error in game " + $window.location, 
+              gameDeveloperEmail: "rshen1993@gmail.com", 
+              emailSubject: "Error in platform " + $window.location, 
               emailBody: exceptionString
             }
         };
