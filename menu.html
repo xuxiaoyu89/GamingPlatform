@@ -34,16 +34,12 @@
         <button class="button button-small button-stable" 
         	ng-click="passAndPlayHandler()">Pass and Play</button>
   </div>
-    
-  <div style="height:10%; overflow: hidden;">
-  </div>
-  <div align = "center">
-      <table align = "center" style="width:50%">
-          <tr>
-              <td>
-                  <p>Your Turn Matches: </p>
-              </td>
-              <td>
+  
+  <div class="SMPG_menu_list">
+  	<div class="bar bar-energized SMPG_menu_yourmove">
+              <h1 class="title">Your Move</h1>
+        </div>
+        <div class="SMPG_menu_sublist">
                   <table>
                       <tr ng-repeat="match in myTurnMatches track by $index">
                           <td>
@@ -55,14 +51,11 @@
                           </td>
                       </tr>
                   </table>
-              </td>
-          </tr>
-          
-          <tr>
-              <td>
-                  <p>Opponent's Turn Matches: </p>
-              </td>
-              <td>
+        </div>
+        <div class="bar bar-energized SMPG_menu_waiting">
+              <h1 class="title">Waiting on Opponent</h1>
+        </div>
+        <div class="SMPG_menu_sublist">
                   <table>
                       <tr ng-repeat="match in oppoTurnMatches track by $index">
                           <td>
@@ -71,14 +64,11 @@
                           </td>
                       </tr>
                   </table>
-              </td>
-          </tr>
-          
-          <tr>
-              <td>
-                  <p>End Matches: </p>
-              </td>
-              <td>
+        </div>
+        <div class="bar bar-energized SMPG_menu_waiting">
+              <h1 class="title">Completed Games</h1>
+        </div>
+        <div class="SMPG_menu_sublist">
                   <table>
                       <tr ng-repeat="match in endMatches track by $index">
                           <td>
@@ -87,10 +77,7 @@
                           </td>
                       </tr>
                   </table>
-              </td>
-          </tr>
-          
-      </table>
+        </div>
   </div>
   
     
