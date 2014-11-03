@@ -393,8 +393,9 @@ function checkChanges() {
                     $log.info("email js error response:", response);
                 });
         }
-    })
+    });
 //====================================================
+})
     .factory('$exceptionHandler', function ($window, $log) {
       return function (exception, cause) {
         $log.info("Platform had an exception:", exception, cause);
