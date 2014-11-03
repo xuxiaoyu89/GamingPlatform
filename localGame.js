@@ -36,4 +36,14 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    }
     }
 	parseURL();
+	
+	
+	$scope.leaveGame = function () {
+	   
+	};
+
+	//===================== MATCH_MENU: DELETE GAME ===============//
+	$scope.deleteGame = function () {
+	    
+	};
 });
