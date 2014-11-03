@@ -1,9 +1,12 @@
 
 <div class="SMPG_menu"
     ng-cloak ng-controller="MenuCtrl">
-    <center><img ng-src = "{{avatarImageUrl}}" class="SMPG_avatar"></img> 
-    <div>Hello {{displayName}} !!</div></center>
-    <br>
+    <div class="SMPG_menu_top">
+   <!--center-->
+    <img ng-src = "{{avatarImageUrl}}" class="SMPG_avatar item-avatar"></img> 
+    <div>Hello, {{displayName}} !</div>
+   <!--/center-->
+   </div>
    <center> 
    		<select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
       			<option value="">-- choose game --</option>      	
