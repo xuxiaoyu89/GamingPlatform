@@ -68,12 +68,11 @@
                   <table class="SMPG_menu_table">
                       <tr ng-repeat="match in oppoTurnMatches track by $index">
                           <td class="SMPG_menu_td1">
-                              <button class="button icon ion-ios7-play"
+                              <button class="button icon ion-eye"
                               		ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
                           </td>
                           <td class="SMPG_menu_td2">
                               {{match.opponent}}
-                              <!--button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button-->
                           </td>
                       </tr>
                   </table>
@@ -87,12 +86,11 @@
                   <table class="SMPG_menu_table">
                       <tr class="SMPG_menu_tr" ng-repeat="match in endMatches track by $index">
                           <td class="SMPG_menu_td1">
-                              <button class="button icon ion-ios7-play"
+                              <button class="button icon ion-eye"
                               		ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
                           </td>
                           <td class="SMPG_menu_td2">
                               {{match.opponent}}
-                              <!--button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button-->
                           </td>
                       </tr>
                   </table>
