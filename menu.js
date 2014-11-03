@@ -410,6 +410,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //playAgainstComputerHandler;
     $scope.playAgainstComputerHandler = function() {
+    	if(gameUrl === null){
+    		alert("please select a game!");
+    		return;
+    	}
+    	$location.search("GameURL", gameUrl);
     	$location.path('localGame');
     	//alert("play against computer");
     }
