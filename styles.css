@@ -1,9 +1,9 @@
 /*Color palette:
 //Text: #333333
-//Dark: #003333
-//Medium: #336666
-//Light: #669999
-//BG: #CCCCCC
+//Dark: #58863d
+//Medium: #93d06f
+//Light: #b1ed8d
+//BG: #d1f8b9
 */
 
 html, body {
@@ -13,7 +13,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   position: fixed!important;
-  color: #003333;
+  color: #333333;
 }
 iframe {
     overflow: hidden;
@@ -21,7 +21,10 @@ iframe {
     width: 100%;
 }
 h1, h2, h3, h4 {
-	color: #003333;
+	color: #58863d;
+}
+div {
+	text-align: center;
 }
 /* This is for index.html so that loaded HTML content fits in screen */
 .index {
@@ -47,7 +50,12 @@ h1, h2, h3, h4 {
 .SMPG_menu_top {
 	padding-top: 5px;
 	padding-bottom: 5px;
-	text-align: center;
+}
+.SMPG_menu_select {
+	
+}
+.SMPG_menu_options {
+	
 }
 
 /* These are game.html items */
