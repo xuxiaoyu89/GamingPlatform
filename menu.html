@@ -1,10 +1,12 @@
 
 <div class="SMPG_menu"
     ng-cloak ng-controller="MenuCtrl">
-    <div class="SMPG_menu_top">
-    <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
-    <h4 class="title">Hello, <b>{{displayName}}</b> !</h4>
-    <button ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
+   <div class="SMPG_menu_top">
+    	<img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
+    	<h4 class="title">Hello, <b>{{displayName}}</b> !</h4>
+    
+    	<button class="button button-small button-stable" 
+    		ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
    </div>
    
    <div class="SMPG_menu_select">
@@ -41,15 +43,18 @@
   	<div class="SMPG_menu_listbar SMPG_menu_yourturn">
               <b>Your Move:</b>
         </div>
-        <div class="SMPG_menu_sublist">
-                  <table>
+        <div class="SMPG_menu_table">
+                  <table class="SMPG_menu_table">
                       <tr ng-repeat="match in myTurnMatches track by $index">
-                          <td>
+                      	  <td class="SMPG_menu_td1">
+                              <button class="button icon ion-ios7-play"
+                              		ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
+                          </td>
+                          <td class="SMPG_menu_td2">
                               <!-- Here we should display a link to the game.html with url parameters(playerId and matchId) -->
                               <!-- The below the link there should some match info such as -->
                               <!-- the name of the game, opponent(if any) -->
-                              opponent: {{match.opponent}}
-                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+                              {{match.opponent}}
                           </td>
                       </tr>
                   </table>
@@ -59,12 +64,16 @@
         <div class="SMPG_menu_listbar SMPG_menu_waiting">
               <b>Waiting on Opponent:</b>
         </div>
-        <div class="SMPG_menu_sublist">
-                  <table>
+        <div class="SMPG_menu_table">
+                  <table class="SMPG_menu_table">
                       <tr ng-repeat="match in oppoTurnMatches track by $index">
-                          <td>
-                              opponent: {{match.opponent}}
-                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+                          <td class="SMPG_menu_td1">
+                              <button class="button icon ion-ios7-play"
+                              		ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
+                          </td>
+                          <td class="SMPG_menu_td2">
+                              {{match.opponent}}
+                              <!--button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button-->
                           </td>
                       </tr>
                   </table>
@@ -74,12 +83,16 @@
         <div class="SMPG_menu_listbar SMPG_menu_completed">
               <b>Completed Games:</b>
         </div>
-        <div class="SMPG_menu_sublist">
-                  <table>
-                      <tr ng-repeat="match in endMatches track by $index">
-                          <td>
-                              opponent: {{match.opponent}}
-                              <button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button>
+        <div class="SMPG_menu_table">
+                  <table class="SMPG_menu_table">
+                      <tr class="SMPG_menu_tr" ng-repeat="match in endMatches track by $index">
+                          <td class="SMPG_menu_td1">
+                              <button class="button icon ion-ios7-play"
+                              		ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)"></button>
+                          </td>
+                          <td class="SMPG_menu_td2">
+                              {{match.opponent}}
+                              <!--button ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">Play</button-->
                           </td>
                       </tr>
                   </table>
