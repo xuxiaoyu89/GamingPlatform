@@ -85,14 +85,17 @@ div {
 	width: 100%;
 }
 .SMPG_menu_tr {
-	padding-top: 2px;
+	/* padding-top: 2px; */
 }
 .SMPG_menu_td1 {
-	width: 30%;
+	width: 70%;
+	padding-right: 10px;
 }
 .SMPG_menu_td2 {
-	width: 70%;
-	padding-left: 10px;
+	width: 30%;
+}
+.SMPG_menu_button {
+	background-color: rgba(177, 237, 141, 1);
 }
 
 /* These are game.html items */
