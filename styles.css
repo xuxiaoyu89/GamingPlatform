@@ -21,52 +21,46 @@ iframe {
     width: 100%;
 }
 h1, h2, h3, h4 {
-	color: white;
-	padding: 2%;
-	margin: 0px;
-	padding-top: 0px;
-}
-div {
-	text-align: center;
-}
-/* This is for index.html so that loaded HTML content fits in screen */
-.index {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* These are used by all SMPG pages */
-.SMPG_avatar {
-  height: 60px;
-  width: 60px;
-  margin: 5px;
-  vertical-align: middle;
-}
-.SMPG_divider {
-	height: 5px;
-}
-
-/* These are menu.html items */
-.SMPG_menu {
-	height:100%;
-	width:100%;
-	overflow: scroll;
-	background-color: rgba(173, 215, 160, 1);
-}
-.SMPG_menu_top {
-	padding-top: 1%;
-	//padding-bottom: 1%;
-	background-color: rgba(56, 97, 31, 1);
-}
-.SMPG_menu_select {
-	margin: 2%;
-	margin-left: 25%;
-	width: 50%;
-	/*padding-left: 20%;*/
-	/*padding-right: 20%;*/
-}
+ 	color: #58863d;
+ }
+ div {
+ 	text-align: center;
+ }
+ /* This is for index.html so that loaded HTML content fits in screen */
+ .index {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+ }
+ 
+ /* These are used by all SMPG pages */
+ .SMPG_avatar {
+   height: 60px;
+   width: 60px;
+   margin: 5px;
+   vertical-align: middle;
+ }
+ .SMPG_divider {
+ 	height: 5px;
+ }
+ 
+ /* These are menu.html items */
+ .SMPG_menu {
+ 	height:100%;
+ 	width:100%;
+ 	overflow: scroll;
+ }
+ .SMPG_menu_top {
+ 	padding-top: 5px;
+ 	padding-bottom: 5px;
+ }
+ .SMPG_menu_select {
+ 	margin-left: 25%;
+ 	width: 50%;
+ 	/*padding-left: 20%;*/
+ 	/*padding-right: 20%;*/
+ }
 .SMPG_menu_options {
 	padding-top: 5px;
 }
