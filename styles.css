@@ -1,6 +1,6 @@
 /*Color palette:
 //Text: #333333
-//Dark: #58863d
+//Dark: #38611F > #58863d
 //Medium: #93d06f
 //Light: #b1ed8d
 //BG: #d1f8b9
@@ -66,14 +66,19 @@ div {
 .SMPG_menu_list {
 	
 }
+.SMPG_menu_listbar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+}
 .SMPG_menu_yourturn {
-	background-color: #93d06f;
+	background-color: #38611F;
 }
 .SMPG_menu_waiting {
-	background-color: #b1ed8d;
+	background-color: #58863d;
 }
 .SMPG_menu_completed {
-	background-color: #b1ed8d;
+	background-color: #58863d;
 }
 .SMPG_menu_sublist {
 	
