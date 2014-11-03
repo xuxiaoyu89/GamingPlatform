@@ -15,6 +15,10 @@ myApp.config(['$routeProvider',
         templateUrl: 'game.html',
         controller: 'GameCtrl'
       }).
+      when('/localGame', {
+          templateUrl: 'localGame.html',
+          controller: 'LocalGameCtrl'
+        }).
       when('/stats', {
         templateUrl: 'stats.html',
         controller: 'StatsCtrl'

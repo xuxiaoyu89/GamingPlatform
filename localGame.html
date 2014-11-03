@@ -1,0 +1,28 @@
+<div 
+    ng-cloak class="SMPG_game_top" ng-controller="LocalGameCtrl">
+        <center>
+            <!--// MATCH_MENU: OPTIONS //-->
+            <div>
+                <button class="button button-small icon-left ion-ios7-home"
+                    ng-click="leaveGame()">Go Back</button>
+            </div>
+            
+            <!--// Opponents Avatars //-->
+            <div class="SMPG_game_player" ng-show="player0 && player1">
+                <img src={{image0}} class="SMPG_avatar"> {{player0}} <b>v</b>
+            </div>
+            <!--div class="SMPG_game_vs" ng-show="player0 && player1">vs</div-->
+            <div class="SMPG_game_player SMPG_game_p2" ng-show="player0 && player1"><b>s</b> {{player1}} <img src={{image1}} class="SMPG_avatar">
+            </div>
+            
+            <!--// MATCH_MENU: STATUS/INFO //-->
+            <div>
+                <i>{{gameStatus}}</i>
+            </div>
+            
+        </center>
+    </div>
+    <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
+            scrolling="no" seamless="seamless"></iframe>
+    
+    </div>

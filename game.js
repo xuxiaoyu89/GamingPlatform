@@ -155,6 +155,9 @@ $scope.deleteGame = function () {
     }
 };
 
+//+++++++++++++++++++ here we can get URL from local storage  ++++++++++++++++++++//
+
+
 //===================== GET GAME'S URL ===============//
 serverApiService.sendMessage(
     [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
@@ -168,6 +171,8 @@ serverApiService.sendMessage(
 //====================================================
 
 
+
+//+++++++++++++++++++ Here we should check if PlayAgainstComputer is on ++++++++++++++++++++//
 //Check changes periodically(every 10sec)
 $rootScope.interval = setInterval(checkChanges, 10000);
 
