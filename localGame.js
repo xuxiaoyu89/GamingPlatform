@@ -3,9 +3,16 @@
 myAppControllers
 .controller('localGameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, stateService, platformMessageService) {
+	
+	
+	var entireUrl = $window.location.href;
+    $log.info("entireUrl: ", entireUrl);
+    var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
+    var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
+    var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 	function parseURL() {
 	    //BASIC URL PARSING
-	    var hashedUrl = entireUrl.split('#')
+	    var hashedUrl = entireUrl.split('#');
 	    beforeHashUrl = hashedUrl[0];
 	    $log.info("beforeHash URL: ", beforeHashUrl);
 	    MENU_URL=beforeHashUrl.concat(MENU_URL);

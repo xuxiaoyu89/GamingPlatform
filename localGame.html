@@ -6,16 +6,6 @@
                 <button ng-click="leaveGame()">Go Back</button>
             </div>
             
-            <!--// Opponents Avatars //-->
-            <div ng-show="player0 && player1">
-                {{player0}} <img src={{image0}} class="avatar"> vs <img src={{image1}} class="avatar"> {{player1}}
-            </div>
-            
-            <!--// MATCH_MENU: STATUS/INFO //-->
-            <div>
-                {{gameStatus}}
-            </div>
-            
         </center>
     </div>
     <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
