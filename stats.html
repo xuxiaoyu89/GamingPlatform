@@ -5,11 +5,11 @@
 	<div ng-show="outcomesCount"  style="font-family:verdana; font-size: 150%;">
     Your Current Rank:  {{rank}}
     <br>
-    Your Total Wins:  {{outcomesCount.W}}
+    Your Total Wins:		{{outcomesCount.W===undefined?0:outcomesCount.W}}
     <br>
-    Your Total Ties:  {{outcomesCount.T}}
+    Your Total Ties:		{{outcomesCount.T===undefined?0:outcomesCount.T}}
     <br>
-    Your Total Losses:  {{outcomesCount.L}}
+    Your Total Losses:		{{outcomesCount.L===undefined?0:outcomesCount.L}}
   </div>
   <div ng-show="outcomesCount===undefined"  style="font-family:verdana; font-size: 200%;">
     NO DATA
@@ -24,7 +24,7 @@
 			</div>
 			<br>
 			<div>
-				You Win: {{stats.outcomes.W===undefined?0:stats.outcomes.W}};	You Tie: {{stats.outcomes.T}};	You Loss: {{stats.outcomes.L}}
+				You Win: {{stats.outcomes.W===undefined?0:stats.outcomes.W}}		You Tie: {{stats.outcomes.T===undefined?0:stats.outcomes.T}}		You Loss: {{stats.outcomes.L===undefined?0:stats.outcomes.L}}
 			</div>
 		</div>
 		<br>
