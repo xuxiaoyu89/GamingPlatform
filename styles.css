@@ -101,10 +101,9 @@ div {
 }
 .SMPG_menu_button {
 	background-color: rgba(177, 237, 141, 1);
-	width: 100%;
-	margin: 2px;
+	width: 98%;
+	margin: 1%;
 	padding: 0px;
-	padding-right: 5px;
 }
 
 /* These are game.html items */
