@@ -7,6 +7,12 @@ html, body {
   position: fixed!important;
 }
 
+.SMPG_menu {
+	height:100%;
+	width:100%;
+	overflow: hidden;
+}
+
 .index {
   margin: 0;
   padding: 0;
