@@ -42,7 +42,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	parseURL();
 	//===================== GET GAME'S URL ===============//
 	serverApiService.sendMessage(
-	    [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
+	    [{getGames: {gameId: $scope.gameID}}], //get the game that has id equals to gameID
 	    function (response) {
 	        $scope.game = response;
 	        $scope.gameInfo = response[0].games[0];
