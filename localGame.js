@@ -148,14 +148,15 @@ serverApiService.sendMessage(
     platformMessageService.addMessageListener(function (message) {
         $log.info("PlatformMessageService: got a message.");
         if (message.gameReady !== undefined) {
-            checkChanges();
+        	$log.info("Get a message: new Match");
+            //checkChanges();
             if (newmatch) {
                 $scope.gameStatus = "Game loaded, please make a move";
             }
         }
         //iframe send a move to platform
         else if (message.makeMove !== undefined) {
-            $log.info("PlatformMessageService: makeMove.")
+            $log.info("PlatformMessageService: makeMove.", message.makeMove);
             move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
             var params;
             if (move[0].endMatch) {
@@ -167,38 +168,9 @@ serverApiService.sendMessage(
             platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
         }
         else if (message.isMoveOkResult !== undefined) {
-            $log.info("PlatformMessageService: isMoveOkResult.")
+            $log.info("PlatformMessageService: isMoveOkResult.", message.isMoveOkResult)
             //iframe finish checking isMoveOk and send the result to platform
             //move is ok, send it to server
-            if (message.isMoveOkResult === true) {
-                if (!newmatch) {
-                    //normal move
-                    serverApiService.sendMessage(
-                        [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
-                        function (response) {
-                            $log.info("PlatformMessageService: isMoveOkResult: ", response);
-                            checkChanges();
-                        });
-                }
-                else {
-                    //create new match
-                    serverApiService.sendMessage(
-                        [{newMatch: {gameId: gameID, tokens: 0, move: move, startAutoMatch: {numberOfPlayers: 2}, myPlayerId: playerID, accessSignature: accessSignature}}],
-                        function (response) {
-                            $log.info("PlatformMessageService: newmatch: ", response);
-                            newmatch = false;//finish crating new match
-                            matchID = response[0]["matches"][0].matchId;
-                            var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
-                            $window.location.replace(newURL);
-                            $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
-                            checkChanges();
-                        });
-                }
-            }
-            //illegal move
-            else {
-                throwError("You declared a hacker for a legal move! move=" + move);
-            }
         }
         //got a error from iframe and send it to server
         else if (message.emailJavaScriptError !== undefined && $rootScope.EMAIL_JS_ERRORS) {
