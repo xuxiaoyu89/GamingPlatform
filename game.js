@@ -38,7 +38,7 @@ function alert_log_error(alert, log) {
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
   //BASIC URL PARSING
-    var hashedUrl = entireUrl.split('#');
+    var hashedUrl = entireUrl.split('#')
     beforeHashUrl = hashedUrl[0];
     $log.info("beforeHash URL: ", beforeHashUrl);
     MENU_URL=beforeHashUrl.concat(MENU_URL);

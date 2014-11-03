@@ -35,27 +35,17 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    for (i = 0; i < parsedurl.length; i++) {
 	        subparse = parsedurl[i].split('=');
 	        if (subparse.length === 2) {
-	        	$scope.gameID = subparse[1];
+	        	if (subparse[0].toLowerCase() === 'gameurl') {
+	                $scope.gameurl = subparse[1];
+	            } else if (subparse[0].toLowerCase() === 'gameid') {
+	                $scope.gameID = subparse[1];
+	            }
 	        }
 	    }
     }
 	parseURL();
 	$scope.playMode = "playAgainstTheComputer";
 	stateService.setPlayMode($scope.playMode);
-	
-	
-	
-	//===================== GET GAME'S URL ===============//
-	serverApiService.sendMessage(
-	    [{getGames: {gameId: $scope.gameID}}], //get the game that has id equals to gameID
-	    function (response) {
-	        $scope.game = response;
-	        $scope.gameInfo = response[0].games[0];
-	        var gameUrl = $scope.gameInfo.gameUrl;
-	        $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
-	        $window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
-	    });
-	//====================================================
 	
 	var gotGameReady = false;
 	$scope.startNewMatch = function () {
