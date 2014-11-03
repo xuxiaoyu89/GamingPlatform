@@ -172,7 +172,7 @@ serverApiService.sendMessage(
       game.updateUI = function (params) {
         platformMessageService.sendMessage({updateUI: params});
       };
-      stateService.setGame(game);
+      //stateService.setGame(game);
     } else if (message.isMoveOkResult !== undefined) {
       if (message.isMoveOkResult !== true) {
         //$window.alert("isMoveOk returned " + message.isMoveOkResult);
@@ -183,57 +183,4 @@ serverApiService.sendMessage(
       //$window.alert("Platform got: " + angular.toJson(message, true));
     }
   });
-
-
-//platform listen to iframe for player's moves
-/*
-    var move;//move made by player
-    platformMessageService.addMessageListener(function (message) {
-        $log.info("PlatformMessageService: got a message.");
-        if (message.gameReady !== undefined) {
-        	$log.info("Get a message: new Match");
-            //checkChanges();
-            if (newmatch) {
-                $scope.gameStatus = "Game loaded, please make a move";
-            }
-            
-            var game = message.gameReady;
-            game.isMoveOk = function (params) {
-                platformMessageService.sendMessage({isMoveOk: params});
-            return true;
-            };
-            game.updateUI = function (params) {
-                platformMessageService.sendMessage({updateUI: params});
-            };
-            stateService.setGame(game);
-        }
-        //iframe send a move to platform
-        else if (message.makeMove !== undefined) {
-            $log.info("PlatformMessageService: makeMove.", message.makeMove);
-            move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
-            var params;
-            if (move[0].endMatch) {
-                params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: 1 - turnIndex, stateBeforeMove: state, stateAfterMove: {}};
-            }
-            else {
-                params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
-            }
-            platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
-        }
-        else if (message.isMoveOkResult !== undefined) {
-            $log.info("PlatformMessageService: isMoveOkResult.", message.isMoveOkResult)
-            //iframe finish checking isMoveOk and send the result to platform
-            //move is ok, send it to server
-        }
-        //got a error from iframe and send it to server
-        else if (message.emailJavaScriptError !== undefined && $rootScope.EMAIL_JS_ERRORS) {
-            serverApiService.sendMessage(
-                message,
-                function (response) {
-                    $log.info("email js error", response);
-                });
-        }
-    });
-//====================================================
-*/
 });
