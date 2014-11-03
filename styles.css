@@ -14,8 +14,8 @@ html, body {
 }
 
 .SMPG_menu_top {
-	margin-top: 5%;
-	padding-bottom: 5%;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	text-align: center;
 }
 
@@ -43,8 +43,9 @@ iframe {
 }
 
 .SMPG_avatar {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  margin: 5px;
 }
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
