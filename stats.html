@@ -17,15 +17,15 @@
 	<br>
 	
 	<center>
-	<div  ng-repeat="stats in statsIndex track by $index">
-		<div class="stats_div" style="font-family:verdana;">
-			<div>
+	<div  ng-repeat="stats in statsIndex track by $index" style="text-align: -webkit-center;">
+		<div class="stats_div" style="font-family:verdana; text-align: -webkit-center;">
+		
 				vs. {{stats.displayName}} <img ng-src="{{stats.avatarImageUrl}}" style="heigh:50px; width:50px"></img>
-			</div>
+		
 			<br>
-			<div>
-				You Win: {{stats.outcomes.W===undefined?0:stats.outcomes.W}}		You Tie: {{stats.outcomes.T===undefined?0:stats.outcomes.T}}		You Loss: {{stats.outcomes.L===undefined?0:stats.outcomes.L}}
-			</div>
+		
+				You Win: {{stats.outcomes.W===undefined?0:stats.outcomes.W}}; You Tie: {{stats.outcomes.T===undefined?0:stats.outcomes.T}};You Loss: {{stats.outcomes.L===undefined?0:stats.outcomes.L}}
+		
 		</div>
 		<br>
 	</div>
