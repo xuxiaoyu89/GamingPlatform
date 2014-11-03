@@ -57,6 +57,26 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    });
 	//====================================================
 	
+	var gotGameReady = false;
+	$scope.startNewMatch = function () {
+        stateService.startNewMatch();
+    };
+	$scope.getStatus = function () {
+	    if (!gotGameReady) {
+	        return "Waiting for 'gameReady' message from the game...";
+	    }
+	    var matchState = stateService.getMatchState();
+	    if (matchState.endMatchScores) {
+	      return "Match ended with scores: " + matchState.endMatchScores;
+	    }
+	    return "Match is ongoing! Turn of player index " + matchState.turnIndex;
+	};
+    $scope.playMode = "passAndPlay";
+    stateService.setPlayMode($scope.playMode);
+    $scope.$watch('playMode', function() {
+	    stateService.setPlayMode($scope.playMode);
+    });
+
 	
 	platformMessageService.addMessageListener(function (message) {
 	    if (message.gameReady !== undefined) {
