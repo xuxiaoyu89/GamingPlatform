@@ -5,6 +5,7 @@ myAppControllers
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, stateService, platformMessageService) {
 	
 	var url = window.localStorage.getItem("gameURL");
+	$log.info(url, "!!!!!!!!!!!");
 	$scope.gameUrl = JSON.parse(angular.fromJson(url));
 	var entireUrl = $window.location.href;
     $log.info("entireUrl: ", entireUrl);
