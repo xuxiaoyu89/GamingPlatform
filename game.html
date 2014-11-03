@@ -9,11 +9,10 @@
             
             <!--// Opponents Avatars //-->
             <div class="SMPG_game_player" ng-show="player0 && player1">
-                <img src={{image0}} class="SMPG_avatar"> {{player0}}
+                <img src={{image0}} class="SMPG_avatar"> {{player0}} <b>v</b>
             </div>
-            <div class="SMPG_game_vs" ng-show="player0 && player1">vs</div>
-            <div class="SMPG_game_player SMPG_game_p2" ng-show="player0 && player1">
-                {{player1}} <img src={{image1}} class="SMPG_avatar">
+            <!--div class="SMPG_game_vs" ng-show="player0 && player1">vs</div-->
+            <div class="SMPG_game_player SMPG_game_p2" ng-show="player0 && player1"><b>s</b> {{player1}} <img src={{image1}} class="SMPG_avatar">
             </div>
             
             <!--// MATCH_MENU: STATUS/INFO //-->
