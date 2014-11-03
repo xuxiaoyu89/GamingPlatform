@@ -39,6 +39,7 @@ div {
   height: 60px;
   width: 60px;
   margin: 5px;
+  vertical-align: middle;
 }
 .SMPG_divider {
 	height: 5px;
@@ -113,12 +114,15 @@ div {
 }
 .SMPG_game_player {
 	width: 45%;
+	display: table-cell;
 	float: left;
 	text-align: right;
 	vertical-align: middle;
 }
 .SMPG_game_vs {
 	width: 10%;
+	display: table-cell;
+	height: 75px;
 	float: left;
 	text-align: center;
 	vertical-align: middle;
