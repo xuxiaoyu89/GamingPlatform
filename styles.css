@@ -81,8 +81,15 @@ div {
 .SMPG_menu_completed {
 	background-color: #58863d;
 }
-.SMPG_menu_sublist {
-	
+.SMPG_menu_table {
+	width: 100%;
+}
+.SMPG_menu_td1 {
+	width: 30%;
+}
+.SMPG_menu_td2 {
+	width: 70%;
+	padding-left: 10px;
 }
 
 /* These are game.html items */
