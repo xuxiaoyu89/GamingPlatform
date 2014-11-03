@@ -92,6 +92,7 @@ div {
 .SMPG_menu_td1 {
 	width: 70%;
 	padding-right: 10px;
+	vertical-align: middle;
 }
 .SMPG_menu_td2 {
 	width: 30%;
