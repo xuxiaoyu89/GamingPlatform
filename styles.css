@@ -40,6 +40,9 @@ div {
   width: 60px;
   margin: 5px;
 }
+.SMPG_divider {
+	height: 5px;
+}
 
 /* These are menu.html items */
 .SMPG_menu {
@@ -64,7 +67,13 @@ div {
 	
 }
 .SMPG_menu_yourturn {
-	
+	background-color: #93d06f;
+}
+.SMPG_menu_waiting {
+	background-color: #b1ed8d;
+}
+.SMPG_menu_completed {
+	background-color: #b1ed8d;
 }
 .SMPG_menu_sublist {
 	
