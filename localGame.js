@@ -4,7 +4,8 @@ myAppControllers
 .controller('localGameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, stateService, platformMessageService) {
 	
-	$scope.gameUrl = window.localStorage.getItem("gameURL");
+	var url = window.localStorage.getItem("gameURL");
+	$scope.gameUrl = JSON.parse(angular.fromJson(url));
 	var entireUrl = $window.location.href;
     $log.info("entireUrl: ", entireUrl);
     var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
