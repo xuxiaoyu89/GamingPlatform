@@ -417,13 +417,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		return;
     	}
     	//$location.search("GameURL", gameUrl);
-    	$location.path('localGame');
+    	$location.path('game');
     	//alert("play against computer");
     }
     
     //passAndPlayHandler;
     $scope.passAndPlayHandler = function() {
-    	alert("pass and play");
+    	alert("game");
     }
     
 	   
