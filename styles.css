@@ -113,9 +113,8 @@ div {
     height: 15%;
 }
 .SMPG_game_player {
-	width: 45%;
+	width: 50%;
 	display: table-cell;
-	float: left;
 	text-align: right;
 	vertical-align: middle;
 }
@@ -128,6 +127,7 @@ div {
 	vertical-align: middle;
 }
 .SMPG_game_p2 {
+	float: left;
 	text-align: left;
 }
 .SMPG_game_bottom {
