@@ -5,9 +5,6 @@
     <div class="SMPG_menu_top">
         <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
         <h4 class="title">Hello, <b>{{displayName}}</b> !</h4>
-
-        <button class="button button-small button-stable icon-right ion-trophy" 
-                ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
     </div>
 
     <div class="SMPG_menu_select">
@@ -32,6 +29,8 @@
                 ng-show="AUTO_MATCH" ng-click="autoMatchHandler()"><b>AUTOMATCH</b></button>
     </div>
     <div class="SMPG_menu_options">
+          <button class="button button-small button-stable icon-right ion-trophy" 
+                ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
         <button class="button button-small button-stable" 
                 ng-click="playAgainstComputerHandler()">Play Against Computer</button>
         <button class="button button-small button-stable" 
