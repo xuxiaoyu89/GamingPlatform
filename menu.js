@@ -410,7 +410,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //playAgainstComputerHandler;
     $scope.playAgainstComputerHandler = function() {
-    	alert("play against computer");
+    	$location.path('localGame');
+    	//alert("play against computer");
     }
     
     //passAndPlayHandler;
