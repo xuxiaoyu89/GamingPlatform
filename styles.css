@@ -40,10 +40,11 @@ h1, h2, h3, h4 {
  
  /* These are used by all SMPG pages */
  .SMPG_avatar {
-   height: 60px;
-   width: 60px;
-   margin: 5px;
+   height: 70px;
+   width: 70px;
+   padding: 2px;
    vertical-align: middle;
+   background-color: darkolivegreen;
  }
  .SMPG_divider {
  	height: 5px;
