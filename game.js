@@ -386,30 +386,13 @@ function checkChanges() {
             }
         }
         //got a error from iframe and send it to server
-        else if (message.emailJavaScriptError !== undefined && $rootScope.EMAIL_JS_ERRORS) {
+         else if (message.emailJavaScriptError !== undefined && $rootScope.EMAIL_JS_ERRORS) {
             serverApiService.sendMessage(
                 message,
                 function (response) {
-                    $log.info("email js error response:", response);
+                    $log.info("email js error", response);
                 });
         }
     });
 //====================================================
-})
-    .factory('$exceptionHandler', function ($window, $log) {
-      return function (exception, cause) {
-        $log.info("Platform had an exception:", exception, cause);
-        var exceptionString = angular.toJson({exception: exception, cause: cause, lastMessage: $window.lastMessage}, true);
-        var message = 
-            {
-              emailJavaScriptError: 
-                {
-                  gameDeveloperEmail: "rshen1993@gmail.com", 
-                  emailSubject: "Error in platform " + $window.location, 
-                  emailBody: exceptionString
-                }
-            };
-        $window.parent.postMessage(message, "*");
-        $window.alert(exceptionString);
-    };
 });
