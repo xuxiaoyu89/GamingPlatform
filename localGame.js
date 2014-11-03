@@ -155,7 +155,7 @@ serverApiService.sendMessage(
     }
     return "Match is ongoing! Turn of player index " + matchState.turnIndex;
   };
-  $scope.playMode = "playWithTheComputer";
+  $scope.playMode = "playAgainstTheComputer";
   stateService.setPlayMode($scope.playMode);
   $scope.$watch('playMode', function() {
     stateService.setPlayMode($scope.playMode);
