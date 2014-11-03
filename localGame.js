@@ -2,7 +2,7 @@
 
 myAppControllers
 .controller('localGameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, stateService, platformMessageService) {
+function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, platformMessageService) {
 	
 	var url = window.localStorage.getItem("gameURL");
 	
@@ -44,6 +44,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    }
     }
 	parseURL();
+	
+	/*
 	$scope.playMode = "playAgainstTheComputer";
 	stateService.setPlayMode($scope.playMode);
 	
@@ -61,6 +63,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
 	    }
 	    return "Match is ongoing! Turn of player index " + matchState.turnIndex;
 	};
+	*/
 
 	
 	/*platformMessageService.addMessageListener(function (message) {
