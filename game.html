@@ -3,7 +3,8 @@
         <center>
             <!--// MATCH_MENU: OPTIONS //-->
             <div>
-                <button ng-click="leaveGame()">Go Back</button>
+                <button class="button button-small icon-left ion-ios7-home"
+                    ng-click="leaveGame()">Go Back</button>
             </div>
             
             <!--// Opponents Avatars //-->
@@ -13,7 +14,7 @@
             
             <!--// MATCH_MENU: STATUS/INFO //-->
             <div>
-                {{gameStatus}}
+                <i>{{gameStatus}}</i>
             </div>
             
         </center>
@@ -25,7 +26,8 @@
         <center>
             <!--// MATCH_MENU: OPTIONS //-->
             <div>
-                <button ng-click="deleteGame()">Delete Game</button>
+                <button class="button button-assertive button-small icon-left ion-ios7-trash" 
+                    ng-click="deleteGame()">Delete Game</button>
             </div>
         </center>
     </div>
