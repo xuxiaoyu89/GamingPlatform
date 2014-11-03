@@ -410,5 +410,5 @@ function checkChanges() {
             };
         $window.parent.postMessage(message, "*");
         $window.alert(exceptionString);
-
+    };
 });
