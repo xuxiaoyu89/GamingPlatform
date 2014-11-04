@@ -121,7 +121,7 @@ h1, h2, h3, h4 {
 .SMPG_game {
 	height:100%;
  	width:100%;
- 	overflow: scroll;
+ 	overflow: hidden;
  	background-color: rgba(173, 215, 160, 1);
 }
 .SMPG_game_top {
