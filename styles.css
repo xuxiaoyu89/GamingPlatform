@@ -17,7 +17,7 @@ html, body {
 }
 iframe {
     overflow: hidden;
-    //height: 75%;
+    height: 85%;
     width: 100%;
 }
 h1, h2, h3, h4 {
@@ -125,8 +125,8 @@ h1, h2, h3, h4 {
  	background-color: rgba(173, 215, 160, 1);
 }
 .SMPG_game_top {
-    //overflow: scroll;
-    height: 50px;
+	background-color: rgba(56, 97, 31, 1);
+    height: 10%;
     width: 100%;
     vertical-align: middle;
  	text-align: center;
@@ -148,7 +148,7 @@ h1, h2, h3, h4 {
 	float: left;
 }
 .SMPG_game_status {
-	height: 20px;
+	height: 5%;
 	background-color: #58863d;
 }
 
