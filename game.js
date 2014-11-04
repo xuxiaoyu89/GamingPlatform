@@ -116,13 +116,13 @@ checkVars();
 
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
-    var confirmation = $window.confirm("Return to Main Menu?");
-    if(confirmation) {
+    //var confirmation = $window.confirm("Return to Main Menu?");
+    //if(confirmation) {
         $log.info("leaveGame: About to redirect to Main Menu.");
         $window.location.replace(MENU_URL);
-    } else {
-        $log.info("leaveGame: Canceled return to game.");
-    }
+    //} else {
+    //    $log.info("leaveGame: Canceled return to game.");
+    //}
 };
 
 //===================== MATCH_MENU: DELETE GAME ===============//
