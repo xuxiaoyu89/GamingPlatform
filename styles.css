@@ -17,7 +17,7 @@ html, body {
 }
 iframe {
     overflow: hidden;
-    height: 75%;
+    //height: 75%;
     width: 100%;
 }
 h1, h2, h3, h4 {
@@ -118,12 +118,43 @@ h1, h2, h3, h4 {
 }
 
 /* These are game.html items */
-.SMPG_game_top {
-    overflow: scroll;
-    height: 15%;
+.SMPG_game {
+	height:100%;
+ 	width:100%;
+ 	overflow: scroll;
+ 	background-color: rgba(173, 215, 160, 1);
 }
+.SMPG_game_top {
+    //overflow: scroll;
+    height: 50px;
+    width: 100%;
+    vertical-align: middle;
+ 	text-align: center;
+}
+.SMPG_game_goback {
+    width: 10%;
+    float: left;
+}
+.SMPG_game_opponent {
+	width: 80%;
+	float: left;
+}
+.SMPG_game_avatar {
+	height: 30px;
+	width: 30px;
+}
+.SMPG_game_delete {
+	width: 10%;
+	float: left;
+}
+.SMPG_game_status {
+	height: 20px;
+	background-color: #58863d;
+}
+
+
 .SMPG_game_player {
-	width: 50%;
+	width: 80%;
 	display: table-cell;
 	text-align: right;
 	vertical-align: middle;
@@ -139,10 +170,6 @@ h1, h2, h3, h4 {
 }
 .SMPG_game_p2 {
 	text-align: left;
-}
-.SMPG_game_bottom {
-    overflow: hidden;
-    height: 10%;
 }
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
