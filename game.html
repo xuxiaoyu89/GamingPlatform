@@ -1,27 +1,27 @@
 <div 
     ng-cloak class="SMPG_game" ng-controller="GameCtrl">
-    
-            <!--// MATCH_MENU: OPTIONS //-->
-        <div class="SMPG_game_top">
-            <div class="SMPG_game_goback icon ion-chevron-left"
-                    ng-click="leaveGame()">
-            </div>
-            <div class="SMPG_game_opponent">
-                <div class="SMPG_game" ng-show="player0 && player1">
+
+    <!--// MATCH_MENU: OPTIONS //-->
+    <div class="SMPG_game_top">
+        <div class="SMPG_game_goback icon ion-chevron-left"
+             ng-click="leaveGame()">
+        </div>
+        <div class="SMPG_game_opponent">
+            <div class="SMPG_game" ng-show="player0 && player1">
                 <span class="SMPG_game_helper"></span><img src={{image0}} class="SMPG_game_avatar"> <b>{{player0}}</b> vs 
                 <img src={{image1}} class="SMPG_game_avatar"> <b>{{player1}}</b>
-                </div>
-            </div>
-            <div class="SMPG_game_delete icon-right ion-ios7-trash"
-                    ng-click="deleteGame()">
             </div>
         </div>
+        <div class="SMPG_game_delete icon-right ion-ios7-trash"
+             ng-click="deleteGame()">
+        </div>
+    </div>
 
-            <!--// MATCH_MENU: STATUS/INFO //-->
-            <div class="SMPG_game_status">
-                <span class="SMPG_game_helper"></span><i>{{gameStatus}}</i>
-            </div>
-            
+    <!--// MATCH_MENU: STATUS/INFO //-->
+    <div class="SMPG_game_status">
+        <span class="SMPG_game_helper"></span><i>{{gameStatus}}</i>
+    </div>
+
     <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
             scrolling="no" seamless="seamless"></iframe>
 </div>

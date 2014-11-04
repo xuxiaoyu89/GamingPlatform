@@ -7,13 +7,13 @@
 */
 
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  /*overflow: hidden;*/
-  position: fixed!important;
-  color: rgba(56, 97, 31, 1);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    position: fixed!important;
+    color: rgba(56, 97, 31, 1);
 }
 iframe {
     overflow: hidden;
@@ -22,198 +22,198 @@ iframe {
     width: 100%;
 }
 h1, h2, h3, h4 {
- 	color: white;
- 	padding: 1%;
- 	margin: 0px;
- }
- div {
- 	//text-align: -webkit-center;
- 	text-align: center;
- }
- /* This is for index.html so that loaded HTML content fits in screen */
- .index {
-   margin: 0;
-   padding: 0;
-   width: 100%;
-   height: 100%;
- }
- 
- /* These are used by all SMPG pages */
- .SMPG_avatar {
-   height: 70px;
-   width: 70px;
-   padding: 2px;
-   vertical-align: middle;
-   background-color: white;
-   border: 1px solid;
-   border-color: darkolivegreen;
- }
- .SMPG_divider {
- 	height: 5px;
- }
- 
- /* These are menu.html items */
- .SMPG_menu {
- 	height:100%;
- 	width:100%;
- 	overflow: scroll;
- 	background-color: rgba(173, 215, 160, 1);
- }
- .SMPG_menu_top {
- 	padding-top: 1%;
- 	//padding-bottom: 1%;
- 	background-color: rgba(56, 97, 31, 1);
- }
- .SMPG_menu_select {
-	margin-left: 15%;
-	padding-top: 5px;
-	width: 70%;
- }
+    color: white;
+    padding: 1%;
+    margin: 0px;
+}
+div {
+    //text-align: -webkit-center;
+    text-align: center;
+}
+/* This is for index.html so that loaded HTML content fits in screen */
+.index {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* These are used by all SMPG pages */
+.SMPG_avatar {
+    height: 70px;
+    width: 70px;
+    padding: 2px;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid;
+    border-color: darkolivegreen;
+}
+.SMPG_divider {
+    height: 5px;
+}
+
+/* These are menu.html items */
+.SMPG_menu {
+    height:100%;
+    width:100%;
+    overflow: scroll;
+    background-color: rgba(173, 215, 160, 1);
+}
+.SMPG_menu_top {
+    padding-top: 1%;
+    //padding-bottom: 1%;
+    background-color: rgba(56, 97, 31, 1);
+}
+.SMPG_menu_select {
+    margin-left: 15%;
+    padding-top: 5px;
+    width: 70%;
+}
 .SMPG_menu_options {
-	padding-top: 5px;
+    padding-top: 5px;
 }
 .SMPG_menu_list {
 }
 .SMPG_menu_listbar {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	color: white;
-	font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    font-size: 18px;
 }
 .SMPG_menu_yourturn {
-	background-color: rgba(56, 97, 31, 1);
+    background-color: rgba(56, 97, 31, 1);
 }
 .SMPG_menu_waiting {
-	background-color: #58863d;
+    background-color: #58863d;
 }
 .SMPG_menu_completed {
-	background-color: rgba(109, 168, 74, 1);
+    background-color: rgba(109, 168, 74, 1);
 }
 .SMPG_menu_table {
-	width: 100%;
+    width: 100%;
 }
 .SMPG_menu_tr {
-	/* padding-top: 2px; */
-	vertical-align: middle;
-	height: 20px;
+    /* padding-top: 2px; */
+    vertical-align: middle;
+    height: 20px;
 }
 .SMPG_menu_td1 {
-	width: 70%;
-	padding-right: 10px;
-	vertical-align: middle;
+    width: 70%;
+    padding-right: 10px;
+    vertical-align: middle;
 }
 .SMPG_menu_td2 {
-	width: 30%;
-	margin-right: 5px;
+    width: 30%;
+    margin-right: 5px;
 }
 .SMPG_menu_button {
-	//background-color: rgba(177, 237, 141, 1);
-	width: 98%;
-	margin: 1%;
-	padding: 0px;
-	min-height: 0px;
-	line-height: 0px;
-	height: 30px;
+    //background-color: rgba(177, 237, 141, 1);
+    width: 98%;
+    margin: 1%;
+    padding: 0px;
+    min-height: 0px;
+    line-height: 0px;
+    height: 30px;
 }
 .SMPG_icon {
-	font-size: 25px;
-	vertical-align: middle;
+    font-size: 25px;
+    vertical-align: middle;
 }
 
 /* These are game.html items */
 .SMPG_game {
-	height:100%;
- 	width:100%;
- 	overflow: hidden;
- 	background-color: rgba(56, 97, 31, 1);
- 	color: white;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    background-color: rgba(56, 97, 31, 1);
+    color: white;
 }
 .SMPG_game_top {
-	background-color: rgba(56, 97, 31, 1);
+    background-color: rgba(56, 97, 31, 1);
     height: 10%;
     width: 100%;
     vertical-align: middle;
- 	text-align: center;
+    text-align: center;
 }
 .SMPG_game_goback {
-	height: 100%;
+    height: 100%;
     width: 10%;
     float: left;
     font-size: 2em;
     padding: 5px;
 }
 .SMPG_game_opponent {
-	height: 100%;
-	width: 80%;
-	float: left;
+    height: 100%;
+    width: 80%;
+    float: left;
     padding: 5px;
 }
 .SMPG_game_helper {
-	display: inline-block;
+    display: inline-block;
     height: 100%;
     vertical-align: middle;
 }
 .SMPG_game_avatar {
-	height: 30px;
-	background-color: white;
-   border: 1px solid;
-   border-color: darkolivegreen;
-   vertical-align: middle;
+    height: 30px;
+    background-color: white;
+    border: 1px solid;
+    border-color: darkolivegreen;
+    vertical-align: middle;
 }
 .SMPG_game_delete {
-	height: 100%;
-	width: 10%;
-	float: left;
-	font-size: 2em;
+    height: 100%;
+    width: 10%;
+    float: left;
+    font-size: 2em;
     padding: 5px;
 }
 .SMPG_game_status {
-	height: 5%;
-	background-color: #58863d;
+    height: 5%;
+    background-color: #58863d;
 }
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
 .statsBody{
-	//background: #ECECEC;
-	//margin:0px ;
-	//color:#333;
-	height:100%;
- 	width:100%;
- 	overflow: scroll;
- 	background-color: rgba(173, 215, 160, 1);
-	}
-	
+    //background: #ECECEC;
+    //margin:0px ;
+    //color:#333;
+    height:100%;
+    width:100%;
+    overflow: scroll;
+    background-color: rgba(173, 215, 160, 1);
+}
+
 a.button{
-	background: #ECECEC;
-	border-radius: 15px;
-	padding: 10px 20px;
-	display: block;
-	font-family: arial;
-	font-weight: bold;
-	color:#7f7f7f;
-	text-decoration: none;
-	text-shadow:0px 1px 0px #fff;
-	border:1px solid #a7a7a7;
-	width: 145px;
-	margin:0px auto;
-	margin-top:10px;
-	margin-bottom: 20px;
-	box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
-	-webkit-transition:box-shadow 0.5s;
+    background: #ECECEC;
+    border-radius: 15px;
+    padding: 10px 20px;
+    display: block;
+    font-family: arial;
+    font-weight: bold;
+    color:#7f7f7f;
+    text-decoration: none;
+    text-shadow:0px 1px 0px #fff;
+    border:1px solid #a7a7a7;
+    width: 145px;
+    margin:0px auto;
+    margin-top:10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition:box-shadow 0.5s;
 }
 
 a.button i{
-	float: right;
-	margin-top: 2px;
+    float: right;
+    margin-top: 2px;
 }
 
 a.button:hover{
-	box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.5), 0px 8px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.5), 0px 8px 10px rgba(0, 0, 0, 0.5);
 }
 
 a.button:active{
-	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.2);
-	background:-webkit-linear-gradient(top, #d1d1d1 0%,#ECECEC 100%);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.2);
+    background:-webkit-linear-gradient(top, #d1d1d1 0%,#ECECEC 100%);
 }
 
 .stats_div {
