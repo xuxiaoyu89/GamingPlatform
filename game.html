@@ -3,17 +3,15 @@
     
             <!--// MATCH_MENU: OPTIONS //-->
         <div class="SMPG_game_top">
-            <div class="SMPG_game_goback">
-                <button class="icon ion-chevron-left"
-                    ng-click="leaveGame()"></button>
+            <div class="SMPG_game_goback icon ion-chevron-left"
+                    ng-click="leaveGame()">
             </div>
             <div class="SMPG_game_opponent">
-                <img src={{image0}} class="SMPG_avatar SMPG_game_avatar"> {{player0}} <b>vs</b> 
-                <img src={{image1}} class="SMPG_avatar SMPG_game_avatar"> {{player1}}
+                <img src={{image0}} class="SMPG_game_avatar"> <b>{{player0}}</b> vs 
+                <img src={{image1}} class="SMPG_game_avatar"> <b></b>{{player1}}</b>
             </div>
-            <div class="SMPG_game_delete">
-                <button class="icon ion-ios7-trash" 
-                    ng-click="deleteGame()"></button>
+            <div class="SMPG_game_delete"
+                    ng-click="deleteGame()">
             </div>
         </div>
             <!--div class="SMPG_game_player" ng-show="player0 && player1">
