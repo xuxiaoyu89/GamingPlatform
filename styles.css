@@ -147,6 +147,11 @@ h1, h2, h3, h4 {
 	float: left;
     padding: 5px;
 }
+.SMPG_game_helper {
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
 .SMPG_game_avatar {
 	height: 100%;
 	background-color: white;
