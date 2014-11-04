@@ -123,6 +123,7 @@ h1, h2, h3, h4 {
  	width:100%;
  	overflow: hidden;
  	background-color: rgba(173, 215, 160, 1);
+ 	color: white;
 }
 .SMPG_game_top {
 	background-color: rgba(56, 97, 31, 1);
@@ -132,20 +133,28 @@ h1, h2, h3, h4 {
  	text-align: center;
 }
 .SMPG_game_goback {
+	height: 100%;
     width: 10%;
     float: left;
+    font-size: 2em;
+    padding: 5px;
 }
 .SMPG_game_opponent {
+	height: 100%;
 	width: 80%;
 	float: left;
+	font-size: 2em;
+    padding: 5px;
 }
 .SMPG_game_avatar {
-	height: 30px;
-	width: 30px;
+	height: 80%;
 }
 .SMPG_game_delete {
+	height: 100%;
 	width: 10%;
 	float: left;
+	font-size: 2em;
+    padding: 5px;
 }
 .SMPG_game_status {
 	height: 5%;
