@@ -36,7 +36,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
       // Get the current height of the div and save it as a variable.
       var height2 = div2.clientHeight;
       $log.info("DIV 2: ", height2);
-      div2.css({'font-size': 50 +'px'});
+      div2.modal({'font-size': 50 +'px'});
       // Set the font-size and line-height of the text within the div according to the current height.
       //$div.css({
       //'font-size': (height/2) + 'px',
