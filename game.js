@@ -36,7 +36,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, $timeout, serve
     var $div_av0 = $doc.getElementById('SMPG_game_av0');
     var $div_av1 = $doc.getElementById('SMPG_game_av1');
     // Run the following when the window is resized, and also trigger it once to begin with.
-    $window.resize(function () {
+    //$window.resize(function () {
     //$timeout(function () {
       $log.info("TIMEOUT OCCURRED")
       var height_goback = $div_goback.clientHeight;
@@ -51,7 +51,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, $timeout, serve
         $div_av1.style.width = ($div_players.clientWidth/10)+'px';
       }
     //}).trigger('resize');​
-    })
+    //})
   //==========HANDLES DIV RESIZING==================//
 
 
