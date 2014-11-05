@@ -33,16 +33,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
     var $div_goback = $doc.getElementById('SMPG_game_goback2');
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$window.resize(function () {
-      // Get the current height of the div and save it as a variable.
       var height_goback = $div_goback.clientHeight;
-      $log.info("DIV 2: ", $div_goback);
-      div2.style.fontSize = (height_goback-10)+'px';
-      //div2.modal({'font-size': 50 +'px'});
-      // Set the font-size and line-height of the text within the div according to the current height.
-      //$div.css({
-      //'font-size': (height/2) + 'px',
-      //'line-height': height + 'px'
-      //})
+      $div_goback.style.fontSize = (height_goback-10)+'px';
     //}).trigger('resize');​
   //==========HANDLES DIV RESIZING==================//
 
