@@ -140,10 +140,10 @@ div {
     width: 10%;
     float: left;
     font-size: 2em;
-    padding: 5px;
 }
 #SMPG_game_goback2 {
     padding: 0px;
+    padding-left: 1%;
 }
 .SMPG_game_opponent {
     height: 100%;
@@ -177,10 +177,10 @@ div {
     width: 10%;
     float: left;
     font-size: 2em;
-    padding: 5px;
 }
 #SMPG_game_delete2 {
     padding: 0px;
+    padding-right: 1%;
 }
 .SMPG_game_status {
     height: 5%;
