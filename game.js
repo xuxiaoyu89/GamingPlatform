@@ -34,7 +34,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$window.resize(function () {
       var height_goback = $div_goback.clientHeight;
-      $div_goback.style.fontSize = (height_goback-10)+'px';
+      $div_goback.style.fontSize = (height_goback-5)+'px';
     //}).trigger('resize');​
   //==========HANDLES DIV RESIZING==================//
 
