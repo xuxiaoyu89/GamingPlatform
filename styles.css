@@ -160,7 +160,7 @@ div {
     vertical-align: middle;
 }
 .SMPG_game_avatar {
-    height: 30px;
+    height: 100%;
     background-color: white;
     border: 1px solid;
     border-color: darkolivegreen;
