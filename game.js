@@ -34,7 +34,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$(window).resize(function () {
       // Get the current height of the div and save it as a variable.
-      var height2 = div2.height;
+      var height2 = div2.clientHeight;
       $log.info("DIV 2: ", height2);
       // Set the font-size and line-height of the text within the div according to the current height.
       //$div.css({
