@@ -23,7 +23,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   $scope.gameStatus = "Loading game, please wait";
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-  var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
+  var beforeHashUrl; //URL: .../GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
@@ -34,8 +34,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$(window).resize(function () {
       // Get the current height of the div and save it as a variable.
-      //var height2 = div2.height();
-      $log.info("DIV 2: ", div2);
+      var height2 = div2.height();
+      $log.info("DIV 2: ", height2);
       // Set the font-size and line-height of the text within the div according to the current height.
       //$div.css({
       //'font-size': (height/2) + 'px',
@@ -146,7 +146,8 @@ $scope.leaveGame = function () {
 //===================== MATCH_MENU: DELETE GAME ===============//
 $scope.deleteGame = function () {
     if($scope.matchID===undefined || $scope.playerID===undefined || $scope.accessSignature===undefined) {
-        alert_log_error("Invalid credentials to dismissMatch.", "Cannot dismissMatch because matchID, playerID, or accessSignature is undefined.");
+        alert_log_error("Invalid credentials to dismissMatch.", 
+            "Cannot dismissMatch because matchID, playerID, or accessSignature is undefined.");
     } else {
         var messageObj = [{dismissMatch:
                         {matchId: $scope.matchID, myPlayerId: $scope.playerID, accessSignature: $scope.accessSignature}
@@ -241,7 +242,10 @@ function updateStatus() {
     }
 
     //update UI
-    var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: playersInfo};
+    var params = {stateAfterMove: state, 
+                  turnIndexAfterMove: turnIndex, 
+                  yourPlayerIndex: myPlayerIndex, 
+                  playersInfo: playersInfo};
     platformMessageService.sendMessage({updateUI: params});
 }
 //====================== END UPDATESTATUS FUNCTION
@@ -256,14 +260,20 @@ function checkChanges() {
     $log.info("checking changes for:", matchID);
 //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
-        var params = {stateAfterMove: state, turnIndexAfterMove: turnIndex, yourPlayerIndex: myPlayerIndex, playersInfo: [{playerId: playerID}]};
+        var params = {stateAfterMove: state, 
+                      turnIndexAfterMove: turnIndex, 
+                      yourPlayerIndex: myPlayerIndex, 
+                      playersInfo: [{playerId: playerID}]};
         platformMessageService.sendMessage({updateUI: params});
     } else {
         //if user just jumped to this page from menu, then pull all matches
         if (latestUpdateTime === 0) {
             serverApiService.sendMessage(
                 //get all the matches that is being played or has been played by this player
-                [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature}}],
+                [{getPlayerMatches: {gameId: gameID, 
+                                      getCommunityMatches: true, 
+                                      myPlayerId: playerID, 
+                                      accessSignature: accessSignature}}],
                 function (response) {
                     $log.info("checkChanges getPlayerMatches response: ", response);
                     var matches = response[0]["matches"];
@@ -279,7 +289,7 @@ function checkChanges() {
                         }
                         i++;
                     }
-                    if(i===matches.length && matchInfo!==undefined){   //first time to this match, not reserve sucessfully yet
+                    if(i===matches.length && matchInfo!==undefined){ //first time to this match, not reserve sucessfully yet
                     	$scope.matchInfo = matchInfo;
                     	numberOfMoves = $scope.matchInfo.history.moves.length;
                         if (playsound){
@@ -292,7 +302,8 @@ function checkChanges() {
                             latestUpdateTime = matches[i].updatedTimestampMillis;
                         }
                         $scope.matchInfo = matches[i];
-                        //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
+                        //if there is a mismatch between local numberOfMoves and match history moves length, 
+                        //then update status and UI
                         if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
                             numberOfMoves = $scope.matchInfo.history.moves.length;
                             updateStatus();
@@ -305,7 +316,11 @@ function checkChanges() {
         else {
             serverApiService.sendMessage(
                 //get all the matches that is being played or has been played by this player
-                [{getPlayerMatches: {gameId: gameID, getCommunityMatches: true, myPlayerId: playerID, accessSignature: accessSignature, updatedTimestampMillisAtLeast: latestUpdateTime}}],
+                [{getPlayerMatches: {gameId: gameID, 
+                                      getCommunityMatches: true, 
+                                      myPlayerId: playerID, 
+                                      accessSignature: accessSignature, 
+                                      updatedTimestampMillisAtLeast: latestUpdateTime}}],
                 function (response) {
                     $log.info("checkChanges getPlayerMatches after latestUpdateTime response: ", response);
                     var matches = response[0]["matches"];
@@ -329,7 +344,8 @@ function checkChanges() {
                             latestUpdateTime = matches[i].updatedTimestampMillis;
                         }
                         $scope.matchInfo = matches[i];
-                        //if there is a mismatch between local numberOfMoves and match history moves length, then update status and UI
+                        //if there is a mismatch between local numberOfMoves and match history moves length, 
+                        //then update status and UI
                         if ($scope.matchInfo.history.moves.length !== numberOfMoves) {
                             numberOfMoves = $scope.matchInfo.history.moves.length;
                             updateStatus();
@@ -362,10 +378,18 @@ function checkChanges() {
             move = message.makeMove;//store the move locally, will be sent to server if isMoveOk
             var params;
             if (move[0].endMatch) {
-                params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: 1 - turnIndex, stateBeforeMove: state, stateAfterMove: {}};
+                params = {move: move, 
+                          turnIndexBeforeMove: turnIndex, 
+                          turnIndexAfterMove: 1 - turnIndex, 
+                          stateBeforeMove: state, 
+                          stateAfterMove: {}};
             }
             else {
-                params = {move: move, turnIndexBeforeMove: turnIndex, turnIndexAfterMove: move[0].setTurn.turnIndex, stateBeforeMove: state, stateAfterMove: {}};
+                params = {move: move, 
+                          turnIndexBeforeMove: turnIndex, 
+                          turnIndexAfterMove: move[0].setTurn.turnIndex, 
+                          stateBeforeMove: state, 
+                          stateAfterMove: {}};
             }
             platformMessageService.sendMessage({isMoveOk: params});//let iframe check isMoveOk, will hear back from iframe
         }
@@ -377,7 +401,11 @@ function checkChanges() {
                 if (!newmatch) {
                     //normal move
                     serverApiService.sendMessage(
-                        [{madeMove: {matchId: matchID, move: move, moveNumber: numberOfMoves, myPlayerId: playerID, accessSignature: accessSignature}}],
+                        [{madeMove: {matchId: matchID, 
+                                      move: move, 
+                                      moveNumber: numberOfMoves, 
+                                      myPlayerId: playerID, 
+                                      accessSignature: accessSignature}}],
                         function (response) {
                             $log.info("PlatformMessageService: isMoveOkResult: ", response);
                             checkChanges();
@@ -386,7 +414,12 @@ function checkChanges() {
                 else {
                     //create new match
                     serverApiService.sendMessage(
-                        [{newMatch: {gameId: gameID, tokens: 0, move: move, startAutoMatch: {numberOfPlayers: 2}, myPlayerId: playerID, accessSignature: accessSignature}}],
+                        [{newMatch: {gameId: gameID, 
+                                      tokens: 0, 
+                                      move: move, 
+                                      startAutoMatch: {numberOfPlayers: 2}, 
+                                      myPlayerId: playerID, 
+                                      accessSignature: accessSignature}}],
                         function (response) {
                             $log.info("PlatformMessageService: newmatch: ", response);
                             newmatch = false;//finish crating new match
