@@ -2,7 +2,7 @@
 
 myAppControllers
 .controller('GameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
+function ($sce, $scope, $rootScope, $log, $window, $routeParams, $timeout, serverApiService, platformMessageService) {
   
   if($rootScope.menu_interval !== undefined){
     	clearInterval($rootScope.menu_interval);
@@ -37,6 +37,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
     var $div_av1 = $doc.getElementById('SMPG_game_av1');
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$window.resize(function () {
+    $timeout(function () {
       var height_goback = $div_goback.clientHeight;
       $div_goback.style.fontSize = (height_goback-2)+'px';
       var height_delete = $div_delete.clientHeight;
@@ -47,6 +48,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
         $div_av1.style.height = ($div_players.clientWidth/10)+'px';
       }
     //}).trigger('resize');​
+    })
   //==========HANDLES DIV RESIZING==================//
 
 
