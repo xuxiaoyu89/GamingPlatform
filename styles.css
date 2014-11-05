@@ -151,6 +151,9 @@ div {
     float: left;
     padding: 5px;
 }
+#SMPG_game_players {
+    
+}
 .SMPG_game_helper {
     display: inline-block;
     height: 100%;
