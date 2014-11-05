@@ -38,6 +38,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, $timeout, serve
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$window.resize(function () {
     $timeout(function () {
+      $log.info("TIMEOUT OCCURRED")
       var height_goback = $div_goback.clientHeight;
       $div_goback.style.fontSize = (height_goback-2)+'px';
       var height_delete = $div_delete.clientHeight;
@@ -45,7 +46,9 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, $timeout, serve
       var height_players = $div_players.clientHeight;
       if($div_players.clientWidth < $div_players.clientHeight*10) { 
         $div_av0.style.height = ($div_players.clientWidth/10)+'px';
+        $div_av0.style.width = ($div_players.clientWidth/10)+'px';
         $div_av1.style.height = ($div_players.clientWidth/10)+'px';
+        $div_av1.style.width = ($div_players.clientWidth/10)+'px';
       }
     //}).trigger('resize');​
     })
