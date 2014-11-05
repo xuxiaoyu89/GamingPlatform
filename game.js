@@ -4,23 +4,6 @@ myAppControllers
 .controller('GameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiService, platformMessageService) {
   
-  //==========HANDLES DIV RESIZING==================//
-    // Cache the div so that the browser doesn't have to find it every time the window is resized.
-    //var div2 = $('div.SMPG_game_goback');
-    // Run the following when the window is resized, and also trigger it once to begin with.
-    //$(window).resize(function () {
-      // Get the current height of the div and save it as a variable.
-      //var height2 = div2.height();
-      //$log.info("DIV 2: ", div2);
-      // Set the font-size and line-height of the text within the div according to the current height.
-      //$div.css({
-      //'font-size': (height/2) + 'px',
-      //'line-height': height + 'px'
-      //})
-    //}).trigger('resize');​
-  //==========HANDLES DIV RESIZING==================//
-  
-  
   if($rootScope.menu_interval !== undefined){
     	clearInterval($rootScope.menu_interval);
     }
@@ -43,6 +26,24 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
+
+//==========HANDLES DIV RESIZING==================//
+    var $doc = $window.document;
+    // Cache the div so that the browser doesn't have to find it every time the window is resized.
+    var div2 = $doc.getElementById('SMPG_game_goback2');
+    // Run the following when the window is resized, and also trigger it once to begin with.
+    //$(window).resize(function () {
+      // Get the current height of the div and save it as a variable.
+      //var height2 = div2.height();
+      $log.info("DIV 2: ", div2);
+      // Set the font-size and line-height of the text within the div according to the current height.
+      //$div.css({
+      //'font-size': (height/2) + 'px',
+      //'line-height': height + 'px'
+      //})
+    //}).trigger('resize');​
+  //==========HANDLES DIV RESIZING==================//
+
 
 //===================== JS_ERROR_CATCHING ====================//
 // Quick function to both alert and log requested message as error
