@@ -6,7 +6,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, serverApiServic
   
   //==========HANDLES DIV RESIZING==================//
     // Cache the div so that the browser doesn't have to find it every time the window is resized.
-    var div2 = $window.('.SMPG_game_goback');
+    var div2 = ('.SMPG_game_goback');
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$(window).resize(function () {
       // Get the current height of the div and save it as a variable.
