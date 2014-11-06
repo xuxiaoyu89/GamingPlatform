@@ -228,7 +228,7 @@ div {
     width: 100%;
     vertical-align: middle;
     text-align: center;
-    border: 1px solid rgba(131, 182, 115, 1);
+    border: 1px solid #58863d;
 }
 .SMPG_stats_col {
     width: 10%;
