@@ -83,37 +83,6 @@ function getLocalVars() {
 }
 getLocalVars();
 
-//===================== CHECK THE VARIABLES ====================//
-function checkVars() {
-    if ($scope.gameID!==undefined) {
-        gameID = $scope.gameID;
-        $log.info("GAMEID: ", $scope.gameID);
-    } else { alert_log_error("GAMEID required in URL.", "Required URL Format: .../platform_game.html?matchid=1&gameid=2"); }
-    if ($scope.matchID!==undefined) {
-        matchID = $scope.matchID;
-        $log.info("MATCHID: ", $scope.matchID);
-    }
-    else {
-      newmatch = true;//matchID not found in URL, so create new match
-      myPlayerIndex = 0;
-      turnIndex = 0;
-      state = {};
-    }
-    if ($scope.playerID!==undefined) {
-        playerID = $scope.playerID;
-        $log.info("PLAYERID: ", $scope.playerID);
-    } else { alert_log_error("Cannot find PLAYERID.", "PLAYERID not in LOCALSTORAGE."); }
-    if ($scope.accessSignature!==undefined) {
-        accessSignature = $scope.accessSignature;
-        $log.info("ACCESS_SIGNATURE: ", $scope.accessSignature);
-    } else { alert_log_error("Cannot find ACCESSSIGNATURE.", "ACCESSSIGNATURE not in LOCALSTORAGE."); }
-    if ($scope.matchInfo!==undefined) {
-        matchInfo = $scope.matchInfo;
-        $log.info("MATCH_INFO: ", $scope.matchInfo);
-    } else { $log.info("MATCHINFO not in LOCALSTORAGE."); }
-}
-checkVars();
-
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
     var confirmation = $window.confirm("Return to Main Menu?");
@@ -129,10 +98,6 @@ $scope.leaveGame = function () {
 $scope.deleteGame = function () {
     
 };
-
-//+++++++++++++++++++ here we can get URL from local storage  ++++++++++++++++++++//
-
-
 //===================== GET GAME'S URL ===============//
 serverApiService.sendMessage(
     [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
@@ -160,9 +125,6 @@ serverApiService.sendMessage(
     return "Match is ongoing! Turn of player index " + matchState.turnIndex;
   };
   stateService.setPlayMode($scope.playMode);
-  $scope.$watch('playMode', function() {
-    stateService.setPlayMode($scope.playMode);
-  });
 
   $scope.test = 0;
   platformMessageService.addMessageListener(function (message) {
