@@ -140,7 +140,6 @@ div {
     width: 10%;
     float: left;
     font-size: 2em;
-    color: white;
 }
 #SMPG_game_goback2 {
     padding: 0px;
@@ -190,7 +189,7 @@ div {
 
 /* These are stats.html items */
 
-.statsBody{
+.SMPG_stats {
     //background: #ECECEC;
     //margin:0px ;
     //color:#333;
@@ -200,7 +199,9 @@ div {
     background-color: rgba(173, 215, 160, 1);
     color: white;
 }
-
+.SMPG_stats_you {
+    padding: 1%;
+}
 
 
 
