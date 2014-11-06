@@ -1,78 +1,78 @@
 <div class="SMPG_stats">
-	<div class="SMPG_game_top">
-	        <div class="SMPG_game_goback icon ion-chevron-left"
-	            id="SMPG_game_goback2"
-	             ng-click="leaveGame()">
-	        </div>
-	        
-	        <div class="SMPG_stats_top">
-	                <span class="SMPG_game_helper"></span>
-	                <b>Your Stats</b>
-	        </div>
-	        
-	        <div class="SMPG_game_delete">
-	        </div>
-	</div>
+    <div class="SMPG_game_top">
+        <div class="SMPG_game_goback icon ion-chevron-left"
+             id="SMPG_game_goback2"
+             ng-click="leaveGame()">
+        </div>
 
+        <div class="SMPG_stats_top">
+            <span class="SMPG_game_helper"></span>
+            <b>Your Stats</b>
+        </div>
 
-	<div class="SMPG_stats_you">
-	<div ng-show="outcomesCount">
-    Current Rank: <b>{{rank}}</b>
-    <br>
-    Total Wins:	<b>{{outcomesCount.W===undefined?0:outcomesCount.W}}</b>
-    <br>
-    Total Ties: <b>{{outcomesCount.T===undefined?0:outcomesCount.T}}</b>
-    <br>
-    Total Losses: <b>{{outcomesCount.L===undefined?0:outcomesCount.L}}</b>
+        <div class="SMPG_game_delete">
+        </div>
     </div>
-  </div>
-  
-  <div class="SMPG_stats_none" 
-  	ng-show="outcomesCount===undefined">
-    <a class="icon icon ion-loading-a"></a>
-  </div> 
-  
-  
-  <div class="SMPG_stats_opponents">
-  <span class="SMPG_game_helper"></span>
-	                <b>Opponent Breakdown:</b>
-	                </div>
-  
-<div class="SMPG_stats_div">
-	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b></b>
-	</div>
-	<div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b>Username</b>
-	</div>
-	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>Won</b>
-	</div>
-	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b>Tie</b>
-	</div>
-	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>Lost</b>
-	</div>
-</div>
 
-	<div class="SMPG_stats_div" ng-repeat="stats in statsIndex track by $index">
-	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<img ng-src="{{stats.avatarImageUrl}}" class="SMPG_stats_av"></img>
-	</div>
-	<div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b>{{stats.displayName}}</b>
-	</div>
-	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>{{stats.outcomes.W===undefined?0:stats.outcomes.W}}</b>
-	</div>
-	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b>{{stats.outcomes.T===undefined?0:stats.outcomes.T}}</b>
-	</div>
-	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>{{stats.outcomes.L===undefined?0:stats.outcomes.L}}</b>
-	</div>
-	</div>
-<div class="SMPG_stats_div"></div>	
-	
+
+    <div class="SMPG_stats_you">
+        <div ng-show="outcomesCount">
+            Current Rank: <b>{{rank}}</b>
+            <br>
+            Total Wins:	<b>{{outcomesCount.W===undefined?0:outcomesCount.W}}</b>
+            <br>
+            Total Ties: <b>{{outcomesCount.T===undefined?0:outcomesCount.T}}</b>
+            <br>
+            Total Losses: <b>{{outcomesCount.L===undefined?0:outcomesCount.L}}</b>
+        </div>
+    </div>
+
+    <div class="SMPG_stats_none" 
+         ng-show="outcomesCount === undefined">
+        <a class="icon icon ion-loading-a"></a>
+    </div> 
+
+
+    <div class="SMPG_stats_opponents">
+        <span class="SMPG_game_helper"></span>
+        <b>Opponent Breakdown:</b>
+    </div>
+
+    <div class="SMPG_stats_div">
+        <div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <b></b>
+        </div>
+        <div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <b>Username</b>
+        </div>
+        <div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+            <b>Won</b>
+        </div>
+        <div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <b>Tie</b>
+        </div>
+        <div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+            <b>Lost</b>
+        </div>
+    </div>
+
+    <div class="SMPG_stats_div" ng-repeat="stats in statsIndex track by $index">
+        <div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <img ng-src="{{stats.avatarImageUrl}}" class="SMPG_stats_av"></img>
+        </div>
+        <div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <b>{{stats.displayName}}</b>
+        </div>
+        <div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+            <b>{{stats.outcomes.W===undefined?0:stats.outcomes.W}}</b>
+        </div>
+        <div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+            <b>{{stats.outcomes.T===undefined?0:stats.outcomes.T}}</b>
+        </div>
+        <div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+            <b>{{stats.outcomes.L===undefined?0:stats.outcomes.L}}</b>
+        </div>
+    </div>
+    <div class="SMPG_stats_div"></div>	
+
 </div>
