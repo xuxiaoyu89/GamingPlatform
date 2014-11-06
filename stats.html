@@ -30,12 +30,24 @@
   <div class="SMPG_stats_none" 
   	ng-show="outcomesCount===undefined">
     <a class="icon icon ion-loading-a"></a>
-  </div>      
-	<br>
-	
-	<center>
+  </div> 
+  
+  
+  <div class="SMPG_stats_opponents">
+  <span class="SMPG_game_helper"></span>
+	                <b>Opponent Breakdown:</b>
+	                </div>
+  
+<div class="SMPG_stats_div">
+	<div class="SMPG_stats_col"><b>Rank</b></div>
+	<div class="SMPG_stats_player SMPG_stats_dark"><b>Username</b></div>
+	<div class="SMPG_stats_col"><b>Wins</b></div>
+	<div class="SMPG_stats_col SMPG_stats_dark"><b>Ties</b></div>
+	<div class="SMPG_stats_col"><b>Losses</b></div>
+</div>
+
 	<div  ng-repeat="stats in statsIndex track by $index" style="text-align: -webkit-center;">
-		<div class="stats_div" style="font-family:verdana; text-align: -webkit-center;">
+		<div class="SMPG_stats_div">
 		
 				vs. {{stats.displayName}} <img ng-src="{{stats.avatarImageUrl}}" style="heigh:50px; width:50px"></img>
 		
@@ -46,7 +58,6 @@
 		</div>
 		<br>
 	</div>
-	</center>
 	
 	
 </div>
