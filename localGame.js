@@ -62,7 +62,11 @@ function parseURL() {
     for (i = 0; i < parsedurl.length; i++) {
         subparse = parsedurl[i].split('=');
         if (subparse.length === 2) {
-            $scope.gameID = subparse[1];
+            if (subparse[0].toLowerCase() === 'playmode') {
+                $scope.playMode = subparse[1];
+            } else if (subparse[0].toLowerCase() === 'gameid') {
+                $scope.gameID = subparse[1];
+            }
         }
     }
 }
@@ -155,7 +159,6 @@ serverApiService.sendMessage(
     }
     return "Match is ongoing! Turn of player index " + matchState.turnIndex;
   };
-  $scope.playMode = "playAgainstTheComputer";
   stateService.setPlayMode($scope.playMode);
   $scope.$watch('playMode', function() {
     stateService.setPlayMode($scope.playMode);
