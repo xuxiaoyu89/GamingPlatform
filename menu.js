@@ -417,14 +417,24 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		alert("please select a game!");
     		return;
     	}
+    	var playMode = "playAgainstTheComputer";
     	$location.search("GameId", gameId);
+    	$location.search("playMode", playMode);
     	$location.path('localGame');
     	//alert("play against computer");
     }
     
     //passAndPlayHandler;
     $scope.passAndPlayHandler = function() {
-    	alert("LocalGame");
+    	if(gameId === null){
+    		alert("please select a game!");
+    		return;
+    	}
+    	var playMode = "passAndPlay";
+    	$location.search("GameId", gameId);
+    	$location.search("playMode", playMode);
+    	$location.path('localGame');
+    	//alert("LocalGame");
     }
     
 	   
