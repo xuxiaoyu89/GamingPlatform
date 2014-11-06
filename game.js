@@ -434,6 +434,7 @@ function checkChanges() {
                             $log.info("PlatformMessageService: newmatch: ", response);
                             newmatch = false;//finish crating new match
                             matchID = response[0]["matches"][0].matchId;
+                            $scope.matchID = matchID;
                             //var newURL = beforeHashUrl.concat("#game?gameId=",gameID,"&matchid=",matchID);
                             //$window.location.replace(newURL);
                             $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
