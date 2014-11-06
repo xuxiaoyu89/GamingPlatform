@@ -48,7 +48,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
                     $scope.accessSignature = accessSignature;
                     $scope.displayName = playerInfo.displayName;
                     $scope.avatarImageUrl = playerInfo.avatarImageUrl;
-                    $window.location.replace(MENU_URL);
+                    //$window.location.replace(MENU_URL);
+                    $location.path('menu');
                 });
     } else {
         playerInfo = JSON.parse(angular.fromJson(playerInfo));
