@@ -444,7 +444,7 @@ function checkChanges() {
             }
             //illegal move
             else {
-                throwError("You declared a hacker for a legal move! move=" + move);
+                //throwError("You declared a hacker for a legal move! move=" + move);
             }
         }
         //got a error from iframe and send it to server
