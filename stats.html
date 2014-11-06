@@ -38,25 +38,45 @@
 	                <b>Opponent Breakdown:</b>
 	                </div>
   
-<div class="SMPG_stats_div"><span class="SMPG_game_helper"></span>
-	<div class="SMPG_stats_col"><b>Rank</b></div>
-	<div class="SMPG_stats_player SMPG_stats_dark"><b>Username</b></div>
-	<div class="SMPG_stats_col"><b>Wins</b></div>
-	<div class="SMPG_stats_col SMPG_stats_dark"><b>Ties</b></div>
-	<div class="SMPG_stats_col"><b>Losses</b></div>
+<div class="SMPG_stats_div">
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<b>Rank</b>
+	</div>
+	<div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+	<b>Username</b>
+	</div>
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<b>Wins</b>
+	</div>
+	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+	<b>Ties</b>
+	</div>
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<b>Losses</b>
+	</div>
 </div>
 
-	<div  ng-repeat="stats in statsIndex track by $index" style="text-align: -webkit-center;">
-		<div class="SMPG_stats_div">
-		
+	<div class="SMPG_stats_div" ng-repeat="stats in statsIndex track by $index">
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<img ng-src="{{stats.avatarImageUrl}}" class="SMPG_game_avatar"></img>
+	</div>
+	<div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+	<b>{{stats.displayName}}</b>
+	</div>
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<b>{{stats.outcomes.W===undefined?0:stats.outcomes.W}}</b>
+	</div>
+	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
+	<b>{{stats.outcomes.T===undefined?0:stats.outcomes.T}}</b>
+	</div>
+	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
+	<b>{{stats.outcomes.L===undefined?0:stats.outcomes.L}}</b>
+	</div>
 				vs. {{stats.displayName}} <img ng-src="{{stats.avatarImageUrl}}" style="heigh:50px; width:50px"></img>
 		
 			<br>
 		
 				You Win: {{stats.outcomes.W===undefined?0:stats.outcomes.W}}; You Tie: {{stats.outcomes.T===undefined?0:stats.outcomes.T}};You Loss: {{stats.outcomes.L===undefined?0:stats.outcomes.L}}
-		
-		</div>
-		<br>
 	</div>
 	
 	
