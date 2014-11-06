@@ -46,19 +46,19 @@
 	<b>Username</b>
 	</div>
 	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>Wins</b>
+	<b>Won</b>
 	</div>
 	<div class="SMPG_stats_col SMPG_stats_dark"><span class="SMPG_game_helper"></span>
-	<b>Ties</b>
+	<b>Tie</b>
 	</div>
 	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<b>Losses</b>
+	<b>Lost</b>
 	</div>
 </div>
 
 	<div class="SMPG_stats_div" ng-repeat="stats in statsIndex track by $index">
 	<div class="SMPG_stats_col"><span class="SMPG_game_helper"></span>
-	<img ng-src="{{stats.avatarImageUrl}}" class="SMPG_game_avatar"></img>
+	<img ng-src="{{stats.avatarImageUrl}}" class="SMPG_stats_av"></img>
 	</div>
 	<div class="SMPG_stats_player SMPG_stats_dark"><span class="SMPG_game_helper"></span>
 	<b>{{stats.displayName}}</b>
