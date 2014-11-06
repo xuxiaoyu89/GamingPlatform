@@ -187,7 +187,8 @@ div {
     background-color: #58863d;
 }
 
-@import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
+/* These are stats.html items */
+
 .statsBody{
     //background: #ECECEC;
     //margin:0px ;
@@ -198,6 +199,10 @@ div {
     background-color: rgba(173, 215, 160, 1);
 }
 
+
+
+
+@import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
 a.button{
     background: #ECECEC;
     border-radius: 15px;
