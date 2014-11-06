@@ -207,6 +207,8 @@ div {
     font-size: 200%;
 }
 .SMPG_stats_you {
+    width: 100%;
+    padding: 1%;
     background-color: #58863d;
 }
 
