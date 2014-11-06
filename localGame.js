@@ -30,7 +30,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, s
 //===================== JS_ERROR_CATCHING ====================//
 // Quick function to both alert and log requested message as error
 function alert_log_error(alert, log) {
-    $window.alert(alert);
+    //$window.alert(alert);
     $log.error("Alert & Log Error: ", log);
     return;
 }
