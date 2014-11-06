@@ -199,6 +199,13 @@ div {
     background-color: rgba(173, 215, 160, 1);
     color: white;
 }
+.SMPG_stats_top {
+    height: 100%;
+    width: 80%;
+    float: left;
+    padding: 5px;
+    font-size: 200%;
+}
 .SMPG_stats_you {
     background-color: #58863d;
 }
