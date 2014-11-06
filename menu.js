@@ -419,7 +419,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		return;
     	}
     	var playMode = "playAgainstTheComputer";
-    	$location.search("GameId", gameId);
     	$location.search("playMode", playMode);
     	$location.path('localGame');
     	//alert("play against computer");
@@ -432,7 +431,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     		return;
     	}
     	var playMode = "passAndPlay";
-    	$location.search("GameId", gameId);
     	$location.search("playMode", playMode);
     	$location.path('localGame');
     	//alert("LocalGame");
