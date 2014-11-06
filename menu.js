@@ -378,7 +378,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         //alert("hello");
         if (gameId === undefined || gameId === null) {
             alert("Choose a game first please!");
-            $log.info("choose a game first!!!!");
             return;
         } else {
             //try to reserve an AutoMatch first
