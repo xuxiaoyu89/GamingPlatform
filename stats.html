@@ -5,7 +5,7 @@
 	             ng-click="leaveGame()">
 	        </div>
 	        
-	        <div class="SMPG_game_opponent">
+	        <div class="SMPG_stats_top">
 	                <span class="SMPG_game_helper"></span>
 	                <b>Your Stats</b>
 	        </div>
@@ -15,8 +15,8 @@
 	</div>
 
 
-	<div class="SMPG_stats_you" 
-	ng-show="outcomesCount">
+	<div class="SMPG_stats_you">
+	<div ng-show="outcomesCount">
     Current Rank: <b>{{rank}}</b>
     <br>
     Total Wins:	<b>{{outcomesCount.W===undefined?0:outcomesCount.W}}</b>
@@ -24,6 +24,7 @@
     Total Ties: <b>{{outcomesCount.T===undefined?0:outcomesCount.T}}</b>
     <br>
     Total Losses: <b>{{outcomesCount.L===undefined?0:outcomesCount.L}}</b>
+    </div>
   </div>
   
   <div ng-show="outcomesCount===undefined"  style="font-family:verdana; font-size: 200%;">
