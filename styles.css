@@ -198,6 +198,7 @@ div {
     width:100%;
     overflow: scroll;
     background-color: rgba(173, 215, 160, 1);
+    color: white;
 }
 
 
