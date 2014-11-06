@@ -8,13 +8,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     var $doc = $window.document;
     // Cache the div so that the browser doesn't have to find it every time the window is resized.
     var $div_goback = $doc.getElementById('SMPG_game_goback2');
-    var $div_players = $doc.getElementById('SMPG_game_players');
     // Run the following when the window is resized, and also trigger it once to begin with.
     //$window.resize(function () {
     //$timeout(function () {
       var height_goback = $div_goback.clientHeight;
       $div_goback.style.fontSize = (height_goback-2)+'px';
-      $div_players.style.fontSize = (height_goback-2)+'px';
     //}).trigger('resize');​
     //})
   //==========HANDLES DIV RESIZING==================//
