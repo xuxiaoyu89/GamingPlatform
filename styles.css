@@ -212,7 +212,11 @@ div {
     background-color: #58863d;
     min-height: 10%;
 }
-
+.SMPG_stats_none {
+    width: 100%;
+    padding: 1%;
+    min-height: 10%;
+}
 
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
