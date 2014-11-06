@@ -218,7 +218,29 @@ div {
     min-height: 10%;
     font-size: 300%;
 }
-
+.SMPG_stats_opponents {
+    width: 100%;
+    padding: 1%;
+    font-size: 200%;
+}
+.SMPG_stats_div {
+    height: 10%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1%;
+}
+.SMPG_stats_col {
+    width: 10%;
+    float: left;
+}
+.SMPG_stats_player {
+    width: 60%;
+    float: left;
+}
+.SMPG_stats_dark {
+    background-color: rgba(131, 182, 115, 1)
+}
 
 @import url(http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css);
 a.button{
