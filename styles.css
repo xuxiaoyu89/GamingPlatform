@@ -234,10 +234,12 @@ div {
 .SMPG_stats_col {
     width: 10%;
     float: left;
+    height: 100%;
 }
 .SMPG_stats_player {
     width: 60%;
     float: left;
+    height: 100%;
 }
 .SMPG_stats_dark {
     background-color: rgba(131, 182, 115, 1)
