@@ -413,7 +413,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //playAgainstComputerHandler;
     $scope.playAgainstComputerHandler = function() {
-    	if(gameId === null || gameId === ""){
+    	if(gameId === undefined || gameId === "" || gameId === null){
     		alert("please select a game!");
     		return;
     	}
@@ -426,7 +426,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //passAndPlayHandler;
     $scope.passAndPlayHandler = function() {
-    	if(gameId === null || gameId === ""){
+    	if(gameId === undefined || gameId === "" || gameId === null){
     		alert("please select a game!");
     		return;
     	}
