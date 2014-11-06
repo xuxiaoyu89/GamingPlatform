@@ -375,6 +375,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     //AUTO MATCH button handler
     $scope.autoMatchHandler = function () {
         //AUTO_MATCH = true;
+        alert("hello");
         if (gameId === undefined || gameId === null) {
             alert("Choose a game first please!");
             return;
@@ -413,7 +414,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //playAgainstComputerHandler;
     $scope.playAgainstComputerHandler = function() {
-    	if(gameId === undefined || gameId === "" || gameId === null){
+    	if(gameId === undefined || gameId === null){
     		alert("please select a game!");
     		return;
     	}
@@ -426,7 +427,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //passAndPlayHandler;
     $scope.passAndPlayHandler = function() {
-    	if(gameId === undefined || gameId === "" || gameId === null){
+    	if(gameId === undefined || gameId === null){
     		alert("please select a game!");
     		return;
     	}
