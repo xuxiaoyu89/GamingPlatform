@@ -1,11 +1,11 @@
-<div class="statsBody">
+<div class="SMPG_stats">
 	<div class="SMPG_game_top">
 	        <div class="SMPG_game_goback icon ion-chevron-left"
 	            id="SMPG_game_goback2"
 	             ng-click="leaveGame()">
 	        </div>
 	        
-	        <div class="SMPG_game_opponent" id="SMPG_game_players">
+	        <div class="SMPG_game_opponent">
 	                <span class="SMPG_game_helper"></span>
 	                <b>Your Stats</b>
 	        </div>
@@ -15,15 +15,17 @@
 	</div>
 
 
-	<div ng-show="outcomesCount"  style="font-family:verdana; font-size: 150%;">
-    Your Current Rank:  {{rank}}
+	<div class="SMPG_stats_you" 
+	ng-show="outcomesCount">
+    Current Rank: <b>{{rank}}</b>
     <br>
-    Your Total Wins:		{{outcomesCount.W===undefined?0:outcomesCount.W}}
+    Total Wins:	<b>{{outcomesCount.W===undefined?0:outcomesCount.W}}</b>
     <br>
-    Your Total Ties:		{{outcomesCount.T===undefined?0:outcomesCount.T}}
+    Total Ties: <b>{{outcomesCount.T===undefined?0:outcomesCount.T}}</b>
     <br>
-    Your Total Losses:		{{outcomesCount.L===undefined?0:outcomesCount.L}}
+    Total Losses: <b>{{outcomesCount.L===undefined?0:outcomesCount.L}}</b>
   </div>
+  
   <div ng-show="outcomesCount===undefined"  style="font-family:verdana; font-size: 200%;">
     NO DATA
   </div>      
