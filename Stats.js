@@ -19,6 +19,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     //})
   //==========HANDLES DIV RESIZING==================//
 	  	
+	  	$scope.leaveGame = function () {
+	  		var MENU_URL = '#/menu';
+        $log.info("leaveGame: About to redirect to Main Menu.");
+        $window.location.replace(MENU_URL);
+};
 	 	
 	 	
 	 	function getLocalVars() {
