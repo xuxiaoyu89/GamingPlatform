@@ -22,8 +22,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
 
     var myPlayerId, accessSignature;
     $scope.displayName, $scope.avatarImageUrl;
-    var MENU_URL = 'platform.html';
-    var GAME_URL = 'platform_game_vs.html'
+    var MENU_URL = 'menu.html';
+    var GAME_URL = 'game.html'
     /* Create a user, if necessary, by sending registerPlayer message
      * Store/Check any player information in local storage
      * Initialize closure value: *myPlayerId*, *accessSignature*
