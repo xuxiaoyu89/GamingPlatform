@@ -164,8 +164,11 @@ serverApiService.sendMessage(
     stateService.setPlayMode($scope.playMode);
   });
 
+  var test = 0;
   platformMessageService.addMessageListener(function (message) {
     if (message.gameReady !== undefined) {
+      $log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ", test);
+      test ++;
       gotGameReady = true;
       var game = message.gameReady;
       game.isMoveOk = function (params) {
