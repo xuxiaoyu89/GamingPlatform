@@ -1,12 +1,10 @@
-'use strict';
-
 myAppControllers.controller('MenuCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
-	 platformMessageService, serverApiService) {
+     platformMessageService, serverApiService) {
     
     $log.info($rootScope.interval);
     if($rootScope.interval !== undefined){
-    	clearInterval($rootScope.interval);
+        clearInterval($rootScope.interval);
     }
     
        
@@ -68,11 +66,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     $scope.oppoTurnMatches = [];
     $scope.endMatches = [];
     function retriveCurrentGames(){
-	    serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
-	        $scope.myMatchesPool = matches[0].matches;
-	        $log.info($scope.myMatchesPool);
-	        setCurrentMatches();
-	    });
+        serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
+            $scope.myMatchesPool = matches[0].matches;
+            $log.info($scope.myMatchesPool);
+            setCurrentMatches();
+        });
     }
 
     /* display the matches of the game user selected($scope.selectdGames = "";)
@@ -107,7 +105,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             else {
                 currMatch.turnIndex = -1;
             }
-
             if (currMatch.playersInfo[0].playerId === myPlayerId) {
                 if (currMatch.playersInfo[1] === null) {
                     currMatch.opponent = "no opponent";
@@ -249,8 +246,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     }
     
     $scope.goToStats = function(gameId){
-    	 //$location.search("gameId",gameId);
-    	 $location.path('stats');
+         //$location.search("gameId",gameId);
+         $location.path('stats');
     }
 
 
@@ -259,17 +256,17 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     $scope.EMAIL_JS_ERRORS = true;
     
     var setOnandOff = function(AUTO_MATCH_, EMAIL_JS_ERRORS_){
-    	if(AUTO_MATCH_ && EMAIL_JS_ERRORS_){
-    		$location.search("on","AUTO_MATCH,EMAIL_JS_ERRORS");
-    	}else if(!AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
-    		$location.search("off","AUTO_MATCH,EMAIL_JS_ERRORS");
-    	}else if(!AUTO_MATCH_ && EMAIL_JS_ERRORS_){
-    		$location.search("off","AUTO_MATCH");
-    		$location.search("on","EMAIL_JS_ERRORS");
-    	}else if(AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
-    		$location.search("on","AUTO_MATCH");
-    		$location.search("off","EMAIL_JS_ERRORS");
-    	}
+        if(AUTO_MATCH_ && EMAIL_JS_ERRORS_){
+            $location.search("on","AUTO_MATCH,EMAIL_JS_ERRORS");
+        }else if(!AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
+            $location.search("off","AUTO_MATCH,EMAIL_JS_ERRORS");
+        }else if(!AUTO_MATCH_ && EMAIL_JS_ERRORS_){
+            $location.search("off","AUTO_MATCH");
+            $location.search("on","EMAIL_JS_ERRORS");
+        }else if(AUTO_MATCH_ && !EMAIL_JS_ERRORS_){
+            $location.search("on","AUTO_MATCH");
+            $location.search("off","EMAIL_JS_ERRORS");
+        }
     }
     
     
@@ -323,53 +320,53 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
             }
         });
         if(gameId !== undefined){
-        	retriveCurrentGames();
-        	//save gameurl to local storage
-        	window.localStorage.setItem("gameURL", angular.toJson(gameUrl));
+            retriveCurrentGames();
+            //save gameurl to local storage
+            window.localStorage.setItem("gameURL", angular.toJson(gameUrl));
         }
     });
 
     
     $scope.location = $location;
     $scope.$watch( 'location.search()', function( searchObj ) {
-    	    if(searchObj.on){
-    	    	if(searchObj.on === "AUTO_MATCH,EMAIL_JS_ERRORS"){
-    	    		$scope.AUTO_MATCH = true;
-	                $scope.EMAIL_JS_ERRORS = true;
-    	    	}
-    	    	if(searchObj.on === "AUTO_MATCH"){
-    	    		$scope.AUTO_MATCH = true;
-    	    	}
-    	    	if(searchObj.on === "EMAIL_JS_ERRORS"){
-    	    		$scope.EMAIL_JS_ERRORS = true;
-    	    	}
-    	    }
-    	    if(searchObj.off){
-    	    	if(searchObj.off === "AUTO_MATCH,EMAIL_JS_ERRORS"){
-    	    		$scope.AUTO_MATCH = false;
-	                $scope.EMAIL_JS_ERRORS = false;
-    	    	}
-    	    	if(searchObj.off === "AUTO_MATCH"){
-    	    		$scope.AUTO_MATCH = false;
-    	    	}
-    	    	if(searchObj.off === "EMAIL_JS_ERRORS"){
-    	    		$scope.EMAIL_JS_ERRORS = false;
-    	    	}
-    	    }
-    	    
-    	    //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
-	    setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
-	    
+            if(searchObj.on){
+                if(searchObj.on === "AUTO_MATCH,EMAIL_JS_ERRORS"){
+                    $scope.AUTO_MATCH = true;
+                    $scope.EMAIL_JS_ERRORS = true;
+                }
+                if(searchObj.on === "AUTO_MATCH"){
+                    $scope.AUTO_MATCH = true;
+                }
+                if(searchObj.on === "EMAIL_JS_ERRORS"){
+                    $scope.EMAIL_JS_ERRORS = true;
+                }
+            }
+            if(searchObj.off){
+                if(searchObj.off === "AUTO_MATCH,EMAIL_JS_ERRORS"){
+                    $scope.AUTO_MATCH = false;
+                    $scope.EMAIL_JS_ERRORS = false;
+                }
+                if(searchObj.off === "AUTO_MATCH"){
+                    $scope.AUTO_MATCH = false;
+                }
+                if(searchObj.off === "EMAIL_JS_ERRORS"){
+                    $scope.EMAIL_JS_ERRORS = false;
+                }
+            }
+            
+            //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
+        setOnandOff($scope.AUTO_MATCH, $scope.EMAIL_JS_ERRORS);
+        
     });
     
     $scope.$watch('EMAIL_JS_ERRORS', function () {
-    	if($scope.EMAIL_JS_ERRORS){
-    		// do something if EMAIL_JS_ERRORS is on
+        if($scope.EMAIL_JS_ERRORS){
+            // do something if EMAIL_JS_ERRORS is on
             $rootScope.EMAIL_JS_ERRORS = true;
-    	}else{
-    		// do something if EMAIL_JS_ERRORS is off
+        }else{
+            // do something if EMAIL_JS_ERRORS is off
             $rootScope.EMAIL_JS_ERRORS = false;
-    	}
+        }
     });
 
     //AUTO MATCH button handler
@@ -414,27 +411,27 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
     
     //playAgainstComputerHandler;
     $scope.playAgainstComputerHandler = function() {
-    	if(gameId === undefined || gameId === null){
-    		alert("please select a game!");
-    		return;
-    	}
-    	var playMode = "playAgainstTheComputer";
-    	$location.search("playMode", playMode);
-    	$location.path('localGame');
-    	//alert("play against computer");
+        if(gameId === undefined || gameId === null){
+            alert("please select a game!");
+            return;
+        }
+        var playMode = "playAgainstTheComputer";
+        $location.search("playMode", playMode);
+        $location.path('localGame');
+        //alert("play against computer");
     }
     
     //passAndPlayHandler;
     $scope.passAndPlayHandler = function() {
-    	if(gameId === undefined || gameId === null){
-    		alert("please select a game!");
-    		return;
-    	}
-    	var playMode = "passAndPlay";
-    	$location.search("playMode", playMode);
-    	$location.path('localGame');
-    	//alert("LocalGame");
+        if(gameId === undefined || gameId === null){
+            alert("please select a game!");
+            return;
+        }
+        var playMode = "passAndPlay";
+        $location.search("playMode", playMode);
+        $location.path('localGame');
+        //alert("LocalGame");
     }
     
-	   
+       
 });

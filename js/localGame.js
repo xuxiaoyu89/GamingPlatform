@@ -5,7 +5,7 @@ myAppControllers
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, serverApiService, platformMessageService) {
   
   if($rootScope.menu_interval !== undefined){
-    	clearInterval($rootScope.menu_interval);
+      clearInterval($rootScope.menu_interval);
     }
 
   //SOME important VARIABLES
