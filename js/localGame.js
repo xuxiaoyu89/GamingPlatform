@@ -27,6 +27,25 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, s
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
+
+//==========HANDLES DIV RESIZING==================//
+            var $doc = $window.document;
+            // Cache the div so that the browser doesn't have to find it every time the window is resized.
+            function rescaleDivs() {
+                    $log.info("called rescaleDivs")
+                    var $div_goback = $doc.getElementById('SMPG_game_goback2');
+                    var height_goback = $div_goback.clientHeight;
+                    $div_goback.style.fontSize = (height_goback - 2) + 'px';
+            }
+            rescaleDivs();
+            $window.onresize = rescaleDivs;
+            $window.onorientationchange = rescaleDivs;
+            $log.info("onresize: ", $window.onresize);
+            $log.info("onorientationchange: ", $window.onorientationchange);
+            $doc.addEventListener("orientationchange", rescaleDivs);
+            //==========HANDLES DIV RESIZING==================//
+
+
 //===================== JS_ERROR_CATCHING ====================//
 // Quick function to both alert and log requested message as error
 function alert_log_error(alert, log) {
