@@ -1,10 +1,10 @@
 myAppControllers.controller('MenuCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
+function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interval
      platformMessageService, serverApiService) {
     
     $log.info($rootScope.interval);
     if($rootScope.interval !== undefined){
-        clearInterval($rootScope.interval);
+        $interval.cancel($scope.interval);
     }
     
        
@@ -169,7 +169,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
         }
     }
     
-    $rootScope.menu_interval = setInterval(updateMatchesPool, 10000);
+    $rootScope.menu_interval = $interval(updateMatchesPool, 10000);
 
     function setCurrentMatches() {
         if($scope.selectdGames === "" || $scope.selectdGames === null){
