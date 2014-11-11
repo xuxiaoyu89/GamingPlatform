@@ -18,12 +18,12 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
 
   var newmatch = false;//whether to create a new match or not, default set to false*/
 
-  $scope.image0 = platformGameService.getImage0();
-  $scope.image1 = platformGameService.getImage1();
-  $scope.player0 = platformGameService.getPlayer0();
-  $scope.player1 = platformGameService.getPlayer1();
-  $scope.gameStatus = platformGameService.getGameStatus();
-  //$scope.gameUrl = platformGameService.getGameUrl();
+  $scope.image0 = platformGameService.getImage0;
+  $scope.image1 = platformGameService.getImage1;
+  $scope.player0 = platformGameService.getPlayer0;
+  $scope.player1 = platformGameService.getPlayer1;
+  $scope.gameStatus = platformGameService.getGameStatus;
+  $scope.gameUrl = platformGameService.getGameUrl();
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
@@ -203,7 +203,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
       //$window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
     });
   //====================================================*/
-  $scope.gameUrl = platformGameService.fetchGameUrl();
+  platformGameService.fetchGameUrl();
   
   $log.info("$scope.gameUrl:",$scope.gameUrl);
   
