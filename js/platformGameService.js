@@ -420,8 +420,8 @@ angular.module('myApp')
     this.getPlayer1 = getPlayer1;
     this.getPlayer0 = getPlayer0;
     this.getGameStatus = getGameStatus;
-})
-.factory('$exceptionHandler', function ($window, $log) {
+});
+/*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
     $log.info("Platform had an exception:", exception, cause);
     var exceptionString = angular.toJson({exception: exception, cause: cause, lastMessage: $window.lastMessage}, true);
@@ -437,4 +437,4 @@ angular.module('myApp')
     $window.parent.postMessage(message, "*");
     $window.alert(exceptionString);
   };
-});
+});*/
