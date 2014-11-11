@@ -7,6 +7,7 @@ myAppControllers.controller('StatsCtrl',
             //==========HANDLES DIV RESIZING==================//
             var $doc = $window.document;
             // Cache the div so that the browser doesn't have to find it every time the window is resized.
+            function rescaleDivs() {
             var $div_goback = $doc.getElementById('SMPG_game_goback2');
             // Run the following when the window is resized, and also trigger it once to begin with.
             //$window.resize(function () {
@@ -15,6 +16,11 @@ myAppControllers.controller('StatsCtrl',
             $div_goback.style.fontSize = (height_goback - 2) + 'px';
             //}).trigger('resize');​
             //})
+            }
+            rescaleDivs();
+            $log.info($window.onresize);
+            $log.info($window.onorientationchange);
+            doc.addEventListener("orientationchange", rescale);
             //==========HANDLES DIV RESIZING==================//
 
             $scope.leaveGame = function () {
