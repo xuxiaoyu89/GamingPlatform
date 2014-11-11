@@ -133,12 +133,13 @@ angular.module('myApp')
   }
 
   function getGameUrl() {
+    $log.info("platformGameService getGameUrl");
     serverApiService.sendMessage(
       [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
       function (response) {
         var gameUrl = response[0].games[0].gameUrl;
         return gameUrl;
-        $log.info(gameUrl);
+        $log.info("getGameUrl response:",gameUrl);
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
