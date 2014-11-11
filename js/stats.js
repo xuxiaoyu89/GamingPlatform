@@ -20,7 +20,7 @@ myAppControllers.controller('StatsCtrl',
             rescaleDivs();
             $log.info("onresize: ", $window.onresize);
             $log.info("onorientationchange: ", $window.onorientationchange);
-            doc.addEventListener("orientationchange", rescale);
+            $doc.addEventListener("orientationchange", rescale);
             //==========HANDLES DIV RESIZING==================//
 
             $scope.leaveGame = function () {
