@@ -143,10 +143,6 @@ angular.module('myApp')
         $log.info("gameUrl:",gameUrl);
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
-      while (gameUrl === undefined) {
-        
-      }
-      return gameUrl;
   }
 
   function beginLoop() {
