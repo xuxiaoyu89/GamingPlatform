@@ -3,11 +3,8 @@
 myAppControllers
 .controller('GameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameService) {
-  //==============This will be changed============//
-  if($rootScope.menu_interval !== undefined){
-    $interval.cancel($rootScope.menu_interval);
-  }
-  //==============This will be changed============//
+  
+  platformGameService.clearInterval();
 
   $scope.image0 = platformGameService.getImage0;
   $scope.image1 = platformGameService.getImage1;
