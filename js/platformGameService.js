@@ -5,6 +5,7 @@ angular.module('myApp')
 
   var image0, image1, player0, player1;
   var gameStatus = "Loading game, please wait";
+  var testUrl = "http://yoav-zibin.github.io/TicTacToe/game.html";
   var gameUrl;
 
   //SOME important VARIABLES
@@ -421,6 +422,10 @@ angular.module('myApp')
   function getGameUrl() {
     return gameUrl;
   }
+  
+  function getTestUrl() {
+    return testUrl;
+  }
 
   this.fetchGameUrl = fetchGameUrl;
   this.beginLoop = beginLoop;
@@ -431,6 +436,7 @@ angular.module('myApp')
   this.getPlayer0 = getPlayer0;
   this.getGameStatus = getGameStatus;
   this.getGameUrl = getGameUrl;
+  this.getTestUrl = getTestUrl;
 });
 /*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
