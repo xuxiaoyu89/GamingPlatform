@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 angular.module('myApp')
 .service('platformGameService', function($rootScope, $log, $window, $routeParams, $interval, serverApiService, platformMessageService) {
