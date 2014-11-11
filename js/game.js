@@ -23,7 +23,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0();
   $scope.player1 = platformGameService.getPlayer1();
   $scope.gameStatus = platformGameService.getGameStatus();
-  var gameUrl = platformGameService.gameUrl();
+  $scope.gameUrl = platformGameService.gameUrl();
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
@@ -205,12 +205,12 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //====================================================*/
   platformGameService.getGameUrl();
   
-  while(gameUrl === undefined){
+  while($scope.gameUrl === undefined){
     
   }
-  $log.info(gameUrl);
+  $log.info($scope.gameUrl);
   
-  $scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
+  $scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);//game url to be used for showing the game in iframe
 
   platformGameService.beginLoop();
 
