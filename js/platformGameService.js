@@ -246,11 +246,11 @@ angular.module('myApp')
                 $log.info("Your match didn't change");
             }*/
             if(i===matches.length && matchInfo!==undefined){ //first time to this match, not reserve sucessfully yet
-              numberOfMoves = matchInfo.history.moves.length;
+              /*numberOfMoves = matchInfo.history.moves.length;
               if (playsound){
                updateStatus();
                  playsound = false;
-              }
+              }*/
             }
             else if (matches[i].matchId === matchID) {
               if (matches[i].updatedTimestampMillis > latestUpdateTime) {
