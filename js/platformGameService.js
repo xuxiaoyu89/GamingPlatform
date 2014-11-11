@@ -133,7 +133,7 @@ angular.module('myApp')
     }
   }
 
-  function getGameUrl() {
+  function fetchGameUrl() {
     $log.info("platformGameService getGameUrl");
     serverApiService.sendMessage(
       [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
@@ -418,11 +418,11 @@ angular.module('myApp')
     return gameStatus;
   }
   
-  function gameUrl() {
+  function getGameUrl() {
     return gameUrl;
   }
 
-  this.getGameUrl = getGameUrl;
+  this.fetchGameUrl = fetchGameUrl;
   this.beginLoop = beginLoop;
   this.setGame = setGame;
   this.getImage1 = getImage1;
@@ -430,7 +430,7 @@ angular.module('myApp')
   this.getPlayer1 = getPlayer1;
   this.getPlayer0 = getPlayer0;
   this.getGameStatus = getGameStatus;
-  this.gameUrl = gameUrl;
+  this.getGameUrl = getGameUrl;
 });
 /*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
