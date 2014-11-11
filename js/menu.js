@@ -1,5 +1,5 @@
 myAppControllers.controller('MenuCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interval
+function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interval,
      platformMessageService, serverApiService) {
     
     $log.info($rootScope.interval);
