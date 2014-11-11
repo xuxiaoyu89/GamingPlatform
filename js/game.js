@@ -5,7 +5,7 @@ myAppControllers
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameService) {
   //==============This will be changed============//
   if($rootScope.menu_interval !== undefined){
-    clearInterval($rootScope.menu_interval);
+    $interval.cancel($rootScope.menu_interval);
   }
   //==============This will be changed============//
 
