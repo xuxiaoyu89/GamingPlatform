@@ -14,7 +14,6 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0;
   $scope.player1 = platformGameService.getPlayer1;
   $scope.gameStatus = platformGameService.getGameStatus;
-  $scope.gameUrl = platformGameService.getGameUrl;
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
@@ -70,13 +69,9 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   
   
   platformGameService.fetchGameUrldev(function(url) {
-    $log.info("game.js returned fetchGameUrldev: ", url)
-    $log.info("$scope.gameUrl:",$scope.gameUrl);
+    $log.info("game.js returned fetchGameUrldev: ", url);
+    $scope.gameUrl = $sce.trustAsResourceUrl(url);
   });
-  
-  //$scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);//game url to be used for showing the game in iframe
-  
-  $scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);
   
   platformGameService.beginLoop();
 });
