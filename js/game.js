@@ -67,11 +67,11 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
 
 
   platformGameService.fetchGameUrl();
-  $log.info("$scope.gameUrl:",$scope.gameUrl);
   
   
   platformGameService.fetchGameUrldev(function(url) {
     $log.info("game.js returned fetchGameUrldev: ", url)
+    $log.info("$scope.gameUrl:",$scope.gameUrl);
   });
   
   //$scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);//game url to be used for showing the game in iframe
