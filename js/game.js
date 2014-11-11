@@ -64,10 +64,6 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
     }
   };
 
-
-  platformGameService.fetchGameUrl();
-  
-  
   platformGameService.fetchGameUrldev(function(url) {
     $log.info("game.js returned fetchGameUrldev: ", url);
     $scope.gameUrl = $sce.trustAsResourceUrl(url);
