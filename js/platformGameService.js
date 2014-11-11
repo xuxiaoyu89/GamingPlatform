@@ -138,6 +138,7 @@ angular.module('myApp')
       function (response) {
         var gameUrl = response[0].games[0].gameUrl;
         return gameUrl;
+        $log.info(gameUrl);
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
