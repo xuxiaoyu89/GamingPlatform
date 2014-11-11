@@ -18,11 +18,11 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
 
   var newmatch = false;//whether to create a new match or not, default set to false*/
 
-  $scope.image0 = platformGameService.getImage0;
-  $scope.image1 = platformGameService.getImage1;
-  $scope.player0 = platformGameService.getPlayer0;
-  $scope.player1 = platformGameService.getPlayer1;
-  $scope.gameStatus = platformGameService.getGameStatus;
+  $scope.image0 = platformGameService.getImage0();
+  $scope.image1 = platformGameService.getImage1();
+  $scope.player0 = platformGameService.getPlayer0();
+  $scope.player1 = platformGameService.getPlayer1();
+  $scope.gameStatus = platformGameService.getGameStatus();
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
