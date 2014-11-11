@@ -23,7 +23,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0;
   $scope.player1 = platformGameService.getPlayer1;
   $scope.gameStatus = platformGameService.getGameStatus;
-  $scope.gameUrl = platformGameService.getGameUrl();
+  $scope.gameUrl = platformGameService.getGameUrl;
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
