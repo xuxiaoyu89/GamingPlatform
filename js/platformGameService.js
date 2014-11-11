@@ -145,6 +145,19 @@ angular.module('myApp')
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
+  
+  function fetchGameUrldev(callback) {
+    $log.info("platformGameService getGameUrl");
+    serverApiService.sendMessage(
+      [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
+      function (response) {
+        $log.info("getGameUrl response:",response);
+        gameUrl = response[0].games[0].gameUrl;
+        $log.info("fetchGameUrldev:",gameUrl);
+        callback(gameUrl);
+        //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
+      });
+  }
 
   function beginLoop() {
     $rootScope.interval = $interval(checkChanges, 10000);
