@@ -58,7 +58,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   
 
   $scope.deleteGame = function () {
-    if (paltformGameServiece.deleteGame()) {
+    if (platformGameServiece.deleteGame()) {
       $window.location.replace(MENU_URL);
     }
   };
