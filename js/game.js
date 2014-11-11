@@ -205,6 +205,10 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //====================================================*/
   platformGameService.fetchGameUrl();
   
+  while ($scope.gameUrl === undefined) {
+    
+  }
+  
   $log.info($scope.gameUrl);
   
   $scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);//game url to be used for showing the game in iframe
