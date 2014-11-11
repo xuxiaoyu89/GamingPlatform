@@ -13,6 +13,8 @@ angular.module('myApp')
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
 
   var newmatch = false;//whether to create a new match or not, default set to false
+  
+  var MENU_URL = '#/menu';
 
   var beforeHashUrl; //URL: .../GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
