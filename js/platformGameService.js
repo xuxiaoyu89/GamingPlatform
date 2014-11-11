@@ -23,6 +23,12 @@ angular.module('myApp')
   var beforeHashUrl; //URL: .../GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
+  
+  this.clearInterval = function() {
+    if($rootScope.menu_interval !== undefined){
+      $interval.cancel($rootScope.menu_interval);
+    }
+  }
 
   //===================== JS_ERROR_CATCHING ====================//
   // Quick function to both alert and log requested message as error
