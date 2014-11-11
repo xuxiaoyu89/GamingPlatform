@@ -146,7 +146,7 @@ angular.module('myApp')
       });
   }
   
-  function fetchGameUrldev(callback) {
+  this.fetchGameUrldev = function (callback) {
     $log.info("platformGameService getGameUrl");
     serverApiService.sendMessage(
       [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
