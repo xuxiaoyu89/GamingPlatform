@@ -391,7 +391,7 @@ angular.module('myApp')
             $log.info("serverApiService: emailjserror: ", response);
         });
     }
-  }
+  });
 
   function getImage0() {
     return image0;
