@@ -391,35 +391,36 @@ angular.module('myApp')
             $log.info("serverApiService: emailjserror: ", response);
         });
     }
+  }
 
-    function getImage0() {
-      return image0;
-    }
+  function getImage0() {
+    return image0;
+  }
 
-    function getImage1() {
-      return image1;
-    }
+  function getImage1() {
+    return image1;
+  }
 
-    function getPlayer0() {
-      return player0;
-    }
+  function getPlayer0() {
+    return player0;
+  }
 
-    function getPlayer1() {
-      return player1;
-    }
+  function getPlayer1() {
+    return player1;
+  }
 
-    function getGameStatus() {
-      return gameStatus;
-    }
+  function getGameStatus() {
+    return gameStatus;
+  }
 
-    this.getGameUrl = getGameUrl;
-    this.beginLoop = beginLoop;
-    this.setGame = setGame;
-    this.getImage1 = getImage1;
-    this.getImage0 = getImage0;
-    this.getPlayer1 = getPlayer1;
-    this.getPlayer0 = getPlayer0;
-    this.getGameStatus = getGameStatus;
+  this.getGameUrl = getGameUrl;
+  this.beginLoop = beginLoop;
+  this.setGame = setGame;
+  this.getImage1 = getImage1;
+  this.getImage0 = getImage0;
+  this.getPlayer1 = getPlayer1;
+  this.getPlayer0 = getPlayer0;
+  this.getGameStatus = getGameStatus;
 });
 /*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
