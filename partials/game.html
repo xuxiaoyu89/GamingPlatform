@@ -13,8 +13,8 @@
         <div class="SMPG_game_opponent" id="SMPG_game_players">
             <div class="SMPG_game" ng-show="player0 && player1">
                 <span class="SMPG_game_helper"></span>
-                <img src={{image0}} class="SMPG_game_avatar" id="SMPG_game_av0"> <b>{{player0}}</b> vs 
-                <img src={{image1}} class="SMPG_game_avatar" id="SMPG_game_av1"> <b>{{player1}}</b>
+                <img src={{image0()}} class="SMPG_game_avatar" id="SMPG_game_av0"> <b>{{player0()}}</b> vs 
+                <img src={{image1()}} class="SMPG_game_avatar" id="SMPG_game_av1"> <b>{{player1()}}</b>
             </div>
         </div>
         <div class="SMPG_game_delete icon-right ion-ios7-trash"
@@ -29,6 +29,6 @@
         <i>{{gameStatus}}</i>
     </div>
 
-    <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl}}"
+    <iframe frameborder="1" id="game_iframe" ng-src="{{gameUrl()}}"
             scrolling="no" seamless="seamless"></iframe>
 </div>
