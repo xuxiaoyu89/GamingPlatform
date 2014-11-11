@@ -5,6 +5,7 @@ angular.module('myApp')
 
   var image0, image1, player0, player1;
   var gameStatus = "Loading game, please wait";
+  var gameUrl;
 
   //SOME important VARIABLES
   var state;//current game state
@@ -138,9 +139,8 @@ angular.module('myApp')
       [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
       function (response) {
         $log.info("getGameUrl response:",response);
-        var gameUrl = response[0].games[0].gameUrl;
+        gameUrl = response[0].games[0].gameUrl;
         $log.info("gameUrl:",gameUrl);
-        return gameUrl;
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
@@ -417,6 +417,10 @@ angular.module('myApp')
   function getGameStatus() {
     return gameStatus;
   }
+  
+  function gameUrl() {
+    return gameUrl;
+  }
 
   this.getGameUrl = getGameUrl;
   this.beginLoop = beginLoop;
@@ -426,6 +430,7 @@ angular.module('myApp')
   this.getPlayer1 = getPlayer1;
   this.getPlayer0 = getPlayer0;
   this.getGameStatus = getGameStatus;
+  this.gameUrl = gameUrl;
 });
 /*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
