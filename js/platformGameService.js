@@ -4,8 +4,8 @@ angular.module('myApp')
 .service('platformGameService', function($rootScope, $log, $window, $routeParams, $interval, serverApiService, platformMessageService) {
 
   var image0, image1;
-  var player0 = false;
-  var player1 = false;
+  var player0 = "no player";
+  var player1 = "no player";
   var gameStatus = "Loading game, please wait";
   var testUrl = "http://yoav-zibin.github.io/TicTacToe/game.html";
   var gameUrl;
@@ -135,18 +135,6 @@ angular.module('myApp')
       }
     }
   }
-
-  function fetchGameUrl() {
-    $log.info("platformGameService getGameUrl");
-    serverApiService.sendMessage(
-      [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
-      function (response) {
-        $log.info("getGameUrl response:",response);
-        gameUrl = response[0].games[0].gameUrl;
-        $log.info("gameUrl:",gameUrl);
-        //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
-      });
-  }
   
   this.fetchGameUrldev = function (callback) {
     $log.info("platformGameService getGameUrl");
@@ -160,7 +148,8 @@ angular.module('myApp')
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
-
+  
+  
   function beginLoop() {
     $rootScope.interval = $interval(checkChanges, 10000);
   }
@@ -442,7 +431,6 @@ angular.module('myApp')
     return testUrl;
   }
 
-  this.fetchGameUrl = fetchGameUrl;
   this.beginLoop = beginLoop;
   this.setGame = setGame;
   this.getImage1 = getImage1;
