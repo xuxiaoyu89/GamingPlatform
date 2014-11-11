@@ -23,7 +23,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0();
   $scope.player1 = platformGameService.getPlayer1();
   $scope.gameStatus = platformGameService.getGameStatus();
-  $scope.gameUrl = platformGameService.gameUrl();
+  $scope.gameUrl = platformGameService.getGameUrl();
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
@@ -203,11 +203,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
       //$window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
     });
   //====================================================*/
-  platformGameService.getGameUrl();
+  platformGameService.fetchGameUrl();
   
-  while($scope.gameUrl === undefined){
-    
-  }
   $log.info($scope.gameUrl);
   
   $scope.gameUrl = $sce.trustAsResourceUrl($scope.gameUrl);//game url to be used for showing the game in iframe
