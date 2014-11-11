@@ -18,8 +18,8 @@ myAppControllers.controller('StatsCtrl',
             //})
             }
             rescaleDivs();
-            $log.info($window.onresize);
-            $log.info($window.onorientationchange);
+            $log.info("onresize: ", $window.onresize);
+            $log.info("onorientationchange: ", $window.onorientationchange);
             doc.addEventListener("orientationchange", rescale);
             //==========HANDLES DIV RESIZING==================//
 
