@@ -141,9 +141,12 @@ angular.module('myApp')
         $log.info("getGameUrl response:",response);
         gameUrl = response[0].games[0].gameUrl;
         $log.info("gameUrl:",gameUrl);
-        return gameUrl;
         //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
+      while (gameUrl === undefined) {
+        
+      }
+      return gameUrl;
   }
 
   function beginLoop() {
