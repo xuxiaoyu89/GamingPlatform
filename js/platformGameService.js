@@ -4,8 +4,8 @@ angular.module('myApp')
 .service('platformGameService', function($rootScope, $log, $window, $routeParams, $interval, serverApiService, platformMessageService) {
 
   var image0, image1;
-  var player0 = "no player";
-  var player1 = "no player";
+  var player0 = false;
+  var player1 = false;
   var gameStatus = "Loading game, please wait";
   var testUrl = "http://yoav-zibin.github.io/TicTacToe/game.html";
   var gameUrl;
