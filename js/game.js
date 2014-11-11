@@ -14,8 +14,6 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0;
   $scope.player1 = platformGameService.getPlayer1;
   $scope.gameStatus = platformGameService.getGameStatus;
-  
-  $log.info($scope.player0, $scope.player1);
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
