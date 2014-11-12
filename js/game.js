@@ -12,6 +12,10 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player1 = platformGameService.getPlayer1;
   $scope.gameStatus = platformGameService.getGameStatus;
   
+  function getBothPlayers() {
+    return (platformGameService.getPlayer0() && platformGameService.getPlayer1());
+  }
+  
   $log.info($scope.player0, $scope.player1);
 
   //CONSTANT VARIABLES
