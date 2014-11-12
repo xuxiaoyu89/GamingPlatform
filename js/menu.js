@@ -38,8 +38,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         serverApiService.sendMessage(
                 [{registerPlayer: {displayName: myName, avatarImageUrl: myAvatar}}],
                 function (response) {
-                    var playerInfo = angular.toJson(response[0].playerInfo, true);
-                    window.localStorage.setItem("playerInfo", angular.toJson(playerInfo));
+                    var playerInfo = response[0].playerInfo;
                     myPlayerId = playerInfo.myPlayerId;
                     accessSignature = playerInfo.accessSignature;
                     //added by XXY
@@ -48,7 +47,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                     $scope.displayName = playerInfo.displayName;
                     $scope.avatarImageUrl = playerInfo.avatarImageUrl;
                     //$window.location.replace(MENU_URL);
-                    $timeout(function(){$location.path('menu');}, 300);
+                    playerInfo = angular.toJson(response[0].playerInfo, true);
+                    window.localStorage.setItem("playerInfo", playerInfo);
+                    $location.path('menu');
                 });
     } else {
         playerInfo = JSON.parse(angular.fromJson(playerInfo));
