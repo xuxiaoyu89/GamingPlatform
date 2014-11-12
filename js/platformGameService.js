@@ -275,10 +275,12 @@ angular.module('myApp')
     if (playersInfo[0]){
       image0 = playersInfo[0].avatarImageUrl;
       player0 = playersInfo[0].displayName;
+      $log.info("platformService updateStatus Player0: ", player0)
     }
     if (playersInfo[1]) {
       image1 = playersInfo[1].avatarImageUrl;
       player1 = playersInfo[1].displayName;
+      $log.info("platformService updateStatus Player1: ", player1)
     }
 
     var states = matchInfo.history.stateAfterMoves;//all the states
