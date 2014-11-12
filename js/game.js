@@ -69,7 +69,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.deleteGame = function () {
     platformGameService.deleteGame(function (value) {
       if (value) {
-        $window.location.replace(MENU_URL);
+        $window.location.href = homepage;
       }
     });
   };
