@@ -1,13 +1,12 @@
 'use strict'; 
 
 angular.module('myApp')
-.service('platformGameService', function($rootScope, $log, $window, $routeParams, $interval, serverApiService, platformMessageService) {
+.service('platformGameService', function($rootScope, $log, $window, /*$routeParams, */$interval, serverApiService, platformMessageService) {
 
   var image0, image1;
   var player0 = false;
   var player1 = false;
   var gameStatus = "Loading game, please wait";
-  var testUrl = "http://yoav-zibin.github.io/TicTacToe/game.html";
   var gameUrl;
 
   //SOME important VARIABLES
@@ -20,18 +19,9 @@ angular.module('myApp')
   
   var MENU_URL = '#/menu';
 
-  var beforeHashUrl; //URL: .../GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
-  var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
-  var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
-  
-  function resetVariables() {
-    player0 = player1 = false;
-    gameStatus = "Loading game, please wait";
-    gameUrl = state = turnIndex = playersInfo = playerId = 
-    matchID = gameID = accessSignature = myPlayerIndex = 
-    matchInfo = beforeHashUrl = platformUrl = platformUrl2 = undefined;
-  }
-  
+  var beforeHashUrl; 
+  var platformUrl; 
+  var platformUrl2;
   
   this.clearInterval = function() {
     if($rootScope.menu_interval !== undefined){
@@ -151,16 +141,15 @@ angular.module('myApp')
     }
   }
   
-  this.fetchGameUrldev = function (callback) {
+  this.fetchGameUrl = function (callback) {
     $log.info("platformGameService getGameUrl");
     serverApiService.sendMessage(
-      [{getGames: {gameId: gameID}}], //get the game that has id equals to gameID
+      [{getGames: {gameId: gameID}}],
       function (response) {
         $log.info("getGameUrl response:",response);
         gameUrl = response[0].games[0].gameUrl;
         $log.info("fetchGameUrldev:",gameUrl);
         callback(gameUrl);
-        //$scope.gameUrl = $sce.trustAsResourceUrl(gameUrl);//game url to be used for showing the game in iframe
       });
   }
   
@@ -181,6 +170,7 @@ angular.module('myApp')
                     yourPlayerIndex: myPlayerIndex, 
                     playersInfo: [{playerId: playerID}]};
       platformMessageService.sendMessage({updateUI: params});
+    //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     } else {
       if (latestUpdateTime === 0) {
         serverApiService.sendMessage(
@@ -196,7 +186,7 @@ angular.module('myApp')
               $log.info("Cannot getPlayerMatches.", response);
               return;
             }
-            //search through all matches to find tha match that has matchID
+            //search through all matches to find the match that has matchID
             var i = 0;
             while(i<matches.length && matches[i].matchId!==matchID) {
               if (matches[i].updatedTimestampMillis > latestUpdateTime) {
@@ -226,7 +216,6 @@ angular.module('myApp')
           }
         );
       }
-
       //pull matches changed since latestUpdateTime
       else {
         serverApiService.sendMessage(
@@ -251,15 +240,8 @@ angular.module('myApp')
               }
               i++;
             }
-            /*if (i === matches.length) {
-                $log.info("Your match didn't change");
-            }*/
-            if(i===matches.length && matchInfo!==undefined){ //first time to this match, not reserve sucessfully yet
-              /*numberOfMoves = matchInfo.history.moves.length;
-              if (playsound){
-               updateStatus();
-                 playsound = false;
-              }*/
+            if (i===matches.length) {
+              /* Do Something here?*/
             }
             else if (matches[i].matchId === matchID) {
               if (matches[i].updatedTimestampMillis > latestUpdateTime) {
@@ -443,10 +425,6 @@ angular.module('myApp')
   function getGameUrl() {
     return gameUrl;
   }
-  
-  function getTestUrl() {
-    return testUrl;
-  }
 
   this.beginLoop = beginLoop;
   this.setGame = setGame;
@@ -457,7 +435,6 @@ angular.module('myApp')
   this.getGameStatus = getGameStatus;
   this.deleteGame = deleteGame;
   this.getGameUrl = getGameUrl;
-  this.getTestUrl = getTestUrl;
 });
 /*.factory('$exceptionHandler', function ($window, $log) {
   return function (exception, cause) {
