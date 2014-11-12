@@ -7,6 +7,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         $interval.cancel($scope.interval);
     }
     
+    var mygame = "5705718560718848";
        
     // initialize icon pool  
     var avatarPool = [];
@@ -231,16 +232,31 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 gameDeveloperEmail: tempList[i].gameDeveloperEmail});
         }
         $scope.gamesPool.forEach(function (entry) {
-            if (entry.gameId === "5162157834502144") {
+            if (entry.gameId === mygame) {
                 gameId = entry.gameId;
                 gameUrl = entry.gameUrl;
                 gameName = entry.GameName;
                 gameDmail = entry.gameDeveloperEmail;
                 $scope.gameId = entry.gameId;
+                $scope.gameName = entry.GameName;
                 $location.search("gameId",gameId);
             }
         });
-    });
+     });
+     
+    function sayHi2GamePool(_mygame){
+       $scope.gamesPool.forEach(function (entry) {
+            if (entry.gameId === _mygame) {
+                gameId = entry.gameId;
+                gameUrl = entry.gameUrl;
+                gameName = entry.GameName;
+                gameDmail = entry.gameDeveloperEmail;
+                $scope.gameId = entry.gameId;
+                $scope.gameName = entry.GameName;
+                $location.search("gameId",gameId);
+            }
+        });   
+     }
 
     /* angular will refresh $scope.selectdGames once a user select
      * a game from the game list. It's initial value is empty.
@@ -255,6 +271,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 gameName = null;
                 gameDmail = null;
                 $scope.gameId = null;
+                $scope.gameName = null;
                 return;
             }
             if (entry.gameId === $scope.selectdGames.gameId) {
@@ -263,6 +280,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 gameName = entry.GameName;
                 gameDmail = entry.gameDeveloperEmail;
                 $scope.gameId = entry.gameId;
+                $scope.gameName = entry.GameName;
                 $location.search("gameId",gameId);
             }
         });
@@ -302,6 +320,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
             }
             if(searchObj.gameId){
                  gameId = searchObj.gameId;
+                 sayHi2GamePool(gameId);
             }
             if(gameId !== undefined){
                retriveCurrentGames();
