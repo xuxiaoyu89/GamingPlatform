@@ -48,7 +48,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                     $scope.avatarImageUrl = playerInfo.avatarImageUrl;
                     //$window.location.replace(MENU_URL);
                     playerInfo = angular.toJson(response[0].playerInfo, true);
-                    window.localStorage.setItem("playerInfo", playerInfo);
+                    window.localStorage.setItem("playerInfo", angular.toJson(playerInfo));
                     $location.path('menu');
                 });
     } else {
