@@ -7,7 +7,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         $interval.cancel($scope.interval);
     }
     
-    var mygame = "5705718560718848";
+    //var mygame = "5705718560718848";
        
     // initialize icon pool  
     var avatarPool = [];
@@ -233,14 +233,16 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 gameDeveloperEmail: tempList[i].gameDeveloperEmail});
         }
         $scope.gamesPool.forEach(function (entry) {
-            if (entry.gameId === mygame) {
-                gameId = entry.gameId;
-                gameUrl = entry.gameUrl;
-                gameName = entry.GameName;
-                gameDmail = entry.gameDeveloperEmail;
-                $scope.gameId = entry.gameId;
-                $scope.gameName = entry.GameName;
-                $location.search("gameId",gameId);
+            if(gameId){
+                if (entry.gameId === gameId) {
+                     gameId = entry.gameId;
+                     gameUrl = entry.gameUrl;
+                     gameName = entry.GameName;
+                     gameDmail = entry.gameDeveloperEmail;
+                     $scope.gameId = entry.gameId;
+                     $scope.gameName = entry.GameName;
+                     $location.search("gameId",gameId);
+               } 
             }
         });
      });
