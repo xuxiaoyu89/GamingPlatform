@@ -15,6 +15,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   function getBothPlayers() {
     return (platformGameService.getPlayer0() && platformGameService.getPlayer1());
   }
+  $log.info("getBothPlayers: ", getBothPlayers());
   
   $log.info($scope.player0, $scope.player1);
 
