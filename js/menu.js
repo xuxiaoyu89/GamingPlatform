@@ -231,7 +231,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 gameDeveloperEmail: tempList[i].gameDeveloperEmail});
         }
         $scope.gamesPool.forEach(function (entry) {
-            if (entry.gameId === "5705718560718848") {
+            if (entry.gameId === "5162157834502144") {
                 gameId = entry.gameId;
                 gameUrl = entry.gameUrl;
                 gameName = entry.GameName;
