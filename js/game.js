@@ -26,7 +26,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //$scope.gameStatus = "Loading game, please wait";
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
+  var homepage = entireUrl.split("#")[0] //.concat(MENU_URL);
   $log.info("homepage URL: ", homepage);
   //==========HANDLES DIV RESIZING==================//
   var $doc = $window.document;
@@ -60,7 +60,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //===================== MATCH_MENU: GO BACK ====================//
   $scope.leaveGame = function () {
     $log.info("leaveGame: About to redirect to Main Menu.");
-    $window.location.replace(MENU_URL);
+    //$window.location.replace(MENU_URL);
+    $window.location.href(homepage);
   };
 
   
