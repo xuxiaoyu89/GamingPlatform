@@ -18,7 +18,10 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //SOME URL RELATED VARS
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-  var homepage = entireUrl.split("#")[0] //.concat(MENU_URL);
+  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
+  var questionmarkUrl = entireUrl.split("?")[1];
+  var andUrl = questionmarkUrl.split("&");
+  homepage = homepage.concat(andUrl[0]).concat(andUrl[1]);
   $log.info("homepage URL: ", homepage);
   
   //==========HANDLES DIV RESIZING==================//
