@@ -24,6 +24,15 @@ angular.module('myApp')
   var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
   
+  function resetVariables() {
+    player0 = player1 = false;
+    gameStatus = "Loading game, please wait";
+    gameUrl = state = turnIndex = playersInfo = playerId = 
+    matchID = gameID = accessSignature = myPlayerIndex = 
+    matchInfo = beforeHashUrl = platformUrl = platformUrl2 = undefined;
+  }
+  
+  
   this.clearInterval = function() {
     if($rootScope.menu_interval !== undefined){
       $interval.cancel($rootScope.menu_interval);
