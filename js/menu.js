@@ -47,7 +47,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                     $scope.displayName = playerInfo.displayName;
                     $scope.avatarImageUrl = playerInfo.avatarImageUrl;
                     //$window.location.replace(MENU_URL);
-                    $location.path('menu');
+                    $timeout(function(){$location.path('menu');}, 300);
                 });
     } else {
         playerInfo = JSON.parse(angular.fromJson(playerInfo));
@@ -352,6 +352,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 if(searchObj.off === "EMAIL_JS_ERRORS"){
                     $scope.EMAIL_JS_ERRORS = false;
                 }
+            }
+            if(searchObj.gameId){
+                 gameId = searchObj.gameId;
+            }else{
+                 gameId = "5705718560718848";
             }
             
             //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
