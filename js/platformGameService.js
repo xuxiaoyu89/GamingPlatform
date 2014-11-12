@@ -323,7 +323,7 @@ angular.module('myApp')
 
   var move;//move made by player
   platformMessageService.addMessageListener(function (message) {
-    $log.info("PlatformMessageService: got a message.");
+    $log.info("PlatformMessageService: got a message.",message);
     if (message.gameReady !== undefined) {
       checkChanges();
       if (newmatch) {
