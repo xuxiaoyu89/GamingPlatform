@@ -73,69 +73,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         });
     }
 
-    /* display the matches of the game user selected($scope.selectdGames = "";)
-     * There are 3 kinds of matches:
-     *   1. matches which are your turn
-     *   2. matches which are not your turn
-     *   3. matches which are completed
-     */
-    /*function setCurrentMatches() {
-        var selectedGame = $scope.selectdGames;
-        $scope.myTurnMatches = [];
-        $scope.oppoTurnMatches = [];
-        $scope.endMatches = [];
-        $log.info("length:", $scope.myMatchesPool.length);
-        $log.info("currentGame: ", $scope.selectdGames);
-        for (var i = 0; i < $scope.myMatchesPool.length; i++) {
-            var currMatch = $scope.myMatchesPool[i];
-            //check if currMatch is a match of selectedGame
-            if (selectedGame === null || currMatch.gameId !== selectedGame.gameId) {
-                continue;
-            }
-            // check the last move in history
-            var history = currMatch.history;
-            var moves = history.moves;
-            var lastMove = moves[moves.length - 1];
-            var firstOperation = lastMove[0];
-            //set opponent, myPlayerId, TurnIndex for currMatch
-            currMatch.myPlayerId = myPlayerId;
-            if (firstOperation.endMatch === undefined) {
-                currMatch.turnIndex = firstOperation.setTurn.turnIndex;
-            }
-            else {
-                currMatch.turnIndex = -1;
-            }
-            if (currMatch.playersInfo[0].playerId === myPlayerId) {
-                if (currMatch.playersInfo[1] === null) {
-                    currMatch.opponent = "no opponent";
-                }
-                else
-                    currMatch.opponent = currMatch.playersInfo[1].displayName;
-            }
-            else
-                currMatch.opponent = currMatch.playersInfo[0].displayName;
-            //this match has not complete, we should get the turn
-            if (firstOperation.endMatch === undefined) {
-                var turnIndex = firstOperation.setTurn.turnIndex;
-                if (turnIndex === 0) {
-                    // it is my turn
-                    $scope.myTurnMatches.push(currMatch);
-                    $log.info(currMatch);
-                }
-                else {
-                    // it is opponent's turn 
-                    $scope.oppoTurnMatches.push(currMatch);
-                    $log.info(currMatch);
-                }
-            }
-            //this match has completed
-            else {
-                $scope.endMatches.push(currMatch);
-                $log.info(currMatch);
-            }
-        }
-    }*/
-
     function updateMatchesPool(){
         //$log.info("in updateMatchesPool");
         if($scope.myMatchesPool.length === 0){
@@ -293,6 +230,16 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                 GameName: tempList[i].languageToGameName.en,
                 gameDeveloperEmail: tempList[i].gameDeveloperEmail});
         }
+        $scope.gamesPool.forEach(function (entry) {
+            if (entry.gameId === "5705718560718848") {
+                gameId = entry.gameId;
+                gameUrl = entry.gameUrl;
+                gameName = entry.GameName;
+                gameDmail = entry.gameDeveloperEmail;
+                $scope.gameId = entry.gameId;
+                $location.search("gameId",gameId);
+            }
+        });
     });
 
     /* angular will refresh $scope.selectdGames once a user select
@@ -355,8 +302,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
             }
             if(searchObj.gameId){
                  gameId = searchObj.gameId;
-            }else{
-                 gameId = "5705718560718848";
+            }
+            if(gameId !== undefined){
+               retriveCurrentGames();
+               //save gameurl to local storage
+               window.localStorage.setItem("gameURL", angular.toJson(gameUrl));
             }
             
             //Initialize key-value pairs of AUTO_MATCH and EMAIL_JS_ERRORS in query-string
