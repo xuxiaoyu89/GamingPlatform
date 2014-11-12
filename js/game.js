@@ -26,7 +26,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   //$scope.gameStatus = "Loading game, please wait";
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-
+  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
+  $log.info("homepage URL: ", homepage);
   //==========HANDLES DIV RESIZING==================//
   var $doc = $window.document;
   // Cache the div so that the browser doesn't have to find it every time the window is resized.
@@ -53,6 +54,8 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
 
  
   platformGameService.setGame(entireUrl);
+
+
 
   //===================== MATCH_MENU: GO BACK ====================//
   $scope.leaveGame = function () {
