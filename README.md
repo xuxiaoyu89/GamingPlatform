@@ -10,3 +10,4 @@ Social Multiplayer Gaming group project
 **Lower priority:**
 * Put iframe in index.html
 * Move resize into service
+* Merge /images and /img ...
