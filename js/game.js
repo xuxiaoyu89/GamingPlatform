@@ -11,23 +11,16 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.player0 = platformGameService.getPlayer0;
   $scope.player1 = platformGameService.getPlayer1;
   $scope.gameStatus = platformGameService.getGameStatus;
-  
-  function getBothPlayers() {
-    return (platformGameService.getPlayer0() && platformGameService.getPlayer1());
-  }
-  $log.info("getBothPlayers: ", getBothPlayers());
-  
-  $log.info("The Players: ", $scope.player0, $scope.player1);
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
 
-  //SOME NOT SO IMPORTANT VARS
-  //$scope.gameStatus = "Loading game, please wait";
+  //SOME URL RELATED VARS
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
   var homepage = entireUrl.split("#")[0] //.concat(MENU_URL);
   $log.info("homepage URL: ", homepage);
+  
   //==========HANDLES DIV RESIZING==================//
   var $doc = $window.document;
   // Cache the div so that the browser doesn't have to find it every time the window is resized.
@@ -51,21 +44,13 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   }
   //==========HANDLES DIV RESIZING==================//
 
-
- 
   platformGameService.setGame(entireUrl);
 
-
-
-  //===================== MATCH_MENU: GO BACK ====================//
   $scope.leaveGame = function () {
     $log.info("leaveGame: About to redirect to Main Menu.");
-    //$window.location.replace(MENU_URL);
     $window.location.href = homepage;
   };
-
   
-
   $scope.deleteGame = function () {
     platformGameService.deleteGame(function (value) {
       if (value) {
@@ -74,7 +59,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
     });
   };
 
-  platformGameService.fetchGameUrldev(function(url) {
+  platformGameService.fetchGameUrl(function(url) {
     $log.info("game.js returned fetchGameUrldev: ", url);
     $scope.gameUrl = $sce.trustAsResourceUrl(url);
   });
