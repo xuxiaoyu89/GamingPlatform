@@ -111,11 +111,11 @@ angular.module('myApp')
     //================END OF FUNCTION: checkVars()================//
   }
 
-  function deleteGame() {
+  function deleteGame (callback) {
     if(matchID===undefined || playerID===undefined || accessSignature===undefined) {
       alert_log_error("Invalid credentials to dismissMatch.", 
         "Cannot dismissMatch because matchID, playerID, or accessSignature is undefined.");
-      return false;
+      callback(false);
     } else {
       var messageObj = [{dismissMatch:
                       {matchId: matchID, myPlayerId: playerID, accessSignature: accessSignature}}];
@@ -129,15 +129,15 @@ angular.module('myApp')
             $log.info("DismissMatch response: ", JSON.stringify(response));
             if(response[0]['error']!==undefined) {
               alert_log_error(response[0]['error'], ["serverAPI failed to dismissMatch.", response[0]['error']]);
-              return false;
+              callback(false);
             } else {
               $log.info("Game successfully deleted, redirecting to Main Menu: ", MENU_URL);
-              return true;
+              callback(true);
             }
           });
       } else {
         $log.info("deleteGame: Canceled.");
-        return false;
+        callback(false);
       }
     }
   }
