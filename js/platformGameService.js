@@ -446,6 +446,7 @@ angular.module('myApp')
   this.getPlayer1 = getPlayer1;
   this.getPlayer0 = getPlayer0;
   this.getGameStatus = getGameStatus;
+  this.deleteGame = deleteGame;
   this.getGameUrl = getGameUrl;
   this.getTestUrl = getTestUrl;
 });
