@@ -63,7 +63,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   
 
   $scope.deleteGame = function () {
-    platformGameService.deleteGame(functoin (value) {
+    platformGameService.deleteGame(function (value) {
       if (value) {
         $window.location.replace(MENU_URL);
       }
