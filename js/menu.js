@@ -109,13 +109,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     $rootScope.menu_interval = $interval(updateMatchesPool, 10000);
 
     function setCurrentMatches() {
-        if($scope.selectdGames === "" || $scope.selectdGames === null){
+        if(gameId === "" || gameId === null){
             $scope.myTurnMatches = [];
             $scope.oppoTurnMatches = [];
             $scope.endMatches = [];
             return;
         }
-        var selectedGame = $scope.selectdGames;
+        var selectedGame = gameId;
         $scope.myTurnMatches = [];
         $scope.oppoTurnMatches = [];
         $scope.endMatches = [];
@@ -124,7 +124,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         for (var i = 0; i < $scope.myMatchesPool.length; i++) {
             var currMatch = $scope.myMatchesPool[i];
             //check if currMatch is a match of selectedGame
-            if (selectedGame === null || currMatch.gameId !== selectedGame.gameId) {
+            if (selectedGame === null || currMatch.gameId !== selectedGame) {
                 continue;
             }
             //get myTurnIndex use the matchId;
