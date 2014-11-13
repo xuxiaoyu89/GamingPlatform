@@ -20,16 +20,32 @@ angular.module('myApp')
       avatarImageUrl = playerInfo.avatarImageUrl;
   }
   getLocalVars();
-
+  
+  this.getLocalVars = getLocalVars;
+  
   var search = $location.search();
   if (search.gameId) {
-      gameId = search.gameId;
+     gameId = search.gameId;
   } else {
+    alert("Passing a specific gameId in URL please!");
+  }
+  
+  this.statsNeedGameId = function(){
+    var search = $location.search();
+    if (search.gameId) {
+       gameId = search.gameId;
+    } else {
       alert("Passing a specific gameId in URL please!");
+    }
   }
 
   var rank, outcomesCount;
   var statsIndex = [];
+  
+  this.clearAll = function(){
+    outcomesCount = undefined;
+    statsIndex = undefined;
+  }
   
   this.getStats = function(callback){
     serverApiService.sendMessage([{getPlayerGameStats: {gameId: gameId, myPlayerId: playerID,
