@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('myApp')
-.service('statsService', function($log, $window, serverApiService){
+.service('statsService', function($log, $window, $location , serverApiService){
   
   var playerInfo, 
   playerID, 
