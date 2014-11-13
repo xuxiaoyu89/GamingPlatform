@@ -36,7 +36,7 @@ getLocalVars();
   var MENU_URL = '#/menu';
 
   //SOME NOT SO IMPORTANT VARS
-  $scope.gameStatus = "Loading game, please wait";
+  //$scope.gameStatus = "Loading game, please wait";
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
   var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
