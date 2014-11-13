@@ -24,6 +24,8 @@ angular.module('myApp')
   var platformUrl;
   var platformUrl2;
   
+  var gameStatus = "Loading game, please wait";
+  
   this.setLocalGame = function(entireUrl){
     var hashedUrl = entireUrl.split('#')
     var beforeHashUrl = hashedUrl[0];
@@ -67,6 +69,10 @@ angular.module('myApp')
         $log.info("fetchGameUrldev in local game:",gameUrl);
         callback(gameUrl);
       });
+  }
+  
+  this.getGameStatus = function(){
+    return gameStatus;
   }
 
 
