@@ -55,7 +55,7 @@ angular.module('myApp')
               outcomes: outcomePer[tempId]};   //the outcomes here is an Obj like {W:1, L:1 , T:2}
           statsIndex.push(tempIndex);
       }
-      callback(statsIndex);
+      callback(statsIndex, outcomesCount);
     });
   }
 
