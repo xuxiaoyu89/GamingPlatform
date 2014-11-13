@@ -39,8 +39,8 @@ getLocalVars();
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
   var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
-  var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
-  var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
+  //var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
+  //var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
 
 
 //==========HANDLES DIV RESIZING==================//
@@ -68,6 +68,8 @@ function alert_log_error(alert, log) {
     $log.error("Alert & Log Error: ", log);
     return;
 }
+
+localGameService.setGame(entireUrl);
 
 //get the url of the game;
 localGameService.fetchGameUrl(function(url){
