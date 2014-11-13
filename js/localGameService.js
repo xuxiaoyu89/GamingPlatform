@@ -76,6 +76,7 @@ angular.module('myApp')
   }
   
   //stateService.startNewMatch();
+  $log.info("before setPlayMode!!!!!!!!!!!!!!", playMode);
   stateService.setPlayMode(playMode);
   
   platformMessageService.addMessageListener(function (message) {
