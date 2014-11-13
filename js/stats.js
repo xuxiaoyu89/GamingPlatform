@@ -24,7 +24,7 @@ myAppControllers.controller('StatsCtrl',
             $scope.leaveGame = function () {
                 var MENU_URL = '#/menu';
                 $log.info("leaveGame: About to redirect to Main Menu.");
-                $window.location.replace(MENU_URL);
+                $window.location.path("menu");
             };
 
 
