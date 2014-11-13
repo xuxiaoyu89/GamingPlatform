@@ -76,6 +76,13 @@ angular.module('myApp')
     return gameStatus;
   }
   
+  this.getImage0 = function(){
+    return "img/a2.png";
+  }
+  this.getImage1 = function(){
+    return "img/a2.png";
+  }
+  
   //stateService.startNewMatch();
   //$log.info("before setPlayMode!!!!!!!!!!!!!!", playMode);
   //stateService.setPlayMode(playMode);
