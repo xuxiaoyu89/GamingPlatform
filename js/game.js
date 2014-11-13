@@ -13,12 +13,14 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.gameStatus = platformGameService.getGameStatus;
 
   //CONSTANT VARIABLES
-  var MENU_URL = 'index.html#/menu';
+  var INDEX_URL = "GamingPlatform/index.html"
+  var MENU_URL = '#/menu';
 
   //SOME URL RELATED VARS
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
-  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
+  var homepage = $window.location.origin.concat(INDEX_URL,MENU_URL);
+  //entireUrl.split("#")[0].concat(MENU_URL);
   var questionmarkUrl = entireUrl.split("?")[1];
   var andUrl = questionmarkUrl.split("&");
   homepage = homepage.concat("?").concat(andUrl[0]).concat("&").concat(andUrl[1]);
