@@ -444,7 +444,7 @@ this.rescaleDivs = function () {
                                 var div_players = $doc.getElementById('SMPG_game_players');
                                 var div_av0 = $doc.getElementById('SMPG_game_av0');
                                 var div_av1 = $doc.getElementById('SMPG_game_av1');
-                                if (div_av0 !== undefined) {
+                                if (div_players!==undefined && div_av0!==undefined) {
                                     var height_players = div_players.clientHeight;
                                     if (div_players.clientWidth < div_players.clientHeight * 10) {
                                         div_av0.style.height = ($div_players.clientWidth / 10) + 'px';
