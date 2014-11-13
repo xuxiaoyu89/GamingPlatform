@@ -80,7 +80,7 @@ angular.module('myApp')
   
   platformMessageService.addMessageListener(function (message) {
     if (message.gameReady !== undefined) {
-      //$log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ", $scope.test);
+      $log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ", $scope.test);
       //gotGameReady = true;
       var game = message.gameReady;
       game.isMoveOk = function (params) {
