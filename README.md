@@ -5,7 +5,7 @@ Social Multiplayer Gaming group project
 **High priority:**
 * Submit to Google Play (XY)
 * Make interval exponential
-* Polish CSS (:))
+* Polish CSS, Animations: http://ionicframework.com/docs/components/#animations
 
 **Lower priority:**
 * Facebook access
