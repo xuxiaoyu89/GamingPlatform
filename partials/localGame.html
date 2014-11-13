@@ -4,23 +4,34 @@
 
 
             <!--// MATCH_MENU: OPTIONS //-->
-            <div class="SMPG_game_top">
+    <div class="SMPG_game_top">
         <div class="SMPG_game_goback icon ion-chevron-left"
             id="SMPG_game_goback2"
              ng-click="leaveGame()">
         </div>
         <div class="SMPG_game_opponent" id="SMPG_game_players">
+            <div class="SMPG_game" ng-show="player0() && player1()">
+                <span class="SMPG_game_helper"></span>
+                <img src={{image0()}} class="SMPG_game_avatar" id="SMPG_game_av0"> <b>{{player0()}}</b> vs 
+                <img src={{image1()}} class="SMPG_game_avatar" id="SMPG_game_av1"> <b>{{player1()}}</b>
+            </div>
+        </div>
+        <!--
+        <div class="SMPG_game_opponent" id="SMPG_game_players">
                 <span class="SMPG_game_helper"></span>
                 <b>Playing a Local Game</b>
         </div>
+        
         <div class="SMPG_game_delete"
             id="SMPG_game_delete2">
         </div>
+        -->
+        
     </div>
     
      <div class="SMPG_game_status">
         <span class="SMPG_game_helper"></span>
-        <i>{{localGameStatus}}</i>
+        <i>{{localGameStatus()}}</i>
     </div>
             
             
