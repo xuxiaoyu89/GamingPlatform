@@ -2,7 +2,7 @@
 
 myAppControllers
 .controller('LocalGameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, localGameService serverApiService, platformMessageService) {
+function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, localGameService, serverApiService, platformMessageService) {
   /*
   if($rootScope.menu_interval !== undefined){
       clearInterval($rootScope.menu_interval);
