@@ -9,12 +9,13 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, l
     }
   */
   
+  $scope.gameStatus = localGameService.getGameStatus();
+  
   //SOME important VARIABLES
   var state;//current game state
   var turnIndex;//current turn index
   var playersInfo;
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
-
   var newmatch = false;//whether to create a new match or not, default set to false
   
   
