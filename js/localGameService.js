@@ -74,6 +74,31 @@ angular.module('myApp')
   this.getGameStatus = function(){
     return gameStatus;
   }
+  
+  platformMessageService.addMessageListener(function (message) {
+    if (message.gameReady !== undefined) {
+      //$log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ", $scope.test);
+      //gotGameReady = true;
+      var game = message.gameReady;
+      game.isMoveOk = function (params) {
+        platformMessageService.sendMessage({isMoveOk: params});
+        return true;
+      };
+      game.updateUI = function (params) {
+        platformMessageService.sendMessage({updateUI: params});
+      };
+      stateService.setGame(game);
+    } else if (message.isMoveOkResult !== undefined) {
+      if (message.isMoveOkResult !== true) {
+        //$window.alert("isMoveOk returned " + message.isMoveOkResult);
+      }
+    } else if (message.makeMove !== undefined) {
+      stateService.makeMove(message.makeMove);
+    } else {
+      //$window.alert("Platform got: " + angular.toJson(message, true));
+    }
+  });
+  
 
 
 });
