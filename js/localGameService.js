@@ -21,6 +21,8 @@ angular.module('myApp')
   var MENU_URL = '#/menu';
   var gameID;
   var playMode;
+  var platformUrl;
+  var platformUrl2;
   
   this.setLocalGame = function(entireUrl){
     var hashedUrl = entireUrl.split('#')
