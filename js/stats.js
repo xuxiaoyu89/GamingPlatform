@@ -22,8 +22,9 @@ myAppControllers.controller('StatsCtrl',
             //==========HANDLES DIV RESIZING==================//
 
             $scope.leaveGame = function () {
-                var MENU_URL = '#/menu';
+                //var MENU_URL = '#/menu';
                 $log.info("leaveGame: About to redirect to Main Menu.");
+                statsService.clearAll();
                 $location.path('menu');
             };
         
