@@ -69,7 +69,7 @@ function alert_log_error(alert, log) {
     return;
 }
 
-localGameService.setGame(entireUrl);
+localGameService.setLocalGame(entireUrl);
 
 //get the url of the game;
 localGameService.fetchGameUrl(function(url){
