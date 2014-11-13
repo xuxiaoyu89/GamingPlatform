@@ -28,9 +28,10 @@ myAppControllers.controller('StatsCtrl',
             };
         
         $scope.statsIndex = [];
-        
-        statsService.getStats(function(statsIndex){
+        $scope.outcomesCount;
+        statsService.getStats(function(statsIndex, outcomesCount){
                 $scope.statsIndex = statsIndex;
+                $scope.outcomesCount = outcomesCount;
         });
         
 /*
