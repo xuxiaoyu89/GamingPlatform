@@ -34,8 +34,7 @@ function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platfor
   var $div_players = $doc.getElementById('SMPG_game_players');
   var $div_av0 = $doc.getElementById('SMPG_game_av0');
   var $div_av1 = $doc.getElementById('SMPG_game_av1');
-  // Run the following when the window is resized, and also trigger it once to begin with.
-  $log.info("TIMEOUT OCCURRED")
+  // Run the following when the window is resized, and also trigger it once to begin with
   var height_goback = $div_goback.clientHeight;
   $div_goback.style.fontSize = (height_goback-2)+'px';
   var height_delete = $div_delete.clientHeight;
@@ -47,6 +46,11 @@ function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platfor
     $div_av1.style.height = ($div_players.clientWidth/10)+'px';
     $div_av1.style.width = ($div_players.clientWidth/10)+'px';
   }
+  
+  platformGameService.rescaleDivs();
+            $window.onresize = platformGameService.rescaleDivs;
+            $window.onorientationchange = platformGameService.rescaleDivs;
+            //$doc.addEventListener("orientationchange", rescaleDivs);
   //==========HANDLES DIV RESIZING==================//
 
   platformGameService.setGame(entireUrl);
