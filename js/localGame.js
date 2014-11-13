@@ -10,6 +10,10 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, l
   */
   
   $scope.localGameStatus = localGameService.getGameStatus;
+  $scope.image0 = localGameService.getImage0;
+  $scope.image1 = localService.getImage1;
+  $scope.player0 = localGameService.getPlayer0;
+  $scope.player1 = localGameService.getPlayer1;
   
   //SOME important VARIABLES
   var state;//current game state
