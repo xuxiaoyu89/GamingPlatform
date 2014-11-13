@@ -9,7 +9,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, l
     }
   */
   
-  $scope.localGameStatus = localGameService.getGameStatus();
+  $scope.localGameStatus = localGameService.getGameStatus;
   
   //SOME important VARIABLES
   var state;//current game state
