@@ -88,6 +88,7 @@ angular.module('myApp')
     }
     else{
       return "Player1";
+    }
   }
   this.getPlayer1 = function(){
     if(playMode === "playAgainstTheComputer"){
