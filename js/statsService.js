@@ -44,7 +44,7 @@ angular.module('myApp')
   
   this.clearAll = function(){
     outcomesCount = undefined;
-    statsIndex = undefined;
+    statsIndex = [];
   }
   
   this.getStats = function(callback){
