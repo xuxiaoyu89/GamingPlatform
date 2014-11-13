@@ -42,6 +42,11 @@ getLocalVars();
   var beforeHashUrl; //URL: http://rshen1993.github.io/GamingPlatform/index.html?on=AUTO_MATCH,EMAIL_JS_ERRORS
   //var platformUrl; //URL: ?matchid=5757715179634688&gameid=5682617542246400
   //var platformUrl2; //removes ?, URL: matchid=5757715179634688&gameid=5682617542246400
+  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
+  var questionmarkUrl = entireUrl.split("?")[1];
+  var andUrl = questionmarkUrl.split("&");
+  homepage = homepage.concat("?").concat(andUrl[0]).concat("&").concat(andUrl[1]);
+  
 
 
 //==========HANDLES DIV RESIZING==================//
@@ -125,7 +130,7 @@ $scope.leaveGame = function () {
         $log.info("leaveGame: About to redirect to Main Menu.");
         //$window.location.replace(MENU_URL);
         
-        $window.location.href = MENU_URL;
+        $window.location.href = homepage;
         $window.location.reload();
     //} else {
     //    $log.info("leaveGame: Canceled return to game.");
