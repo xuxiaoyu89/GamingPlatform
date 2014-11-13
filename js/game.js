@@ -2,7 +2,7 @@
 
 myAppControllers
 .controller('GameCtrl',
-function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameService) {
+function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platformGameService) {
   
   platformGameService.clearInterval();
 
@@ -62,6 +62,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
     platformGameService.deleteGame(function (value) {
       if (value) {
         $window.location.href = homepage;
+        $route.reload();
       }
     });
   };
