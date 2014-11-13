@@ -30,6 +30,9 @@ myAppControllers.controller('StatsCtrl',
         
         $scope.statsIndex = [];
         $scope.outcomesCount;
+        statsService.statsNeedGameId();
+        statsService.getLocalVars();
+        
         statsService.getStats(function(statsIndex, outcomesCount){
                 $scope.statsIndex = statsIndex;
                 $scope.outcomesCount = outcomesCount;
