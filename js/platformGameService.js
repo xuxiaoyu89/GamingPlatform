@@ -447,10 +447,10 @@ this.rescaleDivs = function () {
                                 if (div_players!==undefined && div_av0!==undefined) {
                                     var height_players = div_players.clientHeight;
                                     if (div_players.clientWidth < div_players.clientHeight * 10) {
-                                        div_av0.style.height = ($div_players.clientWidth / 10) + 'px';
-                                        div_av0.style.width = ($div_players.clientWidth / 10) + 'px';
-                                        div_av1.style.height = ($div_players.clientWidth / 10) + 'px';
-                                        div_av1.style.width = ($div_players.clientWidth / 10) + 'px';
+                                        div_av0.style.height = (div_players.clientWidth / 10) + 'px';
+                                        div_av0.style.width = (div_players.clientWidth / 10) + 'px';
+                                        div_av1.style.height = (div_players.clientWidth / 10) + 'px';
+                                        div_av1.style.width = (div_players.clientWidth / 10) + 'px';
                                     }
                                 }
                             }
