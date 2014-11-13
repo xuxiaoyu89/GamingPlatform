@@ -127,10 +127,20 @@ angular.module('myApp')
       
       if(currMove[0].setTurn !== undefined){
         if(currMove[0].setTurn.turnIndex == 1){
-          gameStatus = "game ongoing, it's opponent's turn";
+          if(playMode === "playAgainstTheComputer"){
+            gameStatus = "game ongoing, it's the computer's turn";
+          }
+          else{
+            gameStatus = "game ongoing, it's player2's turn";
+          }
         }
         else{
-          gameStatus = "game ongoing, it's your turn";
+          if(playMode === "playAgainstTheComputer"){
+            gameStatus = "game ongoing, it's your turn";
+          }
+          else {
+            gameStatus = "game ongoing, it's player1's turn";
+          }
         }
       }
       stateService.makeMove(message.makeMove);
