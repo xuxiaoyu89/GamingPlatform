@@ -20,8 +20,7 @@ function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platfor
   var entireUrl = $window.location.href;
   $log.info("entireUrl: ", entireUrl);
   //var homepage = $window.location.origin.concat(INDEX_URL,MENU_URL);
-  var homepage = $window.location.origin.concat(MENU_URL);
-  //entireUrl.split("#")[0].concat(MENU_URL);
+  var homepage = entireUrl.split("#")[0].concat(MENU_URL);
   var questionmarkUrl = entireUrl.split("?")[1];
   var andUrl = questionmarkUrl.split("&");
   homepage = homepage.concat("?").concat(andUrl[0]).concat("&").concat(andUrl[1]);
