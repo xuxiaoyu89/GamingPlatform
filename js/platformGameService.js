@@ -33,7 +33,7 @@ angular.module('myApp')
     state = undefined;
     turnIndex = undefined;
     playersInfo = undefined;
-    playersID = undefined;
+    playerID = undefined;
     matchID = undefined;
     gameID = undefined;
     accessSignature = undefined;
