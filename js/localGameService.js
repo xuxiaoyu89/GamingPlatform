@@ -2,7 +2,7 @@
 'use strict'; 
 
 angular.module('myApp')
-.service('localGameService', function($rootScope, $log, $window, $interval, stateService, platformMessageService) {
+.service('localGameService', function($rootScope, $log, $window, $interval, stateService, serverApiService, platformMessageService) {
 
   
   this.clearInterval = function() {
