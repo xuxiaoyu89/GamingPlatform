@@ -13,7 +13,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.gameStatus = platformGameService.getGameStatus;
 
   //CONSTANT VARIABLES
-  var MENU_URL = '#/menu';
+  var MENU_URL = 'index.html#/menu';
 
   //SOME URL RELATED VARS
   var entireUrl = $window.location.href;
