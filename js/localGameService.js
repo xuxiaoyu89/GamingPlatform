@@ -75,6 +75,9 @@ angular.module('myApp')
     return gameStatus;
   }
   
+  stateService.startNewMatch();
+  stateService.setPlayMode(playMode);
+  
   platformMessageService.addMessageListener(function (message) {
     if (message.gameReady !== undefined) {
       //$log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ", $scope.test);
