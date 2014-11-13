@@ -26,7 +26,7 @@ angular.module('myApp')
   this.resetAll = function() {
     image0 = undefined;
     image1 = undefined;
-    palyer0 = false;
+    player0 = false;
     player1 = false;
     gameStatus = "Loading game, please wait";
     gameUrl = undefined;
