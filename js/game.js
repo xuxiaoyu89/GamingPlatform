@@ -54,15 +54,15 @@ function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platfor
   $scope.leaveGame = function () {
     $log.info("leaveGame: About to redirect to Main Menu.");
     $log.info(homepage);
-    $window.location.href = homepage;
-    $route.reload();
+    $window.location.path(homepage);
+    $window.location.reload();
   };
   
   $scope.deleteGame = function () {
     platformGameService.deleteGame(function (value) {
       if (value) {
         $window.location.href = homepage;
-        $route.reload();
+        $window.location.reload();
       }
     });
   };
