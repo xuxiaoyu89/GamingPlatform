@@ -23,6 +23,32 @@ angular.module('myApp')
   var platformUrl; 
   var platformUrl2;
   
+  this.resetAll = function() {
+    image0 = undefined;
+    image1 = undefined;
+    palyer0 = false;
+    player1 = false;
+    gameStatus = "Loading game, please wait";
+    gameUrl = undefined;
+    state = undefined;
+    turnIndex = undefined;
+    playersInfo = undefined;
+    playersID = undefined;
+    matchID = undefined;
+    gameID = undefined;
+    accessSignature = undefined;
+    myPlayerIndex = undefined;
+    matchInfo = undefined;
+    newmatch = false;
+    beforeHashUrl = undefined;
+    platformUrl = undefined;
+    platformUrl2 = undefined;
+    numberOfMoves = 0;
+    playsound = true;
+    latestUpdateTime = 0;
+    move = undefined;
+  }
+  
   this.clearInterval = function() {
     if($rootScope.menu_interval !== undefined){
       $interval.cancel($rootScope.menu_interval);
