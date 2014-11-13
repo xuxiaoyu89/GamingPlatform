@@ -125,7 +125,7 @@ $scope.leaveGame = function () {
         $log.info("leaveGame: About to redirect to Main Menu.");
         //$window.location.replace(MENU_URL);
         
-        $window.location.href = homepage;
+        $window.location.href = MENU_URL;
         $window.location.reload();
     //} else {
     //    $log.info("leaveGame: Canceled return to game.");
