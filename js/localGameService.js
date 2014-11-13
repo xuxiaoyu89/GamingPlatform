@@ -75,7 +75,7 @@ angular.module('myApp')
     return gameStatus;
   }
   
-  stateService.startNewMatch();
+  //stateService.startNewMatch();
   stateService.setPlayMode(playMode);
   
   platformMessageService.addMessageListener(function (message) {
