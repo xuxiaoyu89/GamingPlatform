@@ -33,9 +33,10 @@ myAppControllers.controller('StatsCtrl',
         statsService.statsNeedGameId();
         statsService.getLocalVars();
         
-        statsService.getStats(function(statsIndex, outcomesCount){
+        statsService.getStats(function(statsIndex, outcomesCount, rank){
                 $scope.statsIndex = statsIndex;
                 $scope.outcomesCount = outcomesCount;
+                $scope.rank = rank;
         });
         
 /*
