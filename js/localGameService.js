@@ -63,7 +63,7 @@ angular.module('myApp')
       [{getGames: {gameId: gameID}}],
       function (response) {
         $log.info("getGameUrl response in local game:",response);
-        gameUrl = response[0].games[0].gameUrl;
+        var gameUrl = response[0].games[0].gameUrl;
         $log.info("fetchGameUrldev in local game:",gameUrl);
         callback(gameUrl);
       });
