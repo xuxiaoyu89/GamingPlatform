@@ -51,6 +51,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
 
   $scope.leaveGame = function () {
     $log.info("leaveGame: About to redirect to Main Menu.");
+    $log.info(homepage);
     $window.location.href = homepage;
   };
   
