@@ -78,7 +78,7 @@ angular.module('myApp')
   
   this.getImage0 = function(){
     
-    return "img/a1.png";
+    return "img/a3.png";
   }
   this.getImage1 = function(){
     if (playMode === "playAgainstTheComputer"){
