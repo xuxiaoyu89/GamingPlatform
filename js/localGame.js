@@ -16,6 +16,20 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, s
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
 
   var newmatch = false;//whether to create a new match or not, default set to false
+  
+  
+//===================== GET VARIABLES FROM LOCAL STORAGE ====================//
+function getLocalVars() {
+    var playerInfo = $window.localStorage.getItem("playerInfo");
+    playerInfo = JSON.parse(angular.fromJson(playerInfo));
+    $scope.playerID = playerInfo.myPlayerId;
+    $scope.accessSignature = playerInfo.accessSignature;
+    myPlayerIndex = parseInt($window.localStorage.getItem($scope.matchID));//get myplayerindex from localstorage
+    var stringMatchObj = $window.localStorage.getItem("matchInfo");
+    $scope.matchInfo = JSON.parse(stringMatchObj);
+}
+getLocalVars();
+
 
   //CONSTANT VARIABLES
   var MENU_URL = '#/menu';
@@ -55,6 +69,14 @@ function alert_log_error(alert, log) {
     return;
 }
 
+//get the url of the game;
+localGameService.fetchGameUrl(function(url){
+  $scope.gameUrl = $sce.trustAsResourceUrl(url);
+});
+
+
+
+/*
 //===================== PARSE URL FOR IDS ====================//
 function parseURL() {
   //BASIC URL PARSING
@@ -91,17 +113,7 @@ function parseURL() {
     }
 }
 parseURL();
-//===================== GET VARIABLES FROM LOCAL STORAGE ====================//
-function getLocalVars() {
-    var playerInfo = $window.localStorage.getItem("playerInfo");
-    playerInfo = JSON.parse(angular.fromJson(playerInfo));
-    $scope.playerID = playerInfo.myPlayerId;
-    $scope.accessSignature = playerInfo.accessSignature;
-    myPlayerIndex = parseInt($window.localStorage.getItem($scope.matchID));//get myplayerindex from localstorage
-    var stringMatchObj = $window.localStorage.getItem("matchInfo");
-    $scope.matchInfo = JSON.parse(stringMatchObj);
-}
-getLocalVars();
+*/
 
 //===================== MATCH_MENU: GO BACK ====================//
 $scope.leaveGame = function () {
