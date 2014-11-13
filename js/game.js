@@ -27,26 +27,6 @@ function ($sce, $scope, $rootScope, $log, $window, $route, $routeParams, platfor
   $log.info("homepage URL: ", homepage);
   
   //==========HANDLES DIV RESIZING==================//
-  var $doc = $window.document;
-  // Cache the div so that the browser doesn't have to find it every time the window is resized.
-  var $div_goback = $doc.getElementById('SMPG_game_goback2');
-  var $div_delete = $doc.getElementById('SMPG_game_delete2');
-  var $div_players = $doc.getElementById('SMPG_game_players');
-  var $div_av0 = $doc.getElementById('SMPG_game_av0');
-  var $div_av1 = $doc.getElementById('SMPG_game_av1');
-  // Run the following when the window is resized, and also trigger it once to begin with
-  var height_goback = $div_goback.clientHeight;
-  $div_goback.style.fontSize = (height_goback-2)+'px';
-  var height_delete = $div_delete.clientHeight;
-  $div_delete.style.fontSize = (height_delete-2)+'px';
-  var height_players = $div_players.clientHeight;
-  if($div_players.clientWidth < $div_players.clientHeight*10) { 
-    $div_av0.style.height = ($div_players.clientWidth/10)+'px';
-    $div_av0.style.width = ($div_players.clientWidth/10)+'px';
-    $div_av1.style.height = ($div_players.clientWidth/10)+'px';
-    $div_av1.style.width = ($div_players.clientWidth/10)+'px';
-  }
-  
   platformGameService.rescaleDivs();
             $window.onresize = platformGameService.rescaleDivs;
             $window.onorientationchange = platformGameService.rescaleDivs;
