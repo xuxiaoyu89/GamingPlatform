@@ -13,7 +13,7 @@ function ($sce, $scope, $rootScope, $log, $window, $routeParams, platformGameSer
   $scope.gameStatus = platformGameService.getGameStatus;
 
   //CONSTANT VARIABLES
-  var INDEX_URL = "GamingPlatform/index.html"
+  var INDEX_URL = "/GamingPlatform/index.html"
   var MENU_URL = '#/menu';
 
   //SOME URL RELATED VARS
