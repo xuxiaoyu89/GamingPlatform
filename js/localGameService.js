@@ -111,6 +111,19 @@ angular.module('myApp')
         //$window.alert("isMoveOk returned " + message.isMoveOkResult);
       }
     } else if (message.makeMove !== undefined) {
+      var currMove = message.makeMove;
+      if(currMove[0].endMatch !== undefined){
+        gameStatus = "game ended";
+      }
+      
+      if(currMove[0].setTurn !== undefined){
+        if(currMove[0].setTurn.turnIndex == 1){
+          gameStatus = "game ongoing, it's opponent's turn";
+        }
+        else{
+          gameStatus = "game ongoing, it's your turn";
+        }
+      }
       stateService.makeMove(message.makeMove);
     } else {
       //$window.alert("Platform got: " + angular.toJson(message, true));
