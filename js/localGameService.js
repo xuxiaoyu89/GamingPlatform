@@ -77,9 +77,13 @@ angular.module('myApp')
   }
   
   this.getImage0 = function(){
-    return "img/a2.png";
+    
+    return "img/a1.png";
   }
   this.getImage1 = function(){
+    if (playMode === "playAgainstTheComputer"){
+      return "img/computer.png";
+    }
     return "img/a2.png";
   }
   this.getPlayer0 = function(){
