@@ -97,6 +97,7 @@ angular.module('myApp')
     if (message.gameReady !== undefined) {
       $log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ");
       //gotGameReady = true;
+      gameStatus = "game ongoing, it's your turn";
       var game = message.gameReady;
       game.isMoveOk = function (params) {
         platformMessageService.sendMessage({isMoveOk: params});
