@@ -82,6 +82,12 @@ angular.module('myApp')
   this.getImage1 = function(){
     return "img/a2.png";
   }
+  this.getPlayer0 = function(){
+    return "you";
+  }
+  this.getPlayer1 = function(){
+    return "computer";
+  }
   
   //stateService.startNewMatch();
   //$log.info("before setPlayMode!!!!!!!!!!!!!!", playMode);
