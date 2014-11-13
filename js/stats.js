@@ -1,8 +1,8 @@
 'use strict';
 
 myAppControllers.controller('StatsCtrl',
-        function ($sce, $scope, $rootScope, $log, $window, $timeout, $location,
-                serverApiService) {
+        function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, statsService
+                ) {
 
             //==========HANDLES DIV RESIZING==================//
             var $doc = $window.document;
@@ -26,8 +26,14 @@ myAppControllers.controller('StatsCtrl',
                 $log.info("leaveGame: About to redirect to Main Menu.");
                 $location.path('menu');
             };
-
-
+        
+        $scope.statsIndex = [];
+        
+        statsService.getStats(function(statsIndex){
+                $scope.statsIndex = statsIndex;
+        });
+        
+/*
             function getLocalVars() {
                 var playerInfo = $window.localStorage.getItem("playerInfo");
                 playerInfo = JSON.parse(angular.fromJson(playerInfo));
@@ -69,6 +75,8 @@ myAppControllers.controller('StatsCtrl',
                     $scope.statsIndex.push(tempIndex);
                 }
             });
+*/
 
+        
 
         });
