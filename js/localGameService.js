@@ -83,10 +83,17 @@ angular.module('myApp')
     return "img/a2.png";
   }
   this.getPlayer0 = function(){
-    return "you";
+    if(playMode === "playAgainstTheComputer"){
+      return "you";
+    }
+    else{
+      return "Player1";
   }
   this.getPlayer1 = function(){
-    return "computer";
+    if(playMode === "playAgainstTheComputer"){
+      return "computer";
+    }
+    return "player2";
   }
   
   //stateService.startNewMatch();
@@ -95,7 +102,7 @@ angular.module('myApp')
   
   platformMessageService.addMessageListener(function (message) {
     if (message.gameReady !== undefined) {
-      $log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!gameReady message: ");
+      $log.info("gameReady message: ");
       //gotGameReady = true;
       gameStatus = "game ongoing, it's your turn";
       var game = message.gameReady;
