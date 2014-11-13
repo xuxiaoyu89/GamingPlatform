@@ -3,11 +3,11 @@ GamingPlatform
 Social Multiplayer Gaming group project
 
 **High priority:**
+* Submit to Google Play (XY)
 * Make interval exponential
-* setInterval to $interval? This is done.
-* Angular.min instead of angular This is done.
+* Polish CSS (:))
 
 **Lower priority:**
-* Put iframe in index.html(maybe we don't need to do this...)
 * Facebook access
 * Advertising
+* Put iframe in index.html(maybe we don't need to do this...)
