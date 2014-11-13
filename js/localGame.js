@@ -3,11 +3,12 @@
 myAppControllers
 .controller('LocalGameCtrl',
 function ($sce, $scope, $rootScope, $log, $window, $routeParams, stateService, serverApiService, platformMessageService) {
-  
+  /*
   if($rootScope.menu_interval !== undefined){
       clearInterval($rootScope.menu_interval);
     }
-
+  */
+  
   //SOME important VARIABLES
   var state;//current game state
   var turnIndex;//current turn index
@@ -117,6 +118,8 @@ $scope.leaveGame = function () {
 $scope.deleteGame = function () {
     
 };
+
+/*
 //===================== GET GAME'S URL ===============//
 serverApiService.sendMessage(
     [{getGames: {gameId: $scope.gameID}}], //get the game that has id equals to gameID
@@ -128,7 +131,9 @@ serverApiService.sendMessage(
         $window.gameDeveloperEmail = $scope.gameInfo.gameDeveloperEmail;
     });
 //====================================================
+*/
 
+/*
   var gotGameReady = false;
   $scope.startNewMatch = function () {
     stateService.startNewMatch();
@@ -170,4 +175,5 @@ serverApiService.sendMessage(
       //$window.alert("Platform got: " + angular.toJson(message, true));
     }
   });
+  */
 });
