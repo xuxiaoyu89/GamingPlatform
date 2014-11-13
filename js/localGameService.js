@@ -52,6 +52,7 @@ angular.module('myApp')
         if (subparse.length === 2) {
             if (subparse[0].toLowerCase() === 'playmode') {
                 playMode = subparse[1];
+                stateService.setPlayMode(playMode);
             } else if (subparse[0].toLowerCase() === 'gameid') {
                 gameID = subparse[1];
             }
@@ -76,8 +77,8 @@ angular.module('myApp')
   }
   
   //stateService.startNewMatch();
-  $log.info("before setPlayMode!!!!!!!!!!!!!!", playMode);
-  stateService.setPlayMode(playMode);
+  //$log.info("before setPlayMode!!!!!!!!!!!!!!", playMode);
+  //stateService.setPlayMode(playMode);
   
   platformMessageService.addMessageListener(function (message) {
     if (message.gameReady !== undefined) {
