@@ -8,6 +8,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         $rootScope.interval = undefined
     }
     
+    var timeinterval = 1000;
+    
     //var mygame = "5705718560718848";
        
     // initialize icon pool  
@@ -77,6 +79,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     }
 
     function updateMatchesPool(){
+        $interval.cancel($rootScope.menu_interval);
+        $rootScope.menu_interval = undefined;
+        timeinterval = 2 * timeinterval;
+        $rootScope.menu_interval = $interval(updateMatchesPool, timeinterval);
         //$log.info("in updateMatchesPool");
         if($scope.myMatchesPool.length === 0){
             //$log.info("myMatchesPool is empty");
@@ -109,7 +115,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         }
     }
     
-    $rootScope.menu_interval = $interval(updateMatchesPool, 10000);
+    $rootScope.menu_interval = $interval(updateMatchesPool, timeinterval);
 
     function setCurrentMatches() {
         if(gameId === "" || gameId === null){
@@ -183,11 +189,13 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         // fixed by bbccyy, the previous dircetion is wrong: platform_game_vs.html
         $location.search("matchId",matchId);
         $location.path('game');
+        timeinterval = 1000;
     }
     
     $scope.goToStats = function(gameId){
          //$location.search("gameId",gameId);
-         $location.path('stats');
+         $location.path('stats');$interval.cancel($rootScope.menu_interval);
+        timeinterval = 1000;
     }
 
 
@@ -396,6 +404,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         var playMode = "playAgainstTheComputer";
         $location.search("playMode", playMode);
         $location.path('localGame');
+        timeinterval = 1000;
         //alert("play against computer");
     }
     
@@ -408,6 +417,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         var playMode = "passAndPlay";
         $location.search("playMode", playMode);
         $location.path('localGame');
+        timeinterval = 1000;
         //alert("LocalGame");
     }
     
