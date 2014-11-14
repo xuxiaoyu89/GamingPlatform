@@ -55,6 +55,7 @@ angular.module('myApp')
   this.clearInterval = function() {
     if($rootScope.menu_interval !== undefined){
       $interval.cancel($rootScope.menu_interval);
+      $rootScope.menu_interval = undefined;
     }
   }
 
