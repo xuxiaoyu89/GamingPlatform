@@ -7,6 +7,7 @@ Social Multiplayer Gaming group project
 * Submit to Google Play (XY)
 * Make interval exponential
 * Polish CSS, Animations: http://ionicframework.com/docs/components/#animations
+* http://www.webdesignerdepot.com/2013/07/20-beautifully-designed-smartphone-apps/
 
 **Lower priority:**
 * Facebook access
