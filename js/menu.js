@@ -4,7 +4,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     
     $log.info($rootScope.interval);
     if($rootScope.interval !== undefined){
-        $interval.cancel($scope.interval);
+        $interval.cancel($rootScope.interval);
+        $rootScope.interval = undefined
     }
     
     //var mygame = "5705718560718848";
