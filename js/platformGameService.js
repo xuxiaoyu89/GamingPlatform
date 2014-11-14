@@ -1,7 +1,7 @@
 'use strict'; 
 
 angular.module('myApp')
-.service('platformGameService', function($rootScope, $log, $window, /*$routeParams, */$interval, serverApiService, platformMessageService) {
+.service('platformGameService', function($rootScope, $log, $window, $interval, serverApiService, platformMessageService) {
 
   var image0, image1;
   var player0 = false;
@@ -16,6 +16,8 @@ angular.module('myApp')
   var playerID, matchID, gameID, accessSignature, myPlayerIndex, matchInfo;
 
   var newmatch = false;//whether to create a new match or not, default set to false
+
+  var timeinterval = 1000;
   
   var MENU_URL = '#/menu';
 
@@ -47,6 +49,7 @@ angular.module('myApp')
     playsound = true;
     latestUpdateTime = 0;
     move = undefined;
+    timeinterval = 1000;
   }
   
   this.clearInterval = function() {
@@ -181,7 +184,7 @@ angular.module('myApp')
   
   
   function beginLoop() {
-    $rootScope.interval = $interval(checkChanges, 10000);
+    $rootScope.interval = $interval(checkChanges, timeinterval);
   }
 
   var numberOfMoves = 0;//number of moves, used to determine if there's any change
@@ -189,6 +192,7 @@ angular.module('myApp')
   var latestUpdateTime = 0;//update time millis
   function checkChanges() {
     $log.info("checking changes for:", matchID);
+    timeinterval = 2 * timeinterval;
     //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
       var params = {stateAfterMove: state, 
@@ -393,6 +397,7 @@ angular.module('myApp')
             function (response) {
               $log.info("serverApiService: madeMove: ", response);
               checkChanges();
+              timeinterval = 1000;
               });
           }
           else {
@@ -410,6 +415,7 @@ angular.module('myApp')
                 matchID = response[0]["matches"][0].matchId;
                 $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
                 checkChanges();
+                timeinterval = 1000;
               });
           }
       }
