@@ -192,6 +192,8 @@ angular.module('myApp')
   var latestUpdateTime = 0;//update time millis
   function checkChanges() {
     $log.info("checking changes for:", matchID);
+    $interval.cancel($rootScope.interval);
+    $rootScope.interval = undefined;
     timeinterval = 2 * timeinterval;
     $rootScope.interval = $interval(checkChanges, timeinterval);
     //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
@@ -398,6 +400,8 @@ angular.module('myApp')
             function (response) {
               $log.info("serverApiService: madeMove: ", response);
               checkChanges();
+              $interval.cancel($rootScope.interval);
+              $rootScope.interval = undefined;
               timeinterval = 1000;
               $rootScope.interval = $interval(checkChanges, timeinterval);
               });
@@ -417,6 +421,8 @@ angular.module('myApp')
                 matchID = response[0]["matches"][0].matchId;
                 $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
                 checkChanges();
+                $interval.cancel($rootScope.interval);
+                $rootScope.interval = undefined;
                 timeinterval = 1000;
                 $rootScope.interval = $interval(checkChanges, timeinterval);
               });
