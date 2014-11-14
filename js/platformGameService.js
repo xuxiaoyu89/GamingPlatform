@@ -193,6 +193,7 @@ angular.module('myApp')
   function checkChanges() {
     $log.info("checking changes for:", matchID);
     timeinterval = 2 * timeinterval;
+    $rootScope.interval = $interval(checkChanges, timeinterval);
     //--------------I DON'T REALLY UNDERSTAND THIS PART MYSELF----------------//
     if (newmatch) {
       var params = {stateAfterMove: state, 
@@ -398,6 +399,7 @@ angular.module('myApp')
               $log.info("serverApiService: madeMove: ", response);
               checkChanges();
               timeinterval = 1000;
+              $rootScope.interval = $interval(checkChanges, timeinterval);
               });
           }
           else {
@@ -416,6 +418,7 @@ angular.module('myApp')
                 $window.localStorage.setItem(matchID, "0");//store myplayerindex for this match in local storage
                 checkChanges();
                 timeinterval = 1000;
+                $rootScope.interval = $interval(checkChanges, timeinterval);
               });
           }
       }
