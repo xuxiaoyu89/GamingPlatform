@@ -232,7 +232,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
      * for each element in gamesPool: 
      * {gameId: ..., gameUrl:..., GameName:..., gameDeveloperEmail:...}*/
     $scope.gamesPool = [];
-    /*serverApiService.sendMessage([{getGames: {}}], function (games) {
+    serverApiService.sendMessage([{getGames: {}}], function (games) {
         var tempList = games[0].games;
         for (var i = 0; i < tempList.length; i++) {
             if (tempList[i].gameUrl === undefined)
@@ -254,7 +254,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                } 
             }
         });
-     });*/
+     });
      
     function sayHi2GamePool(_mygame){
        $scope.gamesPool.forEach(function (entry) {
