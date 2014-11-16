@@ -6,7 +6,8 @@ Social Multiplayer Gaming group project
 * Submit to Google Play (XY)
 * Modify menu.js. Delete all the logic realted to game pool.
 * Polish CSS, Animations: http://ionicframework.com/docs/components/#animations
-* http://www.webdesignerdepot.com/2013/07/20-beautifully-designed-smartphone-apps/
+* Some mobile apps: http://www.webdesignerdepot.com/2013/07/20-beautifully-designed-smartphone-apps/
+* Material Design: http://www.google.com/design/spec/material-design/introduction.html
 
 **Lower priority:**
 * Facebook access
