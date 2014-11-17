@@ -71,7 +71,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     $scope.oppoTurnMatches = [];
     $scope.endMatches = [];
     function retriveCurrentGames(){
-        serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
+        serverApiService.sendMessage([{getPlayerMatches: {gameId: gameId, getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature}}], function (matches) {
             $scope.myMatchesPool = matches[0].matches;
             $log.info($scope.myMatchesPool);
             setCurrentMatches();
