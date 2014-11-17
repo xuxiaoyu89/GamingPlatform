@@ -96,7 +96,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                     maxTime = currMatch.updatedTimestampMillis;
                 }
             }
-            serverApiService.sendMessage([{getPlayerMatches: {getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature, updatedTimestampMillisAtLeast: maxTime}}], function (matches) {
+            serverApiService.sendMessage([{getPlayerMatches: {gameId: gameId, getCommunityMatches: false, myPlayerId: myPlayerId, accessSignature: accessSignature, updatedTimestampMillisAtLeast: maxTime}}], function (matches) {
             var updatedMatches = matches[0].matches;
             //$log.info(updatedMatches);
             //update the myMatchesPool
