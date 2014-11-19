@@ -94,13 +94,13 @@ div {
     font-size: 18px;
 }
 .SMPG_menu_yourturn {
-    background-color: rgba(0, 0, 0, 1);
+  text-align: left;
 }
 .SMPG_menu_waiting {
-    background-color: rgba(0, 0, 0, 1);
+  text-align: right;
 }
 .SMPG_menu_completed {
-    background-color: rgba(0, 0, 0, 1);
+  text-align: left;
 }
 .SMPG_menu_table {
     width: 100%;
