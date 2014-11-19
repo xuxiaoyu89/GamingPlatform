@@ -147,11 +147,11 @@ div {
     height:100%;
     width:100%;
     overflow: hidden;
-    background-color: rgba(56, 97, 31, 1);
+    /*background-color: rgba(56, 97, 31, 1);*/
     color: white;
 }
 .SMPG_game_top {
-    background-color: rgba(56, 97, 31, 1);
+    background-color: rgba(0, 0, 0, 1);
     height: 10%;
     width: 100%;
     vertical-align: middle;
@@ -186,7 +186,7 @@ div {
     height: 100%;
     background-color: white;
     border: 1px solid;
-    border-color: darkolivegreen;
+    border-color: green;
     vertical-align: middle;
 }
 #SMPG_game_av0 {
@@ -213,9 +213,6 @@ div {
 /* These are stats.html items */
 
 .SMPG_stats {
-    //background: #ECECEC;
-    //margin:0px ;
-    //color:#333;
     height:100%;
     width:100%;
     overflow: scroll;
