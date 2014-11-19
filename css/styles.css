@@ -6,6 +6,12 @@
 //BG: #d1f8b9
 */
 
+.gradient {
+  background: -webkit-linear-gradient(bottom,rgba(0, 36, 13, 1),rgba(32, 102, 49, 1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(top,rgba(0, 36, 13, 1),rgba(32, 102, 49, 1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(top,rgba(0, 36, 13, 1),rgba(32, 102, 49, 1)); /*Fx 3.6-15*/
+  background: linear-gradient(to top,rgba(0, 36, 13, 1),rgba(32, 102, 49, 1));
+}
 html, body {
     margin: 0;
     padding: 0;
