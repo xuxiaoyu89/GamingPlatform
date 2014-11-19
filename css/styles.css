@@ -19,11 +19,10 @@ html, body {
     height: 100%;
     /*overflow: hidden;*/
     position: fixed!important;
-    color: rgba(56, 97, 31, 1);
+    /*color: rgba(56, 97, 31, 1);*/
 }
 iframe {
     overflow: hidden;
-    background-color: rgba(173, 215, 160, 1);
     height: 85%;
     width: 100%;
 }
@@ -51,8 +50,8 @@ div {
     padding: 2px;
     vertical-align: middle;
     background-color: white;
-    border: 1px solid;
-    border-color: darkolivegreen;
+    border: 2px solid;
+    border-color: green;
 }
 .SMPG_divider {
     height: 5px;
@@ -68,7 +67,7 @@ div {
 .SMPG_menu_top {
     padding-top: 1%;
     //padding-bottom: 1%;
-    background-color: rgba(56, 97, 31, 1);
+    background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_select {
     margin-left: 15%;
@@ -87,13 +86,13 @@ div {
     font-size: 18px;
 }
 .SMPG_menu_yourturn {
-    background-color: rgba(56, 97, 31, 1);
+    background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_waiting {
-    background-color: #58863d;
+    background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_completed {
-    background-color: rgba(109, 168, 74, 1);
+    background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_table {
     width: 100%;
