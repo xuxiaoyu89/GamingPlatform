@@ -2,17 +2,21 @@
      ng-cloak>
 
     <div class="SMPG_menu_body">
-
-        <div class="SMPG_menu_top">
-            <div id="SMPG_menu_title">
-                <h4 class="title">Welcome to <b>{{gameName}}</b>!</h4>
+          <div id="SMPG_menu_title">
+                Welcome to <b>{{gameName}}</b>!
             </div>
-
-            <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar" ng-click="goToStats()"></img> 
-            <h4 class="title">Hello, <b>{{displayName}}</b>
+            
+        <div class="SMPG_menu_top">
+        <div class="SMPG_menu_option30" id="SMPG_menu_top_1">
+             <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar" ng-click="goToStats()"></img>
+        </div>
+        <div class="SMPG_menu_option40" id="SMPG_menu_top_2"><b>{{displayName}}</b></div>
+        <div class="SMPG_menu_option30" id="SMPG_menu_top_3" ng-click="goToStats()">
+             Stats
+        </div>
         </div>
 
-        <div class="SMPG_menu_games">
+        <!--div class="SMPG_menu_games"-->
 
             <div class="SMPG_divider"></div>
             <div class="SMPG_menu_listbar SMPG_menu_yourturn leftgrad">
@@ -54,16 +58,16 @@
                 </table>
             </div>
 
-        </div>
+        <!--/div-->
     </div>
 
     <!--BOTTOM MENU OPTIONS-->
     <div class="SMPG_menu_bottom">
-        <div class="SMPG_menu_bottom_option" id="SMPG_menu_bottom_1"
+        <div class="SMPG_menu_option30" id="SMPG_menu_bottom_1"
              ng-click="passAndPlayHandler()">Pass & Play</div>
-        <div class="SMPG_menu_bottom_option2" id="SMPG_menu_bottom_2"
+        <div class="SMPG_menu_option40" id="SMPG_menu_bottom_2"
              ng-click="autoMatchHandler()">Automatch</div>
-        <div class="SMPG_menu_bottom_option" id="SMPG_menu_bottom_3"
+        <div class="SMPG_menu_option30" id="SMPG_menu_bottom_3"
              ng-click="playAgainstComputerHandler()">Computer</div>
     </div>
 
