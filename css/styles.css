@@ -258,7 +258,7 @@ div {
     padding: 1%;
     /*background-color: #58863d;*/
     min-height: 10%;
-    color: black;
+    color: rgba(255, 255, 255, 1);
 }
 .SMPG_stats_none {
     width: 100%;
