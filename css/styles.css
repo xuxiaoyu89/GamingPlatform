@@ -96,7 +96,8 @@ div {
     background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_top {
-    height: 80px;
+    height: 20%;
+    min-height: 50px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
