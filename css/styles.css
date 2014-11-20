@@ -94,6 +94,7 @@ div {
 
 .SMPG_menu_games {
     height: 80%;
+    width: 100%;
     overflow: scroll;
 }
 .SMPG_menu_listbar {
