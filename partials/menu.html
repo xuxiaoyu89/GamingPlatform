@@ -2,33 +2,27 @@
      ng-cloak>
 
 <div class="SMPG_menu_body">
+
     <div class="SMPG_menu_top">
-        <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
-        <h4 class="title">Hello, <b>{{displayName}}</b> <br>  Welcome to <b>{{gameName}}</b> !</h4>
+          <div id="SMPG_menu_title">
+               <h4 class="title">Welcome to <b>{{gameName}}</b>!</h4>
+          </div>
+    
+        <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar" ng-click="goToStats()"></img> 
+        <h4 class="title">Hello, <b>{{displayName}}</b>
     </div>
 
-    <div class="SMPG_menu_options">
-        <button class="button button-small button-stable icon-right ion-trophy" ng-click="goToStats()">YOUR STATS</button>
-    </div>
-
-
-    <div class="SMPG_menu_list">
-          <div class="SMPG_divider"></div>
+    <div class="SMPG_menu_games">
           
-        <div class="SMPG_menu_listbar SMPG_menu_yourturn halfgrad">
-            <b>Your Move</b>
+          <div class="SMPG_divider"></div>
+          <div class="SMPG_menu_listbar SMPG_menu_yourturn leftgrad">
+            <b>Your Turn</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
                 <tr ng-repeat="match in myTurnMatches track by $index">
-                    <td class="SMPG_menu_td1">
+                    <td class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                         <a class="ion-android-contact"></a> <span class="blink_me"><b>{{match.opponent}}</b></span>
-                    </td>
-                    <td class="SMPG_menu_td2">
-                        <button class="button SMPG_menu_button"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                            <a class="ion-ios7-redo-outline SMPG_icon"></a>
-                        </button>
                     </td>
                 </tr>
             </table>
@@ -36,43 +30,32 @@
 
         <div class="SMPG_divider"></div>
         <div class="SMPG_menu_listbar SMPG_menu_waiting rightgrad">
-            <b>Waiting on Opponent</b>
+            <b>Opponent's Turn</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
                 <tr ng-repeat="match in oppoTurnMatches track by $index">
-                    <td class="SMPG_menu_td1">
+                    <td class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                         <a class="ion-android-contact"></a> <b>{{match.opponent}}</b>
-                    </td>
-                    <td class="SMPG_menu_td2">
-                        <button class="button SMPG_menu_button"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                            <a class="ion-ios7-redo-outline SMPG_icon"></a>
-                        </button>
                     </td>
                 </tr>
             </table>
         </div>
 
         <div class="SMPG_divider"></div>
-        <div class="SMPG_menu_listbar SMPG_menu_completed halfgrad">
+        <div class="SMPG_menu_listbar SMPG_menu_completed leftgrad">
             <b>Completed Games</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
                 <tr class="SMPG_menu_tr" ng-repeat="match in endMatches track by $index">
-                    <td class="SMPG_menu_td1">
+                    <td class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                         <a class="ion-android-contact"></a> <b>{{match.opponent}}</b>
-                    </td>
-                    <td class="SMPG_menu_td2">
-                        <button class="button SMPG_menu_button"
-                                ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                            <a class="ion-ios7-redo-outline SMPG_icon"></a>
-                        </button>
                     </td>
                 </tr>
             </table>
         </div>
+        
     </div>
 </div>
 
