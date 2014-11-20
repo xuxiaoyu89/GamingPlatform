@@ -435,8 +435,17 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
         //alert("LocalGame");
     }
     
-    platformGameService.rescaleDivs();
+    rescaleDivs = function () {
+                                var $doc = $window.document;
+                                $log.info("Menu called menu rescaleDivs")
+                                var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
+                                if (div_menubottom !== undefined) {
+                                    var height_menubottom = height_menutop.clientHeight;
+                                    var div_trophy = $doc.getElementById('SMPG_menu_trophy');
+                                    div_trophy.style.fontSize = (height_menubottom - 2) + 'px';
+                                }
+    }
+    rescaleDivs();
             $window.onresize = platformGameService.rescaleDivs;
             $window.onorientationchange = platformGameService.rescaleDivs;
-            //$doc.addEventListener("orientationchange", rescaleDivs);   
 });
