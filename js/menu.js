@@ -438,14 +438,18 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     rescaleDivs = function () {
                                 var $doc = $window.document;
                                 $log.info("Menu called menu rescaleDivs")
+                                var div_menutop = $doc.getElementById('SMPG_menu_top_1');
+                                if (div_menutop !== undefined) {
+                                    var height_menutop = div_menutop.clientHeight;
+                                    var icon_trophy = $doc.getElementById('SMPG_menu_trophy');
+                                    icon_trophy.style.fontSize = (height_menutop - 12) + 'px';
+                                }
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
                                 if (div_menubottom !== undefined) {
                                     var height_menubottom = div_menubottom.clientHeight;
-                                    var icon_trophy = $doc.getElementById('SMPG_menu_trophy');
                                     var icon_pass = $doc.getElementById('SMPG_icon_pass');
                                     var icon_match = $doc.getElementById('SMPG_icon_match');
                                     var icon_AI = $doc.getElementById('SMPG_icon_AI');
-                                    icon_trophy.style.fontSize = (height_menubottom - 16) + 'px';
                                     icon_pass.style.fontSize = (height_menubottom - 16) + 'px';
                                     icon_match.style.fontSize = (height_menubottom - 16) + 'px';
                                     icon_AI.style.fontSize = (height_menubottom - 16) + 'px';
