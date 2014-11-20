@@ -53,8 +53,7 @@ div {
 
 /* These are used by all SMPG pages */
 .SMPG_avatar {
-    height: 70px;
-    width: 70px;
+    height: 95%;
     padding: 2px;
     vertical-align: middle;
     background-color: white;
