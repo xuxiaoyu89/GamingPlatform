@@ -278,8 +278,8 @@ div {
     width: 100%;
     vertical-align: middle;
     text-align: center;
-    border-top: 1px solid #58863d;
-    color: rgba(56, 97, 31, 1);
+    border-top: 1px solid rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, 1);
 }
 .SMPG_stats_col {
     width: 10%;
@@ -292,7 +292,7 @@ div {
     height: 100%;
 }
 .SMPG_stats_dark {
-    background-color: rgba(131, 182, 115, 1)
+    background-color: rgba(131, 182, 115, 0.5);
 }
 .SMPG_stats_av {
     height: 30px;
