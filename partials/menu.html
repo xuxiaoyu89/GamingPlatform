@@ -1,36 +1,20 @@
 <div class="SMPG_menu gradient"
      ng-cloak>
 
-
+<div class="SMPG_menu_body">
     <div class="SMPG_menu_top">
         <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar"></img> 
         <h4 class="title">Hello, <b>{{displayName}}</b> <br>  Welcome to <b>{{gameName}}</b> !</h4>
-    </div>
-
-    <div class="SMPG_menu_select" ng-show = "false">
-        <div class="list">
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Choose Game: 
-                </div>
-                <select ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
-                    <option value="">--</option>
-                </select>
-            </label>
-        </div>
-        <!--select class="" ng-model="selectdGames" ng-options="game.GameName for game in gamesPool">
-                <option class=""
-                value="">-- choose game --</option>      	
-        </select-->
     </div>
 
     <div class="SMPG_menu_options">
         <button class="button button-small button-stable icon-right ion-trophy" ng-click="goToStats()">YOUR STATS</button>
     </div>
 
-    <div class="SMPG_divider"></div>
 
     <div class="SMPG_menu_list">
+          <div class="SMPG_divider"></div>
+          
         <div class="SMPG_menu_listbar SMPG_menu_yourturn halfgrad">
             <b>Your Move</b>
         </div>
@@ -90,8 +74,9 @@
             </table>
         </div>
     </div>
+</div>
 
-
+     <!--BOTTOM MENU OPTIONS-->
     <div class="SMPG_menu_bottom">
         <div class="SMPG_menu_bottom_option" id="SMPG_menu_bottom_1"
              ng-click="passAndPlayHandler()">Pass & Play</div>
