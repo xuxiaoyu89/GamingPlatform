@@ -446,6 +446,6 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 }
     }
     rescaleDivs();
-            $window.onresize = platformGameService.rescaleDivs;
-            $window.onorientationchange = platformGameService.rescaleDivs;
+            $window.onresize = rescaleDivs;
+            $window.onorientationchange = rescaleDivs;
 });
