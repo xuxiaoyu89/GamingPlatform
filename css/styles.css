@@ -81,18 +81,16 @@ div {
     width: 100%;
     overflow: scroll;
 }
-
 #SMPG_menu_title {
     height: 10%;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_top {
-    height: 20%;
+    height: 80px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
-
 .SMPG_menu_games {
     height: 80%;
     width: 100%;
