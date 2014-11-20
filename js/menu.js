@@ -232,6 +232,16 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
      * for each element in gamesPool: 
      * {gameId: ..., gameUrl:..., GameName:..., gameDeveloperEmail:...}*/
     $scope.gamesPool = [];
+    
+    function getGameName(){
+         serverApiService.sendMessage([{getGames: {gameId: gameId}}], function(myGame){
+              $scope.gameName = myGame[0].games[0].languageToGameName.en;
+              gameUrl = myGame[0].games[0].gameUrl
+              gameDmail = myGame[0].games[0].gameDeveloperEmail
+         });
+    }
+    
+    
     /*
     serverApiService.sendMessage([{getGames: {}}], function (games) {
         var tempList = games[0].games;
@@ -333,7 +343,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
             }
             if(searchObj.gameId){
                  gameId = searchObj.gameId;
-                 sayHi2GamePool(gameId);
+                 $scope.gameId = gameId;
+                 getGameName();
+                 //$location.search("gameId",gameId);
+                 //sayHi2GamePool(gameId);
             }
             if(gameId !== undefined){
                retriveCurrentGames();
