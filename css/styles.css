@@ -91,6 +91,9 @@ div {
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
+#SMPG_menu_trophy {
+    font-size: 50px;
+}
 .SMPG_menu_games {
     height: 80%;
     width: 100%;
