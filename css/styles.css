@@ -96,7 +96,7 @@ div {
 }
 .SMPG_menu_top {
     height: 20%;
-    min-height: 50px;
+    min-height: 30px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
@@ -105,7 +105,7 @@ div {
     font-size: 20px;
 }
 #SMPG_menu_trophy {
-    font-size: 50px;
+    font-size: 30px;
 }
 .SMPG_menu_games {
     height: 80%;
