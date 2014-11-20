@@ -1,30 +1,22 @@
-/*Color palette:
-//Text: #333333
-//Dark: #38611F > #58863d
-//Medium: #93d06f
-//Light: #b1ed8d
-//BG: #d1f8b9
-*/
-
 .gradient {
-  background: -webkit-linear-gradient(bottom,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Safari 5.1-6*/
-  background: -o-linear-gradient(top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Opera 11.1-12*/
-  background: -moz-linear-gradient(top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Fx 3.6-15*/
-  background: linear-gradient(to top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1));
+    background: -webkit-linear-gradient(bottom,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1)); /*Fx 3.6-15*/
+    background: linear-gradient(to top,rgba(12, 51, 24, 1),rgba(46, 191, 90, 1));
 }
 .halfgrad {
-  background: -webkit-linear-gradient(right, rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-  background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
-  background: linear-gradient(to left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+    background: -webkit-linear-gradient(right, rgba(137,255,241,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
 }
 .rightgrad {
-  background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-  background: -moz-linear-gradient(right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
-  background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: -moz-linear-gradient(right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -ms-linear-gradient(right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
 }
 html, body {
     margin: 0;
@@ -100,16 +92,16 @@ div {
     font-size: 18px;
 }
 .SMPG_menu_yourturn {
-  text-align: left;
-  padding-left: 5px;
+    text-align: left;
+    padding-left: 5px;
 }
 .SMPG_menu_waiting {
-  text-align: right;
-  padding-right: 5px;
+    text-align: right;
+    padding-right: 5px;
 }
 .SMPG_menu_completed {
-  text-align: left;
-  padding-left: 5px;
+    text-align: left;
+    padding-left: 5px;
 }
 .SMPG_menu_table {
     width: 100%;
@@ -138,22 +130,22 @@ div {
     height: 30px;
 }
 .SMPG_menu_bottom {
-  height: 15%;
-  background-color: rgba(0, 0, 0, 1);
-  overflow: hidden;
+    height: 15%;
+    background-color: rgba(0, 0, 0, 1);
+    overflow: hidden;
     position: fixed!important;
 }
 .SMPG_menu_bottom_option {
-  height: 100%;
-  width: 30%;
-  float: left;
-  color: white;
+    height: 100%;
+    width: 30%;
+    float: left;
+    color: white;
 }
 .SMPG_menu_bottom_option2 {
-  height: 100%;
-  width: 40%;
-  float: left;
-  color: white;
+    height: 100%;
+    width: 40%;
+    float: left;
+    color: white;
 }
 .SMPG_icon {
     font-size: 25px;
@@ -298,12 +290,12 @@ div {
     -webkit-animation-duration: 2s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
-    
+
     -moz-animation-name: blinker;
     -moz-animation-duration: 2s;
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: infinite;
-    
+
     animation-name: blinker;
     animation-duration: 2s;
     animation-timing-function: linear;
