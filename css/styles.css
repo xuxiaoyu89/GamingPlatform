@@ -91,6 +91,10 @@ div {
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
+#SMPG_menu_top_2 {
+    vertical-align: middle;
+    font-size: 20px;
+}
 #SMPG_menu_trophy {
     font-size: 50px;
 }
