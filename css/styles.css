@@ -73,10 +73,6 @@ div {
 .SMPG_helper_abs {
     position: absolute;
     top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
 }
 
 /* MENU.HTML CSS ITEMS */
