@@ -63,16 +63,23 @@ div {
     height: 5px;
 }
 
-/* These are menu.html items */
+/* MENU.HTML CSS ITEMS */
 .SMPG_menu {
     height:100%;
     width:100%;
-    overflow: scroll;
+    overflow: hidden;
+    position: fixed!important;
     background-color: rgba(173, 215, 160, 1);
 }
+
+.SMPG_menu_body {
+    height: 70%;
+    width: 100%;
+    overflow: scroll;
+}
 .SMPG_menu_top {
+    width: 100%;
     padding-top: 1%;
-    //padding-bottom: 1%;
     background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_menu_select {
@@ -83,7 +90,10 @@ div {
 .SMPG_menu_options {
     padding-top: 5px;
 }
-.SMPG_menu_list {
+
+.SMPG_menu_games {
+    height: 80%;
+    overflow: scroll;
 }
 .SMPG_menu_listbar {
     padding-top: 5px;
@@ -129,17 +139,12 @@ div {
     line-height: 0px;
     height: 30px;
 }
+
 .SMPG_menu_bottom {
-    <<<<<<< HEAD
-    height: 15%;
-    background-color: rgba(0, 0, 0, 1);
-    overflow: hidden;
-    =======
     height: 15%;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
     overflow: hidden;
-    >>>>>>> 9a46e517bf9271df26a851a39624c2b3ffa2eb10
     position: fixed!important;
 }
 .SMPG_menu_bottom_option {
@@ -154,6 +159,9 @@ div {
     float: left;
     color: white;
 }
+/* END MENU CSS */
+
+
 .SMPG_icon {
     font-size: 25px;
     vertical-align: middle;
