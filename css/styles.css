@@ -244,7 +244,6 @@ div {
     height:100%;
     width:100%;
     overflow: scroll;
-    background-color: rgba(173, 215, 160, 1);
     color: white;
 }
 .SMPG_stats_top {
@@ -257,8 +256,9 @@ div {
 .SMPG_stats_you {
     width: 100%;
     padding: 1%;
-    background-color: #58863d;
+    /*background-color: #58863d;*/
     min-height: 10%;
+    color: black;
 }
 .SMPG_stats_none {
     width: 100%;
@@ -270,7 +270,8 @@ div {
     width: 100%;
     padding: 1%;
     font-size: 150%;
-    color: rgba(56, 97, 31, 1);
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 1);
 }
 .SMPG_stats_div {
     height: 10%;
