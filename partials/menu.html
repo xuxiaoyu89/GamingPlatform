@@ -3,16 +3,19 @@
 
     <div class="SMPG_menu_body">
           <div id="SMPG_menu_title">
-                Welcome to <b>{{gameName}}</b>!
+                <h4>Welcome to <b>{{gameName}}</b>!</h4>
             </div>
             
         <div class="SMPG_menu_top">
         <div class="SMPG_menu_option30" id="SMPG_menu_top_1">
              <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar" ng-click="goToStats()"></img>
         </div>
-        <div class="SMPG_menu_option40" id="SMPG_menu_top_2"><b>{{displayName}}</b></div>
-        <div class="SMPG_menu_option30" id="SMPG_menu_top_3" ng-click="goToStats()">
+        <div class="SMPG_menu_option40" id="SMPG_menu_top_2"><span class="SMPG_game_helper"></span>
+             <b>{{displayName}}</b>
+        </div>
+        <div class="SMPG_menu_option30" id="SMPG_menu_top_3" ng-click="goToStats()"><span class="SMPG_game_helper"></span>
              Stats
+             <i class="icon ion-trophy"></i>
         </div>
         </div>
 
