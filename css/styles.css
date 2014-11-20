@@ -339,3 +339,11 @@ div {
 color: #f8f8ff;
 text-shadow: 0 3px 0 #b2a98f,0 14px 10px rgba(0,0,0,0.15), 0 24px 2px rgba(0,0,0,0.1), 0 34px 30px rgba(0,0,0,0.1);
 }
+.RETROtxt {
+color: #707070;
+text-shadow: 5px 4px 0 #eee,7px 6px 0 #707070;
+}
+.NEONbluetxt {
+color: #fff;
+text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00DEFF, 0 0 70px #00DEFF, 0 0 80px #00DEFF, 0 0 100px #00DEFF, 0 0 150px #00DEFF;
+}
