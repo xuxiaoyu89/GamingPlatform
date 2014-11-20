@@ -65,6 +65,11 @@ div {
     height: 5px;
     width: 100%;
 }
+.SMPG_helper_float {
+    height: 100%;
+    width: 100%;
+    float: left;
+}
 
 /* MENU.HTML CSS ITEMS */
 .SMPG_menu {
