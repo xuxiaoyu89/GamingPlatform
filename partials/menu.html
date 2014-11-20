@@ -28,23 +28,14 @@
     </div>
 
     <div class="SMPG_menu_options">
-        <button class="button button-balanced icon-right ion-android-contacts" 
-                ng-show="AUTO_MATCH" ng-click="autoMatchHandler()"><b>AUTOMATCH</b></button>
-    </div>
-    <div class="SMPG_menu_options">
-        <button class="button button-small button-stable icon-right ion-trophy" 
-                ng-show="gameId" ng-click="goToStats()">YOUR STATS</button>
-        <button class="button button-small button-stable" 
-                ng-click="playAgainstComputerHandler()">Play Against Computer</button>
-        <button class="button button-small button-stable" 
-                ng-click="passAndPlayHandler()">Pass and Play</button>
+     <button class="button button-small button-stable icon-right ion-trophy" ng-click="goToStats()">YOUR STATS</button>
     </div>
 
     <div class="SMPG_divider"></div>
 
     <div class="SMPG_menu_list">
         <div class="SMPG_menu_listbar SMPG_menu_yourturn halfgrad">
-            <b>Your Move:</b>
+            <b>Your Move</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
@@ -64,7 +55,7 @@
 
         <div class="SMPG_divider"></div>
         <div class="SMPG_menu_listbar SMPG_menu_waiting rightgrad">
-            <b>Waiting on Opponent:</b>
+            <b>Waiting on Opponent</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
@@ -84,7 +75,7 @@
 
         <div class="SMPG_divider"></div>
         <div class="SMPG_menu_listbar SMPG_menu_completed halfgrad">
-            <b>Completed Games:</b>
+            <b>Completed Games</b>
         </div>
         <div class="SMPG_menu_table">
             <table class="SMPG_menu_table">
@@ -103,6 +94,15 @@
         </div>
     </div>
 
+
+    <div class="SMPG_menu_bottom">
+     <div class="SMPG_menu_bottom_option" id="SMPG_menu_bottom_1"
+     ng-click="passAndPlayHandler()">Pass & Play</div>
+     <div class="SMPG_menu_bottom_option2" id="SMPG_menu_bottom_2"
+     ng-click="autoMatchHandler()">Automatch</div>
+     <div class="SMPG_menu_bottom_option" id="SMPG_menu_bottom_3"
+     ng-click="playAgainstComputerHandler()">Computer</div>
+    </div>
 
 
 </div>
