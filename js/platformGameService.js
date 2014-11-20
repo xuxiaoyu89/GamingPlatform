@@ -473,6 +473,12 @@ angular.module('myApp')
 this.rescaleDivs = function () {
                                 var $doc = $window.document;
                                 $log.info("Service called rescaleDivs")
+                                var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
+                                if (div_menubottom !== undefined) {
+                                    var height_menubottom = height_menutop.clientHeight;
+                                    var div_trophy = $doc.getElementById('SMPG_menu_trophy');
+                                    div_trophy.style.fontSize = (height_menubottom - 2) + 'px';
+                                }
                                 var div_goback = $doc.getElementById('SMPG_game_goback2');
                                 if (div_goback !== undefined) {
                                     var height_goback = div_goback.clientHeight;
