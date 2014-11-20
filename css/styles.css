@@ -130,9 +130,16 @@ div {
     height: 30px;
 }
 .SMPG_menu_bottom {
+    <<<<<<< HEAD
     height: 15%;
     background-color: rgba(0, 0, 0, 1);
     overflow: hidden;
+    =======
+    height: 15%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    overflow: hidden;
+    >>>>>>> 9a46e517bf9271df26a851a39624c2b3ffa2eb10
     position: fixed!important;
 }
 .SMPG_menu_bottom_option {
