@@ -16,3 +16,6 @@ Social Multiplayer Gaming group project
 * Facebook access
 * Advertising
 * Put iframe in index.html(maybe we don't need to do this...)
+
+**URLS**
+* https://build.phonegap.com/apps/1176521/share
