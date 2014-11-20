@@ -441,8 +441,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
                                 if (div_menubottom !== undefined) {
                                     var height_menubottom = div_menubottom.clientHeight;
-                                    var div_trophy = $doc.getElementById('SMPG_menu_trophy');
-                                    if(height_menubottom<=50) { div_trophy.style.fontSize = (height_menubottom - 2) + 'px'; }
+                                    var div_menutop2 = $doc.getElementById('SMPG_menu_top_2');
+                                    if(height_menubottom<=50) { div_menutop2.style.fontSize = (height_menubottom - 2) + 'px'; }
                                     
                                 }
     }
