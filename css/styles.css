@@ -137,6 +137,24 @@ div {
     line-height: 0px;
     height: 30px;
 }
+.SMPG_menu_bottom {
+  height: 15%;
+  background-color: rgba(0, 0, 0, 1);
+  overflow: hidden;
+    position: fixed!important;
+}
+.SMPG_menu_bottom_option {
+  height: 100%;
+  width: 30%;
+  float: left;
+  color: white;
+}
+.SMPG_menu_bottom_option2 {
+  height: 100%;
+  width: 40%;
+  float: left;
+  color: white;
+}
 .SMPG_icon {
     font-size: 25px;
     vertical-align: middle;
