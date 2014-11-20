@@ -441,12 +441,15 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
                                 if (div_menubottom !== undefined) {
                                     var height_menubottom = div_menubottom.clientHeight;
-                                    var div_menutop2 = $doc.getElementById('SMPG_menu_top_2');
-                                    if(height_menubottom<=50) { div_menutop2.style.fontSize = (height_menubottom - 2) + 'px'; }
-                                    
+                                    var icon_pass = $doc.getElementById('SMPG_icon_pass');
+                                    var icon_match = $doc.getElementById('SMPG_icon_match');
+                                    var icon_AI = $doc.getElementById('SMPG_icon_AI');
+                                    icon_pass.style.fontSize = (height_menubottom - 2) + 'px';
+                                    icon_match.style.fontSize = (height_menubottom - 2) + 'px';
+                                    icon_AI.style.fontSize = (height_menubottom - 2) + 'px';
                                 }
     }
-    //rescaleDivs();
-     //       $window.onresize = rescaleDivs;
-     //       $window.onorientationchange = rescaleDivs;
+    rescaleDivs();
+     $window.onresize = rescaleDivs;
+     $window.onorientationchange = rescaleDivs;
 });
