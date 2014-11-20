@@ -442,7 +442,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 if (div_menubottom !== undefined) {
                                     var height_menubottom = div_menubottom.clientHeight;
                                     var div_trophy = $doc.getElementById('SMPG_menu_trophy');
-                                    div_trophy.style.fontSize = (height_menubottom - 2) + 'px';
+                                    if(height_menubottom<=50) { div_trophy.style.fontSize = (height_menubottom - 2) + 'px'; }
+                                    
                                 }
     }
     rescaleDivs();
