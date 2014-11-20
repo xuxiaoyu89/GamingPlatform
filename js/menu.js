@@ -446,7 +446,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     
                                 }
     }
-    rescaleDivs();
-            $window.onresize = rescaleDivs;
-            $window.onorientationchange = rescaleDivs;
+    //rescaleDivs();
+     //       $window.onresize = rescaleDivs;
+     //       $window.onorientationchange = rescaleDivs;
 });
