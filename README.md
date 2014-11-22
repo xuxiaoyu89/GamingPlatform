@@ -9,8 +9,6 @@ Social Multiplayer Gaming group project
   * Animations: http://ionicframework.com/docs/components/#animations
   * Resizer header: http://callmenick.com/2014/02/18/create-an-animated-resizing-header-on-scroll/
   * Scroll effect: http://lab.hakim.se/scroll-effects/
-* Some mobile apps: http://www.webdesignerdepot.com/2013/07/20-beautifully-designed-smartphone-apps/
-* Material Design: http://www.google.com/design/spec/material-design/introduction.html
 
 **Lower priority:**
 * Facebook access
