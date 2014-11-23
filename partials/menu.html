@@ -27,7 +27,9 @@
             <div class="SMPG_menu_table">
                <div ng-repeat="match in myTurnMatches track by $index">
                     <div class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
+                         <div class="SMPG_menu_match">
                          <a class="ion-android-contact"></a> <span class="blink_me"><b>{{match.opponent}}</b></span>
+                         </div>
                     </div>
                </div>
             </div>
