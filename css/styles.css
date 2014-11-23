@@ -146,6 +146,10 @@ div {
     color: black;
 }
 
+.SMPG_menu_match {
+    padding: 10px;
+}
+
 .SMPG_menu_bottom {
     height: 15%;
     width: 100%;
