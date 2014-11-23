@@ -146,6 +146,14 @@ div {
     color: black;
 }
 
+.SMPG_menu_td1:nth-child(even) {
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    background-color: E6EFC1;
+    color: black;
+}
+
 .SMPG_menu_match {
     padding: 10px;
 }
