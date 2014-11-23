@@ -138,7 +138,7 @@ div {
     vertical-align: middle;
     height: 20px;
 }
-.SMPG_menu_td1 {
+.SMPG_menu_td1:nth-child(odd) {
     width: 100%;
     vertical-align: middle;
     text-align: center;
