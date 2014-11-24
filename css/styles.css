@@ -90,7 +90,7 @@ div {
 }
 
 .SMPG_menu_body {
-    height: 85%;
+    height: 90%;
     width: 100%;
     overflow: scroll;
     overflow-x: hidden;
@@ -160,7 +160,7 @@ div {
 }
 
 .SMPG_menu_bottom {
-    height: 15%;
+    height: 10%;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
     overflow: hidden;
