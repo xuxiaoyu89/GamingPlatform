@@ -45,7 +45,7 @@
             <div class="SMPG_menu_table">
                <div ng-repeat="match in oppoTurnMatches track by $index">
                     <div class="SMPG_divider"></div>
-                    <div class="SMPG_menu_td1" ng-show="$index%2==0"
+                    <div ng-class="{SMPG_menu_td1:$index%2==0,SMPG_menu_td2:$index%2==1}"
                          ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                          <a class="ion-android-contact"></a><b>{{$index%2}}{{match.opponent}}</b>
                     </div>
@@ -63,10 +63,13 @@
             <div class="SMPG_menu_table">
                <div ng-repeat="match in endMatches track by $index">
                     <div class="SMPG_divider"></div>
-                    <div class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                         <div class="SMPG_menu_match">
+                    <div class="SMPG_menu_td1" ng-show="$index%2==0"
+                         ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                          <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
-                         </div>
+                    </div>
+                    <div class="SMPG_menu_td2" ng-show="$index%2==1"
+                         ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
+                         <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
                     </div>
                </div>
             </div>
