@@ -451,7 +451,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     var icon_match = $doc.getElementById('SMPG_icon_match');
                                     var icon_AI = $doc.getElementById('SMPG_icon_AI');
                                     var icon_stats = $doc.getElementById('SMPG_icon_stats');
-                                    if(height_menubottom>=30) {
+                                    if(height_menubottom>=40) {
                                         icon_pass.style.fontSize = (height_menubottom - 22) + 'px';
                                         icon_match.style.fontSize = (height_menubottom - 22) + 'px';
                                         icon_AI.style.fontSize = (height_menubottom - 22) + 'px';
