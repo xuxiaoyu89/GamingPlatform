@@ -39,10 +39,6 @@
                 <b>Opponent's Turn</b>
             </div>
             <div class="SMPG_menu_table">
-               <div class="SMPG_stats_none" 
-                    ng-show="oppoTurnMatches===undefined">
-                    <a class="icon icon ion-loading-a"></a>
-               </div>
                <div ng-repeat="match in oppoTurnMatches track by $index">
                     <div class="SMPG_divider"></div>
                     <div ng-class="{SMPG_menu_td1:$index%2==0,SMPG_menu_td2:$index%2==1}"
