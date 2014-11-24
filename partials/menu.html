@@ -27,11 +27,7 @@
             <div class="SMPG_menu_table">
                <div ng-repeat="match in myTurnMatches track by $index">
                     <div class="SMPG_divider"></div>
-                    <div class="SMPG_menu_td1" ng-show="$index%2==0"
-                         ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                         <a class="ion-android-contact"></a> <span class="blink_me"><b>{{match.opponent}}</b></span>
-                    </div>
-                    <div class="SMPG_menu_td2" ng-show="$index%2==1"
+                    <div ng-class="{SMPG_menu_td1:$index%2==0,SMPG_menu_td2:$index%2==1}"
                          ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                          <a class="ion-android-contact"></a> <span class="blink_me"><b>{{match.opponent}}</b></span>
                     </div>
@@ -47,11 +43,7 @@
                     <div class="SMPG_divider"></div>
                     <div ng-class="{SMPG_menu_td1:$index%2==0,SMPG_menu_td2:$index%2==1}"
                          ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                         <a class="ion-android-contact"></a><b>{{$index%2}}{{match.opponent}}</b>
-                    </div>
-                    <div class="SMPG_menu_td2" ng-show="$index%2==1"
-                         ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                         <a class="ion-android-contact"></a><b>{{$index%2}}{{match.opponent}}</b>
+                         <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
                     </div>
                </div>
             </div>
@@ -63,11 +55,7 @@
             <div class="SMPG_menu_table">
                <div ng-repeat="match in endMatches track by $index">
                     <div class="SMPG_divider"></div>
-                    <div class="SMPG_menu_td1" ng-show="$index%2==0"
-                         ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
-                         <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
-                    </div>
-                    <div class="SMPG_menu_td2" ng-show="$index%2==1"
+                    <div ng-class="{SMPG_menu_td1:$index%2==0,SMPG_menu_td2:$index%2==1}"
                          ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                          <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
                     </div>
