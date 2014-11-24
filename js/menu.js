@@ -450,9 +450,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     var icon_pass = $doc.getElementById('SMPG_icon_pass');
                                     var icon_match = $doc.getElementById('SMPG_icon_match');
                                     var icon_AI = $doc.getElementById('SMPG_icon_AI');
+                                    var icon_stats = $doc.getElementById('SMPG_icon_stats');
                                     icon_pass.style.fontSize = (height_menubottom - 16) + 'px';
                                     icon_match.style.fontSize = (height_menubottom - 16) + 'px';
                                     icon_AI.style.fontSize = (height_menubottom - 16) + 'px';
+                                    icon_stats.style.fontSize = (height_menubottom - 16) + 'px';
                                 }
     }
     rescaleDivs();
