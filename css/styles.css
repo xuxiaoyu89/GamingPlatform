@@ -112,6 +112,7 @@ div {
 .SMPG_menu_title {
     height: 60%;
     width: 100%;
+    font-family: 'Righteous', cursive;
 }
 .SMPG_menu_user {
     height: 40%;
