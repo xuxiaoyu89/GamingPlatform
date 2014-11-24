@@ -438,6 +438,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     rescaleDivs = function () {
                                 var $doc = $window.document;
                                 $log.info("Menu called menu rescaleDivs")
+                                var div_menutitle = $doc.getElementById('SMPG_menu_titleid');
+                                if (div_menutitle !== undefined) {
+                                    div_menutitle.style.fontSize=(div_menutitle.clientHeight-10)+'px';
+                                }
                                 var div_menutop = $doc.getElementById('SMPG_menu_headerid');
                                 if (div_menutop !== undefined) {
                                     var height_menutop = div_menutop.clientHeight;
