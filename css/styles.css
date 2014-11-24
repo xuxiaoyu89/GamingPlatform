@@ -102,6 +102,7 @@ div {
     width: 25%;
     height: 100%;
     float: left;
+    padding: 5px;
 }
 .SMPG_menu_top50 {
     width: 50%;
