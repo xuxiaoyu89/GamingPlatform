@@ -448,7 +448,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     } else {
                                         menu_topav.style.height = (width_menutop - 10) + 'px';
                                     }
-                                    menu_top.style.paddingTop = (height_menutop - menu_topav.style.height)/2 + 'px';
+                                    div_menutop.style.paddingTop = (height_menutop - menu_topav.style.height)/2 + 'px';
                                 }
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
                                 if (div_menubottom !== undefined) {
