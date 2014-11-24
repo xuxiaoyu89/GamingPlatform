@@ -93,6 +93,7 @@ div {
     height: 85%;
     width: 100%;
     overflow: scroll;
+    overflow-x: hidden;
 }
 #SMPG_menu_title {
     height: 10%;
@@ -261,6 +262,7 @@ div {
     height:100%;
     width:100%;
     overflow: scroll;
+    overflow-x: hidden;
     color: white;
 }
 .SMPG_stats_top {
