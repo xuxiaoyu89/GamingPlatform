@@ -3,24 +3,22 @@
 
     <div class="SMPG_menu_body">
     
-          <div class="SMPG_menu_header">
+          <div class="SMPG_menu_header" id="SMPG_menu_headerid">
           <div class="SMPG_menu_top25">
                <img ng-src="{{avatarImageUrl}}" class="SMPG_avatar" id="SMPG_menu_topav"></img>
           </div>
           <div class="SMPG_menu_top50">
-               <div class="SMPG_menu_title"><b>{{gameName}}</b></div>
-               <div class="SMPG_menu_user"><b>{{displayName}}</b></div>
+               <div class="SMPG_menu_title"><span class="SMPG_game_helper"></span>
+                    <b>{{gameName}}</b>
+               </div>
+               <div class="SMPG_menu_user"><span class="SMPG_game_helper"></span>
+                    <b>{{displayName}}</b>
+               </div>
           </div>
           <div class="SMPG_menu_top25">
                <!--Facebook Login?-->
           </div>     
           </div>
-     
-     
-     
-          <div id="SMPG_menu_title">
-                <h3><b>{{gameName}}</b></h3>
-            </div>
             
         <div class="SMPG_menu_top">
         <div class="SMPG_menu_option30" id="SMPG_menu_top_1">
