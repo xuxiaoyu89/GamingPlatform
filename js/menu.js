@@ -444,11 +444,11 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     var width_menutop = div_menutop.clientWidth;
                                     var menu_topav = $doc.getElementById('SMPG_menu_topav');
                                     if(width_menutop>height_menutop) {
-                                        menu_topav.style.height = (height_menutop - 12) + 'px';
+                                        menu_topav.style.height = (height_menutop - 10) + 'px';
                                     } else {
-                                        menu_topav.style.height = (width_menutop - 12) + 'px';
-                                        menu_top.style.paddingTop = (height_menutop - menutopav.style.height)/2 + 'px';
+                                        menu_topav.style.height = (width_menutop - 10) + 'px';
                                     }
+                                    menu_top.style.paddingTop = (height_menutop - menutopav.style.height)/2 + 'px';
                                 }
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
                                 if (div_menubottom !== undefined) {
