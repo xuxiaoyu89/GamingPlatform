@@ -95,11 +95,31 @@ div {
     overflow: scroll;
     overflow-x: hidden;
 }
-#SMPG_menu_title {
-    height: 10%;
+.SMPG_menu_header {
+    height: 20%;
+    min-height: 50px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
+.SMPG_menu_top25 {
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+.SMPG_menu_top50 {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+.SMPG_menu_title {
+    height: 60%;
+    width: 100%;
+}
+.SMPG_menu_user {
+    height: 40%;
+    width: 100%;
+}
+
 .SMPG_menu_top {
     height: 10%;
     min-height: 50px;
