@@ -444,9 +444,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     var width_menutop = div_menutop.clientWidth;
                                     var menu_topav = $doc.getElementById('SMPG_menu_topav');
                                     if(width_menutop<height_menutop*4) {
-                                        menu_topav.style.height = (height_menutop - 10) + 'px';
+                                        menu_topav.style.height = (height_menutop - 15) + 'px';
                                     } else {
-                                        menu_topav.style.height = ((width_menutop/4) - 10) + 'px';
+                                        menu_topav.style.height = ((width_menutop/4) - 15) + 'px';
                                     }
                                 }
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
