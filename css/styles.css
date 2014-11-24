@@ -139,19 +139,18 @@ div {
     vertical-align: middle;
     height: 20px;
 }
-.SMPG_menu_td1:nth-child(odd) {
+.SMPG_menu_td1 {
     width: 100%;
     vertical-align: middle;
     text-align: center;
-    background-color: #99C1A6;
+    background-color: rgba(0, 0, 0, 0.3);
     color: black;
 }
-
-.SMPG_menu_td1:nth-child(even) {
+.SMPG_menu_td2 {
     width: 100%;
     vertical-align: middle;
     text-align: center;
-    background-color: #E6EFC1;
+    background-color: rgba(0, 0, 0, 0.5);
     color: black;
 }
 
