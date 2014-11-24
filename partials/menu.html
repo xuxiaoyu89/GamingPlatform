@@ -26,6 +26,7 @@
             </div>
             <div class="SMPG_menu_table">
                <div ng-repeat="match in myTurnMatches track by $index">
+                    <div class="SMPG_divider"></div>
                     <div class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                          <div class="SMPG_menu_match">
                          <a class="ion-android-contact"></a> <span class="blink_me"><b>{{match.opponent}}</b></span>
@@ -39,7 +40,15 @@
                 <b>Opponent's Turn</b>
             </div>
             <div class="SMPG_menu_table">
-                <table class="SMPG_menu_table">
+               <div ng-repeat="match in oppoTurnMatches track by $index">
+                    <div class="SMPG_divider"></div>
+                    <div class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
+                         <div class="SMPG_menu_match">
+                         <a class="ion-android-contact"></a><b>{{match.opponent}}</b>
+                         </div>
+                    </div>
+               </div>
+                <!--table class="SMPG_menu_table">
                     <tr ng-repeat="match in oppoTurnMatches track by $index">
                         <td class="SMPG_menu_td1" ng-click="goToGame(match.myPlayerId, match.matchId, match.turnIndex)">
                               <div class="SMPG_menu_match">
@@ -47,7 +56,7 @@
                               </div>
                         </td>
                     </tr>
-                </table>
+                </table-->
             </div>
 
             <div class="SMPG_divider"></div>
