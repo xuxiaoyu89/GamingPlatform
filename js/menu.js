@@ -452,7 +452,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     } else {
                                         menu_topav.style.height = (width_menutop - 10) + 'px';
                                     }
-                                    div_menutop.style.paddingTop = (height_menutop - menu_topav.clientHeight)/2 + 'px';
+                                    div_menutop.style.paddingTop = (height_menutop - menu_topav.clientHeight - 4)/2 + 'px';
                                     $log.info("MENUTOP: ", height_menutop, menu_topav.clientHeight)
                                 }
                                 var div_menubottom = $doc.getElementById('SMPG_menu_bottom_1');
