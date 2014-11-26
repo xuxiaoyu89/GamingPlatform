@@ -15,7 +15,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     // initialize icon pool  
     var avatarPool = [];
     avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/avatar0.gif");
-    avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/a1.jgp");
+    avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/a1.jpg");
     avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/a2.png");
     avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/a3.png");
     avatarPool.push("http://rshen1993.github.io/GamingPlatform/img/a4.png");
