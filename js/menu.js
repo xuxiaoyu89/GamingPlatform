@@ -440,8 +440,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 $log.info("Menu called menu rescaleDivs")
                                 var div_menutitle = $doc.getElementById('SMPG_menu_titleid');
                                 if (div_menutitle !== undefined) {
-                                    $log.info("Sizes: ", gameName, $scope.gameName, div_menutitle.clientWidth, div_menutitle.clientWidth/title_gamename.length)
-                                    div_menutitle.style.fontSize=(div_menutitle.clientWidth/gameName.length)+'px';
+                                    div_menutitle.style.fontSize=(div_menutitle.clientWidth - 20)+'px';
+                                    if(gameName!==undefined) {
+                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/gameName.length)+'px';
+                                    }
                                 }
                                 var div_menutop = $doc.getElementById('SMPG_menu_headerid');
                                 if (div_menutop !== undefined) {
