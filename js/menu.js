@@ -236,8 +236,9 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     function getGameName(){
          serverApiService.sendMessage([{getGames: {gameId: gameId}}], function(myGame){
               $scope.gameName = myGame[0].games[0].languageToGameName.en;
-              gameUrl = myGame[0].games[0].gameUrl
-              gameDmail = myGame[0].games[0].gameDeveloperEmail
+              gameUrl = myGame[0].games[0].gameUrl;
+              gameDmail = myGame[0].games[0].gameDeveloperEmail;
+              rescaleDivs();
          });
     }
     
@@ -440,9 +441,10 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 $log.info("Menu called menu rescaleDivs")
                                 var div_menutitle = $doc.getElementById('SMPG_menu_titleid');
                                 if (div_menutitle !== undefined) {
-                                    div_menutitle.style.fontSize=(div_menutitle.clientWidth - 20)+'px';
-                                    if(getGameName()!==undefined) {
-                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/getGameName().length)+'px';
+                                    div_menutitle.style.fontSize=(div_menutitle.clientHeight - 10)+'px';
+                                    $log.info("Game Name: ", $scope.gameName, div_menutitle.clientHeight, div_menutitle.clientWidth);
+                                    if($scope.gameName!==undefined) {
+                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/$scope.gameName.length)+'px';
                                     }
                                 }
                                 var div_menutop = $doc.getElementById('SMPG_menu_headerid');
