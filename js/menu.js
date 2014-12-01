@@ -441,8 +441,8 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 var div_menutitle = $doc.getElementById('SMPG_menu_titleid');
                                 if (div_menutitle !== undefined) {
                                     div_menutitle.style.fontSize=(div_menutitle.clientWidth - 20)+'px';
-                                    if(gameName!==undefined) {
-                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/gameName.length)+'px';
+                                    if(getGameName()!==undefined) {
+                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/getGameName().length)+'px';
                                     }
                                 }
                                 var div_menutop = $doc.getElementById('SMPG_menu_headerid');
