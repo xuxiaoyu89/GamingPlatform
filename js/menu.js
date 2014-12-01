@@ -444,7 +444,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                     div_menutitle.style.fontSize=(div_menutitle.clientHeight - 10)+'px';
                                     $log.info("Game Name: ", $scope.gameName, div_menutitle.clientHeight, div_menutitle.clientWidth);
                                     if($scope.gameName!==undefined) {
-                                         div_menutitle.style.fontSize=(div_menutitle.clientWidth/$scope.gameName.length)+'px';
+                                         div_menutitle.style.fontSize=((div_menutitle.clientWidth/$scope.gameName.length)+10)+'px';
                                     }
                                 }
                                 var div_menutop = $doc.getElementById('SMPG_menu_headerid');
