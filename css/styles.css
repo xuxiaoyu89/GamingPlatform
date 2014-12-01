@@ -114,6 +114,7 @@ div {
     height: 60%;
     width: 100%;
     font-family: 'Righteous', cursive;
+    overflow: hidden;
 }
 .SMPG_menu_user {
     height: 40%;
