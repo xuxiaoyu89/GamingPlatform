@@ -441,7 +441,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
                                 $log.info("Menu called menu rescaleDivs")
                                 var div_menutitle = $doc.getElementById('SMPG_menu_titleid');
                                 if (div_menutitle !== undefined) {
-                                    div_menutitle.style.fontSize=(div_menutitle.clientHeight - 25)+'px';
+                                    div_menutitle.style.fontSize=(div_menutitle.clientHeight - 17)+'px';
                                     $log.info("Game Name: ", $scope.gameName, div_menutitle.clientHeight, div_menutitle.clientWidth);
                                     if($scope.gameName!==undefined) {
                                          if(((div_menutitle.clientWidth/$scope.gameName.length)+10)<(div_menutitle.clientHeight - 25)) {
