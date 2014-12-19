@@ -23,7 +23,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     avatarPool.push("//rshen1993.github.io/GamingPlatform/img/a6.png");
 
     var myPlayerId, accessSignature;
-    $scope.displayName, $scope.avatarImageUrl;
+     $scope.displayName, $scope.avatarImageUrl;
     var MENU_URL = 'menu.html';
     var GAME_URL = 'game.html'
     /* Create a user, if necessary, by sending registerPlayer message
@@ -485,4 +485,125 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
     rescaleDivs();
      $window.onresize = rescaleDivs;
      $window.onorientationchange = rescaleDivs;
+    
+    
+    function sendMessageToPhonegap(message) {
+    //alert("sendMessageToPhonegap:" + message);
+    window.parent.postMessage(message, "*");
+   }
+   
+   function makeAjaxCall(url, callback){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            var responseText = xmlhttp.responseText;
+            console.log(responseText);
+            callback(responseText);
+        }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+    
+    $scope.socialLogin = function (accessToken){
+      var message = [ // SOCIAL_LOGIN - JOIN ACCOUNTS
+            {
+              socialLogin: {
+                myPlayerId: myPlayerId, 
+                accessSignature: accessSignature,
+                accessToken: accessToken,
+                uniqueType: "F"
+              }
+            }
+          ];
+      serverApiService.sendMessage(message, function (response) {
+        //$scope.response = angular.toJson(response, true);
+        var playerInfo = response[0].playerInfo;
+                    myPlayerId = playerInfo.myPlayerId;
+                    accessSignature = playerInfo.accessSignature;
+                    //added by XXY
+                    $scope.myPlayerId = myPlayerId;
+                    $scope.accessSignature = accessSignature;
+                    $scope.displayName = playerInfo.displayName;
+                    $scope.avatarImageUrl = playerInfo.avatarImageUrl;
+                    //$window.location.replace(MENU_URL);
+                    playerInfo = angular.toJson(response[0].playerInfo, true);
+                    window.localStorage.setItem("playerInfo", angular.toJson(playerInfo));
+                    retriveCurrentGames();
+                    /*
+                    //RESET EVERYTHING
+                    if($rootScope.interval !== undefined){
+                         $interval.cancel($rootScope.interval);
+                         $rootScope.interval = undefined
+                    }
+                    var timeinterval = 1000;
+                    $scope.myMatchesPool = [];
+                    $scope.myTurnMatches = [];
+                    $scope.oppoTurnMatches = [];
+                    $scope.endMatches = [];
+                    $scope.gamesPool = [];
+                    $scope.selectdGames = "";
+                    $rootScope.menu_interval = $interval(updateMatchesPool, timeinterval);
+                    $location.reload(true);
+                    */
+      });
+    };
+    
+    window.addEventListener("message", function (event) {
+      var message = event.data;
+      var source = event.source;
+      if (source === window.parent) {
+          //alert("eventlistener message: "+JSON.stringify(message));
+        if (message.token) {
+          FBRegistration(message.token);
+        }else if(message.payload && message.payload.regid){
+          //alert("registered!: " + message.payload.regid);
+          registerAndroid(message.payload.regid);
+        }else if(message.payload && message.payload.notification){
+          alert("got notification");
+          //angular.element(document.getElementById("Ctrl")).scope().
+          sendAngularNotification(message.payload.notification);
+          //parent.location = '#/menu';
+        }else{
+          //alert(JSON.stringify(message));
+        }
+      }
+    }, false);
+    
+    function FBRegistration(accessToken) {
+      makeAjaxCall(
+        "https://graph.facebook.com/v2.2/me?format=json&method=get&pretty=0&suppress_http_code=1&access_token="
+          + accessToken,
+        function(responseText) {
+          var response = JSON.parse(responseText);
+          $scope.socialLogin(accessToken);
+        }
+      );
+    }
+    
+     registerAndroid = function(regid){
+        var message = [ //REGISTER_FOR_PUSH_NOTIFICATIONS
+          {
+            registerForPushNotifications: {
+              myPlayerId: myPlayerId, 
+              accessSignature: accessSignature, 
+              gameId: gameId, 
+              registrationId: regid,
+              platformType: "ANDROID"
+            }
+          }
+        ];
+        //alert("registerAndroid message: "+JSON.stringify(message));
+        serverApiService.sendMessage(message, function (response) {
+             //alert("registerAndroid response: "+JSON.stringify(response));
+        });
+      };
+      
+     sendAngularNotification = function(notification){
+        //alert("sendAngularNotification: "+JSON.stringify(notification));
+        retriveCurrentGames();
+        //$scope.callRefreshTimeout();
+      };
+    
+    
 });
