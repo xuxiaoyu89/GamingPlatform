@@ -560,7 +560,7 @@ function ($sce, $scope, $rootScope, $log, $window, $timeout, $location, $interva
           //alert("registered!: " + message.payload.regid);
           registerAndroid(message.payload.regid);
         }else if(message.payload && message.payload.notification){
-          alert("got notification");
+          //alert("got notification");
           //angular.element(document.getElementById("Ctrl")).scope().
           sendAngularNotification(message.payload.notification);
           //parent.location = '#/menu';
